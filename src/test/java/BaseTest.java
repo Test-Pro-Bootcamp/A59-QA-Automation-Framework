@@ -6,6 +6,10 @@ public class BaseTest {
 
     @BeforeSuite
     static void setupClass() {
+
         WebDriverManager.chromedriver().setup();
     }
+    // This is a change
+
+
 }
