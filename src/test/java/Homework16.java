@@ -17,6 +17,7 @@ public class Homework16 {
 
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
 
         //step 1
         String url = "https://qa.koel.app/";
