@@ -11,17 +11,21 @@ import java.time.Duration;
 public class Homework16Test extends BaseTest {
     @Test
     public void registrationNavigation () throws InterruptedException {
+
+
         //Pre-Condition
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         //Step 1
         String url = "https://qa.koel.app";
         driver.get(url);
         Thread.sleep(2000);
         //Step 2
+
         WebElement registrationBtn = driver.findElement(By.cssSelector("a[href='registration']"));
         registrationBtn.click();
         Thread.sleep(2000);
