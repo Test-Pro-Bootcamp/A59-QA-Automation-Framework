@@ -11,6 +11,7 @@ import java.time.Duration;
 public class Homework16Test extends BaseTest {
     @Test
     public void registrationNavigation () throws InterruptedException {
+
         //Pre-Condition
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -22,6 +23,7 @@ public class Homework16Test extends BaseTest {
         driver.get(url);
         Thread.sleep(2000);
         //Step 2
+
         WebElement registrationBtn = driver.findElement(By.cssSelector("a[href='registration']"));
         registrationBtn.click();
         Thread.sleep(2000);
