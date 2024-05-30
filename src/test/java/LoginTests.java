@@ -25,7 +25,7 @@ public class LoginTests extends BaseTest {
 
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         emailField.clear();
-        emailField.sendKeys("demo@class.com");
+        emailField.sendKeys("demo@testpro.io");
 
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
@@ -56,7 +56,7 @@ public class LoginTests extends BaseTest {
         // Steps
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         emailField.clear();
-        emailField.sendKeys("invalid@class.com");
+        emailField.sendKeys("invalid@testpro.io");
 
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
@@ -88,7 +88,7 @@ public class LoginTests extends BaseTest {
 
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         emailField.clear();
-        emailField.sendKeys("demo@class.com");
+        emailField.sendKeys("demo@testpro.io");
 
         WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         submit.click();
