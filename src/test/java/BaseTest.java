@@ -8,5 +8,6 @@ public class BaseTest {
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
-    // This is a change 
+
+ // This is a change
 }
