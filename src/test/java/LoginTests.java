@@ -24,7 +24,8 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
-//Happy Path
+
+    //Happy Path
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
 
@@ -65,7 +66,7 @@ public class LoginTests extends BaseTest {
     //Not so happy Path - Negative Test Case
     @Test
     public void LoginWithInvalidEmailValidPassword() throws InterruptedException {
-         //Pre-Condition
+        //Pre-Condition
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
@@ -101,11 +102,11 @@ public class LoginTests extends BaseTest {
     /**
      *
      */
-    public class homework16 {
+
+    public class HomeWork16 {
 
         //Test Case Registration Navigation
-        @Test
-        public void registrationNavigation() throws InterruptedException {
+        public void RegistrationNavigation() throws InterruptedException {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
 
@@ -123,12 +124,13 @@ public class LoginTests extends BaseTest {
             String expectedTitle = "Registration";
             String actualTitle = driver.getTitle();
             Assert.assertEquals(expectedTitle, actualTitle);
-
             driver.quit();
+        }
+    }
+}
 
 
 
 
 
 
-        //Done
