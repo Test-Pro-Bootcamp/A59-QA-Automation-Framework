@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Homework16 {
+public class Homework16Test extends BaseTest{
 
    @Test
    public void  registrationNavigation() throws InterruptedException {
