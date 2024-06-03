@@ -14,6 +14,8 @@ public class BaseTest {
     WebDriver driver = null;
     ChromeOptions options = new ChromeOptions();
     String url = "https://qa.koel.app/";
+    String email = "demo@testpro.io";
+    String password = "te$t$tudent";
 
     @BeforeSuite
     static void setupClass() {

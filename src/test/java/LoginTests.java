@@ -21,10 +21,10 @@ public class LoginTests extends BaseTest {
         navigateToPage();
         Thread.sleep(2000);
         //Step2
-        enterEmail("demo@testpro.io");
+        enterEmail(email);
         Thread.sleep(2000);
         //Step3
-        enterPassword("te$t$tudent");
+        enterPassword(password);
         Thread.sleep(2000);
         //Step4
         submit();
@@ -47,7 +47,7 @@ public class LoginTests extends BaseTest {
         //Step2
         enterEmail("invalid@koel.io");
         //Step3
-        enterPassword("te$t$tudent");
+        enterPassword(password);
         Thread.sleep(2000);
         //Step4
         submit();
@@ -59,7 +59,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginWithValidEmailEmptyPassword() throws InterruptedException {
         navigateToPage();
-        enterEmail("demo@testpro.io");
+        enterEmail(email);
         submit();
 
         Thread.sleep(2000); //sleep or pause for 2 seconds (adjust as needed)
