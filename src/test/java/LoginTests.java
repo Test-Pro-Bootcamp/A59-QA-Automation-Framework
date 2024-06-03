@@ -68,7 +68,8 @@ public class LoginTests extends BaseTest {
     }
 
     // Not a Happy Path - Negative Path
-    @Test(enabled = false, description = "Test has been marked as skipped due to an ongoing issue JIRA - 757.")
+    @Test
+    
     public void loginWithInvalidEmailValidPassword() throws InterruptedException {
         //Pre-Condition
         //Added ChromeOptions argument below to fix websocket error
