@@ -20,13 +20,8 @@ public class LoginTests extends BaseTest {
 
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
- 
 
         String url = "https://qa.koel.app/";
-
-
-        
-        
 
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
@@ -73,9 +68,10 @@ public class LoginTests extends BaseTest {
     }
 
     // Not a Happy Path - Negative Path
-    @Test
+    @Test(enabled = false, description = "Test has been marked as skipped due to an ongoing issue JIRA - 757.")
     public void loginWithInvalidEmailValidPassword() throws InterruptedException {
         //Pre-Condition
+        //Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
