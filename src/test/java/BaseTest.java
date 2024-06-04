@@ -28,12 +28,12 @@ public class BaseTest {
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
+    //    driver.manage().window().maximize();
     }
 
     @AfterMethod
     public void closeBrowser(){
-        driver.quit();
+     //   driver.quit();
     }
 
     protected void submit() throws InterruptedException {
