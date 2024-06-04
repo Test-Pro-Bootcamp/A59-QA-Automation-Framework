@@ -22,7 +22,7 @@ public class Homework16Test extends BaseTest {
 
         //Step 1
         String url = "https://qa.koel.app";
-        driver.get(url);
+        navigateToPage();
         Thread.sleep(2000);
         //Step 2
 
