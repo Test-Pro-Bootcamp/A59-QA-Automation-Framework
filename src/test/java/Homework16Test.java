@@ -19,7 +19,7 @@ public class Homework16Test extends BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //Step 1
         String url = "https://qa.koel.app";
-        driver.get(url);
+        navigateToPage();
         Thread.sleep(2000);
         //Step 2
         WebElement registrationBtn = driver.findElement(By.cssSelector("a[href='registration']"));
