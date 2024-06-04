@@ -16,8 +16,8 @@ public class LoginTests extends BaseTest {
 
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/";
+//      Changing url test hw15
+        String url = "https://testpro.io/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
