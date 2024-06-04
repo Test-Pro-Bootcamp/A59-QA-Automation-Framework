@@ -1,13 +1,13 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-//Homework-17
 
 public class PlayListTests extends BaseTest{
 
     @Test
     public void addSongToPlaylist() throws InterruptedException {
-        String expectedSongAddedMessage = "Added 1 song into \"TestPro Playlist.\"";
+        String expectedMessage = "";
 
         navigateToPage();
         enterEmail("demo@testpro.io");
@@ -26,8 +26,9 @@ public class PlayListTests extends BaseTest{
         createNewPlayListForm();
         //click on the save button
         clickOnSaveBtn();
-       // verifyNotificationMessage();
+
         //actual vs expected
+        Assert.assertEquals(verifyNotificationMessage(), expectedMessage);
     }
 
     public void searchSong(String songName) {
@@ -68,9 +69,9 @@ public class PlayListTests extends BaseTest{
         clickOnSave.click();
     }
 
-    public void verifyNotificationMessage(){
-        WebElement verifyNotification =driver.findElement(By.xpath("//td[text()='Created playlist \"JM-Play-List\"]"));
-
+    public String verifyNotificationMessage(){
+        WebElement verifyNotification =driver.findElement(By.cssSelector(""));
+        return verifyNotification.getText();
     }
 
 }
