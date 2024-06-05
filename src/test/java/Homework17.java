@@ -4,15 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
+// Homework17 class extends BaseTest for Selenium test automation.
 public class Homework17 extends BaseTest {
 
+    // Test method for adding a song to a playlist.
     @Test
     public void addSongToPlaylist() throws InterruptedException {
         // GIVEN
         // Initialization of test data.
-        String nameSong = "pluto";
+        String nameSong = "love";
         // Write the current name of your playlist
-        String namePlaylist = "TestPro Playlist";
+        String namePlaylist = "First user playlist";
         String expectedSongAddedMessage = "Added 1 song into \"" + namePlaylist + ".\"";
 
         // WHEN
@@ -65,7 +67,7 @@ public class Homework17 extends BaseTest {
     // Method to choose a playlist by name.
     public void choosePlaylist(String playlistName) throws InterruptedException {
         // Locating and clicking the playlist with the specified name.
-        WebElement playlist = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//*[contains(text(), '" + playlistName + "')]"));
+        WebElement playlist = driver.findElement(By.xpath(("//*[@id='songResultsWrapper']//*[contains(text(), '" + playlistName + "')]")));
         playlist.click();
         Thread.sleep(2000);
     }
