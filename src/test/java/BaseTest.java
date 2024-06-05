@@ -18,7 +18,7 @@ public class BaseTest {
     public void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
-// I cant get ride of the red line here.
+    //// I cant get ride of the red line here.
     // also do I nee to delete the login text class and remove it from TestNG
     @BeforeMethod
     @Parameters("baseUrl")
