@@ -21,8 +21,8 @@ public class LoginTests extends BaseTest {
 
 
         navigateToPage();
-        enterEmail("");
-        enterPassword("te$t$tudent");
+        enterEmail("demo@gmail.com");
+        enterPassword("te$t$tudant");
         submit();
 
 
