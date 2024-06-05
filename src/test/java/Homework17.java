@@ -1,8 +1,10 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
 
 public class Homework17 extends BaseTest{
 
+    @Test
     public void  addSongToPlaylist(){
 
         // go to page
@@ -25,7 +27,7 @@ public class Homework17 extends BaseTest{
 
         //actual vs expected
 
-        
+
 
     }
 
