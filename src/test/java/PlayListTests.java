@@ -12,8 +12,8 @@ public class PlayListTests extends BaseTest{
         String songName = "grav";
 
         navigateToPage();
-        enterEmail("james.mar@testpro.io");
-        enterPassword("CUf3Hrw3");
+        enterEmail("demo@testpro.io");
+        enterPassword("te$t$tudent");
         submit();
 
         //search for a song
