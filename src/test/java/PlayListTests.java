@@ -7,9 +7,10 @@ public class PlayListTests extends BaseTest{
 
     @Test
     public void addSongToPlaylist() throws InterruptedException {
-        String expectedMessage = "Added 1 song into \"TestPro PlayList\"";
-    //    String playListName = "TestPro Playlist";
+        String expectedMessage = "Added 1 song into \"TestPro Playlist.\"";
+        String playListName = "TestPro Playlist";
         String songName = "grav";
+        String returnedString = null;
 
         navigateToPage();
         enterEmail("demo@testpro.io");
@@ -18,7 +19,7 @@ public class PlayListTests extends BaseTest{
 
         //search for a song
         searchSong(songName);
-       // click view all button
+        //click view all button
         viewAllSongs();
         //select first song from result
         selectFirstSong();
@@ -34,31 +35,32 @@ public class PlayListTests extends BaseTest{
         WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
         searchField.clear();
         searchField.sendKeys(songName);
-        Thread.sleep(2000);
+        Thread.sleep(6000);
     }
 
     public void viewAllSongs() throws InterruptedException {
         WebElement viewAllSongsBtn = driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
         viewAllSongsBtn.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     public void selectFirstSong() throws InterruptedException {
-        WebElement selectSong = driver.findElement(By.xpath("//*[@id=\"songResultsWrapper\"]/div/div/div[1]/table/tr/td[2]"));
+     //   WebElement selectSong = driver.findElement(By.xpath("//*[@id=\"songResultsWrapper\"]//*[@id=\"songResultsWrapper\"]//td[@class=\"title\"][contains(text(), 'Dark Days')]"));
+        WebElement selectSong = driver.findElement(By.xpath("//*[@id=\"songResultsWrapper\"]//table[@class=\"items\"]"));
         selectSong.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     public void addToBtn() throws InterruptedException {
         WebElement addTo = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
         addTo.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     public void choosePlayList() throws InterruptedException {
-        WebElement chooseList = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//li[contains(text(), 'TestPro Playlist')]"));
+        WebElement chooseList = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playListName)]"));
         chooseList.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     public String verifyNotificationMessage() {
