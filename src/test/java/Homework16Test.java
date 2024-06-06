@@ -14,7 +14,7 @@ public class Homework16Test extends BaseTest {
 
 
 
-        navigateToPage();
+        //navigateToPage();
         Thread.sleep(2000);
         WebElement registrationBtn = driver.findElement(By.cssSelector("a[href='registration']"));
         registrationBtn.click();
