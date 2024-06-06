@@ -18,20 +18,20 @@ public class BaseTest {
     public void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
-    //// I cant get ride of the red line here.
-    // also do I nee to delete the login text class and remove it from TestNG
     @BeforeMethod
     @Parameters("baseUrl")
     public void setup(String baseUrl) {
         ChromeOptions options = new ChromeOptions();
-        optionsChromeLocal.addArguments("--disable-notifications", "--remote-allow-origins=*", "incognito",
-                "--start-maximized", "-lang=en");
-        driver = new ChromeDriver(optionsChromeLocal);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        optionsChromeLocal.addArguments("--disable-notifications", "--remote-allow-origins=*", "incognito");
+                driver = new ChromeDriver(optionsChromeLocal("https://qa.koel.app/"),
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10);
         driver.get(baseUrl);
 
 
+
     }
+
 
     @AfterMethod
     public void closeBrowser() {

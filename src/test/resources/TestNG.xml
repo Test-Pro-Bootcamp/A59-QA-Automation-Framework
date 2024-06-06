@@ -8,7 +8,6 @@
     <test name="Example Test" preserve-order="false">
         <!-- Including a class named "Homework17" in the test. -->
         <classes>
-            <class name="LoginTests"/>
             <class name="BaseTest"/>
             <class name="Homework17"/>
         </classes>

@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
 
 public class Homework17 extends BaseTest {
 
@@ -17,11 +19,12 @@ public class Homework17 extends BaseTest {
         //When
         login("demo@class.com", "te$t$tudent");
         Thread.sleep(2000);
-        searchField();
+        searchField(nameSong);
         clickViewAllBtn();
         selectFirstSongResult();
         clickAddToBtn();
-        chosePlaylist();
+        chosePlaylist(namePlaylist);
+        Assert.assertEquals(getAddToPlayListSuccessMsg(), expectedSongAddMessage);
 
 //Also here the red line to run the test
         //Then Asserting
@@ -60,14 +63,14 @@ public class Homework17 extends BaseTest {
     }
 
     public void chosePlaylist(String namePlayList) throws InterruptedException {
-        WebElement choosePlaylist = driver.findElement
+        WebElement chosePlaylist= driver.findElement
                 (By.xpath("//*[@id='songResultsWrapper']//*[contains9text(), '" + namePlayList + "')"));
-        choosePlaylist.click();
+        chosePlaylist.click();
         Thread.sleep(2000);
     }
 
     public String getAddToPlayListSuccessMsg() {
-        WebElement notification = driver.findElement(By.cssSelector("div.success.Shows"));
+        WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
         return notification.getText();
 
 //
