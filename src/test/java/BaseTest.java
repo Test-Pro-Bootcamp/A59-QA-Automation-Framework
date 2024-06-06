@@ -23,7 +23,7 @@ public class BaseTest {
     // Method to set up WebDriver with Chrome options before each test method.
     @BeforeMethod
     @Parameters("baseUrl")
-    public void setUpDriver(String baseUrl) {
+    public void launchBrowser(String baseUrl) {
         // Configuring Chrome options for local testing.
         ChromeOptions optionsChromeLocal = new ChromeOptions();
         optionsChromeLocal.addArguments("--disable-notifications", "--remote-allow-origins=*", "--incognito", "--start-maximized", "-lang=en");
