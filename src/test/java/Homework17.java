@@ -1,6 +1,5 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,9 +9,8 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist() throws InterruptedException {
 
-        String nameSong = "dark";
 
-        String namePlaylist = "TestPro Playlist";
+
         String expectedSongAddMessage = "Added 1 song into \"TestPro Playlist\"";
 
 
@@ -45,8 +43,7 @@ public class Homework17 extends BaseTest {
     public void chosePlayList() {
         WebElement chosePlayList = driver.findElement
                 (By.xpath("//section[@id='songResultsWrapper']//li[contains(text(),'TestPro Playlist')]"));
-
-
+        chosePlayList.click();
     }
 
     public void clickAddToBtn() {
