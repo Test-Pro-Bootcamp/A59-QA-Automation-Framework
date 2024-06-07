@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 public class Homework19Test extends BaseTest {
     @Test
     public void deletePlaylist() throws InterruptedException {
+        
         String expectedPlaylistDeletedMessage = "Deleted playlist \"Kristina.\"";
 enterEmail("kristina.sarkisyan@testpro.io");
 enterPassword("o8URUDnW");
@@ -17,6 +18,7 @@ Thread.sleep(2000);
 clickOkAtPopupWindow();
 Thread.sleep(2000);
 Assert.assertEquals(getDeletedPlaylistMsg(),expectedPlaylistDeletedMessage);
+
     }
     public String getDeletedPlaylistMsg() {
         WebElement notificationDeleted = driver.findElement(By.cssSelector("div.success.show"));
