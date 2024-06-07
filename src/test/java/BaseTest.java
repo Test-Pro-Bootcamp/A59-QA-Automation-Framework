@@ -7,44 +7,59 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
 
 import java.time.Duration;
 
 public class BaseTest {
-    protected WebDriver driver = null;
+    WebDriver driver = null;
+    ChromeOptions options = new ChromeOptions();
+    String url = "https://qa.koel.app/";
 
     @BeforeSuite
-    public void setupClass() {
+   static void setupClass() {
         WebDriverManager.chromedriver().setup();
-    }
-    @BeforeMethod
-    @Parameters("baseUrl")
-    public void setup(String baseUrl) {
-        ChromeOptions options = new ChromeOptions();
-
-        optionsChromeLocal.addArguments("--disable-notifications", "--remote-allow-origins=*", "incognito");
-                driver = new ChromeDriver(optionsChromeLocal("https://qa.koel.app/"),
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10);
-        driver.get(baseUrl);
-
-
 
     }
+
+
+   @BeforeMethod
+        public void launchBrowser() {
+       options.addArguments("--remote-allow-origins*=");
+
+
+       driver = new ChromeDriver(options);
+       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+       driver.manage().window().maximize();
+
+        }
 
 
     @AfterMethod
     public void closeBrowser() {
         driver.quit();
-
     }
 
-    public void login(String email, String password) {
-        WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
-        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
-        WebElement loginButton = driver.findElement(By.cssSelector("[type='submit']"));
-        emailInput.sendKeys(email);
-        passwordInput.sendKeys(password);
-        loginButton.click();
+    protected void submit() {
+        WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit']"));
+        submitButton.click();
+    }
+
+    protected void enterPassword(String password) {
+        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        passwordField.clear();
+        passwordField.sendKeys("password");
+    }
+
+    protected void enterEmail(String email) {
+        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        emailField.clear();
+        emailField.sendKeys(email);
+    }
+
+    protected void navigateToPage() {
+        driver.get(url);
+
+
     }
 }
+
