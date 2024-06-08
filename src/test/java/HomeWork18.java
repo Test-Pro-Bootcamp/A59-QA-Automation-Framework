@@ -9,7 +9,7 @@ public class HomeWork18 extends BaseTest{
 
     @Test
     public void playSong(){
-        navigateToPage();
+       // navigateToPage();
         enterEmail();
         enterPassword();
         submit();

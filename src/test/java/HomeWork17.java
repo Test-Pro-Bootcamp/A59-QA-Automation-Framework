@@ -8,7 +8,7 @@ public class HomeWork17 extends BaseTest{
   public void  addSongToPlaylist(){
 
   String expectedAddedSongMsg = "Added 1 song into \"NewPlaylist.\"";
-  navigateToPage();
+  //navigateToPage();
   enterEmail();
   enterPassword();
   submit();

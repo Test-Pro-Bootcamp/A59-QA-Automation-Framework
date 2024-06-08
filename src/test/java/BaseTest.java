@@ -3,11 +3,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -24,21 +21,20 @@ public class BaseTest {
     }
 
     @BeforeMethod
-
-    public void launchBrowser() {
+    @Parameters({"BaseURL"})
+    public void launchBrowser(String baseURL) {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-notifications","--remote-allow-origins=*","--start-maximized");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-    }
-
-
-
-    public void navigateToPage() {
+        url = baseURL;
         driver.get(url);
     }
+
+
+
+
 
     public void enterEmail() {
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
