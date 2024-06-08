@@ -7,19 +7,12 @@ import org.testng.annotations.DataProvider;
 
 public class LoginTests extends BaseTest {
 
-    @DataProvider(name="IncorrectLoginData")
-    public Object[][]getDataFromDataProviders() {
-        return new Object[][] {
-                {"invalid@testpro.io", "invalidPassword"},
-                {"demo@testpro.io", ""},
-                {"",""}
-        };
-    }
+
 
     @Test (enabled = false)
     public void loginValidEmailPassword() throws InterruptedException {
 
-        navigateToPage();
+     //   navigateToPage();
         enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");
         submit();
@@ -32,7 +25,7 @@ public class LoginTests extends BaseTest {
     @Test (enabled = false)
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
-        navigateToPage();
+     //   navigateToPage();
 
         // Steps
         enterEmail("invalid@testpro.io");
@@ -46,7 +39,7 @@ public class LoginTests extends BaseTest {
 
     @Test (enabled = false)
     public void loginValidEmailEmptyPassword() throws InterruptedException {
-        navigateToPage();
+      //  navigateToPage();
         enterEmail("invalid@testpro.io");
         submit();
 
@@ -55,9 +48,9 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
     }
 
-    @Test (dataProvider = "IncorrectLoginData")
+    @Test (dataProvider = "IncorrectLoginData", dataProviderClass = TestDataProvider.class)
     public void loginEmptyEmailPassword(String email, String password) throws InterruptedException {
-        navigateToPage();
+      //  navigateToPage();
         enterEmail(email);
         enterPassword(password);
         submit();

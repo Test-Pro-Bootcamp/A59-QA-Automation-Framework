@@ -12,7 +12,7 @@ public class PlayListTests extends BaseTest{
         String songName = "grav";
         String returnedString = null;
 
-        navigateToPage();
+     //   navigateToPage();
         enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");
         submit();
