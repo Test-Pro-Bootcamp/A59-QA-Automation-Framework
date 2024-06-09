@@ -16,6 +16,9 @@ public class BaseTest {
     String url = "https://qa.koel.app/";
     String email = "demo@testpro.io";
     String password = "te$t$tudent";
+    //String email = "oksana.chaklosh@testpro.io";
+    //String password = "8qUBYosp";
+
 
     @BeforeSuite
     static void setupClass() {
@@ -48,15 +51,15 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
 
-    protected void submit() {
-        WebElement loginBtn = driver.findElement(By.cssSelector("button[type='submit']"));
-        loginBtn.click();
-    }
-
     protected void enterPassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
         passwordField.sendKeys("te$t$tudent");
+    }
+
+    protected void submit() {
+        WebElement loginBtn = driver.findElement(By.cssSelector("button[type='submit']"));
+        loginBtn.click();
     }
 }
 
