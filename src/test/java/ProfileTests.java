@@ -13,10 +13,14 @@ public class ProfileTests extends BaseTest{
         enterEmail(email);
         enterPassword(password);
         submit();
+        Thread.sleep(1000);
         navigateToProfilePage();
+        Thread.sleep(1000);
         String uniqueName = generateUniqueName();
         changeName(uniqueName);
+        Thread.sleep(1000);
         String profileName = getProfileName();
+        Thread.sleep(1000);
         Assert.assertEquals(profileName, uniqueName);
     }
 
