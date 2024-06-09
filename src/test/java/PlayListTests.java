@@ -5,8 +5,9 @@ import org.testng.annotations.Test;
 
 public class PlayListTests extends BaseTest{
 
+
     @Test
-    public void createPlaylistThenDeleteIt() throws InterruptedException {
+    public void deletePlayList() throws InterruptedException {
 
         // create a playlist
         createPlayListBtn(playListName);
