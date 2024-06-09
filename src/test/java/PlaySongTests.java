@@ -41,4 +41,9 @@ public class PlaySongTests extends BaseTest {
         WebElement verifySoundBar = driver.findElement(By.xpath("//div[@data-test=\"soundbars\"][@class=\"bars\"][@data-testid=\"sound-bar-play\"]"));
         return verifySoundBar.isDisplayed();
     }
+
+    public String verifyDeleteNotificationMessage() {
+        WebElement verifyDeleteNotification = driver.findElement(By.cssSelector("div.success.show"));
+        return verifyDeleteNotification.getText();
+    }
 }

@@ -5,7 +5,11 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"/>
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="LoginTests"> </class>
+            <class name="PlayListTests">
+                <methods>
+                    <include name="createPlaylistThenDeleteIt"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

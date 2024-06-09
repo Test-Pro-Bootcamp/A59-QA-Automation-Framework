@@ -25,8 +25,6 @@ public class LoginTests extends BaseTest {
     @Test (enabled = false)
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
-     //   navigateToPage();
-
         // Steps
         enterEmail("invalid@testpro.io");
         enterPassword("te$t$tudent");

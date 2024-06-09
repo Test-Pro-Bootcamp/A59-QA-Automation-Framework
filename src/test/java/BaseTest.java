@@ -16,8 +16,14 @@ public class BaseTest {
     WebDriver driver = null;
     ChromeOptions options = new ChromeOptions();
     String url = "https://qa.koel.app/";
+    String expectedAddMessage = "Added 1 song into \"TestPro Playlist.\"";
+    String expectedDeleteMessage = "Deleted playlist \"TestPro Playlist.\"";
+    String expectedCreatedMessage = "Created playlist \"TestPro Playlist.\"";
+    String playListName = "TestPro Playlist";
+    String songName = "grav";
+    String returnedString = null;
 
-//    WebDriverWait wait;
+//   WebDriverWait wait;
 
     @BeforeSuite
     static void setupClass() {
@@ -26,7 +32,8 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchBrowser(String BaseURL) {
+    public void launchBrowser(String BaseURL) throws InterruptedException {
+
         // Pre-condition
         // Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
@@ -36,22 +43,23 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         url = BaseURL;
         navigateToPage();
+        enterEmail("demo@testpro.io");
+        enterPassword("te$t$tudent");
+        submit();
+        Thread.sleep(3000);
 
-   //     wait = new WebDriverWait;
+    //    wait = new WebDriverWait;
     //    driver.manage().window().maximize();
     }
 
     @AfterMethod
     public void closeBrowser(){
-        driver.quit();
+    //    driver.quit();
     }
 
-    protected void submit() throws InterruptedException {
-      //  WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
+    protected void submit()  {
         WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
-
         submit.click();
-        Thread.sleep(1000);
     }
 
     protected void enterPassword(String password) {

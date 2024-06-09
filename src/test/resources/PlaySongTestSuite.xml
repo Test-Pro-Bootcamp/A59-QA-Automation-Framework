@@ -2,10 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="PlaySongTestSuite">
-
+    <parameter name="BaseURL" value="https://qa.koel.app/"/>
     <test name="Play Test" preserve-order="false">
         <classes>
-            <class name="PlaySongTests"/>
+            <class name="PlayListTests"/>
         </classes>
     </test>
 </suite>
