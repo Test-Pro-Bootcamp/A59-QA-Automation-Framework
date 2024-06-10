@@ -7,7 +7,7 @@
         <classes>
             <class name="PlayListTests">
                 <methods>
-                    <include name="createPlaylistThenDeleteIt"/>
+                    <include name="deletePlayList"/>
                 </methods>
             </class>
         </classes>

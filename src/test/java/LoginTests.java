@@ -7,8 +7,6 @@ import org.testng.annotations.DataProvider;
 
 public class LoginTests extends BaseTest {
 
-
-
     @Test (enabled = false)
     public void loginValidEmailPassword() throws InterruptedException {
 
@@ -16,8 +14,10 @@ public class LoginTests extends BaseTest {
         enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");
         submit();
-    //    WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
-        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
+        WebElement avatarIcon = wait.until
+                (ExpectedConditions.visibilityOfElementLocated
+                        (By.cssSelector("img[class='avatar']")));
+        //  WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
         // Expected Result
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
@@ -30,7 +30,7 @@ public class LoginTests extends BaseTest {
         enterPassword("te$t$tudent");
         submit();
 
-        Thread.sleep(1000); // Sleep or pause for 2 seconds (adjust as needed)
+        //Thread.sleep(1000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), url); // https://qa.koel.app/
     }
@@ -41,7 +41,7 @@ public class LoginTests extends BaseTest {
         enterEmail("invalid@testpro.io");
         submit();
 
-        Thread.sleep(1000); // Sleep or pause for 2 seconds (adjust as needed)
+        // Thread.sleep(1000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
     }
@@ -52,7 +52,7 @@ public class LoginTests extends BaseTest {
         enterEmail(email);
         enterPassword(password);
         submit();
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
 
     }
