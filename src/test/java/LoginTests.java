@@ -11,15 +11,42 @@ public class LoginTests extends BaseTest {
     public void loginEmptyEmailPassword() {
 
 //      Added ChromeOptions argument below to fix websocket error
-       ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            String url = "https://qa.koel.app/";
+            driver.get(url);
+            enterEmail("");
+            enterPassword("");
+            submit();
+            Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
 
-        String url = "https://testpro.io/p";
+    @Test
+    public void validLogin() {
+        String url = "https://qa.koel.app/#!/home";
         driver.get(url);
+        enterEmail(email);
+        enterPassword(password);
+        submit();
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+    }
+
+    @Test
+    public void loginValidEmailInvalidPassword() {
+        String url = "https://qa.koel.app/";
+        driver.get(url);
+        enterEmail(email);
+        enterPassword("teststudent");
+        submit();
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
+
+    @Test
+    public void loginInvalidEmailValidPassword() {
+        String url = "https://qa.koel.app/";
+        driver.get(url);
+        enterEmail("email");
+        enterPassword(password);
+        submit();
+        Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 }

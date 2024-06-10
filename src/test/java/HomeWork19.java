@@ -1,5 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,8 +14,8 @@ public class HomeWork19 extends BaseTest {
       // navigateToPage();
 
         String expectedDeletedPlaylist = "Deleted playlist \"some playlist.\"";
-       enterEmail();
-       enterPassword();
+       enterEmail(email);
+       enterPassword(password);
        submit();
        choosePlaylist();
        deleteSelectedPlaylist();
@@ -22,21 +24,21 @@ public class HomeWork19 extends BaseTest {
     }
 
     public void deleteSelectedPlaylist() {
-        WebElement deletePlaytlistBtn = driver.findElement(By.xpath
-                ("//*[@title='Delete this playlist']"));
+        WebElement deletePlaytlistBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+                ("//*[@title='Delete this playlist']")));
         deletePlaytlistBtn.click();
 
     }
 
     public void choosePlaylist(){
-        WebElement playlistToDelete = driver.findElement(By.xpath
-                ("//*[@id='playlists']/ul/li[6]/a"));
+        WebElement playlistToDelete = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+                ("//*[@id='playlists']/ul/li[6]/a")));
         playlistToDelete.click();
     }
 
 
     public String getDeletePlaylistSuccessMsg(){
-        WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
+        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return notification.getText();
     }
 }

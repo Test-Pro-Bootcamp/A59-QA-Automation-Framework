@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,7 +21,7 @@ public class homeWork16 extends BaseTest {
         String url = "https://qa.koel.app/";
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get(url);
-        WebElement registrationLink = driver.findElement(By.cssSelector("[href='registration']"));
+        WebElement registrationLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[href='registration']")));
         registrationLink.click();
         Assert.assertEquals(driver.getCurrentUrl(),registrationPage);
 
