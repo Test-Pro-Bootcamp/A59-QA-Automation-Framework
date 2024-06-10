@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class Homework17 extends BaseTest {
+public class Homework17 extends BaseTest{
 
     @Test
     public void addSongToPlaylist() throws InterruptedException {
@@ -18,12 +18,12 @@ public class Homework17 extends BaseTest {
         navigateToPage();
         //login
         enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
+        enterPassword();
         submit();
         //search song
         searchSong("dark");
         //click view all btn
-        clickViewAllbtn();
+        clickAddToBtn();
         //select first song
         selectFirstSong();
         //add to btn
@@ -59,11 +59,11 @@ public class Homework17 extends BaseTest {
        selectFirstSongResult.click();
     }
 
-    public void clickViewAllbtn() {
+    public void clickAllToBtn() {
 
-            WebElement clickAddToBtn = driver.findElement
+            WebElement clickAllToBtn = driver.findElement
                     (By.xpath("//button[@data-test='view-all-songs-btn']"));
-            clickAddToBtn.click();
+            clickAllToBtn.click();
 
 
 

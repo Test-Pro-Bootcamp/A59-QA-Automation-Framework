@@ -9,9 +9,10 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
 
-        navigateToPage();
+       // navigateToPage();
+
         enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
+        enterPassword();
         submit();
 
 
@@ -29,7 +30,7 @@ public class LoginTest extends BaseTest {
 
         navigateToPage();
         enterEmail("invalid@testpro.io");
-        enterPassword("te$t$tudent");
+        enterPassword();
 
         Thread.sleep(2000);
 

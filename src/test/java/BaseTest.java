@@ -44,10 +44,10 @@ public class BaseTest {
         submitButton.click();
     }
 
-    protected void enterPassword(String password) {
+    protected void enterPassword() {
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
-        passwordField.sendKeys("password");
+        passwordField.sendKeys("te$t$tudent");
     }
 
     protected void enterEmail(String email) {
@@ -56,7 +56,7 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
 
-    protected void navigateToPage() {
+    void navigateToPage() {
         driver.get(url);
 
 

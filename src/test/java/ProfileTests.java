@@ -1,5 +1,4 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,7 +13,7 @@ public class ProfileTests extends BaseTest{
 
         navigateToPage();
         enterEmail("demo@testpro.com");
-        enterPassword("te$t$tudent");
+        enterPassword();
         submit();
         navigateToProfilePage();
         String uniqueName = generateUniqueName();
