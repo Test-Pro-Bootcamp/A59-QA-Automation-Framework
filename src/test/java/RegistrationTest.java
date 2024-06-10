@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -6,9 +7,9 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class LoginTests extends BaseTest {
+public class RegistrationTest extends BaseTest {
     @Test
-    public void loginEmptyEmailPassword() {
+    public void clickRegistrationTest() {
 
 //      Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
@@ -17,11 +18,17 @@ public class LoginTests extends BaseTest {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-
-        String url = "https://testpro.io/";
+        String url = "https://qa.koel.app/";
         driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
 
+        String urlRegistration = "https://qa.koel.app/registration";
+        driver.findElement(By.linkText("Registration / Forgot password")).click();
+
+        Assert.assertEquals(driver.getCurrentUrl(), urlRegistration);
+
+        //    driver.quit();
     }
 }
+
+
+
