@@ -13,7 +13,7 @@ public class Homework19Tests extends BaseTest{
         enterEmail(email);
         enterPassword(password);
         submit();
-        Thread.sleep(10000);
+        Thread.sleep(2000);
         //Create Playlist homework19
         createNewPlaylist(newPlaylistName);
         //Select Playlist
@@ -21,7 +21,7 @@ public class Homework19Tests extends BaseTest{
         Thread.sleep(10000);
         //Delete Playlist
         deleteSelectedList();
-        Thread.sleep(10000);
+        Thread.sleep(2000);
         //Verify actual message with expected
         Assert.assertEquals(getDeletePlaylistMessage(), expectedSongDeletedMessage);
 
