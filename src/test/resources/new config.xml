@@ -3,7 +3,7 @@
 
 <suite name="new config">
     <parameter name="BaseURL" value="https://qa.koel.app"/>
-    <test name="Homework18 Test" preserve-order="false">
+    <test name="Homework18Test" preserve-order="false">
         <classes>
             <class name="Homework18Test">
                 <methods>
