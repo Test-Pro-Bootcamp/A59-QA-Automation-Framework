@@ -12,7 +12,7 @@ public class Homework17Tests extends BaseTest{
         String newPlaylistName = "playlist2024";
 
     //navigate to page
-        navigateToPage();
+        //navigateToPage();
     //login
         enterEmail(email);
         enterPassword(password);

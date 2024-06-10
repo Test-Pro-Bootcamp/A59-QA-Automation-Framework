@@ -9,7 +9,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginEmptyEmailPassword() {
 
-        navigateToPage();
+        //navigateToPage();
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
@@ -18,7 +18,7 @@ public class LoginTests extends BaseTest {
     public void loginValidEmailValidPassword() throws InterruptedException {
 
        //Step1
-        navigateToPage();
+        //navigateToPage();
         Thread.sleep(2000);
         //Step2
         enterEmail(email);
@@ -42,7 +42,7 @@ public class LoginTests extends BaseTest {
     public void loginWithInvalidEmailValidPassword() throws InterruptedException {
 
         //Step1
-        navigateToPage();
+        //navigateToPage();
         Thread.sleep(2000);
         //Step2
         enterEmail("invalid@koel.io");
@@ -58,7 +58,7 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginWithValidEmailEmptyPassword() throws InterruptedException {
-        navigateToPage();
+        //navigateToPage();
         enterEmail(email);
         submit();
 
@@ -67,4 +67,12 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(),url);
     }
 
+    //dataProvider allows to run 5 negative tests with data sets specified in BaseTest
+    @Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    public void negativeLoginTests(String email, String password){
+        enterEmail(email);
+        enterPassword(password);
+        submit();
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
 }

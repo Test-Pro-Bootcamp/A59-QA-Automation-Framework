@@ -4,15 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
 public class BaseTest {
     WebDriver driver = null;
     ChromeOptions options = new ChromeOptions();
+
     String url = "https://qa.koel.app/";
     String email = "demo@testpro.io";
     String password = "te$t$tudent";
@@ -26,7 +25,8 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void launchBrowser(){
+    @Parameters({"BaseURL"})
+    public void launchBrowser(String baseURL){
         //Pre-Condition
         //Added ChromeOptions argument below to fix websocket error
         /*--remote-allow-origins=* argument suggests allowing remote origins. It means that
@@ -54,6 +54,7 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+        navigateToPage(baseURL);
     }
 
     @AfterMethod
@@ -61,7 +62,7 @@ public class BaseTest {
         driver.quit();
         }
 
-    protected void navigateToPage() {
+    protected void navigateToPage(String url) {
         driver.get(url);
     }
 
