@@ -6,10 +6,12 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.TimeoutException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class Homework19 extends BaseTest {
+    //v2 with  Assert.assertTrue(getSuccessPopUp().isDisplayed());
 
     @Test
     public void deletePlaylist() throws InterruptedException {
@@ -24,8 +26,8 @@ public class Homework19 extends BaseTest {
         // Delete the playlist
         confirmDelete();
 
-        // Confirm Deletion Success
-        confirmDeletionSuccess();
+        // Assert Deletion Success
+        Assert.assertTrue(getSuccessPopUp().isDisplayed());
 
         // Quitting the WebDriver session
         driver.quit();
@@ -64,18 +66,17 @@ public class Homework19 extends BaseTest {
         }
     }
 
-    public void confirmDeletionSuccess() {
+    public WebElement getSuccessPopUp() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
         try {
-            // Wait for the deletion confirmation div to appear
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='nprogress']")));
-            // Wait for the deletion confirmation div to disappear
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='nprogress']")));
-            System.out.println("Playlist deletion confirmed.");
+            // Wait for the success popup to appear
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*/div[2]/div[@class='success show']")));
         } catch (TimeoutException e) {
-            System.out.println("Deletion confirmation not found.");
+            System.out.println("Success popup not found. Exiting...");
+            driver.quit();
+            System.exit(0);
         }
+        return null;
     }
 
     // Nested static class JavaScriptUtils
