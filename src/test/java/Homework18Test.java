@@ -9,7 +9,6 @@ import java.time.Duration;
 public class Homework18Test extends BaseTest{
     @Test
     public void playSong()  {
-
  //navigateToPage();
  enterEmail("kristina.sarkisyan@testpro.io");
  enterPassword("o8URUDnW");
