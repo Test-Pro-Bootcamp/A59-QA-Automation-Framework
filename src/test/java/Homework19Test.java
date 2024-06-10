@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,29 +12,26 @@ enterEmail("kristina.sarkisyan@testpro.io");
 enterPassword("o8URUDnW");
 submit();
 clickExistingPlaylist();
-Thread.sleep(2000);
 deleteExistingPlaylist();
-Thread.sleep(2000);
 clickOkAtPopupWindow();
-Thread.sleep(2000);
 Assert.assertEquals(getDeletedPlaylistMsg(),expectedPlaylistDeletedMessage);
     }
     public String getDeletedPlaylistMsg() {
-        WebElement notificationDeleted = driver.findElement(By.cssSelector("div.success.show"));
+        WebElement notificationDeleted = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return notificationDeleted.getText();
     }
     public void clickOkAtPopupWindow() {
-        WebElement clickOkAtPopup = driver.findElement(By.xpath("//div[@class='dialog']//button[@class='ok']"));
+        WebElement clickOkAtPopup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='dialog']//button[@class='ok']")));
         clickOkAtPopup.click();
     }
 
     public void clickExistingPlaylist() {
-        WebElement clickExistingPlaylist = driver.findElement(By.xpath("//*[@id=\"playlists\"]/ul/li[3]/a"));
+        WebElement clickExistingPlaylist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"playlists\"]/ul/li[3]/a")));
         clickExistingPlaylist.click();
     }
 
     public void deleteExistingPlaylist() {
-        WebElement clickDeleteExistingPlaylist = driver.findElement(By.xpath("//section[@id='playlistWrapper']//button[@class='del btn-delete-playlist']/i[@class='fa fa-times']"));
+        WebElement clickDeleteExistingPlaylist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//section[@id='playlistWrapper']//button[@class='del btn-delete-playlist']/i[@class='fa fa-times']")));
         clickDeleteExistingPlaylist.click();
 
     }

@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,14 +15,11 @@ public class LoginTests extends BaseTest {
 @Test
     public void loginValidEmailPassword() throws InterruptedException {
     //navigateToPage();
-    Thread.sleep(2000);
     enterEmail("demo@testpro.io");
-    Thread.sleep(2000);
     enterPassword("te$t$tudent");
-    Thread.sleep(2000);
     submit();
-    Thread.sleep(4000);
-        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
+    WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
+        //WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
         //Assertions - Expected vs Actual
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
@@ -32,9 +30,7 @@ public class LoginTests extends BaseTest {
         String expectedURL = "https://qa.koel.app/";
        enterEmail("invalid@koel.io");
         enterPassword("te$t$tudent");
-        Thread.sleep(2000);
         submit();
-        Thread.sleep(4000);
         //Expected Results - Assertions
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
@@ -43,12 +39,8 @@ public class LoginTests extends BaseTest {
     public void loginWithNoPassword() throws InterruptedException {
         //navigateToPage();
         String expectedURL = "https://qa.koel.app/";
-        //Step 2
         enterEmail("invalid@koel.io");
-        //Step 3
         submit();
-        Thread.sleep(4000);
-        //Expected Results - Assertions
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
 
 
