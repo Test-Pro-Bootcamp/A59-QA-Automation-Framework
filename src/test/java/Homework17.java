@@ -9,6 +9,7 @@ public class Homework17 extends BaseTest {
 
     // Test method for adding a song to a playlist.
     @Test
+
     public void addSongToPlaylist() throws InterruptedException {
         // GIVEN
         // Initialization of test data.
