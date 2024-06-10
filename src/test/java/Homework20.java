@@ -1,10 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-<<<<<<< Updated upstream
-=======
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
->>>>>>> Stashed changes
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.slf4j.Logger;
@@ -12,27 +9,9 @@ import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
-public class Homework19 extends BaseTest {
-<<<<<<< Updated upstream
-    @Test
-    public void deletePlaylist() throws InterruptedException {
-       String expectedPlaylistDeletedMessage = "Deleted playlist \"First user playlist.\"";
-        login("india.messam@testpro.io", "slcTalgy");
-       clickDeletePlaylistBtn();
-        Assert.assertEquals(getDeletedPlaylistMsg(), expectedPlaylistDeletedMessage);
-    }
-    public void openPlaylist(){
-        WebElement playlist = driver.findElement(By.cssSelector("[href='#!/playlist/95613']  "));
-        playlist.click();
-    }
-    public void clickDeletePlaylistBtn() throws InterruptedException{
-        WebElement deletePlaylist = driver.findElement(By.cssSelector("[class='del btn-delete-playlist']"));
-        deletePlaylist.click();
-        Thread.sleep(2000);
-=======
+public class Homework20 extends BaseTest {
     private static final Logger logger = LoggerFactory.getLogger(Homework19.class);
     private WebDriverWait wait;
->>>>>>> Stashed changes
 
     @Test
     public void deletePlaylist() {
@@ -58,11 +37,6 @@ public class Homework19 extends BaseTest {
 
         logger.info("deletePlaylist test completed successfully");
     }
-<<<<<<< Updated upstream
-    public String getDeletedPlaylistMsg(){
-        WebElement notificationMsg = driver.findElement(By.cssSelector("div.success.show"));
-        return notificationMsg.getText();
-=======
 
     public void openPlaylist() {
         WebElement playlist = driver.findElement(By.cssSelector("[href='#!/playlist/95613']"));
@@ -81,6 +55,5 @@ public class Homework19 extends BaseTest {
         String message = notificationMsg.getText();
         logger.info("Retrieved deletion message: {}", message);
         return message;
->>>>>>> Stashed changes
     }
 }

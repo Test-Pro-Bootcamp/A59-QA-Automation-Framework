@@ -30,6 +30,9 @@ public class BaseTest {
         driver = new ChromeDriver(optionsChromeLocal);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(baseURL);
+        url = baseURL;
+
+
     }
 
     @AfterMethod
