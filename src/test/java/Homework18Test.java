@@ -1,7 +1,12 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class Homework18Test extends BaseTest{
     @Test
@@ -12,16 +17,17 @@ public class Homework18Test extends BaseTest{
  enterPassword("o8URUDnW");
  submit();
  playNextSong();
- Thread.sleep(2000);
+        fluentWait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(200));
  playBtn();
- Thread.sleep(2000);
- WebElement pauseBtn = driver.findElement(By.xpath("//footer[@id='mainFooter']/div[@class='side player-controls']/span[@class='album-thumb-wrapper']/span[@data-testid='pause-btn']/i[@class='fa fa-pause']"));
+ WebElement pauseBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//footer[@id='mainFooter']/div[@class='side player-controls']/span[@class='album-thumb-wrapper']/span[@data-testid='pause-btn']/i[@class='fa fa-pause']")));
  Assert.assertTrue(pauseBtn.isDisplayed(),"Pause button is not displayed, indicating song is not playing.");
  closeBrowser();
  }
 
     public void playBtn() {
-        WebElement clickPlayBtn = driver.findElement(By.xpath("//footer[@id='mainFooter']/div[@class='side player-controls']/span[@class='album-thumb-wrapper']/span[@data-testid='play-btn']/i[@class='fa fa-play']"));
+        WebElement clickPlayBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//footer[@id='mainFooter']/div[@class='side player-controls']/span[@class='album-thumb-wrapper']/span[@data-testid='play-btn']/i[@class='fa fa-play']")));
         clickPlayBtn.click();
     }
 
