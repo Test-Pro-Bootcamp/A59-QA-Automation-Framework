@@ -4,13 +4,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 
 public class Homework18Test extends BaseTest{
     @Test
-    public void playSong() {
-
  //navigateToPage();
  enterEmail("kristina.sarkisyan@testpro.io");
  enterPassword("o8URUDnW");

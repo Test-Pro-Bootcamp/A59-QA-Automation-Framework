@@ -7,6 +7,7 @@
         <classes>
             <class name="LoginTests"/>
             <class name="BaseTest"/>
+            <class name="CreateNewPlaylistTest"/>
             <class name="Homework16Test"/>
             <class name="Homework17Test"/>
             <class name="Homework18Test"/>
