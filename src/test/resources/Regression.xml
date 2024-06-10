@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG">
-    <parameter name="BaseURL" value="https://qa.koel.app/"/>
-    <test name="Example Test" preserve-order="false">
+<suite name="Regression">
+
+    <test name="Regression Test" preserve-order="false">
         <classes>
             <class name="LoginTests"/>
             <class name="BaseTest"/>
-            <class name="Homework16Test"/>
             <class name="ProfileTests"/>
+            <class name="Homework16Test"/>
             <class name="Homework17Tests"/>
-            <class name="Homework18Tests"/>
-            <class name="Homework19Tests"/>
         </classes>
     </test>
 </suite>

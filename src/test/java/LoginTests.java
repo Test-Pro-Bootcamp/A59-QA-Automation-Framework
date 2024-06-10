@@ -1,25 +1,78 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
 public class LoginTests extends BaseTest {
+
+
     @Test
     public void loginEmptyEmailPassword() {
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/";
-        driver.get(url);
+        //navigateToPage();
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+    }
+
+    //Happy Path - Login Test
+    @Test
+    public void loginValidEmailValidPassword() throws InterruptedException {
+
+       //Step1
+        //navigateToPage();
+        Thread.sleep(2000);
+        //Step2
+        enterEmail(email);
+        Thread.sleep(2000);
+        //Step3
+        enterPassword(password);
+        Thread.sleep(2000);
+        //Step4
+        submit();
+        Thread.sleep(4000);
+        //Step5
+        //Avatar Icon for Actual vs Expected
+        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
+        //Assertions - Expected vs Actual
+        Assert.assertTrue(avatarIcon.isDisplayed());
+    }
+
+    // Not a Happy Path - Negative Path
+    @Test
+
+    public void loginWithInvalidEmailValidPassword() throws InterruptedException {
+
+        //Step1
+        //navigateToPage();
+        Thread.sleep(2000);
+        //Step2
+        enterEmail("invalid@koel.io");
+        //Step3
+        enterPassword(password);
+        Thread.sleep(2000);
+        //Step4
+        submit();
+        Thread.sleep(4000);
+        //Expected Results - Assertions (URL should stay the same)
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
+
+    @Test
+    public void loginWithValidEmailEmptyPassword() throws InterruptedException {
+        //navigateToPage();
+        enterEmail(email);
+        submit();
+
+        Thread.sleep(2000); //sleep or pause for 2 seconds (adjust as needed)
+        //Expected Result
+        Assert.assertEquals(driver.getCurrentUrl(),url);
+    }
+
+    //dataProvider allows to run 5 negative tests with data sets specified in BaseTest
+    @Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    public void negativeLoginTests(String email, String password){
+        enterEmail(email);
+        enterPassword(password);
+        submit();
+        Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 }
