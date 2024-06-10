@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class Homework19Test extends BaseTest {
     @Test
-    public void deletePlaylist() throws InterruptedException {
+    public void deletePlaylist()  {
         
         String expectedPlaylistDeletedMessage = "Deleted playlist \"Kristina.\"";
 enterEmail("kristina.sarkisyan@testpro.io");

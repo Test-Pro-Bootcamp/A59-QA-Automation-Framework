@@ -13,7 +13,7 @@ public class LoginTests extends BaseTest {
     }
     //Happy Path - Login Test
 @Test
-    public void loginValidEmailPassword() throws InterruptedException {
+    public void loginValidEmailPassword()  {
     //navigateToPage();
     enterEmail("demo@testpro.io");
     enterPassword("te$t$tudent");
@@ -25,7 +25,7 @@ public class LoginTests extends BaseTest {
     }
     // Negative Test Case
     @Test
-    public void loginWithInvalidEmailValidPassword() throws InterruptedException {
+    public void loginWithInvalidEmailValidPassword()  {
         //navigateToPage();
         String expectedURL = "https://qa.koel.app/";
        enterEmail("invalid@koel.io");
@@ -36,7 +36,7 @@ public class LoginTests extends BaseTest {
     }
     //Negative Test Case 2
     @Test
-    public void loginWithNoPassword() throws InterruptedException {
+    public void loginWithNoPassword()  {
         //navigateToPage();
         String expectedURL = "https://qa.koel.app/";
         enterEmail("invalid@koel.io");

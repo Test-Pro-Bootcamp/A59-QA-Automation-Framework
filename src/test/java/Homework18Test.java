@@ -1,23 +1,21 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 
 public class Homework18Test extends BaseTest{
     @Test
-    public void playSong() throws InterruptedException {
+    public void playSong()  {
 
  //navigateToPage();
  enterEmail("kristina.sarkisyan@testpro.io");
  enterPassword("o8URUDnW");
  submit();
  playNextSong();
-        fluentWait = new FluentWait<WebDriver>(driver)
+        fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(200));
  playBtn();
