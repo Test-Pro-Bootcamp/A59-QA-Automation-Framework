@@ -23,8 +23,8 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    @Parameters("baseURL")
-    public void setUpDriver (String baseURL){
+    @Parameters({"baseURL"})
+    public void launchBrowser (String baseURL){
         ChromeOptions optionsChromeLocal = new ChromeOptions();
         optionsChromeLocal.addArguments("--disable-notifications","--remote-allow-origins=*","incognito","--start-maximized","-lang=en");
         driver = new ChromeDriver(optionsChromeLocal);
