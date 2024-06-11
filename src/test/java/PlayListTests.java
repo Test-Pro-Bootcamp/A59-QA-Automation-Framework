@@ -18,20 +18,22 @@ public class PlayListTests extends BaseTest{
     public void deletePlayList() throws InterruptedException {
 
         // create a playlist
- //       createPlayListBtn(playListName);
+        createPlayListBtn(playListName);
         // search for a song
-//        searchSong(songName);
+        searchSong(songName);
         // click view all button
-//        viewAllSongs();
+        viewAllSongs();
         // select first song from result
-//        selectFirstSong();
+        selectFirstSong();
         // click Add to Button
-//        addSongToBtn();
+        addSongToBtn();
         // choose list to add song to
-//        choosePlayList();
+        choosePlayList();
         // delete the playlist
+        Thread.sleep(6000);
         deletePlayListBtn();
         // actual vs expected
+
         Assert.assertEquals(verifyDeleteNotificationMessage(), expectedDeleteMessage);
     }
 
@@ -52,41 +54,35 @@ public class PlayListTests extends BaseTest{
         choosePlayList();
         // actual vs expected
         Assert.assertEquals(verifyAddNotificationMessage(), expectedAddMessage);
-  //      deletePlayListBtn();
+        deletePlayListBtn();
     }
 
     public void createPlayListBtn(String playListName) throws InterruptedException {
- //       Thread.sleep(2000);
-//        Wait<WebDriver> waitForIt = new FluentWait<>(driver)
-//                .withTimeout(Duration.ofSeconds(60))
-//                .pollingEvery(Duration.ofSeconds(1))
-//                .ignoring(TimeoutException.class);
+        Thread.sleep(2000);
 
-
-        //  What is going on here????????
+     //  What is going on here????????
 
      //   WebElement selectCreateNewPlayList = driver.findElement(By.xpath("//*[@id=\"playlists\"]//i[@role=\"button\"]"));
 
         WebElement selectCreateNewPlayList = wait.until
                  (ExpectedConditions.visibilityOfElementLocated
-                         (By.xpath("//*[@id=\"playlists\"]//i[@role=\"button\"]")));
-                  //         (By.xpath("//i[@data-testid=\"sidebar-create-playlist-btn\"][@title=\"Create a new playlist\"][@class=\"fa fa-plus-circle create\"]")));
+                           (By.xpath("//i[@data-testid=\"sidebar-create-playlist-btn\"][@title=\"Create a new playlist\"][@class=\"fa fa-plus-circle create\"]")));
+                       //      (By.xpath("//*[@id=\"playlists\"]//i[@role=\"button\"]")));
         selectCreateNewPlayList.click();
-
 
 //        WebElement selectCreatePlayList = driver.findElement(By.xpath("//li[@data-testid=\"playlist-context-menu-create-simple\"][contains(text(), \"New Playlist\")]"));
         WebElement selectCreatePlayList = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
-                       // (By.xpath("//li[@data-testid=\"playlist-context-menu-create-simple\"][contains(text(), \"New Playlist\")]")));
-                               (By.xpath("//i[@role=\"button\"][@title=\"Create a new playlist\"]")));
+                        (By.xpath("//li[@data-testid=\"playlist-context-menu-create-simple\"][contains(text(), \"New Playlist\")]")));
+                       //        (By.xpath("//i[@role=\"button\"][@title=\"Create a new playlist\"]")));
         selectCreatePlayList.click();
 
 
       //  WebElement selectNameField = driver.findElement(By.xpath("//input [@placeholder=\"↵ to save\"][@name=\"name\"][@required=\"required\"]"));
-        WebElement selectNameField = driver.findElement
-               // (ExpectedConditions.visibilityOfElementLocated
-                     //   (By.xpath("//input [@placeholder=\"↵ to save\"][@name=\"name\"][@required=\"required\"]")));
-                          (By.xpath("//input[@name=\"name\"][@required=\"required\"]"));
+        WebElement selectNameField = wait.until
+                (ExpectedConditions.visibilityOfElementLocated
+                        (By.xpath("//input [@placeholder=\"↵ to save\"][@name=\"name\"][@required=\"required\"]")));
+                     //     (By.xpath("//input[@name=\"name\"][@required=\"required\"]"));
         selectNameField.clear();
         selectNameField.sendKeys(playListName + "\n");
         Assert.assertEquals(verifyCreatedNotificationMessage(), expectedCreatedMessage);
@@ -121,7 +117,6 @@ public class PlayListTests extends BaseTest{
                         (By.cssSelector("input[type='search']")));
 
         searchField.clear();
-
         searchField.sendKeys(songName);
 
     }

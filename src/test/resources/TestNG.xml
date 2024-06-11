@@ -10,6 +10,14 @@
                     <include name="deletePlayList"/>
                 </methods>
             </class>
+
+
+          <!--  <class name="HomeTest">
+                <methods>
+                    <include name="renamePlayList"/>
+                </methods>
+           </class>
+           -->
         </classes>
     </test>
 </suite>

@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -27,7 +28,8 @@ public class BaseTest {
 
 //    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     WebDriverWait wait;
-    WebDriverWait waitForIt;
+    Wait<WebDriver> fluentWait;
+    Actions actions;
 
     @BeforeSuite
     static void setupClass() {
@@ -46,9 +48,11 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-       // waitForIt = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-
+        fluentWait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(200))
+                .ignoring(TimeoutException.class);
 
 
         url = BaseURL;
@@ -67,7 +71,7 @@ public class BaseTest {
     //    driver.quit();
     }
 
-    protected void submit() throws InterruptedException {
+    protected void submit() {
      //   WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         WebElement submit = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
