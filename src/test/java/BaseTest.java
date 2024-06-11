@@ -11,43 +11,43 @@ import org.testng.annotations.BeforeSuite;
 import java.time.Duration;
 
 public class BaseTest {
+
     WebDriver driver = null;
     ChromeOptions options = new ChromeOptions();
     String url = "https://qa.koel.app/";
+    String password = "jKV0uSX6z1dv";
+    String email = "christina.taylor@testpro.io";
+@BeforeSuite
+    static void setup() {
+WebDriverManager.chromedriver().setup();
 
-    @BeforeSuite
-   static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+}
+        @BeforeMethod
+        public void launchBrowser(){
 
-    }
+            options.addArguments("--remote-allow-origins=*");
 
-
-   @BeforeMethod
-        public void launchBrowser() {
-       options.addArguments("--remote-allow-origins*=");
-
-
-       driver = new ChromeDriver(options);
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-       driver.manage().window().maximize();
+            driver = new ChromeDriver(options);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().window().maximize();
 
         }
+ @AfterMethod
 
+    public void closeBrowser(){
+    driver.quit();
+ }
 
-    @AfterMethod
-    public void closeBrowser() {
-        driver.quit();
+    protected void submit() throws InterruptedException {
+        WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
+        submit.click();
+        Thread.sleep(2000);
     }
 
-    protected void submit() {
-        WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit']"));
-        submitButton.click();
-    }
-
-    protected void enterPassword() {
+    protected void enterPassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
-        passwordField.sendKeys("te$t$tudent");
+        passwordField.sendKeys("jKV0uSX6z1dv");
     }
 
     protected void enterEmail(String email) {
@@ -56,10 +56,9 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
 
-    void navigateToPage() {
+    protected void navigateToPage() {
         driver.get(url);
-
-
     }
 }
+
 
