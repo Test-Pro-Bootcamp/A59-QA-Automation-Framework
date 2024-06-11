@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.time.Duration;
 
 public class Homework20 extends BaseTest {
-    private static final Logger logger = LoggerFactory.getLogger(Homework19.class);
+    private static final Logger logger = LoggerFactory.getLogger(Homework20.class);
     private WebDriverWait wait;
 
     @Test
