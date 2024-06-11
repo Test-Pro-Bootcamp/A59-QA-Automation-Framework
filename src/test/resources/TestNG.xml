@@ -5,11 +5,16 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"/>
     <test name="Example Test" preserve-order="false">
         <classes>
+            <!-- This is how you comment things out -->
+            <!--
             <class name="PlayListTests">
                 <methods>
                     <include name="deletePlayList"/>
                 </methods>
             </class>
+            -->
+            <class name="AllSongsTest"/>
+            <class name="HomeTest"/>
         </classes>
     </test>
 </suite>

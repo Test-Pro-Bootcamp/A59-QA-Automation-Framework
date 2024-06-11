@@ -27,6 +27,7 @@ public class ProfileTests extends BaseTest{
 
     private String getProfileName() {
 //        WebElement profileName = driver.findElement(By.cssSelector("span.name"));
+
         WebElement profileName = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector("span.name")));
@@ -72,9 +73,11 @@ public class ProfileTests extends BaseTest{
 
     private void navigateToProfilePage() {
 //        WebElement profileName = driver.findElement(By.cssSelector("span.name"));
-        WebElement profileName = wait.until
-                (ExpectedConditions.visibilityOfElementLocated
-                        (By.cssSelector("span.name")));
+//        WebElement profileName = wait.until
+//                (ExpectedConditions.visibilityOfElementLocated
+//                        (By.cssSelector("span.name")));
+
+        WebElement profileName = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.name")));
         profileName.click();
     }
 }
