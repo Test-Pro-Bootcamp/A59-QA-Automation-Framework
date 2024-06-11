@@ -99,12 +99,10 @@ public class LoginTests extends BaseTest {
 
     }
 
-    /**
-     *
-     */
 
-    public class HomeWork16 {
+    public class Homework16{
 
+        @Test
         //Test Case Registration Navigation
         public void RegistrationNavigation() throws InterruptedException {
             ChromeOptions options = new ChromeOptions();
