@@ -34,7 +34,12 @@ public class Homework17 extends BaseTest {
         chosePlayList();
         Thread.sleep(1000);
         //actual vs expected
+        
+
+        // *********I don't know how to fix this problem plz let me know what im doing wrong
         Assert.assertEquals(getAddToPlaylistMessage(), expectedSongAddMessage);
+
+
         Thread.sleep(1000);
     }
 
