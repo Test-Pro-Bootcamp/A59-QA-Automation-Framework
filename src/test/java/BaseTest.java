@@ -43,12 +43,13 @@ public class BaseTest {
         // Pre-condition
         // Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--remote-allow-origins=*","--disable-notifications","--incognito");
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
+        actions = new Actions(driver);
         fluentWait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(200))

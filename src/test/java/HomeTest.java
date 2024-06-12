@@ -39,13 +39,13 @@ public class HomeTest extends BaseTest {
         String updatedPlayListMsg = "Updated playlist \"Sample Edited Playlist.\"";
 
         //double click on playList Name
-        Thread.sleep(5000);
+//        Thread.sleep(2000);
         doubleClickPlayList();
-        Thread.sleep(5000);
+ //       Thread.sleep(2000);
         //Enter new Name
-      //  enterNewName();
-        Thread.sleep(5000);
-       // Assert.assertEquals(getRenamePlayListSuccessMsg(), updatedPlayListMsg);
+        enterNewName();
+//        Thread.sleep(2000);
+        Assert.assertEquals(getRenamePlayListSuccessMsg(), updatedPlayListMsg);
     }
 
     // Helper Methods
@@ -73,7 +73,8 @@ public class HomeTest extends BaseTest {
     public void doubleClickPlayList() throws InterruptedException {
         WebElement playList = wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector(".playlist:nth-child(3)")));
-        actions.doubleClick(playList);
+        actions.moveToElement(playList).perform();
+        actions.doubleClick(playList).perform();
 
     }
 
@@ -101,7 +102,8 @@ public class HomeTest extends BaseTest {
     }
 
     public WebElement hoverPlay() {
-        WebElement playBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        WebElement playBtn = driver.findElement
+                (By.cssSelector("[data-testid='play-btn']"));
         actions.moveToElement(playBtn).perform();
 
         return wait.until(ExpectedConditions.visibilityOf(playBtn));
