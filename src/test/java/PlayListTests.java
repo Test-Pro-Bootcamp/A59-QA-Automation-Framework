@@ -181,4 +181,3 @@ public class PlayListTests extends BaseTest{
         return verifyCreatedNotification.getText();
     }
 }
-
