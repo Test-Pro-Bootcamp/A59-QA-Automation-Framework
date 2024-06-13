@@ -5,11 +5,11 @@
 
     <test name="Smoke Test" preserve-order="false">
 
-        <class>
+        <classes>
             <class name="LoginTest"/>
-                <methods>
-                    <include name="loginValidEmailPassword"/>
-                </methods>
-            </class>
+                   <methods>
+                       <include name="loginValidEmailPassword">
+                   </methods>
+            </classes>
     </test>
 </suite>
