@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -20,6 +21,8 @@ public class BaseTest {
 
     WebDriverWait wait;
     Wait<WebDriver> fluentWait;
+
+    Actions actions;
 
 
 
@@ -41,6 +44,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        actions = new Actions(driver);
         fluentWait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(200));
