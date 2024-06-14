@@ -34,16 +34,15 @@ public class Homework17 extends BaseTest {
         chosePlayList();
         Thread.sleep(1000);
         //actual vs expected
-        
 
-        // *********I don't know how to fix this problem plz let me know what im doing wrong
-        Assert.assertEquals(getAddToPlaylistMessage(), expectedSongAddMessage);
+
+        Assert.assertEquals(getAddToPlaylistSuccessMsg(),expectedSongAddMessage);
 
 
         Thread.sleep(1000);
     }
 
-    public String getAddToPlaylistMessage () {
+    public String getAddToPlaylistSuccessMsg() {
         WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
         return notification.getText();
 
@@ -79,8 +78,8 @@ public class Homework17 extends BaseTest {
         viewAllBtn.click();
     }
 
-    public void searchSong(String songName) {
+    public void searchSong(String name) {
         WebElement searchField = driver.findElement(By.cssSelector("div#searchForm input[type='search']"));
-        searchField.sendKeys(songName);
+        searchField.sendKeys(name);
     }
 }

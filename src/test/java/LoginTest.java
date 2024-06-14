@@ -22,14 +22,14 @@ public class LoginTest extends BaseTest {
 
         Thread.sleep(2000);
         navigateToPage();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         enterEmail(email);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         enterPassword(password);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         submit();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar"));
         Thread.sleep(2000);
@@ -44,19 +44,19 @@ public class LoginTest extends BaseTest {
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         navigateToPage();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         enterEmail("invalid@testpro.io");
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         enterPassword("jKV0uSX6z1dv");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         submit();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
@@ -71,11 +71,11 @@ public class LoginTest extends BaseTest {
 
 
         navigateToPage();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         enterEmail("christina.taylor@testpro.io");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         submit();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
