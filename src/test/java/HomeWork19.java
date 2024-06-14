@@ -3,7 +3,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class homework19 extends BaseTest {
+public class HomeWork19 extends BaseTest {
 
 
     @Test
@@ -30,7 +30,7 @@ public class homework19 extends BaseTest {
 
     public void choosePlaylist(){
         WebElement playlistToDelete = driver.findElement(By.xpath
-                ("//*[@id='playlists']/ul/li[6]/a"));
+                ("//*[@id='playlists']"));
         playlistToDelete.click();
     }
 

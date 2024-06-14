@@ -38,7 +38,7 @@ public class BaseTest {
     public void enterEmail() {
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         emailField.clear();
-        emailField.sendKeys("rfkayoub12@gmail.com");
+        emailField.sendKeys("demo@testpro.io");
     }
 
 
