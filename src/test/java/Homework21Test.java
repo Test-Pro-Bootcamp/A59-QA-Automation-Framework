@@ -1,3 +1,5 @@
+import Pages.HomePage;
+import Pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -11,9 +13,13 @@ public class Homework21Test extends BaseTest{
     public void createNewPlaylists() {
 
         String expectedCreatedPlaylistMessage = "Created playlist \"Candy.\"";
-        enterEmail("kristina.sarkisyan@testpro.io");
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.login();
+        /*enterEmail("kristina.sarkisyan@testpro.io");
         enterPassword("o8URUDnW");
-        submit();
+        submit();*/
         clickPlaylists();
         clickNewPlaylist();
         inputNewPlaylistName();
