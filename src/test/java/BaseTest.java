@@ -15,18 +15,12 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    WebDriver driver = null;
-    //String url = "https://qa.koel.app/";
-    ChromeOptions options = new ChromeOptions();
-
-    WebDriverWait wait;
-    Wait<WebDriver> fluentWait;
-
-    Actions actions;
-
-
-
-
+    public WebDriver driver = null;
+    public ChromeOptions options = new ChromeOptions();
+    public WebDriverWait wait;
+    public Wait<WebDriver> fluentWait;
+    public Actions actions = null;
+//String url = "https://qa.koel.app/";
 
     @BeforeSuite
     static void setupClass() {WebDriverManager.chromedriver().setup();}

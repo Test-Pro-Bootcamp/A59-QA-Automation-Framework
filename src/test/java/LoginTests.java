@@ -1,3 +1,5 @@
+import Pages.HomePage;
+import Pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -7,7 +9,15 @@ import org.testng.annotations.Test;
 public class LoginTests extends BaseTest {
     @Test
     public void loginEmptyEmailPassword() {
-        //navigateToPage();
+
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.login();
+
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
+         /*//navigateToPage();
         String expectedURL = "https://qa.koel.app/";
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
@@ -18,10 +28,10 @@ public class LoginTests extends BaseTest {
     enterEmail("demo@testpro.io");
     enterPassword("te$t$tudent");
     submit();
-    WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
+        WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
         //WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
         //Assertions - Expected vs Actual
-        Assert.assertTrue(avatarIcon.isDisplayed());
+        Assert.assertTrue(avatarIcon.isDisplayed());*/
     }
     // Negative Test Case
     @Test
