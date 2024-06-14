@@ -30,7 +30,7 @@ public class HomeWork19 extends BaseTest {
 
     public void choosePlaylist(){
         WebElement playlistToDelete = driver.findElement(By.xpath
-                ("//*[@id='playlists']"));
+                ("//*[@id=playlists']"));
         playlistToDelete.click();
     }
 
