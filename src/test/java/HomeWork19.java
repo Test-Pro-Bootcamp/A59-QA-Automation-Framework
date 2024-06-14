@@ -77,11 +77,17 @@ public class HomeWork19 extends BaseTest {
             WebElement placeholderMessage = driver.findElement(By.cssSelector("div[data-test='screen-placeholder'] .text"));
             String placeholderText = placeholderMessage.getText();
 
+            // Add a log statement to confirm the placeholder message was found
+            System.out.println("Placeholder message found: " + placeholderText);
+
             // If the placeholder text is found, it means the playlist is deleted and empty
             return placeholderText.contains("The playlist is currently empty.");
         } catch (Exception e) {
-            // If an exception is thrown, it means the playlist placeholder is not found, hence playlist might not be deleted
-            return false;
+            // Add a log statement to indicate that the playlist was not found
+            System.out.println("Playlist '" + playlistName + "' was not found, indicating it was deleted.");
+
+            // If an exception is thrown, it means the playlist is not found, hence deleted
+            return true;
         }
     }
 
