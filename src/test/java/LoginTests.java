@@ -7,15 +7,14 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
+
+
     @Test
     public void loginEmptyEmailPassword() {
-
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-
-        loginPage.login();
-
-        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+       loginPage.login();
+       Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
 
          /*//navigateToPage();
         String expectedURL = "https://qa.koel.app/";
@@ -38,7 +37,7 @@ public class LoginTests extends BaseTest {
     public void loginWithInvalidEmailValidPassword()  {
         //navigateToPage();
         String expectedURL = "https://qa.koel.app/";
-       enterEmail("invalid@koel.io");
+        enterEmail("invalid@koel.io");
         enterPassword("te$t$tudent");
         submit();
         //Expected Results - Assertions
