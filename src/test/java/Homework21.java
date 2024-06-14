@@ -22,8 +22,8 @@ public class Homework21 extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
 
-        String newPlaylistName = "Love";
-        String updatedPlaylistMsg = "Updated playlist \"" + newPlaylistName + "\".";
+        String newPlaylistName = "love";
+        String updatedPlaylistMsg = "Updated playlist \"" + "love." + "\"";
 
         // Login
         login("india.messam@testpro.io", "slcTalgy");
