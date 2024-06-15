@@ -8,17 +8,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AllSongsPage;
+import pages.HomePage;
+import pages.LoginPage;
 import java.time.Duration;
 
-public class Homework19 extends BaseTest {
-    //v2 with  Assert.assertTrue(getSuccessPopUp().isDisplayed());
+//USING THIS FILE TO DO HW22
 
+
+public class Homework19 extends BaseTest {
     @Test
-    public void deletePlaylist() throws InterruptedException {
-        // Performing actions: login, search song, select 1st result, add to playlist
-        // LOGIN
-        login("giovanna.silva@testpro.io", "ShakaMaya1302!");
-        Thread.sleep(2000);
+    public void deletePlaylist() throws InterruptedException{
+
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
+        loginPage.login();
+
+
+
+
 
         // Click to view playlist
         deletePlaylistAction();
@@ -37,7 +46,7 @@ public class Homework19 extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         // Wait for the overlaying element to disappear
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[@class='play']")));
+      //  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[@class='play']")));
 
         try {
             // Locate and click on the playlist using JavaScript

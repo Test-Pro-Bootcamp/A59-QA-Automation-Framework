@@ -4,60 +4,75 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.*;
+
 import java.time.Duration;
 
 public class BaseTest {
-    protected WebDriver driver = null;
 
-    // Setting up WebDriverManager for Chrome before the test suite runs.
+    public WebDriver driver = null;
+    public ChromeOptions options = new ChromeOptions();
+    public WebDriverWait wait;
+    public Wait<WebDriver> fluentWait;
+    public Actions actions = null;
+
+    //String url = "https://qa.koel.app/";
+
     @BeforeSuite
-    public static void setupClass() {
+    static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
-    // Method to set up WebDriver with Chrome options before each test method.
     @BeforeMethod
-    //Use @Parameters for passing baseUrl from the TestNG config file to the tests.
-    @Parameters({"BaseUrl"})
-    public void launchBrowser(String baseUrl) {
-        // Configuring Chrome options for local testing.
-        ChromeOptions optionsChromeLocal = new ChromeOptions();
-        optionsChromeLocal.addArguments("--disable-notifications", "--remote-allow-origins=*", "--incognito", "--start-maximized", "--lang=en");
-        driver = new ChromeDriver(optionsChromeLocal);
-
-        // Configuring implicit wait for the driver and navigating to the specified URL.
+    @Parameters({"BaseURL"})
+    public void launchBrowser(String baseURL){
+        // Pre-condition
+        // Added ChromeOptions argument below to fix websocket error
+        options.addArguments("--disable-notifications", "--remote-allow-origins=*", "--incognito", "--start-maximized", "--lang=en");
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // Navigate to the specified URL.
-        navigateToPage(baseUrl);
+        fluentWait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(200));
+        navigateToPage(baseURL);
     }
 
-    // Method to close the browser after each test method.
     @AfterMethod
-    public void closeBrowser() {
-        if (driver != null) {
-            driver.quit();
-            driver = null; // Nullify the driver to avoid memory leaks.
-        }
+    public void closeBrowser(){
+        driver.quit();
     }
 
-    // Method for performing login action with provided email and password.
-    public void login(String email, String password) {
-        // Locating email, password, and login button elements and performing login action.
-        WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
-        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
-        WebElement loginButton = driver.findElement(By.cssSelector("[type='submit']"));
-        emailInput.sendKeys(email);
-        passwordInput.sendKeys(password);
-        loginButton.click();
+    protected void submit() throws InterruptedException {
+        //WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
+        WebElement submit = wait.until
+                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
+        submit.click();
+
     }
 
-    // Method to navigate to a specified URL.
+    protected void enterPassword(String password) {
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
+        //WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        passwordField.clear();
+        passwordField.sendKeys(password);
+    }
+
+    protected void enterEmail(String email) {
+        WebElement emailField = wait.until
+                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
+        //WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        emailField.clear();
+        emailField.sendKeys(email);
+    }
+
     protected void navigateToPage(String url) {
         driver.get(url);
     }
