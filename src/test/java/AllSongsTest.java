@@ -15,8 +15,8 @@ public class AllSongsTest extends BaseTest {
     public void playSongWithRightClick() throws InterruptedException{
 
         // Login
-        enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
+        enterEmail(userName);
+        enterPassword(userPassword);
         submit();
 
         // Navigate to All Songs Page

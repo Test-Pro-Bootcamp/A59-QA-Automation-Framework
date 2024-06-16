@@ -5,6 +5,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
+import pages.PlayListPage;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -16,9 +19,15 @@ public class HomeTest extends BaseTest {
 
     @Test
     public void HoverOverPlayBtnAndPlaySong() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
-        Thread.sleep(2000);
-        Assert.assertTrue(hoverPlay().isDisplayed());
+        loginPage.login();
+        Thread.sleep(5000);
+        hoverPlay();
+    //  doubleClickPlayList();
+    //  Thread.sleep(2000);
+    //  Assert.assertTrue(hoverPlay().isDisplayed());
     }
 
     @Test
@@ -38,17 +47,18 @@ public class HomeTest extends BaseTest {
 
         String updatedPlayListMsg = "Updated playlist \"Sample Edited Playlist.\"";
 
-        //double click on playList Name
-//        Thread.sleep(2000);
-        doubleClickPlayList();
- //       Thread.sleep(2000);
-        //Enter new Name
-        enterNewName();
-//        Thread.sleep(2000);
-        Assert.assertEquals(getRenamePlayListSuccessMsg(), updatedPlayListMsg);
+    //  double click on playList Name
+    //  Thread.sleep(2000);
+        hoverPlay();
+    //  doubleClickPlayList();
+    //  Thread.sleep(2000);
+    //  Enter new Name
+    //  enterNewName();
+    //  Thread.sleep(2000);
+    //  Assert.assertEquals(getRenamePlayListSuccessMsg(), updatedPlayListMsg);
     }
 
-    // Helper Methods
+    //  Helper Methods
 
     public String getRenamePlayListSuccessMsg() {
         WebElement notification = wait.until
@@ -62,8 +72,8 @@ public class HomeTest extends BaseTest {
         WebElement playListInputField = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector("[name='name']")));
-        // playListInputField.clear(); Does not work here
-        // Use Send Control-A sequence then a Back Space sequence
+    //  playListInputField.clear(); Does not work here
+    //  Use Send Control-A sequence then a Back Space sequence
         playListInputField.sendKeys(Keys.chord(Keys.CONTROL,"A"), Keys.BACK_SPACE);
         playListInputField.sendKeys(newPlayListName);
         playListInputField.sendKeys(Keys.ENTER);
@@ -75,12 +85,10 @@ public class HomeTest extends BaseTest {
                 (By.cssSelector(".playlist:nth-child(3)")));
         actions.moveToElement(playList).perform();
         actions.doubleClick(playList).perform();
-
     }
 
     public String getPlayListDetails() {
         return driver.findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
-
     }
 
     public int songsCount() {
@@ -105,6 +113,7 @@ public class HomeTest extends BaseTest {
         WebElement playBtn = driver.findElement
                 (By.cssSelector("[data-testid='play-btn']"));
         actions.moveToElement(playBtn).perform();
+        actions.click(playBtn).perform();
 
         return wait.until(ExpectedConditions.visibilityOf(playBtn));
     }

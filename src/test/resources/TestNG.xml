@@ -11,13 +11,17 @@
                     <include name="deletePlayList"/>
                 </methods>
             </class> -->
-
+            <!--
             <class name="HomeTest">
                 <methods>
                     <include name="renamePlayList"/>
                 </methods>
-           </class>
-
+           </class> -->
+            <class name="PlayListTests">
+                <methods>
+                    <include name="addSongToPlaylist"/>
+                </methods>
+            </class>
             <!--
             <class name="t">
                 <methods>

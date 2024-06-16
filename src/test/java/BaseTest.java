@@ -16,20 +16,21 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    WebDriver driver = null;
-    ChromeOptions options = new ChromeOptions();
     String url = "https://qa.koel.app/";
     String expectedAddMessage = "Added 1 song into \"TestPro Playlist.\"";
     String expectedDeleteMessage = "Deleted playlist \"TestPro Playlist.\"";
     String expectedCreatedMessage = "Created playlist \"TestPro Playlist.\"";
+    String expectedProfileUpdatedMessage ="Profile updated.";
     String playListName = "TestPro Playlist";
     String songName = "grav";
-    String returnedString = null;
+    String userName =  "demo@testpro.io";
+    String userPassword = "te$t$tudent";
 
-//    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    WebDriverWait wait;
-    Wait<WebDriver> fluentWait;
-    Actions actions;
+    public static WebDriver driver = null;
+    public static ChromeOptions options = new ChromeOptions();
+    public static WebDriverWait wait;
+    public static Wait<WebDriver> fluentWait;
+    public static Actions actions = null;
 
     @BeforeSuite
     static void setupClass() {
@@ -40,8 +41,8 @@ public class BaseTest {
     @Parameters({"BaseURL"})
     public void launchBrowser(String BaseURL) throws InterruptedException {
 
-        // Pre-condition
-        // Added ChromeOptions argument below to fix websocket error
+    //  Pre-condition
+    //  Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*","--disable-notifications","--incognito");
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
@@ -55,25 +56,24 @@ public class BaseTest {
                 .pollingEvery(Duration.ofMillis(200))
                 .ignoring(TimeoutException.class);
 
-
         url = BaseURL;
         navigateToPage();
-        enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
-        submit();
-        //Thread.sleep(3000);
+    //  enterEmail(userName);
+    //  enterPassword(userPassword);
+    //  submit();
+    //  Thread.sleep(3000);
 
-    //    wait = new WebDriverWait();
-    //    driver.manage().window().maximize();
+    //  wait = new WebDriverWait();
+    //  driver.manage().window().maximize();
     }
 
     @AfterMethod
     public void closeBrowser(){
-    //    driver.quit();
+    //  driver.quit();
     }
 
     protected void submit() {
-     //   WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
+    //  WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         WebElement submit = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector("button[type='submit']")));
@@ -81,7 +81,7 @@ public class BaseTest {
     }
 
     protected void enterPassword(String password) {
-     //   WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+    //  WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         WebElement passwordField = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector("input[type='password']")));
@@ -90,11 +90,10 @@ public class BaseTest {
     }
 
     protected void enterEmail(String email) {
-    //    WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+    //  WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         WebElement emailField = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector("input[type='email']")));
-
         emailField.clear();
         emailField.sendKeys(email);
     }
