@@ -63,7 +63,7 @@ public class HomeTest extends BaseTest {
     public String getRenamePlayListSuccessMsg() {
         WebElement notification = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
-                (By.cssSelector("div.success.show")));
+                    (By.cssSelector("div.success.show")));
 
         return notification.getText();
     }
@@ -71,7 +71,8 @@ public class HomeTest extends BaseTest {
     public void enterNewName() {
         WebElement playListInputField = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
-                        (By.cssSelector("[name='name']")));
+                    (By.cssSelector("[name='name']")));
+
     //  playListInputField.clear(); Does not work here
     //  Use Send Control-A sequence then a Back Space sequence
         playListInputField.sendKeys(Keys.chord(Keys.CONTROL,"A"), Keys.BACK_SPACE);
@@ -81,24 +82,29 @@ public class HomeTest extends BaseTest {
     }
 
     public void doubleClickPlayList() throws InterruptedException {
-        WebElement playList = wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.cssSelector(".playlist:nth-child(3)")));
+        WebElement playList = wait.until
+                (ExpectedConditions.visibilityOfElementLocated
+                    (By.cssSelector(".playlist:nth-child(3)")));
         actions.moveToElement(playList).perform();
         actions.doubleClick(playList).perform();
     }
 
     public String getPlayListDetails() {
-        return driver.findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
+        return driver.findElement
+                (By.cssSelector("span.meta.text-secondary span.meta")).getText();
     }
 
     public int songsCount() {
-        return driver.findElements(By.cssSelector("section#playlistWrapper td.title")).size();
+        return driver.findElements
+                (By.cssSelector("section#playlistWrapper td.title")).size();
     }
 
     public void displayAllSongs() {
         List<WebElement> songList = driver.findElements
                 (By.cssSelector("section#playlistWrapper td.title"));
+
         System.out.println("Number of Songs found:  " + songsCount());
+
         for (WebElement e: songList) {
             System.out.println(e.getText());
         }
@@ -112,6 +118,7 @@ public class HomeTest extends BaseTest {
     public WebElement hoverPlay() {
         WebElement playBtn = driver.findElement
                 (By.cssSelector("[data-testid='play-btn']"));
+
         actions.moveToElement(playBtn).perform();
         actions.click(playBtn).perform();
 

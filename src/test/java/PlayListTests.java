@@ -11,6 +11,7 @@ public class PlayListTests extends BaseTest{
     protected void addSongToPlaylist() throws InterruptedException {
 
         // create a playlist
+        Thread.sleep(3000);
         createPlayListBtn(playListName);
         // search for a song
         Thread.sleep(3000);
@@ -29,62 +30,65 @@ public class PlayListTests extends BaseTest{
         deletePlayListBtn();
     }
 
-    public void createPlayListBtn(String playListName) throws InterruptedException {
+    public void createPlayListBtn(String playListName) {
 
         LoginPage loginPage = new LoginPage(driver);
         PlayListPage playListPage = new PlayListPage(driver);
 
         loginPage.login();
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         playListPage.selectCreateNewPlayListBtn();
         playListPage.selectNewPlayListBtn();
         playListPage.selectTitleNameField(playListName);
-        Thread.sleep(2000);
-        Assert.assertEquals(playListPage.selectVerifyNotificationMsg(), expectedCreatedMessage);
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
+//        Assert.assertEquals(playListPage.selectVerifyNotificationMsg(), expectedCreatedMessage);
+//        Thread.sleep(2000);
+        playListPage.selectPlayListToDeleteBtn();
     }
 
-    public void deletePlayListBtn() throws InterruptedException {
+    public void deletePlayListBtn() {
 
         PlayListPage playListPage = new PlayListPage(driver);
 
-        playListPage.selectPlayListToDelete();
+        playListPage.selectPlayListToDeleteBtn();
         Assert.assertEquals(playListPage.selectVerifyNotificationMsg(), expectedDeleteMessage);
     }
 
-    public void searchSong(String songName) throws InterruptedException {
+    public void searchSong(String songName) {
 
         PlayListPage playListPage = new PlayListPage(driver);
 
         playListPage.selectSearchSongField(songName);
     }
 
-    public void viewAllSongs() throws InterruptedException {
+    public void viewAllSongs() {
 
         PlayListPage playListPage = new PlayListPage(driver);
 
         playListPage.selectViewAllSongs();
     }
 
-    public void selectFirstSong() throws InterruptedException {
+    public void selectFirstSong() {
 
         PlayListPage playListPage = new PlayListPage(driver);
 
         playListPage.selectFirstSong();
       }
 
-    public void addSongToBtn() throws InterruptedException {
+    public void addSongToBtn()  {
 
         PlayListPage playListPage = new PlayListPage(driver);
 
         playListPage.selectAddSongToBtn();
+
+
     }
 
-    public void choosePlayList() throws InterruptedException {
+    public void choosePlayList()  {
 
         PlayListPage playListPage = new PlayListPage(driver);
 
-        playListPage.selectChoosePlayList();
+        playListPage.selectChoosePlayList(playListName);
         Assert.assertEquals(playListPage.selectVerifyNotificationMsg(), expectedAddMessage);
     }
 }

@@ -58,12 +58,7 @@ public class BaseTest {
 
         url = BaseURL;
         navigateToPage();
-    //  enterEmail(userName);
-    //  enterPassword(userPassword);
-    //  submit();
-    //  Thread.sleep(3000);
 
-    //  wait = new WebDriverWait();
     //  driver.manage().window().maximize();
     }
 

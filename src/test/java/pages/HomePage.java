@@ -18,9 +18,11 @@ public class HomePage extends BasePage {
 //  By passwordField = By.cssSelector("input[type='password']");
 //  By submitBtn = By.cssSelector("button[type='submit']");
 
+
     //  Page Methods
     //  public WebElement getUserAvatar;
     public WebElement getUserAvatar() {
         return findElement(userAvatarIcon);
     }
+
 }
