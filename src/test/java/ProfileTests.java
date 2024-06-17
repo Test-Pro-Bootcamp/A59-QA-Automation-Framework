@@ -11,12 +11,11 @@ public class ProfileTests extends BaseTest{
 
     public void profileTest() throws InterruptedException {
 
-        navigateToPage();
-        enterEmail(email);
-        enterPassword(password);
-        submit();
+       // navigateToPage();
+        loginInfo();
         navigateToProfilePage();
 
+        String uniqueName = generateUniquelyName();
         changeName(uniqueName );
         String profileName = getProfileName();
         Assert.assertEquals(profileName, uniqueName);
@@ -29,18 +28,24 @@ public class ProfileTests extends BaseTest{
 
     }
 
+    private void loginInfo() throws InterruptedException {
+        enterPassword("jKV0uSX6z1dv");
+        enterEmail("christina.taylor@testpro.io");
+        submit();
+    }
+
     private String getProfileName() {
         WebElement profileName = driver.findElement(By.cssSelector("span.name"));
         return profileName.getText();
     }
 
     private String generateUniquelyName() {
-        return UUID.randomUUID().toString().replaceAll("-", "");
+        return UUID.randomUUID().toString().replace("-","");
 
     }
 
     private void changeName(String name) throws InterruptedException {
-        WebElement profileName = driver.findElement(By.cssSelector("[name='current_password']"));
+
         enterCurrentPassword("jKV0uSX6z1dv");
         enterNewName(name);
         saveChanges();
@@ -73,5 +78,4 @@ public class ProfileTests extends BaseTest{
 
     }
 }
-*
- */
+*/

@@ -4,9 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -14,22 +12,29 @@ public class BaseTest {
 
     WebDriver driver = null;
     ChromeOptions options = new ChromeOptions();
-    String url = "https://qa.koel.app/";
-    String password = "jKV0uSX6z1dv";
-    String email = "christina.taylor@testpro.io";
+
+
+
+
+   // String url = "https://qa.koel.app/";
+  //  String password = "jKV0uSX6z1dv";
+ //   String email = "christina.taylor@testpro.io";
 @BeforeSuite
+
     static void setup() {
 WebDriverManager.chromedriver().setup();
 
 }
         @BeforeMethod
-        public void launchBrowser(){
+        @Parameters({"BaseURL"})
+        public void launchBrowser(String baseURL){
 
             options.addArguments("--remote-allow-origins=*");
 
             driver = new ChromeDriver(options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             driver.manage().window().maximize();
+            navigateToPage(baseURL);
 
         }
  @AfterMethod
@@ -47,7 +52,7 @@ WebDriverManager.chromedriver().setup();
     protected void enterPassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
-        passwordField.sendKeys("jKV0uSX6z1dv");
+        passwordField.sendKeys(password);
     }
 
     protected void enterEmail(String email) {
@@ -56,7 +61,7 @@ WebDriverManager.chromedriver().setup();
         emailField.sendKeys(email);
     }
 
-    protected void navigateToPage() {
+    protected void navigateToPage(String url) {
         driver.get(url);
     }
 }
