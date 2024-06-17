@@ -1,23 +1,64 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Homework18 extends BaseTest{
+import static sun.security.jgss.GSSUtil.login;
+
+public class Homework18 extends BaseTest {
 
 
-    @Test
+    @Test(priority = 1, description = "playa song and validate the a song is playing")
     public void playSong() throws InterruptedException {
 
 
-        //Navigate to "https://qa.koel.app/".
         navigateToPage();
-        //Log in
         enterEmail("christina.taylor@testpro.io");
         enterPassword("jKV0uSX6z1dv");
         submit();
-        Thread.sleep(1000);
+
+
+        enterButtonPlay();
+        selectSongs();
+
+        enterAllSongs();
+
+    }
+
+    private void enterButtonPlay() {
+        WebElement buttonPlay = driver.findElement(By.xpath("//span[@title='Play or resume;]"));
+    }
+
+    private void selectSongs() {
+        WebElement song = driver.findElement(By.xpath("//tr[@class='songs']"));
+        song.click();
+    }
+
+    public void enterAllSongs() {
+        WebElement allSongs = driver.findElement(By.cssSelector("a[href='#!/songs']"));
+        allSongs.click();
+
+    }
+
+
+    }
+
+
+
+// old  homework
+
+/*
+//Navigate to "https://qa.koel.app/".
+        navigateToPage();
+        enterEmail("christina.taylor@testpro.io");
+        enterPassword("jKV0uSX6z1dv");
+        submit();
+
+
+
         //Click «Play next song» (media player controls),
-        clickPlayBtn();
+        selectSong();
         Thread.sleep(1000);
         // then the Play button, to play a song.
         clickPlayNext();
@@ -27,21 +68,20 @@ public class Homework18 extends BaseTest{
         Thread.sleep(1000);
 
 
+    }
 
-
-
-
-
-
+    private void selectSong() {
+        WebElement song = driver.findElement(By.xpath("//tr[@class='song-item']"));
+        song.click();
     }
 
     public void clickPauseBtn() {
-        WebElement pauseBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        WebElement pauseBtn = driver.findElement(By.cssSelector("//span[@title='Play or resume']"));
         pauseBtn.click();
     }
 
     public void clickPlayBtn() {
-        WebElement playBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        WebElement playBtn = driver.findElement(By.cssSelector("//span[@title='Play or resume']"));
         playBtn.click();
     }
 
