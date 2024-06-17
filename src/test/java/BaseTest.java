@@ -41,6 +41,8 @@ public class BaseTest {
     }
 
 
+
+
     protected void enterPassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
@@ -52,7 +54,6 @@ public class BaseTest {
         emailField.clear();
         emailField.sendKeys(email);
     }
-
     protected void submit() throws InterruptedException {
         WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         submit.click();
