@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.AllSongsPage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.AllSongsPage;
 
 import java.util.List;
 

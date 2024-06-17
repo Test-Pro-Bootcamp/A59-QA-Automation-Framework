@@ -1,4 +1,5 @@
 package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,10 +10,10 @@ import org.openqa.selenium.interactions.Actions;
 import java.time.Duration;
 
 public class BasePage {
-
-    WebDriver driver;
-    WebDriverWait wait;
-    Actions actions;
+//HW Feedback: Use 'protected' access since it gives the subclass a chance to use the helper method or variable, while preventing a non-related class from trying to use it.
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected Actions actions;
 
     By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
 
@@ -22,11 +23,11 @@ public class BasePage {
         actions = new Actions(driver);
     }
 
-    public WebElement findElement(By locator) {
+    protected WebElement findElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public boolean isSongPlaying() {
+    protected boolean isSongPlaying() {
         return findElement(soundBarVisualizer).isDisplayed();
     }
 

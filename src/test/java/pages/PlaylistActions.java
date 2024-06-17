@@ -14,12 +14,19 @@ public class PlaylistActions extends BasePage {
     }
 
     // LOCATORS
-    By clickPlaylist = By.xpath("//*[@id='playlists']/ul/li[3]/a");
-    By deletePlaylistAction = By.xpath("//*[@class='del btn-delete-playlist']");
-    By successPopUp = By.xpath("//*/div[2]/div[@class='success show']");
+
+
+    private final By clickPlaylist = By.cssSelector(".playlist:nth-child(3)");
+    //private By clickPlaylist = By.xpath("//*[@id='playlists']/ul/li[3]/a");
+    private final By deletePlaylistAction = By.cssSelector(".btn-delete-playlist");
+
+    // private By deletePlaylistAction = By.xpath("//*[@class='del btn-delete-playlist']");
+    private final By successPopUp = By.cssSelector("div.success.show");
     //By confirmDelete = By.xpath("//*[@class='del btn-delete-playlist']");
 
     // Page Methods
+
+
     public void selectPlayList() {
         WebElement clickPlaylistElement = wait.until(ExpectedConditions.elementToBeClickable(clickPlaylist));
         clickPlaylistElement.click();
@@ -32,15 +39,11 @@ public class PlaylistActions extends BasePage {
         System.out.println("Deleted Playlist");
     }
 
-   public WebElement successPopUpBox() {
+    public WebElement successPopUpBox() {
         WebElement successPopUpElement = wait.until(ExpectedConditions.visibilityOfElementLocated(successPopUp));
         System.out.println("Success Popup Displayed");
         return successPopUpElement;
     }
-/*
-    public void confirmDeleteBox() {
-        // Check if success popup is displayed
-        WebElement successPopup = successPopUpBox();
-        Assert.assertTrue(successPopup.isDisplayed(), "Success popup should be displayed after deleting the playlist");
-    }*/
 }
+
+

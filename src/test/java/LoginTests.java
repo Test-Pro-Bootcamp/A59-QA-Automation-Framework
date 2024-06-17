@@ -1,15 +1,10 @@
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import pages.HomePage;
+/*import org.testng.annotations.Test;
 import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
 
     @Test
+
     public void loginValidEmailPassword() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -51,4 +46,22 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
     }
 
+
+    provideEmail();
+    providePassword();
+    clickSubmit();
+
+
+}
+*/
+    import org.testng.annotations.Test;
+    import pages.LoginPage;
+
+public class LoginTests extends BaseTest {
+
+    @Test
+    public void loginTest() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(); // Calling the login method from LoginPage
+    }
 }

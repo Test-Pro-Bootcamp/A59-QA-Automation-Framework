@@ -14,6 +14,7 @@ public class PlaylistActionsTest extends BaseTest {
         loginPage.login();
 
         // Perform delete playlist action
+
         playlist.selectPlayList();
         playlist.deletePlaylist();
         playlist.successPopUpBox();

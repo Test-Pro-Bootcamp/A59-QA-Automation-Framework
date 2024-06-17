@@ -11,10 +11,10 @@ public class HomePage extends BasePage{
     public HomePage(WebDriver givenDriver){
         super(givenDriver);
     }
-
+//HW FEEDBACK: make all the locators and WebElements private, because private keyword in java allows most restrictive access to variables and methods and offer strongest form of Encapsulation.
     //Locators
-    By userAvatarIcon = By.cssSelector("img.avatar");
-    By allSongsList = By.cssSelector("li a.songs");
+    private By userAvatarIcon = By.cssSelector("img.avatar");
+    private By allSongsList = By.cssSelector("li a.songs");
 
     //Methods
     public WebElement getUserAvatar(){
