@@ -14,9 +14,10 @@
             <!--
             <class name="HomeTest">
                 <methods>
-                    <include name="renamePlayList"/>
+                    <include name="HoverOverPlayBtnAndPlaySong"/>
                 </methods>
-           </class> -->
+           </class>
+           -->
             <class name="PlayListTests">
                 <methods>
                     <include name="addSongToPlaylist"/>

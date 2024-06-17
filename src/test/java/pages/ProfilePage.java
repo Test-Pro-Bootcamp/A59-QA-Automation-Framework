@@ -33,9 +33,11 @@ public class ProfilePage extends BasePage {
         findElement(getInputProfileCurrentPasswordField).sendKeys(userPassword + "\n");
 
     }
+
     public String selectVerifyNotificationMsg() {
         return findElement(getVerifyNotificationMsg).getText();
     }
+
     public void selectProfileSaveBtn() {
         findElement(getProfileSaveBtn).click();
     }

@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PlayListPage extends BasePage {
 
@@ -24,8 +26,8 @@ public class PlayListPage extends BasePage {
     By getChoosePlayList = By.xpath("//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playListName)]");
     By getChoosePlayListField = By.xpath("//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playListName)]");
 
-    //Page Methods
-    // Very basic methods
+    // Page Methods
+
     public void selectCreateNewPlayListBtn () {
         findElement(getCreateNewPlayListBtn).click();
     }

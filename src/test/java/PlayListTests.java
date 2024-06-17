@@ -1,4 +1,5 @@
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -7,7 +8,7 @@ import pages.PlayListPage;
 public class PlayListTests extends BaseTest{
 
     @Test
-    public void addSongToPlaylist() throws InterruptedException {
+    protected void addSongToPlaylist() throws InterruptedException {
 
         // create a playlist
         createPlayListBtn(playListName);
