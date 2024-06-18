@@ -1,4 +1,12 @@
-   //Constructor
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;//Constructor
+import pages.BasePage;
+
+public class LoginPage extends BasePage {
+
+    //Constructor
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
     }
@@ -28,5 +36,5 @@
     }
 
 
-
 }
+
