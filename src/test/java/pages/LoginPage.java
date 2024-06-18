@@ -3,39 +3,35 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends BasePage {
+import javax.swing.text.html.FormSubmitEvent;
 
-    // Constructor
-    public LoginPage(WebDriver givenDriver) {
+public class LoginPage extends BasePage{
+    public LoginPage(WebDriver givenDriver){
         super(givenDriver);
     }
 
-    // Locators
+    //Locator for Login Page Web Elements
     By emailField = By.cssSelector("input[type='email']");
     By passwordField = By.cssSelector("input[type='password']");
     By submitBtn = By.cssSelector("button[type='submit']");
 
-    //Page Methods
-    // Very basic methods
-    public void provideEmail(String email) {
-      //  findElement(emailField).clear();
+    //Methods
+    public void provideEmail(String email){
         findElement(emailField).sendKeys(email);
     }
 
-    public void providePassword(String password) {
-      //  findElement(passwordField).clear();
+    public void providePassword(String password){
         findElement(passwordField).sendKeys(password);
     }
 
-    public void clickSubmit() {
+    public void clickSubmit(){
         findElement(submitBtn).click();
     }
 
-    public void login() {
-        provideEmail(userName);
-        providePassword(userPassword);
-//        provideEmail("demo@testpro.io");
-//        providePassword("te$t$tudent");
+    public void login(){
+        provideEmail("demo@class.com");
+        providePassword("te$t$tudent");
         clickSubmit();
     }
+
 }

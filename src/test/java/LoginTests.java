@@ -3,62 +3,56 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.annotations.DataProvider;
 import pages.HomePage;
 import pages.LoginPage;
+//import pageFactory.LoginPage;
 
 public class LoginTests extends BaseTest {
 
     @Test
-    public void loginValidEmailPassword() throws InterruptedException {
-
-    //  Before we can use LoginPage objects, we have to create a new instance of that object
-    //  So we need a new constructor that enables us to use those pages object
+    public void loginValidEmailPassword() throws InterruptedException{
         LoginPage loginPage = new LoginPage(driver);
-
         HomePage homePage = new HomePage(driver);
 
-    //  loginPage.login();
+        loginPage.provideEmail("demo@testpro.io");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
 
-    //  Expected Result
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-
     }
 
-    @Test (enabled = false)
+    //@Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
+        //navigateToPage();
+        String expectedUrl = "https://qa.koel.app/";
         // Steps
         enterEmail("invalid@testpro.io");
         enterPassword("te$t$tudent");
         submit();
 
-    //  Thread.sleep(1000); // Sleep or pause for 2 seconds (adjust as needed)
-    //  Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), url); // https://qa.koel.app/
+        // Expected Result
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl); // https://qa.koel.app/
     }
 
-    @Test (enabled = false)
+   // @Test
     public void loginValidEmailEmptyPassword() throws InterruptedException {
 
-   //   navigateToPage();
+        //navigateToPage();
+        String expectedUrl = "https://qa.koel.app/";
         enterEmail("invalid@testpro.io");
         submit();
-
-    //  Thread.sleep(1000); // Sleep or pause for 2 seconds (adjust as needed)
-    //  Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
+        // Expected Result
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    @Test (enabled = false, dataProvider = "IncorrectLoginData", dataProviderClass = TestDataProvider.class)
-    public void loginEmptyEmailPassword(String email, String password) throws InterruptedException {
-
-    //  navigateToPage();
+    //@Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    public void negativeLoginTest(String email, String password) throws InterruptedException {
+        String expectedUrl = "https://qa.koel.app/";
         enterEmail(email);
         enterPassword(password);
         submit();
-    //  Thread.sleep(1000);
-        Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
-
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
     }
+
 }

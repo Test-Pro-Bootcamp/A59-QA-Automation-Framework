@@ -1,8 +1,8 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.LoginPage;
-import pages.ProfilePage;
 
 import java.util.UUID;
 
@@ -10,76 +10,55 @@ public class ProfileTests extends BaseTest{
 
     @Test
     public void changeProfileName() throws InterruptedException {
-
+        //navigateToPage();
+        login();
         navigateToProfilePage();
         String uniqueName = generateUniqueName();
-        Thread.sleep(2000);
         changeName(uniqueName);
-        Thread.sleep(2000);
+        String profileName = getProfileName();
+        Assert.assertEquals(profileName, uniqueName);
     }
 
     private void login() throws InterruptedException {
-        enterEmail(userName);
-        enterPassword(userPassword);
+        enterEmail("demo@testpro.io");
+        enterPassword("te$t$tudent");
         submit();
     }
 
-    private WebElement getProfileName() {
-
-        ProfilePage profilePage = new ProfilePage(driver);
-
-        return profilePage.selectProfileSaveInfo();
-
+    private String getProfileName() {
+        WebElement profileName = driver.findElement(By.cssSelector("span.name"));
+        return profileName.getText();
     }
 
     private String generateUniqueName() {
-
         return UUID.randomUUID().toString().replace("-", "");
     }
 
-    private void changeName(String newName) throws InterruptedException {
-
-        ProfilePage profilePage = new ProfilePage(driver);
-
-        profilePage.selectInputProfileNameField(newName);
-        profilePage.selectInputProfilePasswordField(userPassword);
-
-        Assert.assertEquals(profilePage.selectVerifyNotificationMsg(), expectedProfileUpdatedMessage);
-
+    private void changeName(String name) throws InterruptedException {
+        enterCurrentPassword("te$t$tudent");
+        enterNewName(name);
+        saveChanges();
+        Thread.sleep(1000);
     }
 
     private void saveChanges() {
-
-        ProfilePage profilePage = new ProfilePage(driver);
-
-        profilePage.selectProfileSaveBtn();
-
+        WebElement saveButton = driver.findElement(By.className("btn-submit"));
+        saveButton.click();
     }
 
-    private void enterNewName(String newName) {
-
-        ProfilePage profilePage = new ProfilePage(driver);
-
-        profilePage.selectInputProfileNameField(newName);
-
+    private void enterNewName(String name) {
+        WebElement newName = driver.findElement(By.id("inputProfileName"));
+        newName.clear();
+        newName.sendKeys(name);
     }
 
-    private void enterCurrentPassword(String userPassword) {
-
-        ProfilePage profilePage = new ProfilePage(driver);
-
-        profilePage.selectInputProfilePasswordField(userPassword);
-
+    private void enterCurrentPassword(String password) {
+        WebElement currentPasswordField = driver.findElement(By.id("inputProfileCurrentPassword"));
+        currentPasswordField.sendKeys(password);
     }
 
-    private void navigateToProfilePage() throws InterruptedException {
-
-        LoginPage loginPage = new LoginPage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
-
-        loginPage.login();
-        Thread.sleep(5000);
-        profilePage.selectProfileNameBtn();
-
+    private void navigateToProfilePage() {
+        WebElement profileName = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span.name")));
+        profileName.click();
     }
 }
