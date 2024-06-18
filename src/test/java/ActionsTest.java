@@ -116,15 +116,11 @@ public class ActionsTest extends BaseTest{
         String updatedPlaylistMsg = "Updated playlist \""+newPlaylistName+".\"";
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login();
-        doubleClickPlaylist();
         enterNewPlaylistName();
         Assert.assertEquals(getRenamePlaylistSuccessMsg(), updatedPlaylistMsg);
     }
 
-    public void doubleClickPlaylist(){
-        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
-        actions.doubleClick(playlistElement).perform();
-    }
+
 
     public void enterNewPlaylistName(){
         WebElement playlistInputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));

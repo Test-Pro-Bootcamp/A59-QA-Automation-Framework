@@ -1,5 +1,8 @@
-import pages.LoginPage;
-import pages.PlaylistActions;
+//import pages.LoginPage;
+//import pages.PlaylistActions;
+//import org.testng.annotations.Test;
+import pgFactoryPages.LoginPage;
+import pgFactoryPages.PlaylistActions;
 import org.testng.annotations.Test;
 
 public class PlaylistActionsTest extends BaseTest {
@@ -11,7 +14,11 @@ public class PlaylistActionsTest extends BaseTest {
         PlaylistActions playlist = new PlaylistActions(driver);
 
         // Perform login
-        loginPage.login();
+        //loginPage.login();
+        loginPage.login("giovanna.silva@testpro.io", "ShakaMaya1302!");
+        // Perform login
+       // loginPage.login("giovanna.silva@testpro.io", "ShakaMaya1302!");
+
 
         // Perform delete playlist action
 
