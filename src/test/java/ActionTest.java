@@ -4,40 +4,34 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AllSongsPage;
+import pages.HomePage;
 import pages.LoginPage;
+
 
 import java.util.List;
 
 public class ActionTest extends BaseTest {
     @Test
     public void playSong() {
-        enterEmail("kristina.sarkisyan@testpro.io");
-        enterPassword("o8URUDnW");
-        submit();
-        //Choose All Songs
-        chooseAllSongsList();
-        //Contextual Click on the first song
-        contextClickFirstSong();
-        //Click on Play from the menu
-        choosePlayOption();
-        Assert.assertTrue(isPlaying());
-  }
-    public void chooseAllSongsList() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a.songs"))).click();
-    }
-    public void contextClickFirstSong() {
-WebElement firstSongElement = wait.until(ExpectedConditions.visibilityOfElementLocated
-        (By.cssSelector(".all=songs tr.song-item:nth-child(1)]")));
-actions.contextClick(firstSongElement).perform();
-    }
-    public void choosePlayOption() {
-     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li.playback"))).click();
-    }
-    public boolean isPlaying() {
-        WebElement soundBarVisualizer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid = 'sound-bar-play']")));
-        return soundBarVisualizer.isDisplayed();
+       LoginPage loginPage = new LoginPage(driver);
+       HomePage homePage = new HomePage(driver);
+       AllSongsPage allSongsPage = new AllSongsPage(driver);
 
-    }
+       loginPage.provideEmail("kristina.sarkisyan@testpro.io");
+       loginPage.providePassword("o8URUDnW");
+       loginPage.clickSubmit();
+       //loginPage.login();
+        //Choose All Songs
+       homePage.chooseAllSongsList();
+        //Contextual Click on the first song
+        allSongsPage.contextClickFirstSong();
+        //Click on Play from the menu
+        allSongsPage.choosePlayOption();
+        Assert.assertTrue(allSongsPage.isSongPlaying());
+  }
+
+
 // Test #2 MouseHover
     //@Test
     public void hoverOverPlayButton(){
@@ -57,7 +51,7 @@ actions.contextClick(firstSongElement).perform();
 
     //Test #3 WebElements
     //@Test
-    public void countSongsInPlaylist() throws InterruptedException {
+    public void countSongsInPlaylist() {
         enterEmail("kristina.sarkisyan@testpro.io");
         enterPassword("o8URUDnW");
         submit();
