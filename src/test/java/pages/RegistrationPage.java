@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ public class RegistrationPage extends BasePage {
 
     By registrationBtn = By.cssSelector("a[href='registration']");
 
-    public void registrationBtnClick() {
+    private void registrationBtnClick() {
        findElement(registrationBtn).click();
     }
 }
