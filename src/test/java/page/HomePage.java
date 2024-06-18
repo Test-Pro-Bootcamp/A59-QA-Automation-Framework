@@ -1,4 +1,4 @@
-package pages;
+package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ public HomePage(WebDriver givenDriver) {
     }
     //Locators
     By userAvatarIcon = By.cssSelector("img[class='avatar']");
-By allSongsList = By.cssSelector("li a.songs");
+    By allSongsList = By.cssSelector("li a.songs");
 
     public WebElement getUserAvatar() {
         return findElement(userAvatarIcon);

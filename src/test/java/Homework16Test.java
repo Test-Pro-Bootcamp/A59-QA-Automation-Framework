@@ -1,5 +1,5 @@
-import pages.HomePage;
-import pages.RegistrationPage;
+import page.HomePage;
+import page.RegistrationPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

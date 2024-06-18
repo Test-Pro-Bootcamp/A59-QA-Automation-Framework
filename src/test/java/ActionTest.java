@@ -1,6 +1,6 @@
-import pages.AllSongsPage;
-import pages.HomePage;
-import pages.LoginPage;
+import page.AllSongsPage;
+import page.HomePage;
+import page.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
