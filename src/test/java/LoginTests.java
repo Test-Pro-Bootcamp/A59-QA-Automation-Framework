@@ -1,7 +1,9 @@
-import pages.HomePage;
-import pages.LoginPage;
+//import pages.HomePage;
+//import pages.LoginPage;
+import pageFactory.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
 
 public class LoginTests extends BaseTest {
 
@@ -10,24 +12,24 @@ public class LoginTests extends BaseTest {
     public void loginEmptyEmailPassword() {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-       loginPage.login();
-       Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-
-         /*//navigateToPage();
-        String expectedURL = "https://qa.koel.app/";
-        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+        loginPage.login();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
+
     //Happy Path - Login Test
 @Test
     public void loginValidEmailPassword()  {
-    //navigateToPage();
-    enterEmail("demo@testpro.io");
-    enterPassword("te$t$tudent");
-    submit();
-        WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
-        //WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
-        //Assertions - Expected vs Actual
-        Assert.assertTrue(avatarIcon.isDisplayed());*/
+    LoginPage loginPage = new LoginPage(driver);
+    HomePage homePage = new HomePage(driver);
+    loginPage.provideEmail("kristina.sarkisyan@testpro.io").providePassword("o8URUDnW").clickSubmit();
+    Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
+
+    }
+
+        /*//navigateToPage();
+        String expectedURL = "https://qa.koel.app/";
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
     // Negative Test Case
     @Test
@@ -57,9 +59,9 @@ public class LoginTests extends BaseTest {
         enterEmail(email);
         enterPassword(password);
         submit();
-        Assert.assertEquals(driver.getCurrentUrl(),expectedUrl);
+        Assert.assertEquals(driver.getCurrentUrl(),expectedUrl);*/
 
     }
 
 
-}
+
