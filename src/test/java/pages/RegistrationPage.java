@@ -10,7 +10,7 @@ public class RegistrationPage extends BasePage {
 
     By registrationBtn = By.cssSelector("a[href='registration']");
 
-    private void registrationBtnClick() {
+    public void registrationBtnClick() {
        findElement(registrationBtn).click();
     }
 }

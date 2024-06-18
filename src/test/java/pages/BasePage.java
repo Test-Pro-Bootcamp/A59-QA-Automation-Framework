@@ -14,6 +14,8 @@ public class BasePage {
     WebDriverWait wait;
     Actions actions;
 
+    By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
+
 public BasePage(WebDriver givenDriver) {
     driver = givenDriver;
     wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -22,5 +24,9 @@ public BasePage(WebDriver givenDriver) {
 public WebElement findElement(By locator) {
     return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 }
+    public boolean isSongPlaying() {
+        return findElement(soundBarVisualizer).isDisplayed();
+
+    }
 
 }
