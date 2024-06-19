@@ -16,10 +16,12 @@ import java.util.*;
 
 public class BaseTest {
     public WebDriver driver = null;
-
+    public WebDriverWait wait;
+    public Actions actions = null;
+    public ChromeOptions options = new ChromeOptions();
     public String url = "https://qa.koel.app/";
 
-    WebDriverWait wait;
+
     String email = "rfkayoub12@gmail.com";
 String password = "te$t$tudent";
     @BeforeSuite
@@ -27,7 +29,7 @@ String password = "te$t$tudent";
         WebDriverManager.chromedriver().setup();
     }
 
-    public static Actions actions = null;
+
 
     @BeforeMethod
     @Parameters({"BaseURL"})

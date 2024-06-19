@@ -1,52 +1,55 @@
+import Pages.HomePage;
+import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
-    @Test
-    public void loginEmptyEmailPassword() {
+    private static final Logger log = LoggerFactory.getLogger(LoginTests.class);
+    // @Test
 
-//      Added ChromeOptions argument below to fix websocket error
-
-            String url = "https://qa.koel.app/";
-            driver.get(url);
-            enterEmail("");
-            enterPassword("");
-            submit();
-            Assert.assertEquals(driver.getCurrentUrl(), url);
-    }
 
     @Test
     public void validLogin() {
-        String url = "https://qa.koel.app/#!/home";
-        driver.get(url);
-        enterEmail(email);
-        enterPassword(password);
-        submit();
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.login();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
+
+   @Test
+    public void loginValidEmailInvalidPasswordTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginValidEmailInvalidPassword();
+        String url = "https://qa.koel.app/";
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+
+    }
+
+    @Test
+    public void loginInvalidEmailValidPasswordTest() {
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginInvalidEmailValidPassword();
+        String url = "https://qa.koel.app/";
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
     @Test
-    public void loginValidEmailInvalidPassword() {
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        enterEmail(email);
-        enterPassword("teststudent");
-        submit();
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-    }
+    public void loginEmptyEmailPassword() {
+        LoginPage loginPage = new LoginPage(driver);
 
-    @Test
-    public void loginInvalidEmailValidPassword() {
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        enterEmail("email");
-        enterPassword(password);
-        submit();
+
+        loginPage.provideEmail("");
+        loginPage.providePassword("");
+     loginPage.clickSubmit();
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 }
