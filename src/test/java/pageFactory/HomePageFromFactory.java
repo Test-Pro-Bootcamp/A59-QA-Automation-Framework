@@ -24,17 +24,14 @@ public class HomePageFromFactory extends BasePageFromFactory {
     @FindBy(css = "div.success.show")
     WebElement getCreatedPlaylistMsg;
 
-
     public HomePageFromFactory clickPlaylists() {
         clickPlaylist.click();
         return this;
     }
-
     public HomePageFromFactory clickNewPlaylist() {
         clickNewPlaylist.click();
         return this;
     }
-
     public HomePageFromFactory enterNewPlaylistName() {
         enterNewPlaylistName.sendKeys("Kristina");
         enterNewPlaylistName.sendKeys(Keys.ENTER);
@@ -42,6 +39,5 @@ public class HomePageFromFactory extends BasePageFromFactory {
     }
     public String getCreatedPlaylistMsg() {
         return getCreatedPlaylistMsg.getText();
-
     }
 }
