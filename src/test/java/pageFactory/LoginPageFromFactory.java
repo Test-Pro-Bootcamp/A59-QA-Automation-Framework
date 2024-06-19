@@ -27,7 +27,7 @@ import page.BasePage;
         //Page Methods
         public LoginPageFromFactory provideEmail(String email) {
             emailField.clear();
-            emailField.sendKeys();
+            emailField.sendKeys(email);
             return this;
             //findElement(emailField).clear();
            // findElement(emailField).sendKeys(email);
@@ -35,7 +35,7 @@ import page.BasePage;
         }
         public LoginPageFromFactory providePassword (String password) {
            passwordField.clear();
-           passwordField.sendKeys();
+           passwordField.sendKeys(password);
             //findElement(passwordField).clear();
             //(passwordField).sendKeys(password);
             return this;
