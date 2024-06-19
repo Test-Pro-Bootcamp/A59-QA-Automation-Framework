@@ -28,7 +28,12 @@ public WebElement findElement(By locator) {
 }
     public boolean isSongPlaying() {
         return findElement(soundBarVisualizer).isDisplayed();
-
     }
+    public void click (By locator) {
+    findElement(locator).click();
+    }
+public void doubleClick (By locator) {
+    actions.doubleClick(findElement(locator)).perform();
 
+}
 }
