@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,6 +20,7 @@ public class Homework19 extends BaseTest {
         // delete button
 
         removePlaylist();
+
         // ok button to conform
         //Verify that the confirmation notification
         // displayed has the text, "Deleted playlist {playlist name}".
@@ -31,19 +33,22 @@ public class Homework19 extends BaseTest {
 
 
         public String deletedPlaylist() {
-            WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
+            WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.cssSelector("div.success.show")));
             return notification.getText();
 
 
 }
 
     public void removePlaylist() {
-        WebElement deletePlaylist = driver.findElement(By.cssSelector("button[class='del btn-delete-playlist']"));
+        WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("button[class='del btn-delete-playlist']")));
         deletePlaylist.click();
     }
 
     public void clickLazyDays() {
-        WebElement lazyDays = driver.findElement(By.cssSelector("[class='playlist playlist']"));
+        WebElement lazyDays = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("[class='playlist playlist']")));
         lazyDays.click();
     }
 }

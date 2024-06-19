@@ -2,9 +2,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-/*
-import java.util.UUID;
 
+import java.util.UUID;
+/*
 public class ProfileTests extends BaseTest{
 
     @Test
@@ -18,7 +18,7 @@ public class ProfileTests extends BaseTest{
         String uniqueName = generateUniquelyName();
         changeName(uniqueName );
         String profileName = getProfileName();
-        Assert.assertEquals(profileName, uniqueName);
+        //Assert.assertEquals(profileName, uniqueName);
         
 
 
