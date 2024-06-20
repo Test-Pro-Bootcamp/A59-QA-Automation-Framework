@@ -19,6 +19,22 @@ test {
     useTestNG() {
         //suites "src/test/resources/TestNG.xml"
         //suites "src/test/resources/Smoke.xml"
-          suites "src/test/resources/Regression.xml"
+        //suites "src/test/resources/Regression.xml"
+        suites "src/test/resources/22Smoke.xml"
+    }
+}
+task testSmoke(type: Test){
+    useTestNG(){
+        suites "src/test/resources/Smoke.xml"
+    }
+}
+task testRgression(type: Test){
+    useTestNG(){
+        suites "src/test/resources/Regression.xml"
+    }
+}
+task testSmokeHW18(type: Test){
+    useTestNG(){
+        suites "src/test/resources/SmokeHW18.xml"
     }
 }

@@ -20,11 +20,8 @@ public class LoginTests extends BaseTest {
 
 
         navigateToPage();
-        Thread.sleep(2000);
         enterEmail("aleksei.koksharov@testpro.io");
-        Thread.sleep(2000);
         enterPassword("ak1234!@#$");
-        Thread.sleep(2000);
         submit();
         Thread. sleep(4000);
 
