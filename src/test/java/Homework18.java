@@ -19,7 +19,7 @@ public class Homework18 extends BaseTest {
         clickPlayBtn();
         Thread.sleep(2000);
         validatePauseButton();
-    }
+    }//
 
 
 
