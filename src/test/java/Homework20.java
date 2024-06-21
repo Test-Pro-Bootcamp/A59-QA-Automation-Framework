@@ -39,7 +39,7 @@ public class Homework20 extends BaseTest {
     }
 
     public void openPlaylist() {
-        WebElement playlist = driver.findElement(By.cssSelector("[href='#!/playlist/95614']"));
+        WebElement playlist = driver.findElement(By.cssSelector("[href='#!/playlist/96187']"));
         playlist.click();
         logger.info("Opened playlist");
     }

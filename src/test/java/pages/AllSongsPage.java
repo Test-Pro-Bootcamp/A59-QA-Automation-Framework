@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class AllSongsPage  extends BasePage{
     //CONSTRUCTOR
@@ -15,6 +16,6 @@ public class AllSongsPage  extends BasePage{
 
     //PAGE METHODS
     public void contextClickFirstSong(){
-        actions.contextClick(findElement(firstSong)).perform();
+        actions.contextClick(findElement((WebElement) firstSong)).perform();
     }
 }

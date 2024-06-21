@@ -11,20 +11,26 @@ import java.time.Duration;
 
 public class BasePage {
 
-    WebDriver driver;
-    WebDriverWait wait;
-    Actions actions;
+protected WebDriver driver;
+protected WebDriverWait wait;
+protected Actions actions;
 
     public BasePage(WebDriver givenDriver){
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        actions = new Actions(driver);
-        PageFactory.initElements(driver,this);
-
     }
-    public WebElement findElement(By locator){
+
+protected void click(By locator){
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+protected WebElement findElement(By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-
+protected void contextClick(By locator){
+        actions.contextClick(findElement(locator)).perform();
+    }
+protected void doubleClick(By locator){
+        actions.doubleClick(findElement(locator)).perform();
+}
 
 }

@@ -8,47 +8,36 @@ import org.testng.annotations.Test;
 public class LoginPage extends BasePage {
 
 
-    @FindBy(css = "input[type='email']")
-    WebElement emailField;
+    @FindBy(css = "[type='submit']")
+    private WebElement submitButtonLocator;
 
-    @FindBy(css = "input[type='password']")
-    WebElement passwordField;
+    @FindBy(css = "[type='email']")
+    private WebElement emailField;
 
-    @FindBy(css = "button[type='submit']")
-    WebElement submitBtn;
+    @FindBy(css = "button[type='password']")
+    private WebElement passwordField;
 
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
     }
 
     //PAGE METHODS
-    public LoginPage provideEmail(String email) {
-        emailField.sendKeys(email);
-
-        //findElement(emailField).sendKeys(email)
+    public LoginPage clickSubmitBtn() {
+        submitButtonLocator.click();
         return this;
     }
 
+    public LoginPage provideEmail(String email) {
+        emailField.sendKeys(email);
+       return this;
+    }
+
+
     public LoginPage providePassword(String password) {
         passwordField.sendKeys(password);
-        //findElement(passwordField).sendKeys();
-
-        return null;
+        return this;
     }
 
 
-    public LoginPage clickSubmit() {
-        submitBtn.click();
-        //findElement(submitBtn).click();
-        return null;
-    }
-
-    public LoginPage login() {
-        provideEmail("india.messam@testpro.io");
-        providePassword("slcTalgy");
-        clickSubmit();
-
-        return null;
-    }
 
 }

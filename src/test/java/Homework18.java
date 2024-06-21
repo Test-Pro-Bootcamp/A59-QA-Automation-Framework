@@ -16,10 +16,10 @@ public class Homework18 extends BaseTest {
  }
 //Return to work on this over the weekend
  public void clickPlay(){
-     @FindBy(xpath ="//i[@data-testid='play-next-btn']" )
+     //@FindBy(xpath ="//i[@data-testid='play-next-btn']" )
              WebElement playNextBtn;
      //WebElement playNextButton = driver.findElement(By.xpath("//i[@data-testid='play-next-btn']"));
-     @FindBy(xpath = "//[@data-testid='play-btn']")
+     //@FindBy(xpath = "//[@data-testid='play-btn']")
              WebElement playBtn;
      //WebElement playButton = driver.findElement(By.xpath("//[@data-testid='play-btn']"));
 

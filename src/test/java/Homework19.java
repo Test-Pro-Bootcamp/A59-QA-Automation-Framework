@@ -15,7 +15,7 @@ public class Homework19 extends BaseTest {
 
     @Test
     public void deletePlaylist() {
-        String expectedPlaylistDeletedMessage = "Deleted playlist \"First user playlist.\"";
+        String expectedPlaylistDeletedMessage = "Deleted playlist \"cloud.\"";
 
         // Initialize WebDriverWait with a timeout of 10 seconds
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -33,13 +33,13 @@ public class Homework19 extends BaseTest {
 
         // Verify the deletion message
         String actualMessage = getDeletedPlaylistMsg();
-        Assert.assertEquals(actualMessage, expectedPlaylistDeletedMessage);
+        Assert.assertEquals(actualMessage, "Deleted playlist cloud.");
 
         logger.info("deletePlaylist test completed successfully");
     }
 
     public void openPlaylist() {
-        WebElement playlist = driver.findElement(By.cssSelector("[href='#!/playlist/95613']"));
+        WebElement playlist = driver.findElement(By.cssSelector("[href='#!/playlist/96185']"));
         playlist.click();
         logger.info("Opened playlist");
     }

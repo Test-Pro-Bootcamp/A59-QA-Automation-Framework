@@ -13,7 +13,7 @@ public class Actionstest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-        loginPage.login();
+
 
 
     }
