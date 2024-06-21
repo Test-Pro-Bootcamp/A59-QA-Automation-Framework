@@ -11,9 +11,14 @@ public class HomePage extends BasePage{
     }
 
     By userAvatarIcon = By.cssSelector("img.avatar");
+    By allSongsList = By.cssSelector("li a.songs");
 
 
     public WebElement getUserAvatar(){
         return  findElement(userAvatarIcon);
+    }
+
+    public void chooseAllSongsList(){
+        findElement(allSongsList).click();
     }
 }

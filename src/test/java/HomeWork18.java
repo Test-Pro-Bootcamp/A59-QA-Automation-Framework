@@ -1,3 +1,7 @@
+import Pages.AllSongsPage;
+import Pages.BasePage;
+import Pages.HomePage;
+import Pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,25 +14,26 @@ public class HomeWork18 extends BaseTest{
 
     @Test
     public void playSong(){
-       // navigateToPage();
-        enterEmail(email);
-        enterPassword(password);
-        submit();
-        clickPlayNext();
-        validateSongPlaying();
+
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
+
+
+        loginPage.login();
+        homePage.chooseAllSongsList();
+        allSongsPage.contextClickFirstSong();
+        allSongsPage.choosePlayOption();
+
+
+        allSongsPage.validateSongPlaying();
 
     }
 
-public void clickPlayNext(){
-    WebElement nextSongBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[@title='Play next song']")));
-    nextSongBtn.click();
-
-}
-
-public void validateSongPlaying(){
-    WebElement soundBar = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='plyr__progress']")));
-    Assert.assertTrue(soundBar.isDisplayed());
 
 
-}
+
+
+
+
 }

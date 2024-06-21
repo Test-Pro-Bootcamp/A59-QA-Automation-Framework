@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,7 +27,9 @@ public class BaseTest {
 String password = "te$t$tudent";
     @BeforeSuite
     static void setupClass() {
+
         WebDriverManager.chromedriver().setup();
+       // WebDriverManager.firefoxdriver().setup();
     }
 
 
@@ -37,7 +40,8 @@ String password = "te$t$tudent";
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications","--remote-allow-origins=*","--start-maximized");
 
-        driver = new ChromeDriver(options);
+       driver = new ChromeDriver(options);
+       // driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
          wait = new WebDriverWait(driver, Duration.ofSeconds(10));
          actions = new Actions(driver);
