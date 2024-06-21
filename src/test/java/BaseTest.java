@@ -16,7 +16,7 @@ import java.time.Duration;
 import java.util.*;
 
 public class BaseTest {
-    public WebDriver driver = null;
+    public static WebDriver driver = null;
     public WebDriverWait wait;
     public Actions actions = null;
     public ChromeOptions options = new ChromeOptions();
@@ -28,8 +28,8 @@ String password = "te$t$tudent";
     @BeforeSuite
     static void setupClass() {
 
-        WebDriverManager.chromedriver().setup();
-       // WebDriverManager.firefoxdriver().setup();
+        //  WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
     }
 
 
@@ -37,11 +37,12 @@ String password = "te$t$tudent";
     @BeforeMethod
     @Parameters({"BaseURL"})
     public void launchBrowser(String baseURL) {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-notifications","--remote-allow-origins=*","--start-maximized");
+        //ChromeOptions options = new ChromeOptions();
+      //  options.addArguments("--disable-notifications","--remote-allow-origins=*","--start-maximized");
 
-       driver = new ChromeDriver(options);
+        //  driver = new ChromeDriver(options);
        // driver = new FirefoxDriver();
+        driver = pickBrowser(System.getProperty("browser"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
          wait = new WebDriverWait(driver, Duration.ofSeconds(10));
          actions = new Actions(driver);
@@ -74,5 +75,21 @@ String password = "te$t$tudent";
     @AfterMethod
     public void closeBrowser() {
         driver.quit();
+    }
+
+    public static WebDriver pickBrowser(String browser) {
+        switch (browser) {
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                 return driver = new FirefoxDriver();
+
+            default:
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--disable-notifications", "--remote-allow-origins=*", "--start-maximized");
+               return driver = new ChromeDriver(options);
+        }
+
+
     }
 }
