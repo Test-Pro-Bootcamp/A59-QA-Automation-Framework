@@ -7,8 +7,8 @@ public class Homework22Test extends BaseTest {
 
     @Test
     public void renamePlaylist() throws InterruptedException {
-        String newPlaylistName = "My new playlist";
-        String updatedPlaylistMsg = "Updated Playlist \"My new playlist.\"";
+        String newPlaylistName = "Kristina";
+        String updatedPlaylistMsg = "Updated Playlist \"Kristina.\"";
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -17,6 +17,5 @@ public class Homework22Test extends BaseTest {
         homePage.doubleClickPlaylist();
         homePage.enterNewPlaylistName(newPlaylistName);
         Assert.assertEquals(homePage.getRenamePlaylistSuccessMsg(), updatedPlaylistMsg);
-
     }
 }
