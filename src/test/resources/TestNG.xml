@@ -17,6 +17,7 @@
             <class name="Homework21Test"/>
             <class name="Homework22Test"/>
             <class name="Homework23Test"/>
+            <class name="Homework24Test"/>
             <class name="ActionTest"/>
         </classes>
     </test>

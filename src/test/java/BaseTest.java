@@ -39,7 +39,7 @@ public class BaseTest {
     @Parameters({"BaseURL"})
     public void launchBrowser(String baseURL) throws MalformedURLException {
         //Pre-Condition
-       // ChromeOptions options = new ChromeOptions();
+        //ChromeOptions options = new ChromeOptions();
         //options.addArguments("--remote-allow-origins=*");
         //options.addArguments("--disable-notifications");
         //options.addArguments("--remote-allow-origins=*");
