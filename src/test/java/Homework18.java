@@ -25,7 +25,7 @@ public class Homework18 extends BaseTest {
         Thread.sleep(2000);
         //Assertions - Expected vs Actual
         Assert.assertTrue(isDisplayedSoundBar());
-    }
+    }//
 
     private boolean isDisplayedSoundBar() {
         WebElement soundBar = driver.findElement(By.cssSelector("img[alt='Sound bars']"));
