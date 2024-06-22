@@ -28,7 +28,7 @@ public class BaseTest {
     public ChromeDriver launchBrowser(String baseURL){
         //      Added ChromeOptions argument below to fix websocket error
 
-        
+
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -40,7 +40,7 @@ public class BaseTest {
         options.addArguments("--disable-notifications","--remote-allow-origins=*", "--incognito","--start-maximized");
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         return new ChromeDriver(options);
-
+//
 
     }
 
