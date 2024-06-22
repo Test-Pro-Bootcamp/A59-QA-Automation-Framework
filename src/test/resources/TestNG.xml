@@ -17,17 +17,19 @@
                     <include name="renamePlayList"/>
                 </methods>
            </class> -->
-            <class name="PlayListTests">
+          <!--  <class name="PlayListTests">
                 <methods>
                     <include name="addSongToPlaylist"/>
                 </methods>
-            </class>
-            <!--
-            <class name="t">
-                <methods>
-                    <include name=""
+            </class>  -->
+
+            <class name="HomeTests">
+                 <methods>
+                    <include name="countSongsInPlaylist"/>
+
                 </methods>
-            </class> -->
+
+            </class>
         </classes>
     </test>
 </suite>

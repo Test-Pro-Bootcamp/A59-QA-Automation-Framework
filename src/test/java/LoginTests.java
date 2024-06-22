@@ -11,13 +11,15 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginValidEmailPassword() throws InterruptedException{
+
+//      GIVEN
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-        loginPage.provideEmail("demo@testpro.io");
-        loginPage.providePassword("te$t$tudent");
-        loginPage.clickSubmit();
+//      WHEN
+        loginPage.login();
 
+//      THEN
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
 
@@ -26,6 +28,7 @@ public class LoginTests extends BaseTest {
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
+
         // Steps
         enterEmail("invalid@testpro.io");
         enterPassword("te$t$tudent");

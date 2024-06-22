@@ -8,7 +8,6 @@ public class AllSongsPage extends BasePage{
     public AllSongsPage(WebDriver givenDriver){
         super(givenDriver);
     }
-
     //Locators
     By firstSong = By.cssSelector(".all-songs tr.song-item:nth-child(1)");
     By playOption = By.cssSelector("li.playback");

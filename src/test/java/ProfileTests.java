@@ -1,64 +1,31 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.UUID;
+import pages.LoginPage;
+import pages.ProfilePage;
 
 public class ProfileTests extends BaseTest{
 
     @Test
     public void changeProfileName() throws InterruptedException {
-        //navigateToPage();
-        login();
-        navigateToProfilePage();
-        String uniqueName = generateUniqueName();
-        changeName(uniqueName);
-        String profileName = getProfileName();
-        Assert.assertEquals(profileName, uniqueName);
-    }
 
-    private void login() throws InterruptedException {
-        enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
-        submit();
-    }
+//      GIVEN
+        String uniqueName = null;
+        String expectedUpdatedMsg = "Profile updated.";
+        String test = "";
 
-    private String getProfileName() {
-        WebElement profileName = driver.findElement(By.cssSelector("span.name"));
-        return profileName.getText();
-    }
+        LoginPage loginPage = new LoginPage(driver);
+        ProfilePage profilePage = new ProfilePage(driver);
 
-    private String generateUniqueName() {
-        return UUID.randomUUID().toString().replace("-", "");
-    }
+        loginPage.login();
+        Thread.sleep(2000);
 
-    private void changeName(String name) throws InterruptedException {
-        enterCurrentPassword("te$t$tudent");
-        enterNewName(name);
-        saveChanges();
-        Thread.sleep(1000);
-    }
+//      WHEN
+        profilePage.selectProfileNameBtn();
+        uniqueName = profilePage.generateUniqueName();
+        profilePage.selectInputProfileNameField(uniqueName);
+        profilePage.selectInputProfilePasswordField(userPassword);
 
-    private void saveChanges() {
-        WebElement saveButton = driver.findElement(By.className("btn-submit"));
-        saveButton.click();
-    }
-
-    private void enterNewName(String name) {
-        WebElement newName = driver.findElement(By.id("inputProfileName"));
-        newName.clear();
-        newName.sendKeys(name);
-    }
-
-    private void enterCurrentPassword(String password) {
-        WebElement currentPasswordField = driver.findElement(By.id("inputProfileCurrentPassword"));
-        currentPasswordField.sendKeys(password);
-    }
-
-    private void navigateToProfilePage() {
-        WebElement profileName = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span.name")));
-        profileName.click();
+//      THEN
+        Assert.assertEquals(profilePage.selectUpdatedVerifyNotificationMsg(test), expectedUpdatedMsg);
     }
 }

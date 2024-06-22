@@ -59,7 +59,7 @@ public class ActionsTest extends BaseTest {
     //@Test
     public void hoverOverPlayButton() throws InterruptedException {
         //bg steps
-        enterEmail("demo@class.com");
+        enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");
         submit();
         //hover and verify play
@@ -75,9 +75,9 @@ public class ActionsTest extends BaseTest {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Test #3 WebElements
-    //@Test
+    @Test
     public void countSongsInPlaylist() throws InterruptedException {
-        enterEmail("demo@class.com");
+        enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");
         submit();
 
@@ -87,11 +87,13 @@ public class ActionsTest extends BaseTest {
     }
 
     public void choosePlaylistByName(String playlistName) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + playlistName + "')]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.xpath("//a[contains(text(),'" + playlistName + "')]"))).click();
     }
 
     public void displayAllSongs() {
-        List<WebElement> songList = driver.findElements(By.cssSelector("section#playlistWrapper td.title"));
+        List<WebElement> songList = driver.findElements
+                (By.cssSelector("section#playlistWrapper td.title"));
         //count and display song names
         System.out.println("Number of Songs in the playlist: " + countSongs());
         for (WebElement e : songList) {
@@ -100,7 +102,9 @@ public class ActionsTest extends BaseTest {
     }
 
     public int countSongs() {
-        return driver.findElements(By.cssSelector("section#playlistWrapper td.title")).size();
+
+        return driver.findElements(
+                By.cssSelector("section#playlistWrapper td.title")).size();
     }
 
     public String getPlaylistDetails() {

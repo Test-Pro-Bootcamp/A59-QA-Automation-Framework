@@ -6,16 +6,17 @@ import org.openqa.selenium.WebDriver;
 import javax.swing.text.html.FormSubmitEvent;
 
 public class LoginPage extends BasePage{
+
+    // Constructors
     public LoginPage(WebDriver givenDriver){
         super(givenDriver);
     }
-
-    //Locator for Login Page Web Elements
+    // Locator for Login Page Web Elements
     By emailField = By.cssSelector("input[type='email']");
     By passwordField = By.cssSelector("input[type='password']");
     By submitBtn = By.cssSelector("button[type='submit']");
 
-    //Methods
+    // Methods
     public void provideEmail(String email){
         findElement(emailField).sendKeys(email);
     }
@@ -29,7 +30,7 @@ public class LoginPage extends BasePage{
     }
 
     public void login(){
-        provideEmail("demo@class.com");
+        provideEmail("demo@testpro.io");
         providePassword("te$t$tudent");
         clickSubmit();
     }
