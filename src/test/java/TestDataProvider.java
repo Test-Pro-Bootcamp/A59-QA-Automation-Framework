@@ -2,7 +2,7 @@ import org.testng.annotations.DataProvider;
 
 public class TestDataProvider extends BaseTest {
 
-    @DataProvider(name = "NegariveLoginTestData")
+    @DataProvider(name = "NegativeLoginTestData")
     public static Object[][] getDataFromDataProviders(){
         return new Object[][] {
                 {"alekseikoksharov@testpro.io","invalidPassword"},   //alekseikoksharov@testpro.io - invalid email
