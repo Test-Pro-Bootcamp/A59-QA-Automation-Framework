@@ -83,7 +83,7 @@ public class LoginTests extends BaseTest {
 
     }
 
-    @Test(dataProvider = "NegariveLoginTestData" , dataProviderClass = TestDataProvider.class)
+    @Test(dataProvider = "NegativeLoginTestData" , dataProviderClass = TestDataProvider.class)
     public void negativeLoginTest(String email, String password) throws InterruptedException {
 
         String expectedUrl = "https://qa.koel.app/";
