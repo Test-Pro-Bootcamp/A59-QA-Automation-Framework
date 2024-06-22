@@ -35,20 +35,26 @@ public class ActionsTest extends BaseTest {
     }
 
     public void chooseAllSongsList() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a.songs"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("li a.songs"))).click();
     }
 
     public void contextClickFirstSong() throws InterruptedException {
-        WebElement firstSongElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
+        WebElement firstSongElement = wait.until
+                (ExpectedConditions.visibilityOfElementLocated
+                        (By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
         actions.contextClick(firstSongElement).perform();
     }
 
     public void choosePlayOption() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li.playback"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("li.playback"))).click();
     }
 
     public boolean isPlaying() {
-        WebElement soundBarVisualizer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid = 'sound-bar-play']")));
+        WebElement soundBarVisualizer = wait.until
+                (ExpectedConditions.visibilityOfElementLocated
+                        (By.cssSelector("[data-testid = 'sound-bar-play']")));
         return soundBarVisualizer.isDisplayed();
     }
 
@@ -67,7 +73,8 @@ public class ActionsTest extends BaseTest {
     }
 
     public WebElement hoverPlay() {
-        WebElement play = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        WebElement play = driver.findElement
+                (By.cssSelector("[data-testid='play-btn']"));
         actions.moveToElement(play).perform();
         return wait.until(ExpectedConditions.visibilityOf(play));
     }
@@ -108,7 +115,8 @@ public class ActionsTest extends BaseTest {
     }
 
     public String getPlaylistDetails() {
-        return driver.findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
+        return driver.findElement
+                (By.cssSelector("span.meta.text-secondary span.meta")).getText();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -127,19 +135,25 @@ public class ActionsTest extends BaseTest {
     }
 
     public void doubleClickPlaylist() {
-        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
+        WebElement playlistElement = wait.until
+                (ExpectedConditions.visibilityOfElementLocated
+                         (By.cssSelector(".playlist:nth-child(3)")));
         actions.doubleClick(playlistElement).perform();
     }
 
     public void enterNewPlaylistName() {
-        WebElement playlistInputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
+        WebElement playlistInputField = wait.until
+                (ExpectedConditions.visibilityOfElementLocated
+                        (By.cssSelector("[name='name']")));
         playlistInputField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
         playlistInputField.sendKeys(newPlaylistName);
         playlistInputField.sendKeys(Keys.ENTER);
     }
 
     public String getRenamePlaylistSuccessMsg() {
-        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+        WebElement notification = wait.until
+                (ExpectedConditions.visibilityOfElementLocated
+                        (By.cssSelector("div.success.show")));
         return notification.getText();
     }
 

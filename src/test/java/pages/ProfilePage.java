@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.UUID;
 
@@ -11,19 +13,31 @@ public class ProfilePage extends BasePage {
     // Constructors
     public ProfilePage(WebDriver givenDriver) {
         super(givenDriver);
+        PageFactory.initElements(driver, this);
     }
 
     // Locators
-    By getUpdatedVerificationMsg = By.xpath("//*[contains(text(), 'Profile updated.')]");
-    By getProfileNameBtn = By.cssSelector("span.name");
-    By getProfileSaveBtn = By.cssSelector("btn-submit");
-    By getProfileNameDisplayed = By.cssSelector("span.name");
-    By getInputProfileNameField = By.cssSelector("input[type='text'][name='name']");
-    By getInputProfileCurrentPasswordField = By.cssSelector("input[type='password'][name='current_password'][id='inputProfileCurrentPassword']");
+    @FindBy(xpath ="//*[contains(text(), 'Profile updated.')]")
+    private WebElement getUpdatedVerificationMsg;
+
+    @FindBy(css = "span.name")
+    private WebElement getProfileNameBtn;
+
+    @FindBy(css = "btn-submit")
+    private WebElement getProfileSaveBtn;
+
+    @FindBy(css = "span.name")
+    private WebElement getProfileNameDisplayed;
+
+    @FindBy(css = "input[type='text'][name='name']")
+    private WebElement getInputProfileNameField;
+
+    @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
+    private WebElement getInputProfileCurrentPasswordField;
 
     //Page Methods
     public void selectProfileNameBtn() {
-        findElement(getProfileNameBtn).click();
+        getProfileNameBtn.click();
     }
 
     public String generateUniqueName() {
@@ -32,33 +46,33 @@ public class ProfilePage extends BasePage {
     }
 
     public void selectInputProfileNameField(String newName) {
-        findElement(getInputProfileNameField).clear();
-        findElement(getInputProfileNameField).sendKeys(newName + "\n");
+        getInputProfileNameField.clear();
+        getInputProfileNameField.sendKeys(newName + "\n");
     }
 
     public void selectInputProfilePasswordField(String userPassword) {
-        findElement(getInputProfileCurrentPasswordField).clear();
-        findElement(getInputProfileCurrentPasswordField).sendKeys(userPassword + "\n");
+        getInputProfileCurrentPasswordField.clear();
+        getInputProfileCurrentPasswordField.sendKeys(userPassword + "\n");
 
     }
     public String selectVerifyNotificationMsg() {
 
-        return findElement(getUpdatedVerificationMsg).getText();
+        return getUpdatedVerificationMsg.getText();
     }
     public void selectProfileSaveBtn() {
 
-        findElement(getProfileSaveBtn).click();
+        getProfileSaveBtn.click();
     }
 
     public WebElement selectProfileSaveInfo() {
 
-        return  findElement(getProfileSaveBtn);
+        return  getProfileSaveBtn;
     }
 
     public String selectUpdatedVerifyNotificationMsg(String test) {
 
-        test = findElement(getUpdatedVerificationMsg).getText();
+        test = getUpdatedVerificationMsg.getText();
         return test;
-//        return findElement(getUpdatedVerificationMsg).isDisplayed();
+//        return getUpdatedVerificationMsg.isDisplayed();
     }
 }

@@ -146,8 +146,8 @@ public class HomeTests extends BaseTest {
         HomePage homePage = new HomePage(driver);
         BasePage basePage = new BasePage(driver);
 
-        basePage.mouseOverAndDoubleClick(By.id(playlistName));
-        homePage.selectPlaylistToEditBtn();
+        homePage.mouseOverAndDoubleClick(playlistName);
+     //   homePage.selectPlaylistToEditBtn();
         homePage.selectPlaylistFieldName();
 
         Assert.assertEquals(homePage.selectRenamePlaylistSuccessMsg(), updatedPlayListMsg);

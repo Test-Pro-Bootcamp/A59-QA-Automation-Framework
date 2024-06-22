@@ -39,7 +39,6 @@ public class BaseTest {
     protected String expectedDeletedMsg =   "Deleted playlist \""  + playlistName + ".\"";
     protected String expectedAddedMsg =     "Added 1 song into \"" + playlistName + ".\"";
 
-
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
@@ -70,7 +69,6 @@ public class BaseTest {
     protected void navigateToPage(String url) {
 
         driver.get(url);
-
     }
 
     protected void enterEmail(String email) {
@@ -78,14 +76,6 @@ public class BaseTest {
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.provideEmail(email);
-
-
-//        WebElement emailField = wait.until
-//                (ExpectedConditions.visibilityOfElementLocated(
-//                        By.cssSelector("input[type='email']")));
-////      WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-//        emailField.clear();
-//        emailField.sendKeys(email);
     }
 
     protected void enterPassword(String password) {
@@ -93,14 +83,6 @@ public class BaseTest {
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.providePassword(password);
-
-
-//        WebElement passwordField = wait.until
-//                (ExpectedConditions.visibilityOfElementLocated
-//                        (By.cssSelector("input[type='password']")));
-////      WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-//        passwordField.clear();
-//        passwordField.sendKeys(password);
     }
 
     protected void submit() {
@@ -108,14 +90,6 @@ public class BaseTest {
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.clickSubmit();
-
-
-//      WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
-//        WebElement submit = wait.until
-//                (ExpectedConditions.visibilityOfElementLocated
-//                        (By.cssSelector("button[type='submit']")));
-//        submit.click();
-
     }
 
     @AfterMethod

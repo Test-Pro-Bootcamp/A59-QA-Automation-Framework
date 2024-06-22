@@ -1,6 +1,10 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class HomePage extends BasePage{
 
@@ -11,98 +15,148 @@ public class HomePage extends BasePage{
     //Constructor
 
     public HomePage(WebDriver givenDriver){
-
         super(givenDriver);
+        PageFactory.initElements(driver, this);
     }
 
     //Locators
 
-    By userAvatarIcon =             By.cssSelector("img.avatar");
-    By allSongsList =               By.cssSelector("li a.songs");
-    By getPlayListToEdit =          By.xpath("//a[contains(text(), 'TestPro Playlist')]");
-    By getPlayListToEditBtn =       By.xpath("//*[starts-with(@data-testid,\"playlist-context-menu-edit\")]");
-    By getPlayListToEditField =     By.xpath("//input[starts-with(@data-testid, \"inline-playlist-name-input\")]");
-    By getRenameVerificationMsg =   By.xpath("//*[contains(text(), 'Updated playlist \""  + newPlaylistName + ".\"')]");
-    By getPlayList =                By.xpath("//a[contains(text(),'" + playlistName +"')]");
-    By getPlayBtn =                 By.xpath("//span[@class=\"album-thumb-wrapper\"]");
-    By getSoundBars =               By.cssSelector("img[alt='Sound bars']");
-    By getSongCount =               By.cssSelector("section#playlistWrapper td.title");
+    @FindBy(css = "img.avatar")
+    private WebElement userAvatarIcon;
 
+    @FindBy(css = "li a.songs")
+    private WebElement allSongsList;
+
+    @FindBy(css = "img[alt='Sound bars']")
+    private WebElement getSoundBars;
+
+    @FindBy(css = "section#playlistWrapper td.title")
+    private WebElement getSongCount;
+
+    @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
+    private WebElement getPlayListToEdit;
+
+    @FindBy(xpath = "//*[starts-with(@data-testid,\"playlist-context-menu-edit\")]")
+    private WebElement getPlayListToEditBtn;
+
+    @FindBy(xpath = "//input[starts-with(@data-testid, \"inline-playlist-name-input\")]")
+    private WebElement getPlayListToEditField;
+
+    @FindBy(xpath = "//*[contains(text(), 'Updated playlist '\"'  + newPlaylistName + '\" + '.')]")
+    private WebElement getRenameVerificationMsg;  // Recheck this later
+
+    @FindBy(xpath = "//a[contains(text(),\"' + playlistName + \"')]")
+    private WebElement getPlayList;               // Recheck this later
+
+    @FindBy(xpath = "//span[@class=\"album-thumb-wrapper\"]")
+    private WebElement getPlayBtn;
+
+    @FindBy(css = ".playlist:nth-child(3)")
+    private WebElement getFirstPlaylist;
+
+    @FindBy(css = "[name='name']")
+    private WebElement getPlaylistNameField;
+
+    @FindBy(css = "div.success.show")
+    private WebElement getPlaylistSuccessMsg;
 
     //Methods
 
     public int selectSongCount() {
-        return driver.findElements(getSongCount).size();
+
+        return getSongCount.size();
     }
 
     public WebElement getUserAvatar() {
-        return findElement(userAvatarIcon);
+
+        return userAvatarIcon;
     }
 
     public void mouseOverBtn() {
+
         mouseOver(getPlayList);
     }
 
     public void mouseOverPlayBtn() {
+
         mouseOver(getPlayBtn);
     }
 
     public void chooseAllSongsList() {
-        findElement(allSongsList).click();
+
+        allSongsList.click();
     }
 
     public String selectRenamePlaylistSuccessMsg() {
-        return findElement(getRenameVerificationMsg).getText();
+
+        return getRenameVerificationMsg.getText();
     }
 
 
     public void selectPlayBtnToSingleClick() {
+
         singleClickBtn(getPlayBtn);
     }
 
     public void selectPlayBtnToDoubleClick() {
+
         doubleClickBtn(getPlayBtn);
     }
 
     public void selectPlaylistToSingleClick() {
+
         singleClickBtn(getPlayList);
     }
 
     public void selectPlaylistToDoubleClick() {
+
         doubleClickBtn(getPlayList);
     }
 
     public void selectPlaylistToEdit() {
-        findElement(getPlayListToEdit).click();
+
+        getPlayListToEdit.click();
     }
 
     public void selectPlaylistToEditBtn() {
-        findElement(getPlayListToEditBtn).click();
+
+        getPlayListToEditBtn.click();
     }
 
     public void selectPlaylistByName() {
-      findElement(getPlayList).click();
+
+        getPlayList.click();
     }
 
-    public void selectPlaylistFieldName() {
-        findElement(getPlayListToEditField).sendKeys(Keys.chord(Keys.CONTROL,"A"), Keys.BACK_SPACE);
-        findElement(getPlayListToEditField).sendKeys(newPlaylistName);
-        findElement(getPlayListToEditField).sendKeys(Keys.ENTER);
+    public void selectPlaylistFieldName() {]
+
+        getPlayListToEditField.sendKeys(Keys.chord(Keys.CONTROL,"A"), Keys.BACK_SPACE);
+        getPlayListToEditField.sendKeys(newPlaylistName);
+        getPlayListToEditField.sendKeys(Keys.ENTER);
     }
 
     public void selectPlaylistAndClick() {
-        findElement(getPlayList).click();
+
+        getPlayList.click();
     }
 
     public void selectPlaylistAndMoveMouseTo() {
-        findElement(getPlayList).click();
+
+        getPlayList.click();
     }
 
     public WebElement selectSoundBars() {
-        return findElement(getSoundBars);
+
+        return getSoundBars;
     }
 
     public String selectRenameVerifyNotificationMsg() {
-        return findElement(getRenameVerificationMsg).getText();
+
+        return getRenameVerificationMsg.getText();
+    }
+
+    public void setGetSongCount(WebElement getSongCount) {
+
+        this.getSongCount = getSongCount;
     }
 }

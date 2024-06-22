@@ -1,24 +1,32 @@
 package pages;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.By;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 
 public class AllSongsPage extends BasePage{
 
     //Constructor
     public AllSongsPage(WebDriver givenDriver){
         super(givenDriver);
+        PageFactory.initElements(driver, this);
     }
     //Locators
-    By firstSong = By.cssSelector(".all-songs tr.song-item:nth-child(1)");
-    By playOption = By.cssSelector("li.playback");
+    @FindBy(css = ".all-songs tr.song-item:nth-child(1)")
+    private WebElement firstSong;
+
+    @FindBy(css = "li.playback")
+    private WebElement playOption;
 
     //Page Methods
-    public void contextClickFirstSong(){
-        actions.contextClick(findElement(firstSong)).perform();
+    public AllSongsPage contextClickFirstSong(){
+        actions.contextClick((firstSong).perform());
+        return this;
     }
 
     public void choosePlayOption(){
-        findElement(playOption).click();
+        playOption.click();
     }
 
 }

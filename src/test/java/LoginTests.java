@@ -1,6 +1,3 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -10,21 +7,23 @@ import pages.LoginPage;
 public class LoginTests extends BaseTest {
 
     @Test
-    public void loginValidEmailPassword() throws InterruptedException{
+    public void loginValidEmailPassword() {
 
 //      GIVEN
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-//      WHEN
-        loginPage.login();
+//      WHEN   // Example of Fluent
+        loginPage.provideEmail("demo@testpro.io")
+                 .providePassword("te$t$tudent")
+                 .clickSubmit();
 
 //      THEN
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
 
     //@Test
-    public void loginInvalidEmailValidPassword() throws InterruptedException {
+    public void loginInvalidEmailValidPassword() {
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
@@ -39,7 +38,7 @@ public class LoginTests extends BaseTest {
     }
 
    // @Test
-    public void loginValidEmailEmptyPassword() throws InterruptedException {
+    public void loginValidEmailEmptyPassword() {
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
