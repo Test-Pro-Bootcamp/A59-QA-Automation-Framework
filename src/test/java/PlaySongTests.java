@@ -17,7 +17,7 @@ public class PlaySongTests extends BaseTest {
         loginPage.login();
         Thread.sleep(2000);
 
- //      WHEN
+ //     WHEN
         playSongsPage.mouseOverPlayBtn();
         playSongsPage.selectPlayBtnToSingleClick();
 
