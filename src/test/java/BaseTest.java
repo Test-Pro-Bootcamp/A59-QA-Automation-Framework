@@ -15,6 +15,7 @@ public class BaseTest {
     ChromeOptions options = new ChromeOptions();
 
 
+
     //String url = "https://qa.koel.app/";
 
     @BeforeSuite
@@ -24,15 +25,21 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchBrowser(String baseURL){
+    public ChromeDriver launchBrowser(String baseURL){
         //      Added ChromeOptions argument below to fix websocket error
 
-        options.addArguments("--remote-allow-origins=*");
+        
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
+
         navigateToPage(baseURL);
+
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-notifications","--remote-allow-origins=*", "--incognito","--start-maximized");
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        return new ChromeDriver(options);
 
 
     }
