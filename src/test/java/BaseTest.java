@@ -2,23 +2,31 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pages.LoginPage;
 
+import java.net.URI;
+import java.net.MalformedURLException;
+
 import java.time.Duration;
 
 public class BaseTest {
 
-    public WebDriver driver = null;
-    public ChromeOptions options = new ChromeOptions();
-    public WebDriverWait wait;
-    public Wait<WebDriver> fluentWait;
-    public Actions actions = null;
+    public static WebDriver driver = null;
+    public static ChromeOptions options = new ChromeOptions();
+    public static WebDriverWait wait;
+    public static Wait<WebDriver> fluentWait;
+    public static Actions actions = null;
 
 //    String url = "https://qa.koel.app/";
 //
@@ -40,10 +48,15 @@ public class BaseTest {
     protected String expectedDeletedMsg =   "Deleted playlist \""  + playlistName + ".\"";
     protected String expectedAddedMsg =     "Added 1 song into \"" + playlistName + ".\"";
 
+
+
+    ///////////////////////////////////////////////////
+
+
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
-//        WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.firefoxdriver().setup();
     }
 
     @BeforeMethod
@@ -51,17 +64,20 @@ public class BaseTest {
     public void launchBrowser(String baseURL) {
         // Pre-condition
         // Added ChromeOptions argument below to fix websocket error for Chrome
-        options.addArguments("--remote-allow-origins=*");   // allowing remote origins
-        options.addArguments("--disable-notifications");    // disabling notifications
+//        options.addArguments("--remote-allow-origins=*");   // allowing remote origins
+//        options.addArguments("--disable-notifications");    // disabling notifications
+//
+//        options.addArguments("--incognito");                // launching in incognito mode
+//        options.addArguments("--window-position=250,0");    // move the window over to the right
+//        driver = new ChromeDriver(options);
 
-        options.addArguments("--incognito");                // launching in incognito mode
-        options.addArguments("--window-position=250,0");    // move the window over to the right
 //      options.addArguments("--start-maximized");          // launching in maximized mode
 
-        driver = new ChromeDriver(options);
+
 //        End of Chrome Options
 
 //        driver = new FirefoxDriver();
+        driver = pickBrowser(System.getProperty("browser"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 //      driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -76,6 +92,10 @@ public class BaseTest {
 
         driver.get(url);
     }
+
+    ///////////////
+    // OLD METHODS
+    ///////////////
 
     protected void enterEmail(String email) {
 
@@ -101,5 +121,50 @@ public class BaseTest {
     @AfterMethod
     public void closeBrowser() {
 //  driver.quit();
+    }
+    //throw MalformedURLException
+    public static WebDriver pickBrowser(String browser) throw MalformedURLException {
+        DesiredCapabilities caps = new DesiredCapabilities();
+
+         String gridURL = "http://192.168.55.103:4444";  //replace with your gird url,  localhost:4444
+//        String gridURL = "http://localhost:4444";  //replace with your gird url,  localhost:4444
+
+        switch(browser) {
+            case "firefox":  // gradle clean test -Dbrowser=firefox
+                WebDriverManager.firefoxdriver().setup();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addArguments("--no-notifications");
+                return driver = new FirefoxDriver();
+
+            case "edge":   // gradle clean test -Dbrowser=edge
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--remote-allow-origins=*");   // Allow automations to be run
+                edgeOptions.addArguments("--disable-notifications");    // disabling notifications
+                edgeOptions.addArguments("--inprivate");                // launching in incognito mode
+                edgeOptions.addArguments("--window-position=250,0");    // move the window over to the right
+                return driver = new EdgeDriver();
+
+            case "grid-edge": // gradle clean test -Dbrowser=grid-edge
+                caps.setCapability("browserName", "edge");
+                return driver = RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "grid-firefox": // gradle clean test - Dbrowser=grid-firefox
+                caps.setCapability("browserName", "firefox");
+                return driver = RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "grid-chrome":  // gradle clean test - Dbrowser=grid-chrome
+                caps.setCapability("browserName", "chrome");
+                return driver = RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            default:
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--Remote-allow-origins=*");
+                chromeOptions.addArguments("--disable-notifications");    // disabling notifications
+                chromeOptions.addArguments("--incognito");                // launching in incognito mode
+                chromeOptions.addArguments("--window-position=250,0");    // move the window over to the right
+                return driver = new ChromeDriver(chromeOptions);
+        }
     }
 }
