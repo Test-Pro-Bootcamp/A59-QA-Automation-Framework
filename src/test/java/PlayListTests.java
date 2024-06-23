@@ -1,11 +1,8 @@
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.PlayListPage;
 import pages.BasePage;
-
-import java.sql.Driver;
 
 public class PlayListTests extends BaseTest {
 

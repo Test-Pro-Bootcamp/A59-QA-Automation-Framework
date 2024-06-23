@@ -29,26 +29,6 @@ public class HomeTests extends BaseTest {
         Thread.sleep(2000);
         Assert.assertTrue(homePage.selectSoundBars().isDisplayed());
     }
-
-    @Test
-    public void countSongsInPlaylist() throws InterruptedException {
-
-//      GIVEN
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-
-//      WHEN
-        loginPage.login();
-        //Choose a Playlist by Name
-        homePage.selectPlaylistByName();
-        //DisplayAllSongs
-        displayAllSongs();
-        //Number of Songs are equal to number of songs displayed in the info section
-
-//      THEN
-        Assert.assertTrue(getPlaylistDetails().contains(String.valueOf(songsCount())));
-    }
-
     @Test
     public void renamePlayList() throws InterruptedException{
 
@@ -75,14 +55,105 @@ public class HomeTests extends BaseTest {
         Assert.assertEquals(homePage.selectRenameVerifyNotificationMsg(), expectedRenameVerificationMsg);
     }
 
+    @Test
+    public void countSongsInPlaylist() throws InterruptedException {
+
+//      GIVEN
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+//      WHEN
+        loginPage.login();
+        //Choose a Playlist by Name
+        homePage.selectPlaylistByName();
+//        homePage.selectPlaylistByName();
+        //DisplayAllSongs
+        homePage.selectDisplayAllSongs();
+//        displayAllSongs();
+
+        //Number of Songs are equal to number of songs displayed in the info section
+
+//      THEN
+        Assert.assertTrue(homePage.selectPlaylistDetails().contains(String.valueOf(songsCount())));
+    }
+
+
 //  Helper Methods
+
+    public void playlistByName(String playlistName) {
+
+        HomePage homePage = new HomePage(driver);
+
+        homePage.selectPlaylistByName();
+
+//        wait.until(ExpectedConditions.visibilityOfElementLocated
+//                (By.xpath("//a[contains(text(),'" + playlistName + "')]"))).click();
+    }
+
+    public void displayAllSongs() {
+        List<WebElement> songList = driver.findElements
+                (By.cssSelector("section#playlistWrapper td.title"));
+
+        //count and display song names
+        System.out.println("Number of Songs found:  " + songsCount());
+
+        for (WebElement e: songList) {
+            System.out.println(e.getText());
+        }
+    }
+
+    public int songsCount() {
+
+        HomePage homePage = new HomePage(driver);
+
+        return homePage.selectSongCount();
+
+//        return driver.findElements(
+//                By.cssSelector("section#playlistWrapper td.title")).size();
+
+    }
+
+    public String playlistDetails() {
+        HomePage homePage = new HomePage(driver);
+
+        return homePage.selectPlaylistDetails();
+    }
+
+//    public String getPlaylistDetails() {
+//        return driver.findElement
+//                (By.cssSelector("span.meta.text-secondary span.meta")).getText();
+//    }
+
+
+//    public boolean isSongPlaying() {
+
+//        WebElement soundBarVisualizer = wait.until
+//                (ExpectedConditions.visibilityOfElementLocated
+//                        (By.cssSelector("[data-testid = 'sound-bar-play'")));
+//
+//        return soundBarVisualizer.isDisplayed();
+
+
+//        WebElement soundBarVisualizer = wait.until
+//                (ExpectedConditions.visibilityOfElementLocated
+//                        (By.cssSelector("[data-testid = 'sound-bar-play")));
+//
+//        return soundBarVisualizer.isDisplayed();
+//    }
+
+
+
+
+
+
+
 
     public void hoverOverPlayBtn() {
 
         HomePage homePage = new HomePage(driver);
 
         homePage.mouseOverPlayBtn();
-}
+    }
 
     public void hoverOverPlaylist() {
 
@@ -146,48 +217,12 @@ public class HomeTests extends BaseTest {
         HomePage homePage = new HomePage(driver);
         BasePage basePage = new BasePage(driver);
 
-        homePage.mouseOverAndDoubleClick(playlistName);
-     //   homePage.selectPlaylistToEditBtn();
+        //  homePage.mouseOverAndDoubleClick(playlistName);
+        //  homePage.selectPlaylistToEditBtn();
         homePage.selectPlaylistFieldName();
 
         Assert.assertEquals(homePage.selectRenamePlaylistSuccessMsg(), updatedPlayListMsg);
 
     }
 
-    public String getPlaylistDetails() {
-        return driver.findElement
-                (By.cssSelector("span.meta.text-secondary span.meta")).getText();
-    }
-
-    public int songsCount() {
-        HomePage homePage = new HomePage(driver);
-
-        return homePage.selectSongCount();
-    }
-
-    public void displayAllSongs() {
-        List<WebElement> songList = driver.findElements
-                (By.cssSelector("section#playlistWrapper td.title"));
-        //count and display song names
-        System.out.println("Number of Songs found:  " + songsCount());
-
-        for (WebElement e: songList) {
-            System.out.println(e.getText());
-        }
-    }
-
-    public void selectPlaylistByName(String playlistName) {
-
-        HomePage homePage = new HomePage(driver);
-
-        homePage.selectPlaylistByName();
-    }
-
-    public boolean isSongPlaying() {
-        WebElement soundBarVisualizer = wait.until
-                (ExpectedConditions.visibilityOfElementLocated
-                        (By.cssSelector("[data-testid = 'sound-bar-play")));
-
-        return soundBarVisualizer.isDisplayed();
-    }
 }

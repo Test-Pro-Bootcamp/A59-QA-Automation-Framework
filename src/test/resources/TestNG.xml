@@ -24,8 +24,9 @@
             </class>  -->
 
             <class name="HomeTests">
+
                  <methods>
-                    <include name="countSongsInPlaylist"/>
+                    <include name="countSongsInPlaylist()"/>
 
                 </methods>
 

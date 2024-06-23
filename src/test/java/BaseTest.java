@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -42,20 +43,25 @@ public class BaseTest {
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
+//        WebDriverManager.firefoxdriver().setup();
     }
 
     @BeforeMethod
     @Parameters({"BaseURL"})
     public void launchBrowser(String baseURL) {
         // Pre-condition
-        // Added ChromeOptions argument below to fix websocket error
+        // Added ChromeOptions argument below to fix websocket error for Chrome
         options.addArguments("--remote-allow-origins=*");   // allowing remote origins
         options.addArguments("--disable-notifications");    // disabling notifications
+
         options.addArguments("--incognito");                // launching in incognito mode
         options.addArguments("--window-position=250,0");    // move the window over to the right
 //      options.addArguments("--start-maximized");          // launching in maximized mode
 
         driver = new ChromeDriver(options);
+//        End of Chrome Options
+
+//        driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 //      driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));

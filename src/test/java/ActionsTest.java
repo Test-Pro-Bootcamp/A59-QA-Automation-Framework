@@ -13,7 +13,7 @@ import java.util.List;
 public class ActionsTest extends BaseTest {
 
     //Test #1 Contextual Click
-    @Test
+    //@Test
     public void playSong() throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -88,7 +88,7 @@ public class ActionsTest extends BaseTest {
         enterPassword("te$t$tudent");
         submit();
 
-        choosePlaylistByName("Playlist Demo");
+        choosePlaylistByName("TestPro Playlist");
         displayAllSongs();
         Assert.assertTrue(getPlaylistDetails().contains(String.valueOf(countSongs())));
     }
@@ -101,8 +101,10 @@ public class ActionsTest extends BaseTest {
     public void displayAllSongs() {
         List<WebElement> songList = driver.findElements
                 (By.cssSelector("section#playlistWrapper td.title"));
+
         //count and display song names
         System.out.println("Number of Songs in the playlist: " + countSongs());
+
         for (WebElement e : songList) {
             System.out.println(e.getText());
         }

@@ -31,9 +31,11 @@ public class HomePage extends BasePage{
     private WebElement getSoundBars;
 
     @FindBy(css = "section#playlistWrapper td.title")
-    private WebElement getSongCount;
+    private List<WebElement> getSongCount;
 
-    @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
+
+//    @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
+    @FindBy(xpath = "//a[contains(text(), playlistName)]")
     private WebElement getPlayListToEdit;
 
     @FindBy(xpath = "//*[starts-with(@data-testid,\"playlist-context-menu-edit\")]")
@@ -45,7 +47,10 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//*[contains(text(), 'Updated playlist '\"'  + newPlaylistName + '\" + '.')]")
     private WebElement getRenameVerificationMsg;  // Recheck this later
 
-    @FindBy(xpath = "//a[contains(text(),\"' + playlistName + \"')]")
+//    @FindBy(xpath = "//a[contains(text(),\"' + playlistName + \"')]")
+    @FindBy(xpath = "//a[contains(text(),'TestPro Playlist')]")
+//    @FindBy(xpath = "//a[contains(text(),'TestPro Playlist')]")
+//    @FindBy(xpath = "//a[contains(text(),'" + playlistName + "')]")
     private WebElement getPlayList;               // Recheck this later
 
     @FindBy(xpath = "//span[@class=\"album-thumb-wrapper\"]")
@@ -60,9 +65,37 @@ public class HomePage extends BasePage{
     @FindBy(css = "div.success.show")
     private WebElement getPlaylistSuccessMsg;
 
+    @FindBy(css = "[data-testid = 'sound-bar-play'")
+    private WebElement getIsSongPlaying;
+
+    @FindBy(css = "span.meta.text-secondary span.meta")
+    private WebElement getPlaylistDetails;
+
     //Methods
 
+    public String selectPlaylistDetails() {
+
+        return getPlaylistDetails.getText();
+    }
+
+    public void selectDisplayAllSongs() {
+
+        System.out.println("Number of Songs found:  " + getSongCount.size());
+
+        for (WebElement e: getSongCount) {
+            System.out.println(e.getText());
+        }
+    }
+
     public int selectSongCount() {
+
+        //count and display song names
+//        System.out.println("Number of Songs found:  " + songsCount());
+//        System.out.println("Number of Songs found:  " + getSongCount.size());
+//
+//        for (WebElement e: getSongCount) {
+//            System.out.println(e.getText());
+//        }
 
         return getSongCount.size();
     }
@@ -128,7 +161,12 @@ public class HomePage extends BasePage{
         getPlayList.click();
     }
 
-    public void selectPlaylistFieldName() {]
+    public boolean selectIsSongPlaying() {
+
+        return getIsSongPlaying.isDisplayed();
+    }
+
+    public void selectPlaylistFieldName() {
 
         getPlayListToEditField.sendKeys(Keys.chord(Keys.CONTROL,"A"), Keys.BACK_SPACE);
         getPlayListToEditField.sendKeys(newPlaylistName);
@@ -157,6 +195,6 @@ public class HomePage extends BasePage{
 
     public void setGetSongCount(WebElement getSongCount) {
 
-        this.getSongCount = getSongCount;
+//        this.getSongCount = getSongCount;
     }
 }

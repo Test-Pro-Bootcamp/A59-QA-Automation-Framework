@@ -21,11 +21,14 @@ public class AllSongsPage extends BasePage{
 
     //Page Methods
     public AllSongsPage contextClickFirstSong(){
-        actions.contextClick((firstSong).perform());
-        return this;
+
+        actions.contextClick(firstSong).perform();
+
+        return null;
     }
 
     public void choosePlayOption(){
+
         playOption.click();
     }
 
