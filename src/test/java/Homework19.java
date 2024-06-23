@@ -42,11 +42,8 @@ public class Homework19 extends BaseTest {
     }
 
     private void clickChoosePlayList() {
-<<<<<<< Updated upstream
-        WebElement choosePlayList = driver.findElement(By.xpath("//section[@id='playlists']//a[@href=#!/playlist/96410']"));
-=======
         WebElement choosePlayList = driver.findElement(By.xpath("[href='\\#\\!\\/playlist\\/96410']"));
->>>>>>> Stashed changes
+
         choosePlayList.click();
     }
 
