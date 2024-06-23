@@ -28,6 +28,8 @@ public class Homework19 extends BaseTest {
         Assert.assertEquals(getDeletePlaylistMessage(),expectedDeletePlaylistMessage);
 
     }
+
+
     public String getDeletePlaylistMessage(){
         WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
         return notification.getText();
@@ -40,7 +42,7 @@ public class Homework19 extends BaseTest {
     }
 
     private void clickChoosePlayList() {
-        WebElement choosePlayList = driver.findElement(By.xpath("//section[@id='playlists']//a[@href=\"#!/playlist/96373\"]"));
+        WebElement choosePlayList = driver.findElement(By.xpath("//section[@id='playlists']//a[@href=#!/playlist/96410']"));
         choosePlayList.click();
     }
 
