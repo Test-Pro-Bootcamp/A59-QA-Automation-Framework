@@ -18,6 +18,7 @@
             <!--class name="Homework22Test"/-->
             <class name="Homework23Test"/>
             <class name="Homework24Test"/>
+            <class name="ProfileTest"/>
             <!--class name="ActionTest"/-->
         </classes>
     </test>
