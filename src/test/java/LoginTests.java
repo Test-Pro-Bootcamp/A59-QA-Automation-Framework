@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,17 +20,18 @@ public class LoginTests extends BaseTest {
 
 
     @Test
-    public void loginValidEmailPassword() throws InterruptedException {
+    public void loginValidEmailPassword(){
 
 
        // navigateToPage();
         enterEmail("aleksei.koksharov@testpro.io");
         enterPassword("ak1234!@#$");
         submit();
-        Thread. sleep(4000);
+        //Thread. sleep(4000);
+        WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
 
         //Avatar Icon for Actual vs Expected
-        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
+        //WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
 
         //Assertions - Expected vs Actual
         Assert.assertTrue(avatarIcon.isDisplayed());
@@ -47,14 +49,9 @@ public class LoginTests extends BaseTest {
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
-        Thread.sleep(2000);
         enterEmail("alekseikoksharov@testproio");
-        Thread.sleep(2000);
         enterPassword("ak1234!@#$");
-        Thread.sleep(2000);
         submit();
-        Thread. sleep(4000);
-
         //Expected Result - Assertions
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
 
@@ -70,11 +67,8 @@ public class LoginTests extends BaseTest {
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
-        Thread.sleep(2000);
         enterEmail("aleksei.koksharov@testpro.io");
-        Thread.sleep(2000);
         submit();
-        Thread.sleep(4000);
 
         //Expected Result - Assertions
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);                 //https://qa.koel.app/

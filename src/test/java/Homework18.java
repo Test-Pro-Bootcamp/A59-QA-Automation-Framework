@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,11 +19,9 @@ public class Homework18 extends BaseTest {
         enterPassword("ak1234!@#$");
         submit();
         driver.manage().window().maximize();
-        Thread.sleep(4000);
         enterAllSongs();
         //from Home page click play button
         clickPlayBtn();
-        Thread.sleep(2000);
         //Assertions - Expected vs Actual
         Assert.assertTrue(isDisplayedSoundBar());
     }//
@@ -39,7 +38,8 @@ public class Homework18 extends BaseTest {
 
 
     public void clickPlayBtn() {
-            WebElement playBtn = driver.findElement(By.cssSelector("span.play"));
+            WebElement playBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.play")));
+            //WebElement playBtn = driver.findElement(By.cssSelector("span.play"));
             Actions actions = new Actions(driver);
             actions.click(playBtn).perform();
 

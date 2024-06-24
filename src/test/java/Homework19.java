@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,13 +17,10 @@ public class Homework19 extends BaseTest {
         enterEmail("aleksei.koksharov@testpro.io");
         enterPassword("ak1234!@#$");
         submit();
-        Thread.sleep(4000);
 
         //Choose to delete Play list 78
         clickChoosePlayList();
-
         clickRemovePlayList();
-        Thread.sleep(2000);
 
         //actual vs expected - Assert
         Assert.assertEquals(getDeletePlaylistMessage(),expectedDeletePlaylistMessage);
@@ -36,7 +34,8 @@ public class Homework19 extends BaseTest {
     }
 
     private void clickRemovePlayList() {
-        WebElement removePlayList = driver.findElement(By.cssSelector("button[class='del btn-delete-playlist']"));
+        WebElement removePlayList = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[class='del btn-delete-playlist']")));
+        //WebElement removePlayList = driver.findElement(By.cssSelector("button[class='del btn-delete-playlist']"));
         removePlayList.click();
 
     }

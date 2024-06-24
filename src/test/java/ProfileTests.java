@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -35,11 +36,11 @@ public class ProfileTests extends BaseTest {
         return UUID.randomUUID().toString().replace("-","");
     }
 
-    private void changeName(String name) throws InterruptedException {
+    private void changeName(String name){
         enterCurrentPassword("ak1234!@#$");
         enterNewName(name);
         saveChages();
-        Thread.sleep(1000);
+
 
     }
 
@@ -60,7 +61,9 @@ public class ProfileTests extends BaseTest {
     }
 
     private void navigateToProfilePage() {
-        WebElement profileName = driver.findElement(By.cssSelector("span.name"));
+        //WebElement profileName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.name")));
+        //WebElement profileName = driver.findElement(By.cssSelector("span.name"));
+        WebElement profileName = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.name")));
         profileName.click();
 
     }
