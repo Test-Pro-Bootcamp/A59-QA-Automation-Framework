@@ -15,6 +15,7 @@ public class HomePageFromFactory extends BasePageFromFactory {
         super(givenDriver);
     }
 
+
     @FindBy(xpath = "//section[@id='playlists']//i[@class='fa fa-plus-circle create']")
     WebElement clickPlaylist;
     @FindBy(xpath = "//*[@id=\"playlists\"]/nav/ul/li[1]")

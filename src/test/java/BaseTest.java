@@ -157,9 +157,9 @@ public static WebDriver lambdaTest() throws MalformedURLException {
     ltOptions.put("username", "kristina.sarkisyan");
     ltOptions.put("accessKey", "lN8L2Ud26CKRzPuuPha4aisuzaDqBBdfqphMuRYiYRP8iXU6KI");
     ltOptions.put("build", "TestProBuild");
-    ltOptions.put("project", "CloudExecution");
+    ltOptions.put("project", "Homework-25");
+    ltOptions.put("selenium_version", "4.0.0");
     ltOptions.put("w3c", true);
-    ltOptions.put("plugin", "java-testNG");
     browserOptions.setCapability("LT:Options", ltOptions);
 
     return new RemoteWebDriver(new URL(hubUrl), browserOptions);
