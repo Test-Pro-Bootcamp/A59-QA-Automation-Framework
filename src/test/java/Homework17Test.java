@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class Homework17Test extends BaseTest {
     @Test
-    public void addSongToPlaylist()  {
+    public void addSongToPlaylist() throws InterruptedException {
 
         String expectedSongAddedMessage = "Added 1 song into \"Kristina.\"";
         //navigateToPage();
@@ -19,6 +19,7 @@ public class Homework17Test extends BaseTest {
         clickFirstSong();
         clickAddToBtn();
         choosePlaylist();
+        Thread.sleep(2000);
         Assert.assertEquals(getAddToPlaylistMessage(), expectedSongAddedMessage);
     }
 

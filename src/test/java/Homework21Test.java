@@ -13,8 +13,8 @@ public class Homework21Test extends BaseTest{
     public void createNewPlaylists() {
 
         String expectedCreatedPlaylistMessage = "Created playlist \"Candy.\"";
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.login();
         /*enterEmail("kristina.sarkisyan@testpro.io");

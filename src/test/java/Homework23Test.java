@@ -8,8 +8,8 @@ public class Homework23Test extends BaseTest{
 @Test
   public void createNewPlaylist () {
       String expectedCreatedPlaylistMessage = "Created playlist \"Kristina.\"";
-      LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(driver);
-      HomePageFromFactory homePageFromFactory = new HomePageFromFactory(driver);
+      LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(getDriver());
+      HomePageFromFactory homePageFromFactory = new HomePageFromFactory(getDriver());
 
       loginPageFromFactory.provideEmail("kristina.sarkisyan@testpro.io")
               .providePassword("o8URUDnW")
