@@ -1,5 +1,3 @@
-//import page.HomePageFromFactory;
-//import page.LoginPageFromFactory;
 import pageFactory.LoginPageFromFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,19 +8,28 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginEmptyEmailPassword() {
-        LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(getDriver());
+        HomePage homePage = new HomePage(getDriver());
         loginPageFromFactory.login();
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
 
     //Happy Path - Login Test
-@Test
+/*@Test
     public void loginValidEmailPassword()  {
     LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(driver);
     HomePage homePage = new HomePage(driver);
     loginPageFromFactory.provideEmail("kristina.sarkisyan@testpro.io").providePassword("o8URUDnW").clickSubmit();
     Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
+
+    }*/
+    @Test
+    public void loginValidEmailPassword()  {
+        LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        loginPageFromFactory.provideEmail("kristina.sarkisyan@testpro.io").providePassword("o8URUDnW").clickSubmit();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
 
 
     }

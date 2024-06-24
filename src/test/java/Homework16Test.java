@@ -7,12 +7,12 @@ import org.testng.annotations.Test;
 public class Homework16Test extends BaseTest {
     @Test
     public void registrationNavigation () {
-        HomePage homePage = new HomePage(driver);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
+        HomePage homePage = new HomePage(getDriver());
+        RegistrationPage registrationPage = new RegistrationPage(getDriver());
 
         registrationPage.registrationBtnClick();
-        Assert.assertTrue(driver.getCurrentUrl().contains("https://qa.koel.app/registration"));
-        driver.quit();
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("https://qa.koel.app/registration"));
+
 
 
         //navigateToPage();

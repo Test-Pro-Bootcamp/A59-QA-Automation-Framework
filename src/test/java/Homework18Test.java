@@ -16,13 +16,13 @@ public class Homework18Test extends BaseTest{
  enterPassword("o8URUDnW");
  submit();
  playNextSong();
-        fluentWait = new FluentWait<>(driver)
+        fluentWait = new FluentWait<>(getDriver())
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(200));
  playBtn();
  WebElement pauseBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//footer[@id='mainFooter']/div[@class='side player-controls']/span[@class='album-thumb-wrapper']/span[@data-testid='pause-btn']/i[@class='fa fa-pause']")));
  Assert.assertTrue(pauseBtn.isDisplayed(),"Pause button is not displayed, indicating song is not playing.");
- closeBrowser();
+ //tearDown();
  }
 
     public void playBtn() {
@@ -31,7 +31,7 @@ public class Homework18Test extends BaseTest{
     }
 
     public void playNextSong() {
-        WebElement clickPlayNextSong = driver.findElement(By.xpath("//footer[@id='mainFooter']//i[@title='Play next song']"));
+        WebElement clickPlayNextSong = getDriver().findElement(By.xpath("//footer[@id='mainFooter']//i[@title='Play next song']"));
         clickPlayNextSong.click();
     }
 

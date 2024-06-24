@@ -19,7 +19,7 @@ public class HomeTest extends BaseTest{
     }
 
     public WebElement hoverPlay() {
-        WebElement playBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        WebElement playBtn = getDriver().findElement(By.cssSelector("[data-testid='play-btn']"));
         actions.moveToElement(playBtn).perform();
         return wait.until(ExpectedConditions.visibilityOf(playBtn));
     }
@@ -35,20 +35,19 @@ public class HomeTest extends BaseTest{
 }
 
     public String getPlaylistDetails(){
-        return driver.findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
+        return getDriver().findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
     }
     public int songsCount () {
-        return driver.findElements(By.cssSelector("section#playlistWrapper td.title")).size();
+        return getDriver().findElements(By.cssSelector("section#playlistWrapper td.title")).size();
     }
 
     public void displayAllSongs() {
-        List<WebElement> songList = driver.findElements(By.cssSelector("section#playlistWrapper td.title"));
+        List<WebElement> songList = getDriver().findElements(By.cssSelector("section#playlistWrapper td.title"));
         System.out.println("Number of Songs found:  "+songsCount());
         for (WebElement e: songList) {
             System.out.println(e.getText());
         }
     }
-
 
     public void choosePlaylistByName(String playlistName) {
         wait.until(ExpectedConditions.visibilityOfElementLocated

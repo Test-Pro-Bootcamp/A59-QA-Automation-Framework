@@ -10,8 +10,8 @@ public class Homework22Test extends BaseTest {
         String newPlaylistName = "Kristina";
         String updatedPlaylistMsg = "Updated Playlist \"Kristina.\"";
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.login();
         homePage.doubleClickPlaylist();
