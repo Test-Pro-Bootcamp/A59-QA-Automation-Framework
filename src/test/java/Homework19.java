@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,15 +10,19 @@ import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
+
+
 public class Homework19 extends BaseTest {
     private static final Logger logger = LoggerFactory.getLogger(Homework19.class);
     private WebDriverWait wait;
+    private WebElement driver;
 
     @Test
     public void deletePlaylist() {
         String expectedPlaylistDeletedMessage = "Deleted playlist \"cloud.\"";
 
         // Initialize WebDriverWait with a timeout of 10 seconds
+        WebDriver driver = null;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         logger.info("Starting deletePlaylist test");
@@ -36,6 +41,10 @@ public class Homework19 extends BaseTest {
         Assert.assertEquals(actualMessage, "Deleted playlist cloud.");
 
         logger.info("deletePlaylist test completed successfully");
+    }
+
+    private void login(String mail, String slcTalgy) {
+
     }
 
     public void openPlaylist() {

@@ -8,13 +8,19 @@ import org.testng.annotations.Test;
 
 public class Homework18 extends BaseTest {
     private WebElement playNextButton;
+    private WebElement driver;
 
     @Test
     public void playSong(){
      login("india.messam@testpro.io", "slcTalgy");
 
  }
-//Return to work on this over the weekend
+
+    private void login(String mail, String slcTalgy) {
+
+    }
+
+    //Return to work on this over the weekend
  public void clickPlay(){
      //@FindBy(xpath ="//i[@data-testid='play-next-btn']" )
              WebElement playNextBtn;
