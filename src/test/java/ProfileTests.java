@@ -2,6 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.ProfilePage;
+import pages.HomePage;
 
 public class ProfileTests extends BaseTest{
 
@@ -28,4 +29,21 @@ public class ProfileTests extends BaseTest{
 //      THEN
         Assert.assertEquals(profilePage.selectUpdatedVerifyNotificationMsg(test), expectedUpdatedMsg);
     }
+
+    @Test
+    public void changeCurrentTheme() {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        ProfilePage profilePage = new ProfilePage(driver);
+
+        loginPage.login();
+
+        homePage.clickProfileIcon();
+
+        profilePage.chooseVioletTheme();
+
+        Assert.assertTrue(profilePage.isVioletThemeSelected());
+
+    }
+
 }

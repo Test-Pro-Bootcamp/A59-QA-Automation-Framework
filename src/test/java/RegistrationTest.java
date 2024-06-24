@@ -20,7 +20,7 @@ public class RegistrationTest extends BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 //      String url = "https://qa.koel.app/";
-        driver.get(urlStartPoint);
+//        driver.get(urlStartPoint);
 
         loginPage.login();
 

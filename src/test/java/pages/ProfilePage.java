@@ -35,6 +35,17 @@ public class ProfilePage extends BasePage {
     @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
     private WebElement getInputProfileCurrentPasswordField;
 
+
+
+
+    @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
+    private WebElement selectedVioletTheme;
+
+    @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
+    private WebElement chooseVioletTheme;
+
+
+
     //Page Methods
     public void selectProfileNameBtn() {
         getProfileNameBtn.click();
@@ -75,4 +86,18 @@ public class ProfilePage extends BasePage {
         return test;
 //        return getUpdatedVerificationMsg.isDisplayed();
     }
+
+    public boolean isVioletThemeSelected() {
+
+        findElement(selectedVioletTheme);
+
+        return  selectedVioletTheme.isDisplayed();
+    }
+
+    public ProfilePage chooseVioletTheme() {
+        chooseVioletTheme().click(chooseVioletTheme);
+        return this;
+
+    }
+
 }

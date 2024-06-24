@@ -10,20 +10,23 @@ public class LoginTests extends BaseTest {
     public void loginValidEmailPassword() {
 
 //      GIVEN
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
 //      WHEN   // Example of Fluent
-        loginPage.provideEmail("demo@testpro.io")
-                 .providePassword("te$t$tudent")
-                 .clickSubmit();
+        loginPage.login();
+//        loginPage.provideEmail("demo@testpro.io")
+//                 .providePassword("te$t$tudent")
+//                 .clickSubmit();
 
 //      THEN
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
 
-    //@Test
+    @Test
     public void loginInvalidEmailValidPassword() {
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
@@ -45,7 +48,7 @@ public class LoginTests extends BaseTest {
         enterEmail("invalid@testpro.io");
         submit();
         // Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
     //@Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
@@ -54,7 +57,7 @@ public class LoginTests extends BaseTest {
         enterEmail(email);
         enterPassword(password);
         submit();
-        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
     }
 
 }

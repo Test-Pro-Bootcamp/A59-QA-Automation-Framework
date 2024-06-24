@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
     String newPlaylistName = "Sample Edited Playlist";
     String expectedRenameVerificationMsg = "Updated playlist \"" + newPlaylistName + ".\"" ;
@@ -14,7 +14,7 @@ public class HomePage extends BasePage{
 
     //Constructor
 
-    public HomePage(WebDriver givenDriver){
+    public HomePage(WebDriver givenDriver) {
         super(givenDriver);
         PageFactory.initElements(driver, this);
     }
@@ -71,7 +71,16 @@ public class HomePage extends BasePage{
     @FindBy(css = "span.meta.text-secondary span.meta")
     private WebElement getPlaylistDetails;
 
+    @FindBy(css = "a.view-profile")
+    private WebElement profileIcon;
+
+
     //Methods
+
+    public HomePage clickProfileIcon() {
+        click(profileIcon);
+        return this;
+    }
 
     public String selectPlaylistDetails() {
 
@@ -113,6 +122,7 @@ public class HomePage extends BasePage{
     public void mouseOverPlayBtn() {
 
         mouseOver(getPlayBtn);
+
     }
 
     public void chooseAllSongsList() {
