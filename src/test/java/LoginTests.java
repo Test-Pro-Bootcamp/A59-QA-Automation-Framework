@@ -34,7 +34,7 @@ public class LoginTests extends BaseTest {
     public void loginValidEmailEmptyPassword() throws InterruptedException {
 
         navigateToPage();
-        enterEmail("invalid@testpro.io");
+        enterEmail("leon.poyau@testpro.io");
         submit();
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
