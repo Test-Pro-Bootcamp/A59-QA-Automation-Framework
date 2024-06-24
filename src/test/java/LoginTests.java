@@ -24,4 +24,16 @@ public class LoginTests extends BaseTest {
         // test changes
         // added another comment line. 2nd change made
     }
+
+    @Test
+    public void loginValidEmailEmptyPassword() throws InterruptedException {
+
+        navigateToPage();
+        enterEmail("invalid@testpro.io");
+        submit();
+
+        Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
+        // Expected Result
+        Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
+    }
 }
