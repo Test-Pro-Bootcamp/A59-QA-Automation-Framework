@@ -9,17 +9,15 @@ public class ProfilePage extends BasePage{
     public ProfilePage(WebDriver givenDriver) {
         super(givenDriver);
     }
-    @FindBy (css = "[data-testid='theme-card-violet']")
-    WebDriver violetTheme;
-    @FindBy(css = "[data-testid='theme-card-violet'][class='theme selected']")
-    WebElement selectedVioletTheme;
+    By violetTheme = By.cssSelector("[data-testid='theme-card-violet']");
+    By selectedVioletTheme = By.cssSelector("[data-testid='theme-card-violet'][class='theme selected']");
 
     public boolean isVioletThemeSelected() {
-        findElement((By) selectedVioletTheme);
-        return selectedVioletTheme.isDisplayed();
+        findElement(selectedVioletTheme);
+        return findElement(selectedVioletTheme).isDisplayed();
     }
     public ProfilePage chooseVioletTheme(){
-        click((By) violetTheme);
+        click(violetTheme);
         return this;
     }
 }

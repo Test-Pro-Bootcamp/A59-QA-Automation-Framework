@@ -7,12 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
-    @FindBy(css = "a.view-profile")
-    WebElement profileIcon;
+
 public HomePage(WebDriver givenDriver) {
         super(givenDriver);
     }
     //Locators
+    By profileIcon = By.cssSelector("a.view-profile");
     By userAvatarIcon = By.cssSelector("img[class='avatar']");
     By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
     By playlistNameField = By.cssSelector("[name='name']");
@@ -20,7 +20,7 @@ public HomePage(WebDriver givenDriver) {
     By allSongsList = By.cssSelector("li a.songs");
 
     public HomePage clickProfileIcon() {
-        click((By) profileIcon);
+        click(profileIcon);
         return this;
 
     }

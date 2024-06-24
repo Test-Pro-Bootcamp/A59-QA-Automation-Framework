@@ -14,10 +14,8 @@ public class ProfileTest extends BaseTest{
         loginPage.provideEmail("kristina.sarkisyan@testpro.io")
                 .providePassword("o8URUDnW")
                 .clickSubmit();
-    Thread.sleep(4000);
 
         homePage.clickProfileIcon();
-        Thread.sleep(2000);
 
         profilePage.chooseVioletTheme();
 
