@@ -11,36 +11,43 @@ public class PlayListTests extends BaseTest {
 
 //      GIVEN
         LoginPage loginPage = new LoginPage(driver);
+        PlayListPage playListPage = new PlayListPage(driver);
         loginPage.login();
         Thread.sleep(2000);
 //      WHEN
         // create a playlist
-        createPlayListBtn(playlistName);
+//        createPlayListBtn(playlistName);
+        playListPage.selectCreateNewPlayListBtn();
+        playListPage.selectNewPlayListBtn();
+        playListPage.selectTitleNameField(playlistName);
 
         // search for a song
-        searchSong(songName);
-
+//        searchSong(songName);
+        playListPage.selectSearchSongField(songName);
         // click view all button
         Thread.sleep(3000);
-        viewAllSongs();
+//        viewAllSongs();
+        playListPage.selectViewAllSongs();
 
         // select first song from result
         driver.navigate().refresh();
-        selectFirstSong();
-
+//        selectFirstSong();
+        playListPage.selectFirstSong();
         // click Add to Button
         Thread.sleep(3000);
-        addSongToBtn();
-
+//        addSongToBtn();
+        playListPage.selectAddSongToBtn();
         Thread.sleep(3000);
         // choose list to add song to
-        choosePlayList();
-
+//        choosePlayList();
+        playListPage.selectChoosePlayList();
         driver.navigate().refresh();
-        deletePlayListBtn();
+//        deletePlayListBtn();
+        playListPage.selectPlayListToDelete();
 
 //      THEN
 //      All the Asserts are part of the methods
+        Assert.assertEquals(playListPage.selectDeletedVerifyNotificationMsg(), expectedDeletedMsg);
     }
 
     public void createPlayListBtn(String playlistName) {
