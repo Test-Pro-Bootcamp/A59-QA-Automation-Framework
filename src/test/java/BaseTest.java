@@ -171,7 +171,7 @@ public class BaseTest {
                 return driver = driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
             case "cloud":       // gradle clean test -Dbrowser=grid-cloud
-//                return lambdaTest();
+                return lambdaTest();
 
             default:
                 WebDriverManager.chromedriver().setup();
@@ -186,8 +186,8 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown() {
-        threadDriver.get().close();
-        threadDriver.remove();
+//        threadDriver.get().close();
+//        threadDriver.remove();
     }
 
     @AfterMethod
@@ -195,23 +195,23 @@ public class BaseTest {
 //      driver.quit();
     }
 
-    public WebDriver lambdaTest() throws MalformedURLException {
+    public static WebDriver lambdaTest() throws MalformedURLException {
         String hubURL = "https://hub.lambdatest.com/wd/hub";
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", "chrome");
-        capabilities.setCapability("browserVersion", "119.0");
-        HashMap<String, Object> ltOptions = new HashMap<>();
-        ltOptions.put("user", "czar.testpro.io");
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("browserName", "chrome");
+        caps.setCapability("browserVersion", "125");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("user", "jmar138.testpro.io");
         ltOptions.put("accessKey", "");
-        ltOptions.put("build", "Selenium 4");
-        ltOptions.put("name", this.getClass().getName());
+        ltOptions.put("build", "TestPro Build");
+        ltOptions.put("project", "CloudExecution");
         ltOptions.put("platformName", "Windows 10");
-        ltOptions.put("seCdp", true);
+        ltOptions.put("w3c", true);
         ltOptions.put ("selenium_version", "4.0.0");
-        capabilities.setCapability("LT:Options", ltOptions);
+        caps.setCapability("LT:Options", ltOptions);
 
-        return new RemoteWebDriver(new URL(hubURL), capabilities);
+        return new RemoteWebDriver(new URL(hubURL), caps);
     }
 
 }

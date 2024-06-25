@@ -10,7 +10,7 @@ public class ProfileTests extends BaseTest{
     public void changeProfileName() throws InterruptedException {
 
 //      GIVEN
-        String uniqueName = null;
+        String uniqueName;
         String expectedUpdatedMsg = "Profile updated.";
         String test = "";
 

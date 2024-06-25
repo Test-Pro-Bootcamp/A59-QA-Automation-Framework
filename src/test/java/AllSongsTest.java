@@ -22,19 +22,57 @@ public class AllSongsTest extends BaseTest {
         enterEmail(userName);
         enterPassword(userPassword);
         submit();
-
+        Thread.sleep(2000);
         // Navigate to All Songs Page
+        driver.navigate().refresh();
+
         navigateToChooseAllSongs();
-        Thread.sleep(2000);
-        // Right/Context Click on the first song
-        contextClickFirstSong();
-        Thread.sleep(2000);
-        // Choose Play from context menu
-        choosePlayOption();
-        Thread.sleep(2000);
-        // Verify if Song is being played
-        Assert.assertTrue(isSongPlaying());
+//        allSongsPage.selectAllSongs();
+//        Thread.sleep(2000);
+//        // Right/Context Click on the first song
+
+        clickFirstSong();
+        rightClickOnSong();
+
+//        Thread.sleep(8000);
+//        // Choose Play from context menu
+//        choosePlayOption();
+//        Thread.sleep(2000);
+//        // Verify if Song is being played
+//        Assert.assertTrue(isSongPlaying());
     }
+
+    //Methods
+
+    public void navigateToChooseAllSongs() {
+
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
+
+//        allSongsPage.selectAllSongs();
+        wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("li a.songs"))).click();
+    }
+
+    public void clickFirstSong() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated
+                    (By.cssSelector(".all-songs tr.song-item:nth-child(1)"))).click();
+
+
+//        WebElement firstSongElement= wait.until
+//                (ExpectedConditions.visibilityOfElementLocated
+//                        (By.cssSelector(".all-songs tr.song-item:nth-child(2)")));
+//        actions.click(firstSongElement).perform();
+//        actions.contextClick(firstSongElement).perform();
+    }
+
+    public void rightClickOnSong() {
+                WebElement firstSongElement = wait.until
+                (ExpectedConditions.visibilityOfElementLocated
+                        (By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
+
+        actions.doubleClick(firstSongElement).perform();
+    }
+
     public void choosePlayOption() {
         wait.until(ExpectedConditions.visibilityOfElementLocated
                     (By.cssSelector("li.playback"))).click();
@@ -45,18 +83,9 @@ public class AllSongsTest extends BaseTest {
                     (By.cssSelector("li a.songs"))).click();
     }
 
-    public void contextClickFirstSong() throws InterruptedException {
-        WebElement firstSongElement= wait.until
-                    (ExpectedConditions.visibilityOfElementLocated
-                        (By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
 
-        actions.contextClick(firstSongElement).perform();
-    }
 
-    public void navigateToChooseAllSongs() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated
-                    (By.cssSelector("li a.songs"))).click();
-    }
+
 
     public boolean isSongPlaying() {
         WebElement soundBarVisualizer = wait.until

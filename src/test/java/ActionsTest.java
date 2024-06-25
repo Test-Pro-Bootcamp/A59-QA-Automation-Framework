@@ -28,7 +28,7 @@ public class ActionsTest extends BaseTest {
         //Choose All Songs
         homePage.chooseAllSongsList();
         //Contextual Click on the first song
-        allSongsPage.contextClickFirstSong();
+        contextClickFirstSong();
         //Click on Play from the menu
         allSongsPage.choosePlayOption();
         Assert.assertTrue(allSongsPage.isSongPlaying());

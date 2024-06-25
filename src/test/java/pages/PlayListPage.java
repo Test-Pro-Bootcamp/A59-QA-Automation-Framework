@@ -50,7 +50,6 @@ public class PlayListPage extends BasePage {
     @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
     private WebElement getChoosePlayListField;
 
-
     @FindBy(xpath = "//*[contains(text(), 'Created playlist \""  + "TestPro Playlist" + ".\"')]")
     private WebElement getCreatedVerificationMsg;
 

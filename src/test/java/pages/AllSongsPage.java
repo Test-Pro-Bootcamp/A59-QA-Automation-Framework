@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AllSongsPage extends BasePage{
 
@@ -14,17 +15,31 @@ public class AllSongsPage extends BasePage{
     }
     //Locators
     @FindBy(css = ".all-songs tr.song-item:nth-child(1)")
-    private WebElement firstSong;
+    private WebElement getFirstSong;
 
     @FindBy(css = "li.playback")
     private WebElement playOption;
 
+    @FindBy(css = "li a.songs")
+    private WebElement getAllSongs;
+
+
+
     //Page Methods
-    public AllSongsPage contextClickFirstSong(){
 
-        actions.contextClick(firstSong).perform();
+    public void selectAllSongsBtn() {
 
-        return null;
+        getAllSongs.click();
+    }
+    public void selectFirstSong() {
+
+
+        getFirstSong.click();
+
+//
+//        actions.contextClick(firstSong).perform();
+//
+//        return null;
     }
 
     public void choosePlayOption(){
