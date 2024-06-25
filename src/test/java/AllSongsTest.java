@@ -32,7 +32,7 @@ public class AllSongsTest extends BaseTest {
 //        // Right/Context Click on the first song
 
         clickFirstSong();
-        rightClickOnSong();
+//        rightClickOnSong();
 
 //        Thread.sleep(8000);
 //        // Choose Play from context menu
@@ -82,10 +82,6 @@ public class AllSongsTest extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated
                     (By.cssSelector("li a.songs"))).click();
     }
-
-
-
-
 
     public boolean isSongPlaying() {
         WebElement soundBarVisualizer = wait.until

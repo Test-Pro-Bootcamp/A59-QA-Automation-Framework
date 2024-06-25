@@ -202,13 +202,14 @@ public class BaseTest {
         caps.setCapability("browserName", "chrome");
         caps.setCapability("browserVersion", "125");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
-        ltOptions.put("user", "jmar138.testpro.io");
-        ltOptions.put("accessKey", "");
+        ltOptions.put("user", "james.mar");
+        ltOptions.put("accessKey", "BePEK6FjkSm4CLTUXloeqsEjqTVc0zVrrhNsVmMzTMOHT1T84n");
         ltOptions.put("build", "TestPro Build");
         ltOptions.put("project", "CloudExecution");
         ltOptions.put("platformName", "Windows 10");
         ltOptions.put("w3c", true);
         ltOptions.put ("selenium_version", "4.0.0");
+        ltOptions.put("plugin", "java-testNG");
         caps.setCapability("LT:Options", ltOptions);
 
         return new RemoteWebDriver(new URL(hubURL), caps);
