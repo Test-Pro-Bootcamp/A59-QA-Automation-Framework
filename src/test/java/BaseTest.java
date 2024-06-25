@@ -23,6 +23,7 @@ import java.time.Duration;
 public class BaseTest {
 
     public static WebDriver driver = null;
+//    public static WebDriver driver = null;
     public static ChromeOptions options = new ChromeOptions();
     public static WebDriverWait wait;
     public static Wait<WebDriver> fluentWait;
@@ -61,7 +62,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchBrowser(String baseURL) {
+    public void launchBrowser(String baseURL) throws MalformedURLException {
         // Pre-condition
         // Added ChromeOptions argument below to fix websocket error for Chrome
 //        options.addArguments("--remote-allow-origins=*");   // allowing remote origins
@@ -123,7 +124,7 @@ public class BaseTest {
 //  driver.quit();
     }
     //throw MalformedURLException
-    public static WebDriver pickBrowser(String browser) throw MalformedURLException {
+    public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
 
          String gridURL = "http://192.168.55.103:4444";  //replace with your gird url,  localhost:4444
@@ -133,7 +134,9 @@ public class BaseTest {
             case "firefox":  // gradle clean test -Dbrowser=firefox
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--no-notifications");
+                firefoxOptions.addArguments("--remote-allow-origins=*");
+                firefoxOptions.addArguments("-width=1920", "-height=1020", "-private");
+                firefoxOptions.addPreference("dom.webnotifications.enabled", false);
                 return driver = new FirefoxDriver();
 
             case "edge":   // gradle clean test -Dbrowser=edge
@@ -147,15 +150,15 @@ public class BaseTest {
 
             case "grid-edge": // gradle clean test -Dbrowser=grid-edge
                 caps.setCapability("browserName", "edge");
-                return driver = RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
             case "grid-firefox": // gradle clean test - Dbrowser=grid-firefox
                 caps.setCapability("browserName", "firefox");
-                return driver = RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+                return driver  = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
             case "grid-chrome":  // gradle clean test - Dbrowser=grid-chrome
                 caps.setCapability("browserName", "chrome");
-                return driver = RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
             default:
                 WebDriverManager.chromedriver().setup();

@@ -119,7 +119,7 @@ public class BasePage {
 
     // Method to wait for an element to be clickable
     protected WebElement waitForVisibility(WebElement webElement) {
-
+//
         return wait.until(ExpectedConditions.visibilityOfElementLocated((By) webElement));
     }
 
