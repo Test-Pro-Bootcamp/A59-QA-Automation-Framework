@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 // Homework17 class extends BaseTest for Selenium test automation.
 public class Homework17 extends BaseTest {
 
-    private WebElement driver;
+    public WebElement driver;
 
     // Test method for adding a song to a playlist.
     @Test
@@ -22,7 +22,7 @@ public class Homework17 extends BaseTest {
 
         // WHEN
         // Performing actions: login, search for a song, select the first result, add to playlist.
-        login("india.messam@testpro.io", "slcTalgy");
+        login("slcTalgy");
         Thread.sleep(2000);
         searchSong(nameSong);
         clickViewAllBtn();
@@ -35,7 +35,7 @@ public class Homework17 extends BaseTest {
         Assert.assertEquals(getAddToPlaylistSuccessMsg(), expectedSongAddedMessage);
     }
 
-    private void login(String mail, String slcTalgy) {
+    private void login(String slcTalgy) {
     }
 
     // Method to search for a song by name.
