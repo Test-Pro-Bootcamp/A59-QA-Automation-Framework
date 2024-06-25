@@ -198,19 +198,21 @@ public class BaseTest {
     public static WebDriver lambdaTest() throws MalformedURLException {
         String hubURL = "https://hub.lambdatest.com/wd/hub";
 
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName("Windows 10");
+        browserOptions.setBrowserVersion("125");
+
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("browserName", "chrome");
         caps.setCapability("browserVersion", "125");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("user", "james.mar");
         ltOptions.put("accessKey", "BePEK6FjkSm4CLTUXloeqsEjqTVc0zVrrhNsVmMzTMOHT1T84n");
-        ltOptions.put("build", "TestPro Build");
+        ltOptions.put("build", "TestProBuild");
         ltOptions.put("project", "CloudExecution");
-        ltOptions.put("platformName", "Windows 10");
         ltOptions.put("w3c", true);
-        ltOptions.put ("selenium_version", "4.0.0");
         ltOptions.put("plugin", "java-testNG");
-        caps.setCapability("LT:Options", ltOptions);
+        browserOptions.setCapability("LT:Options", browserOptions);
 
         return new RemoteWebDriver(new URL(hubURL), caps);
     }
