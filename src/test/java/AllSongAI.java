@@ -4,6 +4,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static org.openqa.selenium.By.cssSelector;
 
 
 public class AllSongAI extends BaseTest {
@@ -20,9 +21,7 @@ public class AllSongAI extends BaseTest {
     private boolean clickButtonAllSong () throws InterruptedException {
         WebElement buttonAllSong = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='songs']")));
         Thread.sleep(1000);
-      return buttonAllSong.isDisplayed();
-
-
+        return buttonAllSong.isDisplayed();
     }
 }
 
