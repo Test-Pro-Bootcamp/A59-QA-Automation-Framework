@@ -11,9 +11,9 @@ public class Homework18 extends BaseTest {
 
     @Test
 
-    public void playSong() throws InterruptedException {
+    public void playSong(){
 
-        //login
+
         //navigateToPage();
         enterEmail("aleksei.koksharov@testpro.io");
         enterPassword("ak1234!@#$");
