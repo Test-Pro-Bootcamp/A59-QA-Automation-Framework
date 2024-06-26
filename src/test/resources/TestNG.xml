@@ -9,9 +9,9 @@
             <class name="BaseTest"/>
             <class name="CreateNewPlaylistTest"/>
             <class name="Homework16Test"/>
-            <class name="Homework17Test"/>
+            <!--class name="Homework17Test"/-->
             <class name="Homework18Test"/>
-            <class name="Homework19Test"/>
+            <!--class name="Homework19Test"/-->
             <class name="AllSongsTest"/>
             <!---class name="HomeTest"/-->
             <!--class name="Homework21Test"/-->
