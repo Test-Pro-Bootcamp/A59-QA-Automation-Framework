@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
@@ -14,11 +15,14 @@ public class AllSongAI extends BaseTest {
         enterPassword("te$t$tudent");
         clickSubmit();
         clickButtonAllSong();
-//        Assert.assertTrue(clickButtonAllSong());
+        Assert.assertTrue(clickButtonAllSong());
     }
-    public void clickButtonAllSong ()  {
+    private boolean clickButtonAllSong () throws InterruptedException {
         WebElement buttonAllSong = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='songs']")));
-       buttonAllSong.click();
+        Thread.sleep(1000);
+      return buttonAllSong.isDisplayed();
+
+
     }
 }
 
