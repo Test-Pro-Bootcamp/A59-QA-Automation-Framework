@@ -18,5 +18,10 @@ dependencies {
 test {
     useTestNG() {
         suites "src/test/resources/TestNG.xml"
+        //suites "src/test/resources/Smoke.xml"
+        // suites "src/test/resources/Regression.xml"
+        // Step 7 from BaseTest cont.
+        systemProperty "browser", System.getProperty("browser")
+        // Step 8: Run in terminal:  gradle clean test -Dbrowser=firefox
     }
 }

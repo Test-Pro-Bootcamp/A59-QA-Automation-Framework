@@ -15,7 +15,7 @@ public class PlaylistActions extends BasePage {
     }
 
     // LOCATORS
-    @FindBy(linkText = "Delete1")
+    @FindBy(linkText = "Delete 1.1")
     private WebElement clickPlaylist;
 
     @FindBy(xpath = "//*[@id='mainFooter']/div[2]/div[2]/div/button[1]")
