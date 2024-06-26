@@ -1,8 +1,10 @@
 
 /*
-import org.openqa.selenium.By;
+package pgFactoryPages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,42 +18,40 @@ public class BasePage {
     protected WebDriverWait wait;
     protected Actions actions;
 
-    By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
+    @FindBy(css = "[data-testid='sound-bar-play']")
+    protected WebElement soundBarVisualizer;
 
-    public BasePage(WebDriver givenDriver){
+    public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
 
-    protected WebElement findElement(By locator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    public WebElement waitForPresence(WebElement element) {
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
-    public void click (WebElement webElement) {
-        findElement((By) webElement).click();
+
+    public WebElement waitForClickable(WebElement element) {
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
-    public void doubleClickPlaylist(){
-        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
-        actions.doubleClick(playlistElement).perform();
-    }
-    public void contextClickFirstSong() throws InterruptedException{
-        WebElement firstSongElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
-        actions.contextClick(firstSongElement).perform();
+
+    protected WebElement findElement(WebElement element) {
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     protected boolean isSongPlaying() {
         return findElement(soundBarVisualizer).isDisplayed();
-
     }
 }
 
  */
 package pgFactoryPages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.interactions.Actions;
@@ -59,32 +59,38 @@ import org.openqa.selenium.interactions.Actions;
 import java.time.Duration;
 
 public class BasePage {
-    // HW Feedback: Use 'protected' access since it gives the subclass a chance to use the helper method or variable, while preventing a non-related class from trying to use it.
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions actions;
 
-    By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
+    @FindBy(css = "[data-testid='sound-bar-play']")
+    protected WebElement soundBarVisualizer;
 
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         actions = new Actions(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    // Add the waitForPresence method
     public WebElement waitForPresence(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    // Add the waitForClickable method
     public WebElement waitForClickable(WebElement element) {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    // New methods added
-    protected WebElement findElement(By locator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    public WebElement findElement(WebElement element) {
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public WebElement waitForElementToBeClickable(WebElement element) {
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public WebElement waitForElementToBeVisible(WebElement element) {
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     protected boolean isSongPlaying() {

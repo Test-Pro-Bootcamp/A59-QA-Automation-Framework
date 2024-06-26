@@ -14,8 +14,6 @@ public class PlaylistActions extends BasePage {
     }
 
     // LOCATORS
-
-
     private final By clickPlaylist = By.cssSelector(".playlist:nth-child(3)");
     //private By clickPlaylist = By.xpath("//*[@id='playlists']/ul/li[3]/a");
     private final By deletePlaylistAction = By.cssSelector(".btn-delete-playlist");

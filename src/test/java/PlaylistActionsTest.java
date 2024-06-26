@@ -23,6 +23,7 @@ public class PlaylistActionsTest extends BaseTest {
         // Perform delete playlist action
 
         playlist.selectPlayList();
+        playlist.clearInfo();
         playlist.deletePlaylist();
         playlist.successPopUpBox();
        // playlist.confirmDeleteBox();
