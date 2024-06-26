@@ -1,7 +1,6 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,7 +17,19 @@ public class Homework19 extends BaseTest {
         submit();
         Thread.sleep(4000);
 
-        //Choose to delete Play list 78
+        WebElement addPlayList = driver.findElement(By.cssSelector("#playlists i[role='button']"));
+        addPlayList.click();
+        Thread.sleep(3000);
+
+        WebElement createPlayListBtn = driver.findElement(By.cssSelector("li[data-test id='playlist-context-menu-create-simple']"));
+        createPlayListBtn.click();
+
+        WebElement playListNameInput = driver.findElement(By.cssSelector("[name='create-simple-playlist-form']>input"));
+        playListNameInput.sendKeys(playListName);
+        playListNameInput.sendKeys(Keys.ENTER);
+        Thread.sleep(3000);
+
+
         WebElement choosePlayList = driver.findElement(By.xpath("//section[@id='playlists']//li//a[text()='Playlist 78']"));
         choosePlayList.click();
         Thread.sleep(3000);
