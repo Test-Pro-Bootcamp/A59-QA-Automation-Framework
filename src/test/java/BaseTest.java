@@ -87,9 +87,9 @@ public class BaseTest {
         String gridURL = "http://192.168.1.108:4444";
 
         switch (browser) {
-            case "firefox":
-                WebDriverManager.firefoxdriver().setup();
-                return driver = new FirefoxDriver();
+
+            case "chrome":
+                return driver = new ChromeDriver();
             case "MicrosoftEdge":
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
@@ -105,7 +105,8 @@ public class BaseTest {
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
-            case "cloud": return lambdaTest();
+            case "cloud":
+                return lambdaTest();
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
