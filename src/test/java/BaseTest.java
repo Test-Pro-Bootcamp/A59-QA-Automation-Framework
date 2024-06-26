@@ -1,10 +1,13 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
@@ -15,6 +18,8 @@ public class BaseTest {
     WebDriver driver = null;
     ChromeOptions options = new ChromeOptions();
     WebDriverWait wait;
+    FluentWait<WebDriver> fluentWait;
+    Actions actions;
 
 
 
@@ -37,7 +42,13 @@ WebDriverManager.chromedriver().setup();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             driver.manage().window().maximize();
             wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            actions = new Actions(driver);
+
+            fluentWait = new FluentWait<WebDriver>(driver)
+                    .withTimeout(Duration.ofSeconds(5))
+                    .pollingEvery(Duration.ofMillis(200));
             navigateToPage(baseURL);
+
 
         }
  @AfterMethod
@@ -46,7 +57,7 @@ WebDriverManager.chromedriver().setup();
     driver.quit();
  }
 
-    protected void submit() throws InterruptedException {
+    protected void submit()  {
         WebElement submit =wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("button[type='submit']")));
         submit.click();
