@@ -21,6 +21,7 @@ public class BasePage {
     // Constructor to initialize the BasePage with a given WebDriver
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
+        actions = new Actions(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
@@ -120,7 +121,7 @@ public class BasePage {
     // Method to wait for an element to be clickable
     protected WebElement waitForVisibility(WebElement webElement) {
 
-        return wait.until(ExpectedConditions.visibilityOfElementLocated((By) webElement));
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     // Method to click an element without any wait

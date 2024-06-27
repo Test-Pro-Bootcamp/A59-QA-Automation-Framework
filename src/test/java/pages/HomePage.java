@@ -34,6 +34,7 @@ public class HomePage extends BasePage {
     private List<WebElement> getSongCount;
 
 
+
 //    @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
     @FindBy(xpath = "//a[contains(text(), playlistName)]")
     private WebElement getPlayListToEdit;
@@ -73,6 +74,14 @@ public class HomePage extends BasePage {
 
     @FindBy(css = "a.view-profile")
     private WebElement profileIcon;
+
+    ///////////////////////
+
+    @FindBy(css = "[data-testid='play-next-btn']")
+    private WebElement getPlayNextSongBtn;
+
+    @FindBy(css = "[data-testid='play-btn']")
+    private WebElement getPlaySongBtn;
 
 
     //Methods
@@ -123,6 +132,17 @@ public class HomePage extends BasePage {
 
         mouseOver(getPlayBtn);
 
+    }
+
+    public void mouseOverPlayNextBtn() {
+
+//        waitForVisibility(getPlayNextSongBtn);
+        mouseOver(getPlayNextSongBtn);
+    }
+
+    public void selectPlayNextBtnToSingleClick() {
+
+        singleClickBtn(getPlayNextSongBtn);
     }
 
     public void chooseAllSongsList() {

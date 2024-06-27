@@ -17,7 +17,9 @@ dependencies {
 
 test {
     useTestNG() {
-        suites "src/test/resources/TestNG.xml"
+        // suites "src/test/resources/TestNG.xml"
+        // suites "src/test/resources/Smoke-Suite.xml"
+        suites "src/test/resources/Regression-Suite.xml"
         systemProperty "browser", System.getProperty("browser")
        //   suites "src/test/resources/PlaySongTestSuite.xml"
     }

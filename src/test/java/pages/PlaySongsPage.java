@@ -16,7 +16,6 @@ public class PlaySongsPage extends BasePage {
     // Locators
     @FindBy(css = "[data-testid='play-next-btn']")
     private WebElement getPlayNextSongBtn;
-
     @FindBy(css = "[data-testid='play-btn']")
     private WebElement getPlaySongBtn;
 
@@ -41,31 +40,27 @@ public class PlaySongsPage extends BasePage {
     public WebElement selectSoundBars() {
 
         return getSoundBars;
-
     }
 
     public void mouseOverPlayBtn() {
 
         mouseOver(getPlaySongBtn);
-
     }
 
     public void selectPlayBtnToSingleClick() {
 
         singleClickBtn(getPlaySongBtn);
-
     }
 
     public void mouseOverPlayNextBtn() {
 
+//        waitForVisibility(getPlayNextSongBtn);
         mouseOver(getPlayNextSongBtn);
-
     }
 
     public void selectPlayNextBtnToSingleClick() {
 
         singleClickBtn(getPlayNextSongBtn);
-
     }
 
 }

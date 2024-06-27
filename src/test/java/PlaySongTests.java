@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.PlaySongsPage;
 import pages.BasePage;
@@ -13,20 +14,21 @@ public class PlaySongTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PlaySongsPage playSongsPage = new PlaySongsPage(driver);
         BasePage basePage = new BasePage(driver);
+        HomePage homePage = new HomePage(driver);
 
         loginPage.login();
         Thread.sleep(2000);
 
  //     WHEN
-        playSongsPage.mouseOverPlayBtn();
-        playSongsPage.selectPlayBtnToSingleClick();
+        homePage.mouseOverPlayBtn();
+        homePage.selectPlayBtnToSingleClick();
 
-        Thread.sleep(3000);  // Wanted to give it a little time so I notice next song is playing
-        playSongsPage.mouseOverPlayNextBtn();
-        playSongsPage.selectPlayNextBtnToSingleClick();
+        Thread.sleep(3000);  // Wanted to give it a little time, so I notice next song is playing
+        homePage.mouseOverPlayNextBtn();
+        homePage.selectPlayNextBtnToSingleClick();
 
 //      THEN
-        Assert.assertTrue(playSongsPage.selectSoundBars().isDisplayed());
+        Assert.assertTrue(basePage.isSongPlaying());
     }
 
     public void playSongBtn() throws InterruptedException {

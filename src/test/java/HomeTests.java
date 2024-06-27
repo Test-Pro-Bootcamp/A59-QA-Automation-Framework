@@ -141,13 +141,6 @@ public class HomeTests extends BaseTest {
 //        return soundBarVisualizer.isDisplayed();
 //    }
 
-
-
-
-
-
-
-
     public void hoverOverPlayBtn() {
 
         HomePage homePage = new HomePage(driver);

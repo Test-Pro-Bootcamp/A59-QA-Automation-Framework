@@ -127,7 +127,7 @@ public class PlayListPage extends BasePage {
 
         getPlayListToDelete.click();
         getPlayListToDeleteBtn.click();
-        waitForPresence(getPlayListToDeleteOkBtn).click();
+        waitForVisibility(getPlayListToDeleteOkBtn).click();
 
 //        findElement(getPlayListToDelete).click();
 //        findElement(getPlayListToDeleteBtn).click();

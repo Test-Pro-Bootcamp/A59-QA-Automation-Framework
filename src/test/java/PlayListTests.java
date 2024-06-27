@@ -20,7 +20,7 @@ public class PlayListTests extends BaseTest {
         playListPage.selectCreateNewPlayListBtn();
         playListPage.selectNewPlayListBtn();
         playListPage.selectTitleNameField(playlistName);
-
+        driver.navigate().refresh();
         // search for a song
 //        searchSong(songName);
         playListPage.selectSearchSongField(songName);
@@ -30,14 +30,14 @@ public class PlayListTests extends BaseTest {
         playListPage.selectViewAllSongs();
 
         // select first song from result
-        driver.navigate().refresh();
+//        driver.navigate().refresh();
 //        selectFirstSong();
         playListPage.selectFirstSong();
         // click Add to Button
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
 //        addSongToBtn();
         playListPage.selectAddSongToBtn();
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
         // choose list to add song to
 //        choosePlayList();
         playListPage.selectChoosePlayList();
