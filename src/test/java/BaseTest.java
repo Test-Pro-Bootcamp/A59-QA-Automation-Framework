@@ -10,7 +10,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -30,14 +29,12 @@ public class BaseTest {
     public Wait<WebDriver> fluentWait;
     public Actions actions = null;
 
-    //String url = "https://qa.koel.app/";
 
     @BeforeSuite
     static void setupClass() {
         //WebDriverManager.chromedriver().setup();
         //step1 below and externalize setUp
         WebDriverManager.firefoxdriver().setup();
-        //WebDriverManager.safaridriver().setup();
     }
 
     @BeforeMethod
