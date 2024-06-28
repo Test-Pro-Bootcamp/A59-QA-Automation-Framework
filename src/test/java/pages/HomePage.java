@@ -31,7 +31,7 @@ public class HomePage extends BasePage{
     private WebElement getSoundBars;
 
     @FindBy(css = "section#playlistWrapper td.title")
-    private WebElement getSongCount;
+    private List<WebElement> getSongCount;
 
     @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
     private WebElement getPlayListToEdit;
@@ -128,7 +128,7 @@ public class HomePage extends BasePage{
         getPlayList.click();
     }
 
-    public void selectPlaylistFieldName() {]
+    public void selectPlaylistFieldName() {
 
         getPlayListToEditField.sendKeys(Keys.chord(Keys.CONTROL,"A"), Keys.BACK_SPACE);
         getPlayListToEditField.sendKeys(newPlaylistName);
@@ -155,8 +155,8 @@ public class HomePage extends BasePage{
         return getRenameVerificationMsg.getText();
     }
 
-    public void setGetSongCount(WebElement getSongCount) {
-
-        this.getSongCount = getSongCount;
-    }
+//    public void setGetSongCount(WebElement getSongCount) {
+//
+//        this.getSongCount = getSongCount;
+//    }
 }

@@ -21,7 +21,7 @@ public class AllSongsPage extends BasePage{
 
     //Page Methods
     public AllSongsPage contextClickFirstSong(){
-        actions.contextClick((firstSong).perform());
+        actions.contextClick(firstSong).perform();
         return this;
     }
 

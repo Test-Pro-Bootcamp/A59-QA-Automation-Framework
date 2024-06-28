@@ -21,6 +21,7 @@ public class BasePage {
     // Constructor to initialize the BasePage with a given WebDriver
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
+        actions = new Actions(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
@@ -51,7 +52,8 @@ public class BasePage {
     // Method to wait for an element to be present on the page
     protected WebElement waitForPresence(WebElement webElement) {
 
-        return wait.until(ExpectedConditions.presenceOfElementLocated((By) webElement));
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
+//        return wait.until(ExpectedConditions.visibilityOfElementLocated((By) webElement));
     }
 
     // Method to click an element after waiting for it to be present
@@ -120,7 +122,7 @@ public class BasePage {
     // Method to wait for an element to be clickable
     protected WebElement waitForVisibility(WebElement webElement) {
 
-        return wait.until(ExpectedConditions.visibilityOfElementLocated((By) webElement));
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     // Method to click an element without any wait
@@ -171,7 +173,7 @@ public class BasePage {
     protected void mouseOverAndDoubleClick(WebElement webElement) {
 
         WebElement element = waitForVisibility(webElement);
-
+//        WebElement element = waitForVisibility(webElement);
         actions.moveToElement(element).doubleClick().perform();
     }
 

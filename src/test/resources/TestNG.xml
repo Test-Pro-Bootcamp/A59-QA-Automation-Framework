@@ -23,9 +23,9 @@
                 </methods>
             </class>  -->
 
-            <class name="HomeTests">
+            <class name="PlayListTests">
                  <methods>
-                    <include name="countSongsInPlaylist"/>
+                    <include name="addSongToPlaylist"/>
 
                 </methods>
 

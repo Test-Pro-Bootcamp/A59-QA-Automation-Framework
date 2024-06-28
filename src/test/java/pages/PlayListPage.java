@@ -1,5 +1,6 @@
 package pages;
 
+import org.bouncycastle.crypto.engines.EthereumIESEngine;
 import org.openqa.selenium.By;
 import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
@@ -47,10 +48,6 @@ public class PlayListPage extends BasePage {
     @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
     private WebElement getChoosePlayList;
 
-    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
-    private WebElement getChoosePlayListField;
-
-
     @FindBy(xpath = "//*[contains(text(), 'Created playlist \""  + "TestPro Playlist" + ".\"')]")
     private WebElement getCreatedVerificationMsg;
 
@@ -90,23 +87,26 @@ public class PlayListPage extends BasePage {
     // Page Methods
     // Very basic methods
     public void selectCreateNewPlayListBtn () {
+
+        waitForPresence(getCreateNewPlayListBtn);
         mouseOverAndClick(getCreateNewPlayListBtn);
     }
 
     public void selectNewPlayListBtn () {
 
-        getNewPlayListBtn.click();
+        waitForPresence(getNewPlayListBtn).click();
+//        getNewPlayListBtn.click();
     }
 
     public void selectTitleNameField(String playListName) {
 
-        getTitleNameField.clear();
+        waitForPresence(getTitleNameField).clear();
         getTitleNameField.sendKeys(playListName + "\n");
     }
 
     public String selectVerificationNoticeMsg() {
 
-        return getVerificationNoticeMsg.getText();
+        return waitForPresence(getVerificationNoticeMsg).getText();
     }
 
     public String selectDeletedVerifyNotificationMsg() {
@@ -124,20 +124,16 @@ public class PlayListPage extends BasePage {
         return getCreatedVerificationMsg.getText();
     }
 
-    public void selectPlayListToDelete () {
+    public void selectPlayListToDelete () throws InterruptedException {
 
-        getPlayListToDelete.click();
-        getPlayListToDeleteBtn.click();
-        waitForPresence(getPlayListToDeleteOkBtn).click();
-
-//        findElement(getPlayListToDelete).click();
-//        findElement(getPlayListToDeleteBtn).click();
-//        waitForPresence(getPlayListToDeleteOkBtn).click();
-
-//        mouseOverAndContextClick(getPlayListToDelete);
-//        mouseOverAndClick(getPlayListToDeleteBtn);
-//        mouseOverAndClick(getPlayListToDeleteOkBtn);
-
+//        driver.navigate().refresh();
+        waitForPresence(getPlayListToDelete).click();
+        Thread.sleep(1000);
+        waitForPresence(getPlayListToDeleteBtn).click();
+        Thread.sleep(1000);
+        if(getPlayListToDeleteOkBtn.isDisplayed()) {
+            getPlayListToDeleteOkBtn.click();
+        }
     }
 
     public void selectPlayListToDeleteBtn () {
@@ -152,22 +148,22 @@ public class PlayListPage extends BasePage {
 
     public void selectViewAllSongs () {
 
-        getViewAllSongs.click();
+        waitForPresence(getViewAllSongs).click();
     }
 
     public void selectFirstSong () {
 
-        getFirstSong.click();
+        waitForPresence(getFirstSong).click();
     }
 
     public void selectAddSongToBtn () {
 
-        getAddSongToBtn.click();
+        waitForPresence(getAddSongToBtn).click();
     }
 
     public void selectChoosePlayList () {
 
-        getChoosePlayList.click();
+        waitForPresence(getChoosePlayList).click();
     }
 
 }
