@@ -27,7 +27,7 @@ public class HomeTest extends BaseTest{
 
 
     @Test
-    public void CountSongsInPLaylist() throws InterruptedException {
+    public void CountSongsInPlaylist() throws InterruptedException {
 
 
     //login

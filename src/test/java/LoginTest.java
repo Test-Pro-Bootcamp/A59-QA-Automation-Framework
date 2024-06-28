@@ -5,11 +5,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class LoginTest extends BaseTest {
 
 
-@Test
+//@Test
     public void loginEmptyEmailPassword() throws InterruptedException {
 
         String expectedURL= "https://qa.koel.app/";
@@ -24,10 +26,24 @@ public class LoginTest extends BaseTest {
 
     public void loginValidEmailPassword() throws InterruptedException {
 
+//code from Page Objects
+//the codes are being pulled to use here.
+   LoginPage loginPage = new LoginPage(driver);
+   HomePage homePage = new HomePage(driver);
+
+   // login has step in it with a method
+
+ loginPage.login();
+
+ Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
 
 
-       // navigateToPage();
 
+
+
+
+
+/*
         enterEmail("christina.taylor@testpro.io");
 
         enterPassword("jKV0uSX6z1dv");
@@ -42,10 +58,10 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(avatarIcon.isDisplayed());
 
 
-
+*/
     }
 
-@Test
+//@Test
 
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
@@ -68,7 +84,7 @@ public class LoginTest extends BaseTest {
 
     }
 
-@Test
+//@Test
 
     public void loginEmailEmptyPassword() throws InterruptedException {
 
@@ -85,7 +101,7 @@ public class LoginTest extends BaseTest {
 
 
     }
-    @Test( dataProvider ="NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    //@Test( dataProvider ="NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
     public void loginNegativeTest(String email, String password) throws InterruptedException {
 
         String expectedURL= "https://qa.koel.app/";

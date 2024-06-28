@@ -15,11 +15,12 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    WebDriver driver = null;
-    ChromeOptions options = new ChromeOptions();
-    WebDriverWait wait;
-    FluentWait<WebDriver> fluentWait;
-    Actions actions;
+
+   public  WebDriver driver= null;
+   public  ChromeOptions options = new ChromeOptions();
+   public   WebDriverWait wait;
+   public  FluentWait<WebDriver> fluentWait;
+   public Actions actions = null;
 
 
 
