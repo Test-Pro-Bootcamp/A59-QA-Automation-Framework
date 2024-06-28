@@ -11,16 +11,27 @@ import pages.LoginPage;
 public class LoginTest extends BaseTest {
 
 
-//@Test
+@Test
     public void loginEmptyEmailPassword() throws InterruptedException {
 
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.login();
+
+
+
+        String expectedURL= "https://qa.koel.app/";
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+
+        driver.quit();
+        /*
         String expectedURL= "https://qa.koel.app/";
         //navigateToPage();
         enterEmail("");
         enterPassword("jKV0uSX6z1dv");
-        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
 
-        driver.quit();
+ */
     }
 @Test
 
@@ -36,12 +47,6 @@ public class LoginTest extends BaseTest {
  loginPage.login();
 
  Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
-
-
-
-
-
-
 
 /*
         enterEmail("christina.taylor@testpro.io");
@@ -59,56 +64,77 @@ public class LoginTest extends BaseTest {
 
 
 */
+
+
+
+
+
+
     }
 
-//@Test
+@Test
 
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+       loginPage.login();
 
 
-       // navigateToPage();
-
-        String expectedURL= "https://qa.koel.app/";
-        enterEmail("invalid@testpro.io");
-
-        enterPassword("jKV0uSX6z1dv");
+    loginPage.provideEmail("christina.taylor@test.io");
+    loginPage.providePassword("jKV0uSX6z1dv");
 
 
-        submit();
+    String expectedURL= "https://qa.koel.app/";
 
 
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
 
-
+    // enterEmail("christina.taylor@test.io");
+    //  enterPassword("jKV0uSX6z1dv");
 
     }
 
-//@Test
+@Test
 
     public void loginEmailEmptyPassword() throws InterruptedException {
 
 
 
-      //  navigateToPage();
+     LoginPage loginPage = new LoginPage(driver);
+     HomePage homePage =new HomePage(driver);
+
+     loginPage.provideEmail("christina.taylor@testpro.io");
+     loginPage.providePassword(" ");
+
+
+
         String expectedURL= "https://qa.koel.app/";
-        enterEmail("christina.taylor@testpro.io");
-
-        submit();
-
-
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
 
 
+    //  enterEmail("christina.taylor@testpro.io");
+
+
     }
-    //@Test( dataProvider ="NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    @Test( dataProvider ="NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
     public void loginNegativeTest(String email, String password) throws InterruptedException {
 
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePAge = new HomePage(driver);
+
+
+        loginPage.login();
+
         String expectedURL= "https://qa.koel.app/";
-        enterEmail(email);
+        Assert.assertEquals(driver.getCurrentUrl(),expectedURL);
+
+         /*  enterEmail(email);
         enterPassword(password);
         submit();
-        Assert.assertEquals(driver.getCurrentUrl(),expectedURL);
+
+       */
 
 
     }

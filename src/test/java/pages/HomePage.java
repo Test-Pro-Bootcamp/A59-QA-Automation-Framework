@@ -13,9 +13,9 @@ public class HomePage extends BasePage{
     }
     //LOCATOR
     By userAvatarIcon = By.cssSelector("img.avatar");
+
     //METHODS
     public WebElement getUserAvatarIcon() {
         return findElement(userAvatarIcon);
     }
 }
-

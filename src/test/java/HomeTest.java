@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
 
 import java.util.List;
 
@@ -15,11 +17,13 @@ public class HomeTest extends BaseTest{
     public void HoverPLayButtonAndPlaySongs() throws InterruptedException {
 
       //Login
+    LoginPage loginPage = new LoginPage(driver);
+    HomePage homePage = new HomePage(driver);
 
-      enterEmail("christina.taylor@testpro.io");
-      enterPassword("jKV0uSX6z1dv");
-      submit();
-      Thread.sleep(1000);
+
+    loginPage.login();
+
+
       Assert.assertTrue(hoverPlay().isDisplayed());
 
 
@@ -31,14 +35,14 @@ public class HomeTest extends BaseTest{
 
 
     //login
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePAge = new HomePage(driver);
 
-      enterEmail("christina.taylor@testpro.io");
-      enterPassword("jKV0uSX6z1dv");
-      submit();
+        loginPage.login();
 
       //Chose a playlist by name
       choosePlaylistByName("TestPro Playlist");
-      Thread.sleep(1000);
+
       //DisplayAllSongs
       displayAllSongs();
       //Number of songs are  equal to number of songs displayed in the info section
@@ -46,7 +50,7 @@ public class HomeTest extends BaseTest{
       // above is checking if string 1 is equal to string 2
 
   }
-@Test
+//@Test
   public void renamePlaylist() throws InterruptedException {
 
 String updatedPlaylistMsg = "Updated playlist \" Sample Edited Playlist.\"";

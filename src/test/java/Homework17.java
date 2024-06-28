@@ -3,6 +3,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
+import pages.HomePage;
+import pages.LoginPage;
+
 
 public class Homework17 extends BaseTest {
 
@@ -10,27 +14,24 @@ public class Homework17 extends BaseTest {
 
     public void addSongToPlaylist() throws InterruptedException {
 
+
+
+LoginPage loginPage = new LoginPage(driver);
+HomePage homePage = new HomePage(driver);
+
+loginPage.login();
+
+
+
         String expectedSongAddMessage = "Add 1 Song into \"lazy days.\"";
-
-        // go to web page
-
-        //login
-        enterEmail("christina.taylor@testpro.io");
-        enterPassword("jKV0uSX6z1dv");
-        submit();
-
         //search for song
         searchSong("dark");
-
         //click view all button
         clickViewAllBtn();
-
         //select first song from result
         selectFirstSong();
-
         //click add to button
         clickAddToBtn();
-
         //choose a playlist from
         chosePlayList();
 

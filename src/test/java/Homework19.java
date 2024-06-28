@@ -3,24 +3,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class Homework19 extends BaseTest {
 
     @Test
     public void deletePlaylist() throws InterruptedException {
 
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.login();
+
         String deleteNotification = "Deleted playlist lazy days";
 
-        enterEmail("christina.taylor@testpro.io");
-
-        enterPassword("jKV0uSX6z1dv");
-        submit();
         //select lazy days
         clickLazyDays();
         // delete button
-
         removePlaylist();
-
         // ok button to conform
         //Verify that the confirmation notification
         // displayed has the text, "Deleted playlist {playlist name}".
