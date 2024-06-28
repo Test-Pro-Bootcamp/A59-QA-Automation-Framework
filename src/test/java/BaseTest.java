@@ -16,6 +16,9 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
+import java.net.URL;
+import java.util.HashMap;
+
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.time.Duration;
@@ -73,6 +76,10 @@ public class BaseTest {
             case "grid-chrome":
                 caps.setCapability("browserName", "chrome");
                 return new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+                // Class25- Cloud Exec addition below
+            case "cloud":
+                return lambdaTest();
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -107,4 +114,26 @@ public class BaseTest {
     protected void navigateToPage(String url) {
         getDriver().get(url);
     }
+
+    // Class 25 on Cloud Execution below
+    public static WebDriver lambdaTest() throws MalformedURLException {
+        String hubUrl = "https://hub.lambdatest.com/wd/hub";
+
+        // include hashmap import above
+        //use on terminal to run gradle clean test -Dbrowser=cloud
+        //Go here to set up: https://www.lambdatest.com/capabilities-generator/
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName("Windows 10");
+        browserOptions.setBrowserVersion("125");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "giovanna.j.silva");
+        ltOptions.put("accessKey", "pzWR3W7j3G0z4Pd0blOtFeENNgzfoiJ9N5jF4Hlc2JnmgpQjIN");
+        ltOptions.put("build", "TestProBuild");
+        ltOptions.put("project", "Cloud Execution");
+        ltOptions.put("selenium_version", "4.0.0");
+        ltOptions.put("w3c", true);
+        browserOptions.setCapability("LT:Options", ltOptions);
+        return new RemoteWebDriver(new URL(hubUrl), browserOptions);
+    }
+
 }
