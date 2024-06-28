@@ -1,30 +1,4 @@
 
-    /*import org.testng.Assert;
-    import org.testng.annotations.Test;
-    import pgFactoryPages.LoginPage;
-
-public class LoginTests extends BaseTest {
-
-
-    @Test
-    public void loginTest() throws InterruptedException {
-        LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.login("giovanna.silva@testpro.io", "ShakaMaya1302!"); // Calling the login method from LoginPage
-    }
-  //@Test (dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
-public void negativeLoginTest(String email, String password) throws InterruptedException {
-        String expectedUrl = "https://qa.koel.app/";
-        enterEmail(email);
-        enterPassword(password);
-        submit();
-        Assert.assertEquals(getDriver().getCurrentUrl(),expectedUrl);
-  }
-}
-
- */
-    import org.openqa.selenium.By;
-    import org.openqa.selenium.WebElement;
-    import org.openqa.selenium.support.ui.ExpectedConditions;
     import org.testng.Assert;
     import org.testng.annotations.Test;
     import pgFactoryPages.HomePage;

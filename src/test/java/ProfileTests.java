@@ -1,27 +1,13 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.UUID;
 
 
 public class ProfileTests extends BaseTest{
 
     @Test
-   /* public void changeProfileName() throws InterruptedException {
-        //navigateToPage();
-        login();
-        navigateToProfilePage();
-        String uniqueName = generateUniqueName();
-        changeName(uniqueName);
-        String profileName = getProfileName();
-        Assert.assertEquals(profileName, uniqueName);
-    }
-
-    */
-
     private void login() throws InterruptedException {
         enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");

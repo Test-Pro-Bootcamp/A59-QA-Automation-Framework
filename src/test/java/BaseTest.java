@@ -114,7 +114,7 @@ public class BaseTest {
     protected void navigateToPage(String url) {
         getDriver().get(url);
     }
-
+    //homework-25 = labdaTest Cloud Automation Class
     // Class 25 on Cloud Execution below
     public static WebDriver lambdaTest() throws MalformedURLException {
         String hubUrl = "https://hub.lambdatest.com/wd/hub";
