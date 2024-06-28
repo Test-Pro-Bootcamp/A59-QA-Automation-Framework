@@ -2,20 +2,18 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-//CONSTRUCTOR
-public class HomePage extends BasePage {
-    public HomePage(WebDriver givenDriver){
-        super(givenDriver);
-    }
-    //LOCATORS
-    By userAvatarIcon = By.cssSelector("img.avatar");
+public class HomePage {
+    WebDriver driver;
 
-    //METHODS
-    public WebElement getUserAvatar (){
+    By userAvatar = By.cssSelector("img.avatar");
 
-        return findElement((WebElement) userAvatarIcon);
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
     }
 
+    public boolean isUserAvatarDisplayed() {
+        return driver.findElement(userAvatar).isDisplayed();
+    }
 }
+
