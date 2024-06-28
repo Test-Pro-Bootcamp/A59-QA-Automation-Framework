@@ -20,6 +20,7 @@
             <class name="Homework24Test"/>
             <class name="ProfileTest"/>
             <!--class name="ActionTest"/-->
+            <class name="CucumberRunner"/>
         </classes>
     </test>
 
