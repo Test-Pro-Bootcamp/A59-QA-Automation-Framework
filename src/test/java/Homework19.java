@@ -20,14 +20,10 @@ public class Homework19 extends BaseTest {
     @Test
     public void deletePlaylist() throws InterruptedException{
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        AllSongsPage allSongsPage = new AllSongsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        AllSongsPage allSongsPage = new AllSongsPage(getDriver());
         loginPage.login();
-
-
-
-
 
         // Click to view playlist
         deletePlaylistAction();
@@ -39,11 +35,11 @@ public class Homework19 extends BaseTest {
         Assert.assertTrue(getSuccessPopUp().isDisplayed());
 
         // Quitting the WebDriver session
-        driver.quit();
+        getDriver().quit();
     }
 
     public void deletePlaylistAction() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
 
         // Wait for the overlaying element to disappear
       //  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[@class='play']")));
@@ -53,36 +49,37 @@ public class Homework19 extends BaseTest {
             WebElement clickPlayList = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='playlists']/ul/li[3]/a")));
 
             // Use the JavaScriptUtils class to click the element
-            JavaScriptUtils.clickElement(driver, clickPlayList);
+            JavaScriptUtils.clickElement(getDriver(), clickPlayList);
         } catch (TimeoutException | NoSuchElementException e) {
             System.out.println("No playlist found to click. Exiting...");
-            driver.quit();
+            getDriver().quit();
             System.exit(0);
         }
     }
 
     public void confirmDelete() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(40));
 
         try {
             // Check if the delete button is present and clickable
             WebElement confirmDelete = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='del btn-delete-playlist']")));
-            JavaScriptUtils.clickElement(driver, confirmDelete);
+            JavaScriptUtils.clickElement(getDriver(), confirmDelete);
         } catch (TimeoutException | NoSuchElementException e) {
             System.out.println("No playlist to delete. Exiting...");
-            driver.quit();
+            getDriver().quit();
             System.exit(0);
         }
     }
 
     public WebElement getSuccessPopUp() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
         try {
             // Wait for the success popup to appear
             return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*/div[2]/div[@class='success show']")));
         } catch (TimeoutException e) {
             System.out.println("Success popup not found. Exiting...");
-            driver.quit();
+            //driver.quit();
+            getDriver().quit();
             System.exit(0);
         }
         return null;

@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 public class HomePage extends BasePage{
@@ -13,16 +14,19 @@ public class HomePage extends BasePage{
     }
 //HW FEEDBACK: make all the locators and WebElements private, because private keyword in java allows most restrictive access to variables and methods and offer strongest form of Encapsulation.
     //Locators
-    private By userAvatarIcon = By.cssSelector("img.avatar");
-    private By allSongsList = By.cssSelector("li a.songs");
+    By userAvatarIcon = By.cssSelector("img.avatar");
+    By allSongsList = By.cssSelector("li a.songs");
 
     //Methods
     public WebElement getUserAvatar(){
-        return findElement(userAvatarIcon);
+        //return findElement(userAvatarIcon);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(userAvatarIcon));
+
     }
 
     public void chooseAllSongsList(){
         findElement(allSongsList).click();
+
     }
 
 }

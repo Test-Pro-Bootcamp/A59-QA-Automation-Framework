@@ -8,8 +8,8 @@ public class PlaylistActionsTest extends BaseTest {
     @Test
     public void deletePlaylist() {
         // Instantiate LoginPage and PlaylistActions
-        LoginPage loginPage = new LoginPage(driver);
-        PlaylistActions playlist = new PlaylistActions(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        PlaylistActions playlist = new PlaylistActions(getDriver());
 
         // Perform login
         loginPage.login("giovanna.silva@testpro.io", "ShakaMaya1302!");

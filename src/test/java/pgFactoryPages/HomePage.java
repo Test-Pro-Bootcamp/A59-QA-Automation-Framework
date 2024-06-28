@@ -25,6 +25,7 @@ public class HomePage extends BasePage {
     }
 
     public void chooseAllSongsList(){
+
         allSongsList.click();
     }
 }

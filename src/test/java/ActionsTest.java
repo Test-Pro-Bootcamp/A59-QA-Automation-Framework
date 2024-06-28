@@ -17,9 +17,9 @@ public class ActionsTest extends BaseTest{
     @Test
     public void playSong() throws InterruptedException{
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        AllSongsPage allSongsPage = new AllSongsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        AllSongsPage allSongsPage = new AllSongsPage(getDriver());
 
         //loginPage.provideEmail("demo@class.com");
         //loginPage.providePassword("te$t$tudent");
@@ -68,7 +68,7 @@ public class ActionsTest extends BaseTest{
     }
 
     public WebElement hoverPlay(){
-        WebElement play = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        WebElement play = getDriver().findElement(By.cssSelector("[data-testid='play-btn']"));
         actions.moveToElement(play).perform();
         return wait.until(ExpectedConditions.visibilityOf(play));
     }
@@ -92,7 +92,7 @@ public class ActionsTest extends BaseTest{
     }
 
     public void displayAllSongs(){
-        List<WebElement> songList = driver.findElements(By.cssSelector("section#playlistWrapper td.title"));
+        List<WebElement> songList = getDriver().findElements(By.cssSelector("section#playlistWrapper td.title"));
         //count and display song names
         System.out.println("Number of Songs in the playlist: "+countSongs());
         for(WebElement e : songList){
@@ -100,11 +100,11 @@ public class ActionsTest extends BaseTest{
         }
     }
     public int countSongs(){
-        return driver.findElements(By.cssSelector("section#playlistWrapper td.title")).size();
+        return getDriver().findElements(By.cssSelector("section#playlistWrapper td.title")).size();
     }
 
     public String getPlaylistDetails(){
-        return driver.findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
+        return getDriver().findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -114,7 +114,7 @@ public class ActionsTest extends BaseTest{
     //@Test
     public void renamePlaylist(){
         String updatedPlaylistMsg = "Updated playlist \""+newPlaylistName+".\"";
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login();
         enterNewPlaylistName();
         Assert.assertEquals(getRenamePlaylistSuccessMsg(), updatedPlaylistMsg);
