@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeSuite;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.time.Duration;
@@ -24,15 +23,11 @@ public class BaseTest {
     //String url = "https://qa.koel.app/";
 
     @BeforeSuite
-    static void setupClass() {
-        WebDriverManager.chromedriver().setup();
-    }
-
+    static void setupClass() {WebDriverManager.chromedriver().setup();}
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchBrowser(String baseURL){
+    public void launchBrowser(String BaseURL){
         //      Added ChromeOptions argument below to fix websocket error
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications","--remote-allow-origins=*", "--incognito","--start-maximized");
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
@@ -42,29 +37,18 @@ public class BaseTest {
         fluentWait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(200));
-
-        navigateToPage(baseURL);
-
-
-
-
+        navigateToPage(BaseURL);
     }
-
     @AfterMethod
     public void closeBrowser(){
         driver.quit();
     }
-
-
-
-
     protected void enterPassword(String password) {
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
         //WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
         passwordField.sendKeys(password);
     }
-
     protected void enterEmail(String email) {
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
         //WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
@@ -75,9 +59,7 @@ public class BaseTest {
         //WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
-
     }
-
     protected void navigateToPage(String url) {
 
         driver.get(url);
