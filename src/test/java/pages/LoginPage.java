@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class LoginPage extends BasePage{
 
@@ -49,9 +50,17 @@ public class LoginPage extends BasePage{
 
     public LoginPage login() {
 
+        HomePage homePage = new HomePage(driver);
+
         provideEmail("demo@testpro.io");
         providePassword("te$t$tudent");
         clickSubmit();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+        return this;
+    }
+
+    public LoginPage checkIfLoggedIn() {
+
         return this;
     }
 }

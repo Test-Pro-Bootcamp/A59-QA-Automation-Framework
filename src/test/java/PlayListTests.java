@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.PlayListPage;
 import pages.BasePage;
@@ -14,8 +15,10 @@ public class PlayListTests extends BaseTest {
 //      GIVEN
         LoginPage loginPage = new LoginPage(driver);
         PlayListPage playListPage = new PlayListPage(driver);
+        HomePage homePage = new HomePage(driver);
+
         loginPage.login();
-        Thread.sleep(2000);
+        driver.navigate().refresh();
 
 //      WHEN
         // create a playlist
@@ -26,7 +29,7 @@ public class PlayListTests extends BaseTest {
         driver.navigate().refresh();
         playListPage.selectSearchSongField(songName);
         // click view all button
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         playListPage.selectViewAllSongs();
         // select first song from result
         playListPage.selectFirstSong();
@@ -34,6 +37,7 @@ public class PlayListTests extends BaseTest {
         playListPage.selectAddSongToBtn();
         // select playlist to delete
         playListPage.selectChoosePlayList();
+        // I need at least 1 of these thread.sleep, it just won't work without it.
         Thread.sleep(3000);
         playListPage.selectPlayListToDelete();
 

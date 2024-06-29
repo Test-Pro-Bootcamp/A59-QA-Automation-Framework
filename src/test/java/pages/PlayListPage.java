@@ -72,7 +72,7 @@ public class PlayListPage extends BasePage {
 
     public void selectCreateNewPlayListBtn () {
 
-        waitForPresence(getCreateNewPlayListBtn);
+        waitForVisibility(getCreateNewPlayListBtn);
         mouseOverAndClick(getCreateNewPlayListBtn);
     }
 
@@ -107,20 +107,16 @@ public class PlayListPage extends BasePage {
         return getCreatedVerificationMsg.getText();
     }
 
-    public void selectPlayListToDelete () throws InterruptedException {
+    public void selectPlayListToDelete () {
 
-        waitForPresence(getPlayListToDelete).click();
-        Thread.sleep(1000);
-        waitForPresence(getPlayListToDeleteBtn).click();
-        Thread.sleep(1000);
+        waitForVisibility(getPlayListToDelete).click();
+        waitForVisibility(getPlayListToDeleteBtn).click();
 //        System.out.println("This is the output: " + getPlayListToDelete.getText());
 
-        if(getPlayListToDeleteOkBtn.isDisplayed()) {
+        if(waitForVisibility(getPlayListToDeleteOkBtn).isDisplayed()) {
             getPlayListToDeleteOkBtn.click();
         }
     }
-
-
 
     public void selectSearchSongField (String songName) {
 
@@ -144,8 +140,8 @@ public class PlayListPage extends BasePage {
 
     public void selectChoosePlayList () {
 
-        waitForPresence(getChoosePlayList).click();
-        System.out.println("This is the output: " + getChoosePlayList);
+        waitForVisibility(getChoosePlayList).click();
+//        System.out.println("This is the output: " + getChoosePlayList);
     }
 
     public void selectPlayListToDeleteBtn () {
