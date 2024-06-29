@@ -5,56 +5,52 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class Homework21 extends BaseTest {
 
     String UpdatedName = "Good Morning";
 
     @Test
-    public void newPlaylistName() throws InterruptedException {
+    public void newPlaylistName(){
+
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.login();
 
         String updatedPlaylistMsg = "Updated playlist \" Good Morning.\"";
-        //login
-
-        enterEmail("christina.taylor@testpro.io");
-        enterPassword("jKV0uSX6z1dv");
-        submit();
-
-        // Double click method
         doubleClickPlaylist();
-
-        // rename playlist
         newNamePlaylist();
-
-        //Assert
-
-        Assert.assertEquals(getRenamePlaylistSuccessMgs(),updatedPlaylistMsg);
+        Assert.assertEquals(successMessage(),updatedPlaylistMsg);
     }
 // in this area I'm unable to Back_space all of it. for some reason its only doing one letter
     public void newNamePlaylist() {
 
-        WebElement newName = wait.until(ExpectedConditions.presenceOfElementLocated
+        WebElement playlistFiled = wait.until(ExpectedConditions.presenceOfElementLocated
                 (By.cssSelector("[name='name']")));
-        newName.sendKeys(Keys.chord(Keys.CONTROL,"A"), Keys.BACK_SPACE);
-        newName.sendKeys(UpdatedName);
-        newName.sendKeys(Keys.ENTER);
+        playlistFiled.sendKeys(Keys.chord(Keys.CONTROL,"A", Keys.BACK_SPACE));
+        playlistFiled.sendKeys(UpdatedName);
+        playlistFiled.sendKeys(Keys.ENTER);
     }
 
 
 
-    public String getRenamePlaylistSuccessMgs() {
+    public String successMessage() {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("div.success.show")));
         return notification.getText();
 
-    }
-    public void doubleClickPlaylist() {
-
-        WebElement playlistLazyDays = wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.cssSelector(".playlist:nth-child(4)")));
-        actions.doubleClick(playlistLazyDays).perform();
 
 
-    }
 
+}
+public void doubleClickPlaylist() {
+
+    WebElement playlistLazyDays = wait.until(ExpectedConditions.visibilityOfElementLocated
+            (By.cssSelector(".playlist:nth-child(4)")));
+    actions.doubleClick(playlistLazyDays).perform();
+
+}
 }

@@ -5,31 +5,32 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class AllSongsTest extends BaseTest {
 
 
     @Test
-    public void playSongWithRightClick() throws InterruptedException {
+    public void playSongWithRightClick()  {
 
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
-        //Login
-        enterEmail("christina.taylor@testpro.io");
-        enterPassword("jKV0uSX6z1dv");
-        submit();
+        loginPage.login();
 
         //Navigate to All Songs Page
         navigateToChooseAllSong();
-        Thread.sleep(1000);
+
         //Right/Context Click on the first song
         contextClickFirstSong();
 
         //ChoosePlay from context menu
         choosePlayOption();
-        Thread.sleep(1000);
+
         //Verify the song is being played.
         Assert.assertTrue(isSongPlaying());
-        Thread.sleep(1000);
+
 
     }
 

@@ -14,7 +14,7 @@ public class HomeTest extends BaseTest{
   String newPlaylistName = "Sample Edited Playlist";
 
   @Test
-    public void HoverPLayButtonAndPlaySongs() throws InterruptedException {
+    public void HoverPLayButtonAndPlaySongs()  {
 
       //Login
     LoginPage loginPage = new LoginPage(driver);
@@ -31,13 +31,12 @@ public class HomeTest extends BaseTest{
 
 
     @Test
-    public void CountSongsInPlaylist() throws InterruptedException {
+    public void CountSongsInPlaylist()  {
 
 
-    //login
+
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePAge = new HomePage(driver);
-
         loginPage.login();
 
       //Chose a playlist by name
@@ -50,30 +49,31 @@ public class HomeTest extends BaseTest{
       // above is checking if string 1 is equal to string 2
 
   }
-//@Test
-  public void renamePlaylist() throws InterruptedException {
+@Test
+  public void renamePlaylist() {
+// Im having the same problems here to delete the old name all its doing is adding on to the name
+  
+String updatedPlaylistMsg = "Updated playlist \" Test Edited Playlist.\"";
 
-String updatedPlaylistMsg = "Updated playlist \" Sample Edited Playlist.\"";
-//login
-  enterEmail("christina.taylor@testpro.io");
-  enterPassword("jKV0uSX6z1dv");
-  submit();
-  // double click on playlist name
+HomePage homePage = new HomePage(driver);
+LoginPage loginPage = new LoginPage(driver);
+loginPage.login();
+
+
+
   doubleClickPlaylist();
-  Thread.sleep(2000);
-  // enter new Name
+
   enterNewName();
-  Thread.sleep(1000);
-  // Assert
+
   Assert.assertEquals(getRenamePlaylistSuccessMgs(),updatedPlaylistMsg);
-  Thread.sleep(1000);
+
 
 }
-
+/// HERE Im still trying to delete the old playlist with the control backspace but its not working
   public void enterNewName() {
     WebElement playlistInputField = wait.until(ExpectedConditions.visibilityOfElementLocated
             (By.cssSelector("[name='name']")));
-    playlistInputField.sendKeys(Keys.chord(Keys.CONTROL,"A"),Keys.BACK_SPACE);
+    playlistInputField.sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
     playlistInputField.sendKeys(newPlaylistName);
     playlistInputField.sendKeys(Keys.ENTER);
   }

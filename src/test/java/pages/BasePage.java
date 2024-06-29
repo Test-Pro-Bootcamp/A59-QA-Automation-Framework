@@ -10,9 +10,9 @@ import java.time.Duration;
 
 public class BasePage {
 
-    WebDriver driver;
-    WebDriverWait wait;
-    Actions actions;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected Actions actions;
 
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
@@ -23,6 +23,25 @@ public class BasePage {
     public WebElement findElement(By locator) {
 
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+// is this the right way to add double clicks ect.. to basePage ? or should i not be adding it to.
+
+    public WebElement checkDoubleClick(By locator ) {
+
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+
+    public WebElement checkClickable (By locator ) {
+
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+
+    public WebElement checkHoverOver(By locator ) {
+
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 }
 

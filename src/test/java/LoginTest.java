@@ -12,7 +12,7 @@ public class LoginTest extends BaseTest {
 
 
 @Test
-    public void loginEmptyEmailPassword() throws InterruptedException {
+    public void loginEmptyEmailPassword()  {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -35,7 +35,7 @@ public class LoginTest extends BaseTest {
     }
 @Test
 
-    public void loginValidEmailPassword() throws InterruptedException {
+    public void loginValidEmailPassword()  {
 
 //code from Page Objects
 //the codes are being pulled to use here.
@@ -74,7 +74,7 @@ public class LoginTest extends BaseTest {
 
 @Test
 
-    public void loginInvalidEmailValidPassword() throws InterruptedException {
+    public void loginInvalidEmailValidPassword()  {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -98,7 +98,7 @@ public class LoginTest extends BaseTest {
 
 @Test
 
-    public void loginEmailEmptyPassword() throws InterruptedException {
+    public void loginEmailEmptyPassword()  {
 
 
 
