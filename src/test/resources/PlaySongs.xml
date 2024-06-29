@@ -1,0 +1,12 @@
+<suite name="PlaySongs">
+
+    <test name="Play song Test" preserve-order="false">
+        <classes>
+            <class name="Homework18">
+                <Methods>
+                    <include name="playSong"/>
+                </Methods>
+            </class>
+        </classes>
+    </test>
+</suite>
