@@ -16,9 +16,6 @@ public class LoginTests extends BaseTest {
 
     }
 
-    //Happy Path-Login Test
-
-
     @Test
     public void loginValidEmailPassword(){
 

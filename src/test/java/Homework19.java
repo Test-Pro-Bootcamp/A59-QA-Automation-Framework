@@ -21,7 +21,7 @@ public class Homework19 extends BaseTest {
         addPlayList.click();
         Thread.sleep(3000);
 
-        WebElement createPlayListBtn = driver.findElement(By.cssSelector("li[data-test id='playlist-context-menu-create-simple']"));
+        WebElement createPlayListBtn = driver.findElement(By.cssSelector("li[data-testid='playlist-context-menu-create-simple']"));
         createPlayListBtn.click();
 
         WebElement playListNameInput = driver.findElement(By.cssSelector("[name='create-simple-playlist-form']>input"));

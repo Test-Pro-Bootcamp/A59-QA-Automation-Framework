@@ -18,7 +18,7 @@ public class Homework18 extends BaseTest {
         enterEmail("aleksei.koksharov@testpro.io");
         enterPassword("ak1234!@#$");
         submit();
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         enterAllSongs();
         //from Home page click play button
         clickPlayBtn();
