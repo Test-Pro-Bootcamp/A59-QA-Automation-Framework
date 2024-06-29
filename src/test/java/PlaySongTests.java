@@ -48,6 +48,5 @@ public class PlaySongTests extends BaseTest {
         PlaySongsPage playSongsPage = new PlaySongsPage(driver);
 
         Assert.assertTrue(playSongsPage.selectSoundBars().isDisplayed());
-
     }
 }

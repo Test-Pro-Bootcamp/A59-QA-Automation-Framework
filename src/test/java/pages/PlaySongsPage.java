@@ -9,6 +9,7 @@ public class PlaySongsPage extends BasePage {
 
     // Constructors
     public PlaySongsPage(WebDriver givenDriver) {
+
         super(givenDriver);
         PageFactory.initElements(driver, this);
     }
@@ -25,6 +26,7 @@ public class PlaySongsPage extends BasePage {
 
     // Page Methods
     public void selectPlayNextSongBtn() {
+
         mouseOverAndClick(getPlayNextSongBtn);
 
 //        actions.moveToElement((WebElement) getPlayNextSongBtn).perform();
@@ -32,6 +34,7 @@ public class PlaySongsPage extends BasePage {
     }
 
     public void selectPlaySongBtn() {
+
         mouseOverAndClick(getPlaySongBtn);
 
 //        actions.moveToElement((WebElement) getPlaySongBtn).perform();
@@ -41,31 +44,25 @@ public class PlaySongsPage extends BasePage {
     public WebElement selectSoundBars() {
 
         return getSoundBars;
-
     }
 
     public void mouseOverPlayBtn() {
 
         mouseOver(getPlaySongBtn);
-
     }
 
     public void selectPlayBtnToSingleClick() {
 
         singleClickBtn(getPlaySongBtn);
-
     }
 
     public void mouseOverPlayNextBtn() {
 
         mouseOver(getPlayNextSongBtn);
-
     }
 
     public void selectPlayNextBtnToSingleClick() {
 
         singleClickBtn(getPlayNextSongBtn);
-
     }
-
 }

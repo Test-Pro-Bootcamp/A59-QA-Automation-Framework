@@ -101,8 +101,10 @@ public class ActionsTest extends BaseTest {
     public void displayAllSongs() {
         List<WebElement> songList = driver.findElements
                 (By.cssSelector("section#playlistWrapper td.title"));
+
         //count and display song names
         System.out.println("Number of Songs in the playlist: " + countSongs());
+
         for (WebElement e : songList) {
             System.out.println(e.getText());
         }
@@ -156,5 +158,4 @@ public class ActionsTest extends BaseTest {
                         (By.cssSelector("div.success.show")));
         return notification.getText();
     }
-
 }

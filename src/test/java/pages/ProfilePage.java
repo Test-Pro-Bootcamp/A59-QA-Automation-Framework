@@ -12,6 +12,7 @@ public class ProfilePage extends BasePage {
 
     // Constructors
     public ProfilePage(WebDriver givenDriver) {
+
         super(givenDriver);
         PageFactory.initElements(driver, this);
     }
@@ -37,6 +38,7 @@ public class ProfilePage extends BasePage {
 
     //Page Methods
     public void selectProfileNameBtn() {
+
         getProfileNameBtn.click();
     }
 
@@ -46,14 +48,15 @@ public class ProfilePage extends BasePage {
     }
 
     public void selectInputProfileNameField(String newName) {
+
         getInputProfileNameField.clear();
         getInputProfileNameField.sendKeys(newName + "\n");
     }
 
     public void selectInputProfilePasswordField(String userPassword) {
+
         getInputProfileCurrentPasswordField.clear();
         getInputProfileCurrentPasswordField.sendKeys(userPassword + "\n");
-
     }
     public String selectVerifyNotificationMsg() {
 

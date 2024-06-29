@@ -1,13 +1,7 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
-import java.time.Instant;
 
 public class AllSongsTest extends BaseTest {
 
@@ -31,15 +25,21 @@ public class AllSongsTest extends BaseTest {
         // Verify if Song is being played
         Assert.assertTrue(isSongPlaying());
     }
+
     public void choosePlayOption() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li.playback"))).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("li.playback"))).click();
     }
 
     public void chooseAllSongsList() {
-         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a.songs"))).click();
+
+         wait.until(ExpectedConditions.visibilityOfElementLocated
+                 (By.cssSelector("li a.songs"))).click();
     }
 
-    public void contextClickFirstSong() throws InterruptedException {
+    public void contextClickFirstSong() {
+
         WebElement firstSongElement= wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
@@ -48,11 +48,13 @@ public class AllSongsTest extends BaseTest {
     }
 
     public void navigateToChooseAllSongs() {
+
         wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("li a.songs"))).click();
     }
 
     public boolean isSongPlaying() {
+
         WebElement soundBarVisualizer = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector("[data-testid = 'sound-bar-play")));

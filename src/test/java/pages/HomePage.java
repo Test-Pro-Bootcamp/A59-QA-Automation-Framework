@@ -14,7 +14,8 @@ public class HomePage extends BasePage{
 
     //Constructor
 
-    public HomePage(WebDriver givenDriver){
+    public HomePage(WebDriver givenDriver) {
+
         super(givenDriver);
         PageFactory.initElements(driver, this);
     }

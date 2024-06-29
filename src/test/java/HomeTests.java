@@ -151,21 +151,23 @@ public class HomeTests extends BaseTest {
         homePage.selectPlaylistFieldName();
 
         Assert.assertEquals(homePage.selectRenamePlaylistSuccessMsg(), updatedPlayListMsg);
-
     }
 
     public String getPlaylistDetails() {
+
         return driver.findElement
                 (By.cssSelector("span.meta.text-secondary span.meta")).getText();
     }
 
     public int songsCount() {
+
         HomePage homePage = new HomePage(driver);
 
         return homePage.selectSongCount();
     }
 
     public void displayAllSongs() {
+
         List<WebElement> songList = driver.findElements
                 (By.cssSelector("section#playlistWrapper td.title"));
         //count and display song names
@@ -184,6 +186,7 @@ public class HomeTests extends BaseTest {
     }
 
     public boolean isSongPlaying() {
+
         WebElement soundBarVisualizer = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector("[data-testid = 'sound-bar-play")));

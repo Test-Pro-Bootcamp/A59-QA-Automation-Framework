@@ -19,16 +19,6 @@ public class BaseTest {
     public Wait<WebDriver> fluentWait;
     public Actions actions = null;
 
-//    String url = "https://qa.koel.app/";
-//
-//    String expectedCreatedMsg = "Created playlist " + "\"TestPro Playlist.\"";
-//    String expectedDeletedMsg = "Delete playlist " + "\"TestPro Playlist.\"";
-//    String expectedAddedMsg = "Added 1 song into " + "\"TestPro Playlist.\"";
-//    String songName = "grav";
-//    String playlistName = "TestPro Playlist";
-//    String userName = "demo@testpro.io";
-//    String userPassword = "te$t$tudent";
-
     protected String urlStartPoint =        "https://qa.koel.app/";
     protected String songName =             "grav";
     protected String playlistName =         "TestPro Playlist";
@@ -47,6 +37,7 @@ public class BaseTest {
     @BeforeMethod
     @Parameters({"BaseURL"})
     public void launchBrowser(String baseURL) {
+
         // Pre-condition
         // Added ChromeOptions argument below to fix websocket error
         options.addArguments("--remote-allow-origins=*");   // allowing remote origins
@@ -94,6 +85,7 @@ public class BaseTest {
 
     @AfterMethod
     public void closeBrowser() {
-//  driver.quit();
+
+  driver.quit();
     }
 }

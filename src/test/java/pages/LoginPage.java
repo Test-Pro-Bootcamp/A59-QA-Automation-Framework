@@ -9,6 +9,7 @@ public class LoginPage extends BasePage{
 
     // Constructors
     public LoginPage(WebDriver givenDriver){
+
         super(givenDriver);
         PageFactory.initElements(driver, this);
     }
@@ -28,22 +29,26 @@ public class LoginPage extends BasePage{
 //    By submitBtn = By.cssSelector("button[type='submit']");
 
     // Methods
-    public LoginPage provideEmail(String email){
+    public LoginPage provideEmail(String email) {
+
         emailField.sendKeys(email);
         return this;
     }
 
-    public LoginPage providePassword(String password){
+    public LoginPage providePassword(String password) {
+
         passwordField.sendKeys(password);
         return this;
     }
 
-    public LoginPage clickSubmit(){
+    public LoginPage clickSubmit() {
+
         submitBtn.click();
         return this;
     }
 
-    public LoginPage login(){
+    public LoginPage login() {
+
         provideEmail("demo@testpro.io");
         providePassword("te$t$tudent");
         clickSubmit();
