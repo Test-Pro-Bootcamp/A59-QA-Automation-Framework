@@ -41,4 +41,12 @@ public class LoginTests extends BaseTest {
         // Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
     }
+    @Test
+    public void loginValidEmailInvalidPassword() throws InterruptedException {
+        navigateToPage();
+        enterEmail("leon.poyau@testpro.io");
+        enterPassword("jTRCkwNg");
+        submit();
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
 }
