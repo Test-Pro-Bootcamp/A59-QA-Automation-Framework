@@ -31,10 +31,9 @@ public class BaseTest {
     public static Actions actions = null;
     public static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 
-
     public static WebDriver getDriver() {
-        return threadDriver.get();
 
+        return threadDriver.get();
     }
 
 

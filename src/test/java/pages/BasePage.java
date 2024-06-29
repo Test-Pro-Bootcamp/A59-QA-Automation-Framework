@@ -52,7 +52,7 @@ public class BasePage {
     // Method to wait for an element to be present on the page
     protected WebElement waitForPresence(WebElement webElement) {
 
-        return wait.until(ExpectedConditions.presenceOfElementLocated((By) webElement));
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     // Method to click an element after waiting for it to be present

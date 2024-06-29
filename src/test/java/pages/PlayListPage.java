@@ -1,22 +1,22 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
 public class PlayListPage extends BasePage {
 
     // Constructors
+
     public PlayListPage(WebDriver givenDriver) {
+
         super(givenDriver);
         PageFactory.initElements(driver, this);
     }
 
     // Locators
+
     @FindBy(xpath = "//i[@data-testid=\"sidebar-create-playlist-btn\"][@title=\"Create a new playlist\"][@class=\"fa fa-plus-circle create\"]")
     private WebElement getCreateNewPlayListBtn;
 
@@ -27,10 +27,8 @@ public class PlayListPage extends BasePage {
     private WebElement getTitleNameField;
 
     @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
+//    @FindBy(xpath = "//a[contains(text(),'"+playlistName+"')]")
     private WebElement getPlayListToDelete;
-
-//  @FindBy(xpath = "//a[contains(text(), namePlaylist)]")
-//  By getPlayListToDelete;
 
     @FindBy(xpath = "//button[@class=\"del btn-delete-playlist\"][@title=\"Delete this playlist\"]")
     private WebElement getPlayListToDeleteBtn;
@@ -45,37 +43,21 @@ public class PlayListPage extends BasePage {
     private WebElement getAddSongToBtn;
 
     @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
+//    @FindBy(xpath = "//a[contains(text(), playlistName)]")
     private WebElement getChoosePlayList;
 
-    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
-    private WebElement getChoosePlayListField;
-
     @FindBy(xpath = "//*[contains(text(), 'Created playlist \""  + "TestPro Playlist" + ".\"')]")
+//    @FindBy(xpath = "//*[contains(text(), 'Created playlist ' + playlistName + '.')]")
     private WebElement getCreatedVerificationMsg;
 
     @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \""  + "TestPro Playlist" + ".\"')]")
+//    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist '  + \" + playlistName + '.' + \")]")
+//    @FindBy(xpath = "//*[contains(text(),  'Deleted playlist \"" + playlistName + "."."')]")
+//    @FindBy(xpath = String.format("//*[contains(text(), 'Deleted playlist %s.')]", playlistName))
     private WebElement getDeletedVerificationMsg;
 
     @FindBy(xpath = "//*[contains(text(), 'Added 1 song into \"" + "TestPro Playlist" + ".\"')]")
     private WebElement getAddedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), 'Created playlist \""  + "playlistName" + ".\"')]")
-//    private WebElement getCreatedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \""  + "playlistName" + ".\"')]")
-//    private WebElement getDeletedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), 'Added 1 song into \"" + "playlistName" + ".\"')]")
-//    private WebElement getAddedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), '\"Created playlist \"\"  +  playlistName  + \".\"\"')]")
-//    private WebElement getCreatedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), '\"Deleted playlist \"\"  +  playlistName  + \".\"\"')]")
-//    private WebElement getDeletedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), '\"Added 1 song into \"\" +  playlistName  + \".\"\"')]")
-//    private WebElement getAddedVerificationMsg;
 
     @FindBy(css = "input[type='search']")
     private WebElement getSearchSongField;
@@ -86,26 +68,28 @@ public class PlayListPage extends BasePage {
     @FindBy(css = "div.success.show")
     private WebElement getVerificationNoticeMsg;
 
-    // Page Methods
-    // Very basic methods
+    // Page Methods - Very basic methods
+
     public void selectCreateNewPlayListBtn () {
+
+        waitForPresence(getCreateNewPlayListBtn);
         mouseOverAndClick(getCreateNewPlayListBtn);
     }
 
     public void selectNewPlayListBtn () {
 
-        getNewPlayListBtn.click();
+        waitForPresence(getNewPlayListBtn).click();
     }
 
     public void selectTitleNameField(String playListName) {
 
-        getTitleNameField.clear();
+        waitForPresence(getTitleNameField).clear();
         getTitleNameField.sendKeys(playListName + "\n");
     }
 
     public String selectVerificationNoticeMsg() {
 
-        return getVerificationNoticeMsg.getText();
+        return waitForPresence(getVerificationNoticeMsg).getText();
     }
 
     public String selectDeletedVerifyNotificationMsg() {
@@ -123,26 +107,20 @@ public class PlayListPage extends BasePage {
         return getCreatedVerificationMsg.getText();
     }
 
-    public void selectPlayListToDelete () {
+    public void selectPlayListToDelete () throws InterruptedException {
 
-        getPlayListToDelete.click();
-        getPlayListToDeleteBtn.click();
-        waitForVisibility(getPlayListToDeleteOkBtn).click();
+        waitForPresence(getPlayListToDelete).click();
+        Thread.sleep(1000);
+        waitForPresence(getPlayListToDeleteBtn).click();
+        Thread.sleep(1000);
+//        System.out.println("This is the output: " + getPlayListToDelete.getText());
 
-//        findElement(getPlayListToDelete).click();
-//        findElement(getPlayListToDeleteBtn).click();
-//        waitForPresence(getPlayListToDeleteOkBtn).click();
-
-//        mouseOverAndContextClick(getPlayListToDelete);
-//        mouseOverAndClick(getPlayListToDeleteBtn);
-//        mouseOverAndClick(getPlayListToDeleteOkBtn);
-
+        if(getPlayListToDeleteOkBtn.isDisplayed()) {
+            getPlayListToDeleteOkBtn.click();
+        }
     }
 
-    public void selectPlayListToDeleteBtn () {
 
-        getPlayListToDeleteBtn.click();
-    }
 
     public void selectSearchSongField (String songName) {
 
@@ -151,22 +129,31 @@ public class PlayListPage extends BasePage {
 
     public void selectViewAllSongs () {
 
-        getViewAllSongs.click();
+        waitForPresence(getViewAllSongs).click();
     }
 
     public void selectFirstSong () {
 
-        getFirstSong.click();
+        waitForPresence(getFirstSong).click();
     }
 
     public void selectAddSongToBtn () {
 
-        getAddSongToBtn.click();
+        waitForPresence(getAddSongToBtn).click();
     }
 
     public void selectChoosePlayList () {
 
-        getChoosePlayList.click();
+        waitForPresence(getChoosePlayList).click();
+        System.out.println("This is the output: " + getChoosePlayList);
     }
 
+    public void selectPlayListToDeleteBtn () {
+
+        getPlayListToDeleteBtn.click();
+    }
+
+    public WebElement getGetPlayListToDelete() {
+        return getPlayListToDelete;
+    }
 }
