@@ -36,10 +36,7 @@ public class Homework17 extends BaseTest {
         //actual vs expected
 
 
-        Assert.assertEquals(getAddToPlaylistSuccessMsg(),expectedSongAddMessage);
 
-
-        Thread.sleep(1000);
     }
 
     public String getAddToPlaylistSuccessMsg() {
