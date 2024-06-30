@@ -54,7 +54,11 @@ public class LoginPage extends BasePage{
         provideEmail("demo@testpro.io");
         providePassword("te$t$tudent");
         clickSubmit();
+<<<<<<< Updated upstream
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+=======
+
+>>>>>>> Stashed changes
         return this;
     }
 }
