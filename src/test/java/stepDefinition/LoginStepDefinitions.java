@@ -1,5 +1,6 @@
 package stepDefinition;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -101,6 +102,12 @@ public class LoginStepDefinitions {
             WebElement soundBarVisualizer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid = 'sound-bar-play']")));
             return soundBarVisualizer.isDisplayed();
         }
+    @After
+    public void closeBrowser() {
+        driver.manage().deleteAllCookies();
+        driver.quit();
+        driver = null;
+    }
     }
 
 
