@@ -15,7 +15,7 @@ public class PlayListTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PlayListPage playListPage = new PlayListPage(driver);
         loginPage.login();
-        Thread.sleep(2000);
+        driver.navigate().refresh();
 
 //      WHEN
         // create a playlist
@@ -26,7 +26,7 @@ public class PlayListTests extends BaseTest {
         driver.navigate().refresh();
         playListPage.selectSearchSongField(songName);
         // click view all button
-        Thread.sleep(2000);
+
         playListPage.selectViewAllSongs();
         // select first song from result
         playListPage.selectFirstSong();
@@ -34,7 +34,10 @@ public class PlayListTests extends BaseTest {
         playListPage.selectAddSongToBtn();
         // select playlist to delete
         playListPage.selectChoosePlayList();
+
+        // Need at least this one Thread.sleep because of the success message
         Thread.sleep(3000);
+        driver.navigate().refresh();
         playListPage.selectPlayListToDelete();
 
 //      THEN

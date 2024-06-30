@@ -59,5 +59,4 @@ public class LoginTests extends BaseTest {
         submit();
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
     }
-
 }

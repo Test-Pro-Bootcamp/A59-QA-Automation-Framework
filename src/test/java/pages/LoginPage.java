@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class LoginPage extends BasePage{
 
@@ -28,25 +29,32 @@ public class LoginPage extends BasePage{
 //    By submitBtn = By.cssSelector("button[type='submit']");
 
     // Methods
-    public LoginPage provideEmail(String email){
+    public LoginPage provideEmail(String email) {
+
         emailField.sendKeys(email);
         return this;
     }
 
-    public LoginPage providePassword(String password){
+    public LoginPage providePassword(String password) {
+
         passwordField.sendKeys(password);
         return this;
     }
 
-    public LoginPage clickSubmit(){
+    public LoginPage clickSubmit() {
+
         submitBtn.click();
         return this;
     }
 
-    public LoginPage login(){
+    public LoginPage login() {
+
+        HomePage homePage = new HomePage(driver);
+
         provideEmail("demo@testpro.io");
         providePassword("te$t$tudent");
         clickSubmit();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
         return this;
     }
 }

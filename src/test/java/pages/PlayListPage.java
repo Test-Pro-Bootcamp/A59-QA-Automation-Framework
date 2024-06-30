@@ -72,18 +72,18 @@ public class PlayListPage extends BasePage {
 
     public void selectCreateNewPlayListBtn () {
 
-        waitForPresence(getCreateNewPlayListBtn);
+        waitForVisibility(getCreateNewPlayListBtn);
         mouseOverAndClick(getCreateNewPlayListBtn);
     }
 
     public void selectNewPlayListBtn () {
 
-        waitForPresence(getNewPlayListBtn).click();
+        waitForVisibility(getNewPlayListBtn).click();
     }
 
     public void selectTitleNameField(String playListName) {
 
-        waitForPresence(getTitleNameField).clear();
+        waitForVisibility(getTitleNameField).clear();
         getTitleNameField.sendKeys(playListName + "\n");
     }
 
@@ -107,20 +107,18 @@ public class PlayListPage extends BasePage {
         return getCreatedVerificationMsg.getText();
     }
 
-    public void selectPlayListToDelete () throws InterruptedException {
+    public void selectPlayListToDelete () {
 
-        waitForPresence(getPlayListToDelete).click();
-        Thread.sleep(1000);
-        waitForPresence(getPlayListToDeleteBtn).click();
-        Thread.sleep(1000);
+        waitForVisibility(getPlayListToDelete).click();
+
+        waitForVisibility(getPlayListToDeleteBtn).click();
+
 //        System.out.println("This is the output: " + getPlayListToDelete.getText());
-
+        waitForVisibility(getPlayListToDeleteOkBtn);
         if(getPlayListToDeleteOkBtn.isDisplayed()) {
             getPlayListToDeleteOkBtn.click();
         }
     }
-
-
 
     public void selectSearchSongField (String songName) {
 
@@ -129,22 +127,22 @@ public class PlayListPage extends BasePage {
 
     public void selectViewAllSongs () {
 
-        waitForPresence(getViewAllSongs).click();
+        waitForVisibility(getViewAllSongs).click();
     }
 
     public void selectFirstSong () {
 
-        waitForPresence(getFirstSong).click();
+        waitForVisibility(getFirstSong).click();
     }
 
     public void selectAddSongToBtn () {
 
-        waitForPresence(getAddSongToBtn).click();
+        waitForVisibility(getAddSongToBtn).click();
     }
 
     public void selectChoosePlayList () {
 
-        waitForPresence(getChoosePlayList).click();
+        waitForVisibility(getChoosePlayList).click();
         System.out.println("This is the output: " + getChoosePlayList);
     }
 
