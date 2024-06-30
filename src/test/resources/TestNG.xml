@@ -24,11 +24,6 @@
             </class>  -->
 
             <class name="PlayListTests">
-                 <methods>
-                    <include name="addSongToPlaylist"/>
-
-                </methods>
-
             </class>
         </classes>
     </test>

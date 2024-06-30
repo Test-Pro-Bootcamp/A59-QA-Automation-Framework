@@ -21,6 +21,8 @@ public class ProfileTests extends BaseTest{
 
 //      WHEN
         profilePage.selectProfileNameBtn();
+//        System.out.println("Current Theme:  " + profilePage.selectCurrentThemeSelected());
+//        System.out.println("Is Violet Theme selected:  " + profilePage.isVioletThemeSelected());
         uniqueName = profilePage.generateUniqueName();
         profilePage.selectInputProfileNameField(uniqueName);
         profilePage.selectInputProfilePasswordField(userPassword);

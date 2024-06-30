@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +10,7 @@ import java.util.UUID;
 public class ProfilePage extends BasePage {
 
     // Constructors
+
     public ProfilePage(WebDriver givenDriver) {
 
         super(givenDriver);
@@ -18,6 +18,7 @@ public class ProfilePage extends BasePage {
     }
 
     // Locators
+
     @FindBy(xpath ="//*[contains(text(), 'Profile updated.')]")
     private WebElement getUpdatedVerificationMsg;
 
@@ -35,6 +36,12 @@ public class ProfilePage extends BasePage {
 
     @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
     private WebElement getInputProfileCurrentPasswordField;
+
+    @FindBy(css="div[class='theme selected']")
+    private WebElement getCurrentTheme;
+
+    @FindBy(css="div[data-testid='theme-card-violet']")
+    private WebElement getThemeCardViolet;
 
     //Page Methods
     public void selectProfileNameBtn() {
@@ -77,5 +84,20 @@ public class ProfilePage extends BasePage {
         test = getUpdatedVerificationMsg.getText();
         return test;
 //        return getUpdatedVerificationMsg.isDisplayed();
+    }
+
+    public String selectCurrentThemeSelected() {
+
+        return getCurrentTheme.getAttribute("data-testid");
+    }
+
+    public boolean isVioletThemeSelected() {
+
+        return getThemeCardViolet.isSelected();
+    }
+
+    public void selectVioletTheme() {
+
+        getThemeCardViolet.click();
     }
 }

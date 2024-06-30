@@ -143,13 +143,4 @@ public class PlayListPage extends BasePage {
         waitForVisibility(getChoosePlayList).click();
 //        System.out.println("This is the output: " + getChoosePlayList);
     }
-
-    public void selectPlayListToDeleteBtn () {
-
-        getPlayListToDeleteBtn.click();
-    }
-
-    public WebElement getGetPlayListToDelete() {
-        return getPlayListToDelete;
-    }
 }

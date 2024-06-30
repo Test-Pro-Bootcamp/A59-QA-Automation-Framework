@@ -29,7 +29,6 @@ public class PlayListTests extends BaseTest {
         driver.navigate().refresh();
         playListPage.selectSearchSongField(songName);
         // click view all button
-//        Thread.sleep(2000);
         playListPage.selectViewAllSongs();
         // select first song from result
         playListPage.selectFirstSong();

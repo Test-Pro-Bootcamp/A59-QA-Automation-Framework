@@ -13,10 +13,13 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-//      WHEN   // Example of Fluent
-        loginPage.provideEmail("demo@testpro.io")
-                 .providePassword("te$t$tudent")
-                 .clickSubmit();
+//      WHEN
+        loginPage.login();
+
+// Example of Fluent
+//        loginPage.provideEmail("demo@testpro.io")
+//                 .providePassword("te$t$tudent")
+//                 .clickSubmit();
 
 //      THEN
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
@@ -27,11 +30,13 @@ public class LoginTests extends BaseTest {
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
         // Steps
-        enterEmail("invalid@testpro.io");
-        enterPassword("te$t$tudent");
-        submit();
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
 
         // Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl); // https://qa.koel.app/
@@ -42,8 +47,11 @@ public class LoginTests extends BaseTest {
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
-        enterEmail("invalid@testpro.io");
-        submit();
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.clickSubmit();
         // Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
@@ -51,9 +59,11 @@ public class LoginTests extends BaseTest {
     //@Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
     public void negativeLoginTest(String email, String password) throws InterruptedException {
         String expectedUrl = "https://qa.koel.app/";
-        enterEmail(email);
-        enterPassword(password);
-        submit();
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        loginPage.provideEmail(email);
+        loginPage.providePassword(password);
+        loginPage.clickSubmit();
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
     }
 }
