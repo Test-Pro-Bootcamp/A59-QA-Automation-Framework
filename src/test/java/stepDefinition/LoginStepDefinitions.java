@@ -8,10 +8,8 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -21,7 +19,6 @@ import java.time.Duration;
 
 public class LoginStepDefinitions {
     WebDriver driver;
-    Actions actions = null;
     WebDriverWait wait;
 
     @Given("I open browser")
@@ -32,7 +29,6 @@ public class LoginStepDefinitions {
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        actions = new Actions(driver);
 
     }
     @And("I open Login page")
@@ -76,32 +72,6 @@ public class LoginStepDefinitions {
         String expectedURL = "https://qa.koel.app/";
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
-
-        @When("I navigate to AllSongs")
-        public void navigateToAllSongs() {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a.songs"))).click();
-            WebDriverManager.chromedriver().setup();
-        }
-
-        @And("Context click on first song")
-        public void contextClickOnFirstSong() {
-
-            WebElement firstSongElement = wait.until(ExpectedConditions.visibilityOfElementLocated
-                    (By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
-            actions.contextClick(firstSongElement).perform();
-        }
-
-        @And("Choose Play Option")
-        public void choosePlayOption() {
-            wait.until(ExpectedConditions.visibilityOfElementLocated
-                    (By.cssSelector("li.playback"))).click();
-        }
-
-        @Then("Song is playing")
-        public boolean songIsPlaying() {
-            WebElement soundBarVisualizer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid = 'sound-bar-play']")));
-            return soundBarVisualizer.isDisplayed();
-        }
     @After
     public void closeBrowser() {
         driver.manage().deleteAllCookies();
