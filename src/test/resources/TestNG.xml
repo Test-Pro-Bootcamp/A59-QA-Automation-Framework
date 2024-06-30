@@ -11,9 +11,12 @@
 <!--            <class name="ProfileTests"/>-->
 <!--            <class name="Homework16"/>-->
 <!--            <class name="Homework17"/>-->
-<!--                <class name="Homework18"/>-->
+<!--            <class name="Homework18"/>-->
 <!--            <class name="Homework19"/>-->
-            <class name="Homework20"/>
+<!--            <class name="Homework20"/>-->
+<!--                <class name="AllSongTestLesson21"/>-->
+                <class name="HomeTestLesson21"/>
+
         </classes>
     </test>
 </suite>
