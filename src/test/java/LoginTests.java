@@ -14,34 +14,16 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
 
-    //Happy Path - Login Test
-/*@Test
-    public void loginValidEmailPassword()  {
-    LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(driver);
-    HomePage homePage = new HomePage(driver);
-    loginPageFromFactory.provideEmail("kristina.sarkisyan@testpro.io").providePassword("o8URUDnW").clickSubmit();
-    Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-
-
-    }*/
     @Test
-    public void loginValidEmailPassword()  {
+    public void loginValidEmailPassword() {
         LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(getDriver());
         HomePage homePage = new HomePage(getDriver());
         loginPageFromFactory.provideEmail("kristina.sarkisyan@testpro.io").providePassword("o8URUDnW").clickSubmit();
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-
-
     }
 
-        /*//navigateToPage();
-        String expectedURL = "https://qa.koel.app/";
-        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
-    }
-    // Negative Test Case
     @Test
-    public void loginWithInvalidEmailValidPassword()  {
-        //navigateToPage();
+    public void loginWithInvalidEmailValidPassword() {
         String expectedURL = "https://qa.koel.app/";
         enterEmail("invalid@koel.io");
         enterPassword("te$t$tudent");
@@ -49,26 +31,28 @@ public class LoginTests extends BaseTest {
         //Expected Results - Assertions
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
+
     //Negative Test Case 2
     @Test
-    public void loginWithNoPassword()  {
+    public void loginWithNoPassword() {
         //navigateToPage();
         String expectedURL = "https://qa.koel.app/";
         enterEmail("invalid@koel.io");
         submit();
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
 
-
     }
+
     @Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
-    public void negativeLoginTest (String email, String password) {
+    public void negativeLoginTest(String email, String password) {
         String expectedUrl = "https://qa.koel.app/";
         enterEmail(email);
         enterPassword(password);
         submit();
-        Assert.assertEquals(driver.getCurrentUrl(),expectedUrl);*/
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
 
     }
+}
 
 
 
