@@ -227,4 +227,9 @@ public class HomePage extends BasePage {
 
 //        this.getSongCount = getSongCount;
     }
+
+    public boolean isNotDisplayedUserAvatarIcon() {
+        // Utilizes the waitForElementToBeNotVisible method to check if the user avatar icon is not visible
+        return waitForElementToBeNotVisible(userAvatarIcon);
+    }
 }

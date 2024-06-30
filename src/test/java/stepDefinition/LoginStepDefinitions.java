@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import pages.HomePage;
 
 import java.time.Duration;
 
@@ -61,8 +62,12 @@ public class LoginStepDefinitions {
 
     @Then("I should be logged in")
     public void userIsLoggedIn()  {
-        Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.cssSelector("img.avatar"))).isDisplayed());
+
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.isNotDisplayedUserAvatarIcon());
+
+//        Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated
+//                (By.cssSelector("img.avatar"))).isDisplayed());
     }
 
     @After

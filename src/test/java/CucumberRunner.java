@@ -5,7 +5,6 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.TestNGCucumberRunner;
 
-
 @CucumberOptions(features = {"src/test/resources/features/Login.feature"})
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 
