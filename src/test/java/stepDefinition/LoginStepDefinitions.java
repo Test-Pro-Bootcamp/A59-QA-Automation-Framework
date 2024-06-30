@@ -22,7 +22,7 @@ public class LoginStepDefinitions {
     WebDriver driver;
     WebDriverWait wait;
 
-    @Before("I open browser")
+    @Before
     public void openBrowser() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -34,7 +34,7 @@ public class LoginStepDefinitions {
 
     @Given("I open Koel Login page")
     public void iOpenLoginPage() {
-        driver.get("https//qa.koel.app/");
+        driver.get("https://qa.koel.app/");
     }
 
     @When("I enter email {string}")
