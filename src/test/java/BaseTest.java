@@ -36,7 +36,6 @@ public class BaseTest {
         return threadDriver.get();
     }
 
-
 //    String url = "https://qa.koel.app/";
 //
 //    String expectedCreatedMsg = "Created playlist " + "\"TestPro Playlist.\"";
@@ -57,9 +56,7 @@ public class BaseTest {
     protected String expectedDeletedMsg =   "Deleted playlist \""  + playlistName + ".\"";
     protected String expectedAddedMsg =     "Added 1 song into \"" + playlistName + ".\"";
 
-
     ///////////////////////////////////////////////////
-
 
     @BeforeSuite
     static void setupClass() {
@@ -82,7 +79,6 @@ public class BaseTest {
 //        driver = new ChromeDriver(options);
 
 //      options.addArguments("--start-maximized");          // launching in maximized mode
-
 
 //        End of Chrome Options
 
@@ -183,16 +179,7 @@ public class BaseTest {
         }
     }
 
-    @AfterMethod
-    public void tearDown() {
-//        threadDriver.get().close();
-//        threadDriver.remove();
-    }
 
-    @AfterMethod
-    public void closeBrowser() {
-      driver.quit();
-    }
 
     public static WebDriver lambdaTest() throws MalformedURLException {
         String hubURL = "https://hub.lambdatest.com/wd/hub";
@@ -215,5 +202,16 @@ public class BaseTest {
 
         return new RemoteWebDriver(new URL(hubURL), caps);
     }
+
+    @AfterMethod
+    public void tearDown() {
+        threadDriver.get().close();
+        threadDriver.remove();
+    }
+
+//    @AfterMethod
+//    public void closeBrowser() {
+//        driver.quit();
+//    }
 
 }

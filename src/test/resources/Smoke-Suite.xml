@@ -23,7 +23,7 @@
                 </methods>
             </class>  -->
 
-            <class name="PlaySongTests">
+            <class name="LoginTests">
 
             <!--     <methods>
                     <include name="countSongsInPlaylist()"/>
