@@ -57,6 +57,7 @@ public class LoginTests extends BaseTest {
 
     @Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
     public void negativeLoginTest(String email, String password) {
+
         LoginPage loginPage = new LoginPage(getDriver());
 
         String expectedUrl = "https://qa.koel.app/";
