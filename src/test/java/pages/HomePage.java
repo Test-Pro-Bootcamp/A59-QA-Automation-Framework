@@ -33,8 +33,6 @@ public class HomePage extends BasePage {
     @FindBy(css = "section#playlistWrapper td.title")
     private List<WebElement> getSongCount;
 
-
-
 //    @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
     @FindBy(xpath = "//a[contains(text(), playlistName)]")
     private WebElement getPlayListToEdit;
@@ -74,8 +72,6 @@ public class HomePage extends BasePage {
 
     @FindBy(css = "a.view-profile")
     private WebElement profileIcon;
-
-    ///////////////////////
 
     @FindBy(css = "[data-testid='play-next-btn']")
     private WebElement getPlayNextSongBtn;
@@ -118,7 +114,7 @@ public class HomePage extends BasePage {
         return getSongCount.size();
     }
 
-    public WebElement getUserAvatar() {
+    public WebElement selectUserAvatar() {
 
         return userAvatarIcon;
     }
@@ -231,5 +227,10 @@ public class HomePage extends BasePage {
     public boolean isNotDisplayedUserAvatarIcon() {
         // Utilizes the waitForElementToBeNotVisible method to check if the user avatar icon is not visible
         return waitForElementToBeNotVisible(userAvatarIcon);
+    }
+
+    public boolean isDisplayedUserAvatarIcon() {
+        // Utilizes the waitForElementToBeNotVisible method to check if the user avatar icon is visible
+        return waitForVisibility(userAvatarIcon).isDisplayed();
     }
 }

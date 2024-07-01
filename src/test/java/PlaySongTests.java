@@ -17,7 +17,6 @@ public class PlaySongTests extends BaseTest {
         HomePage homePage = new HomePage(driver);
 
         loginPage.login();
-        Thread.sleep(2000);
 
  //     WHEN
         homePage.mouseOverPlayBtn();
@@ -31,25 +30,10 @@ public class PlaySongTests extends BaseTest {
         Assert.assertTrue(basePage.isSongPlaying());
     }
 
-    public void playSongBtn() throws InterruptedException {
-
-        PlaySongsPage playSongsPage = new PlaySongsPage(driver);
-
-        playSongsPage.selectPlaySongBtn();
-    }
-
-    public void playNextSongBtn() throws InterruptedException {
-
-        PlaySongsPage playSongsPage = new PlaySongsPage(driver);
-
-        playSongsPage.selectPlayNextSongBtn();
-    }
-
-    public void findSoundBars() throws InterruptedException {
+    public void findSoundBars() {
 
         PlaySongsPage playSongsPage = new PlaySongsPage(driver);
 
         Assert.assertTrue(playSongsPage.selectSoundBars().isDisplayed());
-
     }
 }

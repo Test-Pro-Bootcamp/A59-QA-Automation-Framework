@@ -17,13 +17,11 @@ public class AllSongsPage extends BasePage{
     @FindBy(css = ".all-songs tr.song-item:nth-child(1)")
     private WebElement getFirstSong;
 
-    @FindBy(css = "li.playback")
-    private WebElement playOption;
-
     @FindBy(css = "li a.songs")
     private WebElement getAllSongs;
 
-
+    @FindBy(css = "li.playback")
+    private WebElement getPlayBtn;
 
     //Page Methods
 
@@ -31,20 +29,21 @@ public class AllSongsPage extends BasePage{
 
         getAllSongs.click();
     }
-    public void selectFirstSong() {
 
+    public void selectFirstSong() {
 
         getFirstSong.click();
 
-//
-//        actions.contextClick(firstSong).perform();
-//
-//        return null;
     }
 
-    public void choosePlayOption(){
+    public void selectPlayBtn() {
 
-        playOption.click();
+        waitForVisibility(getPlayBtn).click();
+    }
+
+    public void rightClickOnSong() {
+
+        selectRightClick(getFirstSong);
     }
 
 }

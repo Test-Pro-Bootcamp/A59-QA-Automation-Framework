@@ -21,10 +21,10 @@ dependencies {
 
 test {
     useTestNG() {
-        // suites "src/test/resources/TestNG.xml"
+         suites "src/test/resources/TestNG.xml"
         // suites "src/test/resources/Smoke-Suite.xml"
         // suites "src/test/resources/Regression-Suite.xml"
-        suites "src/test/resources/Cucumber.xml"
+        // suites "src/test/resources/Cucumber.xml"
         systemProperty "browser", System.getProperty("browser")
 
     }

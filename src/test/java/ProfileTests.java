@@ -7,7 +7,7 @@ import pages.HomePage;
 public class ProfileTests extends BaseTest{
 
     @Test
-    public void changeProfileName() throws InterruptedException {
+    public void changeProfileName() {
 
 //      GIVEN
         String uniqueName;
@@ -18,7 +18,6 @@ public class ProfileTests extends BaseTest{
         ProfilePage profilePage = new ProfilePage(driver);
 
         loginPage.login();
-        Thread.sleep(2000);
 
 //      WHEN
         profilePage.selectProfileNameBtn();
@@ -32,18 +31,22 @@ public class ProfileTests extends BaseTest{
 
     @Test
     public void changeCurrentTheme() {
+
+//      GIVEN
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         ProfilePage profilePage = new ProfilePage(driver);
 
         loginPage.login();
 
+//      WHEN
         homePage.clickProfileIcon();
+        profilePage.selectVioletTheme();
 
-        profilePage.chooseVioletTheme();
+//        System.out.println("Current Theme: " + profilePage.selectCurrentTheme());
 
+//      THEN
         Assert.assertTrue(profilePage.isVioletThemeSelected());
 
     }
-
 }

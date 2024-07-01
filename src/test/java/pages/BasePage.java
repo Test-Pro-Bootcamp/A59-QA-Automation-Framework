@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.interactions.Actions;
@@ -25,6 +26,8 @@ public class BasePage {
         actions = new Actions(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 5), this);
+        // The constructor initializes the driver, wait, actions, and page elements using the given WebDriver.
     }
 
     // Selectors
@@ -78,6 +81,11 @@ public class BasePage {
     protected WebElement waitForClickable(WebElement webElement) {
 
         return wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    public void selectRightClick(WebElement webElement) {
+
+        actions.contextClick(webElement).perform();
     }
 
     // Method to click on an element after waiting for it to be clickable

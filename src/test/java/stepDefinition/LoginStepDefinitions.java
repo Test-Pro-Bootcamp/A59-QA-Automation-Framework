@@ -22,6 +22,7 @@ import java.time.Duration;
 public class LoginStepDefinitions {
     WebDriver driver;
     WebDriverWait wait;
+    private String urlStart = "https://qa.koel.app/";
 
     @Before
     public void openBrowser() {
@@ -29,13 +30,19 @@ public class LoginStepDefinitions {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--incognito");
+        options.addArguments("--window-position=250,0");
+
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @Given("I open Koel Login page")
+//    public void iOpenLoginPage() {
+//        driver.get("https://qa.koel.app/");
+//    }
     public void iOpenLoginPage() {
-        driver.get("https://qa.koel.app/");
+        driver.get(urlStart);
     }
 
     @When("I enter email {string}")
@@ -65,6 +72,16 @@ public class LoginStepDefinitions {
 
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.isNotDisplayedUserAvatarIcon());
+
+//        Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated
+//                (By.cssSelector("img.avatar"))).isDisplayed());
+    }
+
+    @Then("I am still at the Login page")
+    public void userIsNotLoggedIn()  {
+
+        String expectedUrl = "https://qa.koel.app/";
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
 
 //        Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated
 //                (By.cssSelector("img.avatar"))).isDisplayed());

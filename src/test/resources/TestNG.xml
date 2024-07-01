@@ -17,10 +17,8 @@
                     <include name="renamePlayList"/>
                 </methods>
            </class> -->
-            <class name="PlayListTests">
-                <methods>
-                    <include name="addSongToPlaylist"/>
-                </methods>
+            <class name="AllSongsTest">
+
             </class>
 
             <!-- <class name="CucumberRunner"> -->
@@ -29,7 +27,6 @@
                     <include name="countSongsInPlaylist()"/>
                 </methods>  -->
 
-            </class>
         </classes>
     </test>
 </suite>

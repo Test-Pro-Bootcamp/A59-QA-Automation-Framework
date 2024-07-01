@@ -89,6 +89,8 @@ public class PlayListPage extends BasePage {
     // Page Methods
     // Very basic methods
     public void selectCreateNewPlayListBtn () {
+
+        waitForVisibility(getCreateNewPlayListBtn);
         mouseOverAndClick(getCreateNewPlayListBtn);
     }
 
@@ -125,6 +127,7 @@ public class PlayListPage extends BasePage {
 
     public void selectPlayListToDelete () {
 
+        driver.navigate().refresh();
         getPlayListToDelete.click();
         getPlayListToDeleteBtn.click();
         waitForVisibility(getPlayListToDeleteOkBtn).click();

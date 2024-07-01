@@ -30,7 +30,7 @@ public class ActionsTest extends BaseTest {
         //Contextual Click on the first song
         contextClickFirstSong();
         //Click on Play from the menu
-        allSongsPage.choosePlayOption();
+        allSongsPage.selectPlayBtn();
         Assert.assertTrue(allSongsPage.isSongPlaying());
     }
 
@@ -39,7 +39,7 @@ public class ActionsTest extends BaseTest {
                 (By.cssSelector("li a.songs"))).click();
     }
 
-    public void contextClickFirstSong() throws InterruptedException {
+    public void contextClickFirstSong() {
         WebElement firstSongElement = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector(".all-songs tr.song-item:nth-child(1)")));

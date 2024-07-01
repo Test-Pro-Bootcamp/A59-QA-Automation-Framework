@@ -36,14 +36,15 @@ public class ProfilePage extends BasePage {
     private WebElement getInputProfileCurrentPasswordField;
 
 
+    @FindBy(xpath="//div[@class=\"theme selected\"]")
+    private WebElement getCurrentTheme;
+
+    @FindBy(xpath="//div[@data-testid=\"theme-card-violet\"][@class=\"theme\"]")
+    private WebElement getVioletTheme;
 
 
-    @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
-    private WebElement selectedVioletTheme;
-
-    @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
-    private WebElement chooseVioletTheme;
-
+    @FindBy(xpath="//div[@data-testid=\"theme-card-violet\"][@class=\"theme selected\"]")
+    private WebElement getIsVioletThemeSelected;
 
 
     //Page Methods
@@ -89,15 +90,18 @@ public class ProfilePage extends BasePage {
 
     public boolean isVioletThemeSelected() {
 
-        findElement(selectedVioletTheme);
-
-        return  selectedVioletTheme.isDisplayed();
+        return waitForVisibility(getIsVioletThemeSelected).isDisplayed();
     }
 
-    public ProfilePage chooseVioletTheme() {
-        chooseVioletTheme().click(chooseVioletTheme);
-        return this;
+    public ProfilePage selectVioletTheme() {
 
+        getVioletTheme.click();
+        return this;
+    }
+
+    public String selectCurrentTheme() {
+
+        return getCurrentTheme.getAttribute("data-testid");
     }
 
 }

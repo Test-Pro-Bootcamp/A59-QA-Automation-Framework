@@ -11,24 +11,17 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void clickRegistrationTest() {
+
+//      GIVEN
         LoginPage loginPage = new LoginPage(driver);
+        String urlRegistration = "https://qa.koel.app/registration";
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+//      WHEN
+        loginPage.selectRegistrationLink();
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//      THEN
+        Assert.assertEquals(loginPage.selectCurrentPage(), urlRegistration);
 
-//      String url = "https://qa.koel.app/";
-//        driver.get(urlStartPoint);
-
-        loginPage.login();
-
-        String urlRegistration = "http://qa.koel.app/registration";
-        driver.findElement(By.linkText("Registration / Forgot password")).click();
-
-        Assert.assertEquals(driver.getCurrentUrl(), urlRegistration);
-
-//      driver.quit();
+//     driver.quit();
     }
 }

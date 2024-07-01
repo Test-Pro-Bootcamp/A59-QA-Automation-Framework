@@ -31,12 +31,11 @@ public class BaseTest {
     public static Actions actions = null;
     public static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 
-
+    // This method returns the WebDriver instance stored in the ThreadLocal variable.
     public static WebDriver getDriver() {
+
         return threadDriver.get();
-
     }
-
 
 //    String url = "https://qa.koel.app/";
 //
@@ -64,6 +63,7 @@ public class BaseTest {
 
     @BeforeSuite
     static void setupClass() {
+
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
         WebDriverManager.edgedriver().setup();
@@ -91,6 +91,10 @@ public class BaseTest {
 
         threadDriver.set(pickBrowser(System.getProperty("browser")));
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        System.out.println("Browser setup by Thread "
+                + Thread.currentThread().getId()
+                + " and Driver reference is : "
+                + getDriver());
 
 //        driver = pickBrowser(System.getProperty("browser"));
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -134,6 +138,7 @@ public class BaseTest {
         loginPage.clickSubmit();
     }
 
+    // This method selects the browser based on the provided input and returns the corresponding WebDriver instance.
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
 
@@ -147,7 +152,7 @@ public class BaseTest {
                 firefoxOptions.addArguments("--no-notifications");
                 firefoxOptions.addArguments("-width=1920", "-height=1020", "-private");
                 firefoxOptions.addPreference("dom.webnotifications.enabled", false);
-                return driver = new FirefoxDriver();
+                return driver = new FirefoxDriver(firefoxOptions);
 
             case "edge":          // gradle clean test -Dbrowser=edge
                 WebDriverManager.edgedriver().setup();
@@ -160,17 +165,20 @@ public class BaseTest {
 
             case "grid-edge":    // gradle clean test -Dbrowser=grid-edge
                 caps.setCapability("browserName", "edge");
-                return driver = driver = new  RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+                return driver = new  RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+//            return driver = driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
             case "grid-firefox": // gradle clean test -Dbrowser=grid-firefox
                 caps.setCapability("browserName", "firefox");
-                return driver = driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+//            return driver = driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
             case "grid-chrome":  // gradle clean test -Dbrowser=grid-chrome
                 caps.setCapability("browserName", "chrome");
-                return driver = driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+//            return driver = driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
-            case "cloud":       // gradle clean test -Dbrowser=grid-cloud
+            case "grid-cloud":   // gradle clean test -Dbrowser=grid-cloud
                 return lambdaTest();
 
             default:
@@ -180,22 +188,26 @@ public class BaseTest {
                 chromeOptions.addArguments("--disable-notifications");    // disabling notifications
                 chromeOptions.addArguments("--incognito");                // launching in incognito mode
                 chromeOptions.addArguments("--window-position=250,0");    // move the window over to the right
+                chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
                 return driver = new ChromeDriver(chromeOptions);
         }
     }
 
     @AfterMethod
     public void tearDown() {
-//        threadDriver.get().close();
-//        threadDriver.remove();
+
+        threadDriver.get().close();
+        threadDriver.remove();
     }
 
     @AfterMethod
     public void closeBrowser() {
+
 //      driver.quit();
     }
 
     public static WebDriver lambdaTest() throws MalformedURLException {
+
         String hubURL = "https://hub.lambdatest.com/wd/hub";
 
         ChromeOptions browserOptions = new ChromeOptions();
@@ -216,5 +228,4 @@ public class BaseTest {
 
         return new RemoteWebDriver(new URL(hubURL), caps);
     }
-
 }

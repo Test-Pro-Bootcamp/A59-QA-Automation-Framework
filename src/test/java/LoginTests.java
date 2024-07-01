@@ -2,7 +2,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
-//import pageFactory.LoginPage;
 
 public class LoginTests extends BaseTest {
 
@@ -13,51 +12,62 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
 
-//      WHEN   // Example of Fluent
+//      WHEN
         loginPage.login();
+
+//        Example of Fluent
 //        loginPage.provideEmail("demo@testpro.io")
 //                 .providePassword("te$t$tudent")
 //                 .clickSubmit();
 
 //      THEN
-        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+        Assert.assertTrue(homePage.selectUserAvatar().isDisplayed());
     }
 
     @Test
     public void loginInvalidEmailValidPassword() {
-        LoginPage loginPage = new LoginPage(getDriver());
-        HomePage homePage = new HomePage(getDriver());
 
-        //navigateToPage();
+//      GIVEN
         String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(driver);
 
-        // Steps
-        enterEmail("invalid@testpro.io");
-        enterPassword("te$t$tudent");
-        submit();
+//      WHEN
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
 
-        // Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl); // https://qa.koel.app/
-    }
-
-   // @Test
-    public void loginValidEmailEmptyPassword() {
-
-        //navigateToPage();
-        String expectedUrl = "https://qa.koel.app/";
-        enterEmail("invalid@testpro.io");
-        submit();
-        // Expected Result
+//      THEN
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    //@Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
-    public void negativeLoginTest(String email, String password) throws InterruptedException {
+    @Test
+    public void loginValidEmailEmptyPassword() {
+
+//      GIVEN
         String expectedUrl = "https://qa.koel.app/";
-        enterEmail(email);
-        enterPassword(password);
-        submit();
-        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
+        LoginPage loginPage = new LoginPage(driver);
+
+//      WHEN
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
+    @Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    public void negativeLoginTest(String email, String password) {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(driver);
+
+//      WHEN
+        loginPage.provideEmail(email);
+        loginPage.providePassword(password);
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(loginPage.selectCurrentPage(), expectedUrl);
+    }
 }

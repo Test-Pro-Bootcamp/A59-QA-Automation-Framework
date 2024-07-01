@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="CucumberRunner Suite" parallel="methods" thread-count="4">
+    <!-- The suite represents the TestNG suite configuration -->
+    <!-- It has the name "CucumberRunner Suite" -->
+    <!-- The parallel attribute is set to "methods" to run test methods in parallel -->
+    <!-- The thread-count attribute specifies the number of threads to use for parallel execution -->
 
-<suite name="Cucumber">
-  <!--  <parameter name="BaseURL" value="https://qa.koel.app/"/>  -->
-    <test name="Example Test" preserve-order="false">
+    <test name="CucumberRunner Test" preserve-order="false">
+        <!-- The test represents a TestNG test within the suite -->
+        <!-- It has the name "CucumberRunner Test" -->
+        <!-- The preserve-order attribute is set to "false" to allow non-sequential test execution -->
+
         <classes>
+            <!-- The classes section defines the test classes to be included in the test -->
             <class name="CucumberRunner"/>
+            <!-- It includes a single class named "CucumberRunner" -->
         </classes>
     </test>
 </suite>
