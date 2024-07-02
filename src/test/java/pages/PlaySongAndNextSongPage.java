@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PlaySongsPage extends BasePage {
+public class PlaySongAndNextSongPage extends BasePage {
 
     // Constructors
-    public PlaySongsPage(WebDriver givenDriver) {
+    public PlaySongAndNextSongPage(WebDriver givenDriver) {
         super(givenDriver);
         PageFactory.initElements(driver, this);
     }
@@ -16,6 +16,7 @@ public class PlaySongsPage extends BasePage {
     // Locators
     @FindBy(css = "[data-testid='play-next-btn']")
     private WebElement getPlayNextSongBtn;
+
     @FindBy(css = "[data-testid='play-btn']")
     private WebElement getPlaySongBtn;
 

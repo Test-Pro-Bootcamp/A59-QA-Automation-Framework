@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.ActionsPage;
 import pages.AllSongsPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -13,8 +14,8 @@ import java.util.List;
 public class ActionsTest extends BaseTest {
 
     //Test #1 Contextual Click
-    //@Test
-    public void playSong() throws InterruptedException {
+//    @Test
+    public void playSong() {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -63,7 +64,7 @@ public class ActionsTest extends BaseTest {
 
     //Test #2 Mouse Hover
     //@Test
-    public void hoverOverPlayButton() throws InterruptedException {
+    public void hoverOverPlayButton() {
         //bg steps
         enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");
@@ -83,13 +84,21 @@ public class ActionsTest extends BaseTest {
 
     //Test #3 WebElements
     @Test
-    public void countSongsInPlaylist() throws InterruptedException {
-        enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
-        submit();
+    public void countSongsInPlaylist() {
 
-        choosePlaylistByName("TestPro Playlist");
+//      GIVEN
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        ActionsPage actionsPage = new ActionsPage(driver);
+        loginPage.login();
+
+//      WHEN
+        actionsPage.selectPlaylistByName();
+
         displayAllSongs();
+        actionsPage.displayAllSongs();
+
+//      THEN
         Assert.assertTrue(getPlaylistDetails().contains(String.valueOf(countSongs())));
     }
 

@@ -1,18 +1,18 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.PlaySongsPage;
-import pages.BasePage;
+import pages.PlaySongAndNextSongPage;
 
-public class PlaySongTests extends BaseTest {
+
+public class PlaySongAndNextSongTests extends BaseTest {
 
     @Test
     public void playSongs() throws InterruptedException {
 
 //      GIVEN
         LoginPage loginPage = new LoginPage(driver);
-        PlaySongsPage playSongsPage = new PlaySongsPage(driver);
         BasePage basePage = new BasePage(driver);
         HomePage homePage = new HomePage(driver);
 
@@ -32,8 +32,8 @@ public class PlaySongTests extends BaseTest {
 
     public void findSoundBars() {
 
-        PlaySongsPage playSongsPage = new PlaySongsPage(driver);
+        PlaySongAndNextSongPage playSongsAndNextPage = new PlaySongAndNextSongPage(driver);
 
-        Assert.assertTrue(playSongsPage.selectSoundBars().isDisplayed());
+        Assert.assertTrue(playSongsAndNextPage.selectSoundBars().isDisplayed());
     }
 }

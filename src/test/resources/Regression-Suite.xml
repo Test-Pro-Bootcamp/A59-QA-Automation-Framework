@@ -5,31 +5,13 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"/>
     <test name="Smoke-Suite" preserve-order="false">
         <classes>
-            <!--
-            <class name="PlayListTests">
-                <methods>
-                    <include name="deletePlayList"/>
-                </methods>
-            </class> -->
-            <!--
-            <class name="HomeTest">
-                <methods>
-                    <include name="renamePlayList"/>
-                </methods>
-           </class> -->
-          <!--  <class name="PlayListTests">
-                <methods>
-                    <include name="addSongToPlaylist"/>
-                </methods>
-            </class>  -->
 
-            <class name="PlayListTests">
+            <class name="RegistrationTest"/>
+            <class name="LoginTests"/>
+            <class name="ProfileTests"/>
+            <class name="PlaySongAndNextSongTests"/>
+            <class name="AllSongsTest"/>
 
-            <!--     <methods>
-                    <include name="countSongsInPlaylist()"/>
-                </methods>  -->
-
-            </class>
         </classes>
     </test>
 </suite>

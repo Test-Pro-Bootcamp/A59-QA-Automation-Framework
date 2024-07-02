@@ -233,4 +233,17 @@ public class HomePage extends BasePage {
         // Utilizes the waitForElementToBeNotVisible method to check if the user avatar icon is visible
         return waitForVisibility(userAvatarIcon).isDisplayed();
     }
+
+
+    public boolean isPlaylistAvailable() {
+
+        return getPlayListToEdit.isDisplayed();
+    }
+
+
+
+    public void selectPlaylist() {
+
+
+    }
 }
