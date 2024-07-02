@@ -4,6 +4,7 @@
 <suite name="Cucumber">
     <test name="Example Test" preserve-order="false">
         <classes>
+            <!--New file-->
             <class name="CucumberRunner"/>
         </classes>
     </test>

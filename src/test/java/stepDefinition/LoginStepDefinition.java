@@ -17,7 +17,7 @@ import pgFactoryPages.HomePage;
 import pgFactoryPages.LoginPage;
 
 import java.time.Duration;
-
+//new class for homework 27
 public class LoginStepDefinition {
     WebDriver driver;
     WebDriverWait wait;
@@ -60,7 +60,6 @@ public class LoginStepDefinition {
         LoginPage loginPage= new LoginPage(driver);
         loginPage.clickSubmit();
         System.out.println("Clicked submit");
-
     }
 
     @Then("I should be logged in")
@@ -69,10 +68,6 @@ public class LoginStepDefinition {
         wait.until(ExpectedConditions.visibilityOf(homePage.getUserAvatar()));
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed(), "User avatar is not displayed");
     }
-       // homePage.getUserAvatar();
-        //Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-
-
 
     @After
     //@after from cucumber
