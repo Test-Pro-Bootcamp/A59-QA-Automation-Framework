@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="LoginTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-30T21:32:29" hostname="Giovannas-Air-2.lan" time="1.159">
-  <properties/>
-  <testcase name="loginValidEmailPassword" classname="LoginTests" time="1.159"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

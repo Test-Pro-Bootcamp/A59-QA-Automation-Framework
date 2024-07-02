@@ -14,7 +14,7 @@ public class HomePage extends BasePage{
     }
 //HW FEEDBACK: make all the locators and WebElements private, because private keyword in java allows most restrictive access to variables and methods and offer strongest form of Encapsulation.
     //Locators
-    By userAvatarIcon = By.cssSelector("img.avatar");
+    By userAvatarIcon = By.xpath("//*[@id='userBadge']/a[1]/img");
     By allSongsList = By.cssSelector("li a.songs");
 
     //Methods

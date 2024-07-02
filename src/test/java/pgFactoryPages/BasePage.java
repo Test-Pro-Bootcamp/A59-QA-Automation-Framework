@@ -36,6 +36,7 @@ public class BasePage {
 
     public WebElement findElement(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element));
+
     }
 
     public WebElement waitForElementToBeClickable(WebElement element) {
