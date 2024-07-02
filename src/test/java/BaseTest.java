@@ -16,11 +16,10 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    WebDriver driver = null;
-
-    WebDriverWait wait;
-    Wait<WebDriver> fluentWait;
-    Actions actions;
+    public WebDriver driver = null;
+    public WebDriverWait wait;
+    public Wait<WebDriver> fluentWait;
+    public Actions actions = null;
 
     //String url = "https://qa.koel.app/";
 
