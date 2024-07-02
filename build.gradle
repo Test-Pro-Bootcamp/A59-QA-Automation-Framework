@@ -26,6 +26,5 @@ test {
          suites "src/test/resources/Regression-Suite.xml"
         // suites "src/test/resources/Cucumber.xml"
         systemProperty "browser", System.getProperty("browser")
-
     }
 }
