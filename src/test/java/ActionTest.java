@@ -1,35 +1,34 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
+import page.AllSongsPage;
+import page.HomePage;
+import page.LoginPage;
 
-public class AllSongsTest extends BaseTest {
+
+public class ActionTest extends BaseTest {
 
 
     @Test
     public void playSongWithRightClick()  {
 
         LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage =new HomePage(driver);
+        AllSongsPage allSongsPage =new AllSongsPage(driver);
 
         loginPage.login();
 
         //Navigate to All Songs Page
-        navigateToChooseAllSong();
-
+        homePage.chooseAllSongsList();
         //Right/Context Click on the first song
-        contextClickFirstSong();
-
+        allSongsPage.contextClickFirstSong();
         //ChoosePlay from context menu
-        choosePlayOption();
+        allSongsPage.choosePlayOption();
 
         //Verify the song is being played.
-        Assert.assertTrue(isSongPlaying());
+        Assert.assertTrue(allSongsPage.isSongPlaying());
 
 
     }
@@ -51,7 +50,7 @@ public class AllSongsTest extends BaseTest {
 
     }
 
-    public void navigateToChooseAllSong() {
+    public void chooseAllSong() {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("li a.songs"))).click();

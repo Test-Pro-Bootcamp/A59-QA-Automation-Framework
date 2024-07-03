@@ -8,13 +8,7 @@
         <classes>
            <!-- <class name="LoginTest"/>-->
             <class name="BaseTest"/>
-            <class name="LoginTest"/>
-            <class name="Homework17"/>
-            <class name="Homework19"/>
-              <class name="HomeTest"/>
-            <class name="Homework21"/>
-            <class name="AllSongsTest"/>
-
+            <class name="ActionTest"/>
         </classes>
     </test>
 </suite>

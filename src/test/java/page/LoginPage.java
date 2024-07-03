@@ -1,6 +1,5 @@
-package pages;
+package page;
 
-import org.apache.hc.client5.http.psl.PublicSuffixList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

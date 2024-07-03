@@ -1,4 +1,4 @@
-package pages;
+package page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +14,9 @@ public class BasePage {
     protected WebDriverWait wait;
     protected Actions actions;
 
+
+    By soundBarVisualizer =By.cssSelector("[data-testid = 'sound-bar-play']");
+
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -21,28 +24,18 @@ public class BasePage {
     }
 
     public WebElement findElement(By locator) {
-
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-// is this the right way to add double clicks ect.. to basePage ? or should i not be adding it to.
+    public boolean isSongPlaying() {
+        return findElement(soundBarVisualizer).isDisplayed();
 
-    public WebElement checkDoubleClick(By locator ) {
-
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-
-    public WebElement checkClickable (By locator ) {
-
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-
-    public WebElement checkHoverOver(By locator ) {
-
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 }
+
+
+
+
+
 
 

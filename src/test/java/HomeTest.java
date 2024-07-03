@@ -4,8 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
+import page.HomePage;
+import page.LoginPage;
 
 import java.util.List;
 
@@ -19,7 +19,6 @@ public class HomeTest extends BaseTest{
       //Login
     LoginPage loginPage = new LoginPage(driver);
     HomePage homePage = new HomePage(driver);
-
 
     loginPage.login();
 

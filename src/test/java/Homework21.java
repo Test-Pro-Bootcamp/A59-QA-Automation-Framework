@@ -3,10 +3,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
+import page.HomePage;
+import page.LoginPage;
 
 public class Homework21 extends BaseTest {
 
@@ -20,7 +19,8 @@ public class Homework21 extends BaseTest {
 
         loginPage.login();
 
-        String updatedPlaylistMsg = "Updated playlist \" Good Morning.\"";
+        String updatedPlaylistMsg = " \"Updated playlist \"Good Morning.\"";
+
         doubleClickPlaylist();
         newNamePlaylist();
         Assert.assertEquals(successMessage(),updatedPlaylistMsg);

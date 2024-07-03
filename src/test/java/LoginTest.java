@@ -1,12 +1,7 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
+import page.HomePage;
+import page.LoginPage;
 
 public class LoginTest extends BaseTest {
 
