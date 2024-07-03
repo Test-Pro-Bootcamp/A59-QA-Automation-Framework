@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.time.Duration;
 
 public class BasePage {
-//HW Feedback: Use 'protected' access since it gives the subclass a chance to use the helper method or variable, while preventing a non-related class from trying to use it.
+
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions actions;

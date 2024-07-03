@@ -21,16 +21,21 @@ public class LoginPage extends BasePage {
     }
 
     public void providePassword(String password) {
-        findElement(passwordField).sendKeys(password); // Added 'password' parameter here
+        findElement(passwordField).sendKeys(password);
     }
 
     public void clickSubmit() {
         findElement(submitBtn).click();
     }
 
-    public void login() {
-        provideEmail("giovanna.silva@testpro.io");
-        providePassword("ShakaMaya1302!");
+    public void login(String username, String password) {
+        provideEmail(username);
+        providePassword(password);
         clickSubmit();
+    }
+
+    // Default login method
+    public void login() {
+        login("giovanna.silva@testpro.io", "ShakaMaya1302!");
     }
 }

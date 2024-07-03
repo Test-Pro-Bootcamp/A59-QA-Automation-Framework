@@ -5,7 +5,7 @@ import io.cucumber.testng.TestNGCucumberRunner;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-//new java class for homework
+
 @CucumberOptions (features ={"src/test/resources/Features/Login.feature"})
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 private TestNGCucumberRunner testNGCucumberRunner;
