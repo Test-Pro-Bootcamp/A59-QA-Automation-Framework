@@ -1,25 +1,60 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-import java.time.Duration;
+    import org.openqa.selenium.By;
+    import org.openqa.selenium.WebElement;
+    import org.openqa.selenium.support.ui.ExpectedConditions;
+    import org.testng.Assert;
+    import org.testng.annotations.Test;
+    import pgFactoryPages.HomePage;
+    import pgFactoryPages.LoginPage;
 
-public class LoginTests extends BaseTest {
-    @Test
-    public void loginEmptyEmailPassword() {
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+    public class LoginTests extends BaseTest {
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        @Test
+        public void loginValidEmailPassword() throws InterruptedException{
+            LoginPage loginPage = new LoginPage(getDriver());
+            HomePage homePage = new HomePage(getDriver());
+            loginPage.provideEmail("giovanna.silva@testpro.io");
+            loginPage.providePassword("ShakaMaya1302!");
+            loginPage.clickSubmit();
+            Thread.sleep(1000);
+            //new below
+            WebElement avatarIcon = getDriver().findElement(By.cssSelector("img[class='avatar']"));
+            Assert.assertTrue(avatarIcon.isDisplayed());
+        }
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+        @Test
+        public void loginInvalidEmailValidPassword() throws InterruptedException {
+
+            //navigateToPage();
+            String expectedUrl = "https://qa.koel.app/";
+            // Steps
+            enterEmail("invalid@testpro.io");
+            enterPassword("te$t$tudent");
+            submit();
+
+            // Expected Result
+            Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); // https://qa.koel.app/
+        }
+
+        @Test
+        public void loginValidEmailEmptyPassword() throws InterruptedException {
+
+            //navigateToPage();
+            String expectedUrl = "https://qa.koel.app/";
+            enterEmail("invalid@testpro.io");
+            submit();
+            // Expected Result
+            Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+        }
+
+        @Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+        public void negativeLoginTest(String email, String password) throws InterruptedException {
+            String expectedUrl = "https://qa.koel.app/";
+            enterEmail(email);
+            enterPassword(password);
+            submit();
+            Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
+        }
+
     }
-}

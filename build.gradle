@@ -11,12 +11,27 @@ repositories {
 
 dependencies {
     testImplementation 'org.testng:testng:7.6.1'
+    //testImplementation 'org.testng:testng:7.8.0'
     implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
+    //implementation 'org.seleniumhq.selenium:selenium-java:4.10.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
+    //testImplementation 'io.github.bonigarcia:webdrivermanager:5.4.0'
+    implementation 'io.cucumber:cucumber-testng:7.13.0'
+    implementation 'io.cucumber:cucumber-core:7.13.0'
+    implementation 'io.cucumber:cucumber-java:7.13.0'
+    implementation 'io.cucumber:gherkin:25.0.2'
+}
+ext {
+    suite = project.findProperty("suite")?: 'defaultSuiteName'
 }
 
 test {
     useTestNG() {
-        suites "src/test/resources/TestNG.xml"
+        //suites "src/test/resources/Cucumber.xml"
+        // suites "src/test/resources/TestNG.xml"
+        //suites "src/test/resources/Smoke.xml"
+        suites "src/test/resources/Regression.xml"
+        systemProperty "browser", System.getProperty("browser")
+        // ToRun in terminal:  gradle clean test -Dbrowser=firefox
     }
 }
