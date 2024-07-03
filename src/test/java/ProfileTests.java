@@ -9,8 +9,9 @@ public class ProfileTests extends BaseTest{
 
     @Test
     public void changeProfileName() throws InterruptedException {
-        navigateToPage();
+        // navigateToPage();
         login();
+        Thread.sleep(1500);
         navigateToProfilePage();
         String uniqueName = generateUniqueName();
         changeName(uniqueName);

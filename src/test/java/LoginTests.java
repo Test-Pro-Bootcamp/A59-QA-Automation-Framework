@@ -8,7 +8,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
 
-        navigateToPage();
+        // navigateToPage();
         enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");
         submit();
@@ -21,8 +21,8 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
-        navigateToPage();
-
+        // navigateToPage();
+        String expectedURL = "https://qa.koel.app/";
         // Steps
         enterEmail("invalid@testpro.io");
         enterPassword("te$t$tudent");
@@ -30,18 +30,19 @@ public class LoginTests extends BaseTest {
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), url); // https://qa.koel.app/
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL); // https://qa.koel.app/
     }
 
     @Test
     public void loginValidEmailEmptyPassword() throws InterruptedException {
 
-        navigateToPage();
+        // navigateToPage();
+        String expectedURL = "https://qa.koel.app/";
         enterEmail("invalid@testpro.io");
         submit();
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL); //https://qa.koel.app/
     }
 }
