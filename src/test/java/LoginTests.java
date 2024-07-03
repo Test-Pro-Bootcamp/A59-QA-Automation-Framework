@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
@@ -18,7 +19,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
 
-    @Test
+    // @Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
         // navigateToPage();
@@ -33,7 +34,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL); // https://qa.koel.app/
     }
 
-    @Test
+    // @Test
     public void loginValidEmailEmptyPassword() throws InterruptedException {
 
         // navigateToPage();
@@ -44,5 +45,14 @@ public class LoginTests extends BaseTest {
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL); //https://qa.koel.app/
+    }
+
+    @Test(dataProvider="NegativeLoginTestData")
+    public void negativeLoginTest(String email, String password) throws InterruptedException {
+        String expectedURL = "https://qa.koel.app/";
+        enterEmail(email);
+        enterEmail(password);
+        submit();
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
 }

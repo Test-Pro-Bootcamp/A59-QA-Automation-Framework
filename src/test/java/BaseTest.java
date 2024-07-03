@@ -4,10 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -16,7 +13,16 @@ public class BaseTest {
     WebDriver driver = null;
     ChromeOptions options = new ChromeOptions();
     // String url = "https://qa.koel.app/";
-
+    @DataProvider(name = "NegativeLoginTestData")
+    public Object[][] getDataFromDataProviders() {
+        return new Object[][] {
+                {"invalid@testpro.io","invalidPassword"},
+                {"demo@testpro.io","invalidPassword"},
+                {"invalid@testpro.io","te$t$tudent"},
+                {"demo@testpro.io",""},
+                {"","te$t$tudent"},
+        };
+    }
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
