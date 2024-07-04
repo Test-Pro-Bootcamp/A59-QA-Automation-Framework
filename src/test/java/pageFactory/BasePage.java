@@ -1,4 +1,5 @@
-package page;
+package pageFactory;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,12 +12,11 @@ import java.time.Duration;
 
 public class BasePage {
 
+
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions actions;
 
-
-    By soundBarVisualizer =By.cssSelector("[data-testid = 'sound-bar-play']");
 
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
@@ -29,10 +29,6 @@ public class BasePage {
 
     public WebElement findElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-    public boolean isSongPlaying() {
-        return findElement(soundBarVisualizer).isDisplayed();
 
     }
 
@@ -48,9 +44,6 @@ public class BasePage {
         actions.moveToElement(findElement(locator)).perform();
     }
 }
-
-
-
 
 
 

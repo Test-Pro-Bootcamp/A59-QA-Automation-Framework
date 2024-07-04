@@ -1,7 +1,8 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
-import page.LoginPage;
+//import page.LoginPage;
+import pageFactory.LoginPage;
 
 public class LoginTest extends BaseTest {
 
@@ -39,26 +40,13 @@ public class LoginTest extends BaseTest {
 
    // login has step in it with a method
 
- loginPage.login();
+loginPage.provideEmail("christina.taylor@testpro.io").providePassword("jKV0uSX6z1dv").clickSubmit();
 
  Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
 
-/*
-        enterEmail("christina.taylor@testpro.io");
-
-        enterPassword("jKV0uSX6z1dv");
 
 
-        submit();
 
-    WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated
-            (By.cssSelector("img[class='avatar']")));
-       // WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
-
-        Assert.assertTrue(avatarIcon.isDisplayed());
-
-
-*/
 
 
 
