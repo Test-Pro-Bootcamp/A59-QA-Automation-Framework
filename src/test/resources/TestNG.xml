@@ -9,7 +9,7 @@
            <!-- <class name="LoginTest"/>-->
             <class name="BaseTest"/>
             <class name="LoginTest"/>
-           <!-- <class name="ActionTest"/>-->
+            <class name="ActionTest"/>
         </classes>
     </test>
 </suite>
