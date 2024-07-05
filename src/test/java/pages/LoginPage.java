@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
 
-    //Constuctor
+    //Constructor
     public LoginPage(WebDriver givenDriver){
         super(givenDriver);
     }
