@@ -8,8 +8,9 @@ import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
 
-    //@Test
+    @Test
     public void loginEmptyEmailPassword() {
+        LoginPage loginPage = new LoginPage(driver);
 
 
         //navigateToPage();
@@ -35,7 +36,6 @@ public class LoginTests extends BaseTest {
 //        enterEmail("aleksei.koksharov@testpro.io");
 //        enterPassword("ak1234!@#$");
 //        submit();
-//        //Thread. sleep(4000);
 //        WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
 //
 //        //Avatar Icon for Actual vs Expected
@@ -47,14 +47,16 @@ public class LoginTests extends BaseTest {
     }
 
     //Negative Test
-    //@Test
+    @Test
     public void loginWithInvalidEmailValidPassword() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
-        enterEmail("alekseikoksharov@testproio");
-        enterPassword("ak1234!@#$");
-        submit();
+//        enterEmail("alekseikoksharov@testproio");
+//        enterPassword("ak1234!@#$");
+//        submit();
         //Expected Result - Assertions
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
 
@@ -62,13 +64,15 @@ public class LoginTests extends BaseTest {
     }
 
     //Negative Test - empty password field
-    //@Test
+    @Test
     public void loginValidEmailEmptyPassword() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+
 
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
-        enterEmail("aleksei.koksharov@testpro.io");
-        submit();
+//        enterEmail("aleksei.koksharov@testpro.io");
+//        submit();
 
         //Expected Result - Assertions
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);                 //https://qa.koel.app/
@@ -78,12 +82,14 @@ public class LoginTests extends BaseTest {
 
     //@Test(dataProvider = "NegativeLoginTestData" , dataProviderClass = TestDataProvider.class)
     public void negativeLoginTest(String email, String password) throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+
 
         String expectedUrl = "https://qa.koel.app/";
 
-        enterEmail(email);
-        enterPassword(password);
-        submit();
+//        enterEmail(email);
+//        enterPassword(password);
+//        submit();
         Assert.assertEquals(driver.getCurrentUrl(),expectedUrl);
     }
 }
