@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
+//import pageFactory.LoginPage;
 
 public class LoginTests extends BaseTest {
 
@@ -12,7 +13,6 @@ public class LoginTests extends BaseTest {
     public void loginEmptyEmailPassword() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginEmptyEmailPassword();
-        //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
 
@@ -33,10 +33,7 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginInvalidEmail();
         String expectedUrl = "https://qa.koel.app/";
-//        enterEmail("alekseikoksharov@testproio");
-//        enterPassword("ak1234!@#$");
-//        submit();
-        //Expected Result - Assertions
+
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
     }
 

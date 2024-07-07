@@ -19,6 +19,8 @@ public class HomePage extends BasePage {
     private By addPlayList = By.cssSelector("i[data-testid='sidebar-create-playlist-btn']");
     private By createPlayListBtn = By.cssSelector("li[data-testid='playlist-context-menu-create-simple']");
     private By playListNameInput = By.cssSelector("[name='create-simple-playlist-form']>input");
+    private By allSongsList = By.cssSelector("li a.songs");
+
 
 
     //Methods
@@ -49,12 +51,12 @@ public class HomePage extends BasePage {
     }
     public WebElement getPlayListByName(String playListName){
         return findElement(By.xpath(String.format("//section[@id='playlists']//li//a[text()='%s']", playListName)));
-
     }
-
     public void openPlayList(String playListName){
         getPlayListByName(playListName).click();
-
     }
 
+    public void chooseAllSongsList (){
+        findElement(allSongsList).click();
+    }
 }
