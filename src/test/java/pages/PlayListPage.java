@@ -17,7 +17,6 @@ public class PlayListPage extends BasePage {
     }
 
     public void deletePlayList(){
-//        WebElement deleteBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@class, 'del btn-delete-playlist')]")));
         getDeletePlayListBtn().click();
 
     }

@@ -33,5 +33,22 @@ public class LoginPage extends BasePage {
         clickSubmit();
     }
 
+    public void loginInvalidEmail(){
+        provideEmail("alekseikoksharov@testproio");
+        providePassword("ak1234!@#$");
+        clickSubmit();
+    }
+
+    public void loginEmptyPassword(){
+        provideEmail("aleksei.koksharov@testpro.io");
+        providePassword(" ");
+        clickSubmit();
+    }
+    public void loginEmptyEmailPassword(){
+        provideEmail(" ");
+        providePassword(" ");
+        clickSubmit();
+    }
+
 
 }
