@@ -15,20 +15,23 @@ public class HomePage extends BasePage {
     }
 
     //Locator
-    By userAvatarIcon = By.cssSelector("img.avatar");
-    By addPlayList = By.cssSelector("i[data-testid='sidebar-create-playlist-btn']");
-    By createPlayListBtn = By.cssSelector("li[data-testid='playlist-context-menu-create-simple']");
-    By playListNameInput = By.cssSelector("[name='create-simple-playlist-form']>input");
+    private By userAvatarIcon = By.cssSelector("img.avatar");
+    private By addPlayList = By.cssSelector("i[data-testid='sidebar-create-playlist-btn']");
+    private By createPlayListBtn = By.cssSelector("li[data-testid='playlist-context-menu-create-simple']");
+    private By playListNameInput = By.cssSelector("[name='create-simple-playlist-form']>input");
 
 
     //Methods
     public WebElement getUserAvatar(){
+
         return findElement(userAvatarIcon);
     }
     public WebElement getAddPlaylist(){
+
         return findElement(addPlayList);
     }
     public WebElement getCreatePlayListBtn(){
+
         return findElement(createPlayListBtn);
     }
     public WebElement getPlayListNameInput(){
@@ -42,13 +45,7 @@ public class HomePage extends BasePage {
         getPlayListNameInput().click();
         getPlayListNameInput().sendKeys(playListName);
         getPlayListNameInput().sendKeys(Keys.ENTER);
-        //Thread.sleep(3000);
-       // WebElement createPlayListBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li[data-testid='playlist-context-menu-create-simple']")));
-        //WebElement createPlayListBtn = driver.findElement(By.cssSelector("li[data-testid='playlist-context-menu-create-simple']"));
 
-
-//        WebElement playListNameInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='create-simple-playlist-form']>input")));
-        //WebElement playListNameInput = driver.findElement(By.cssSelector("[name='create-simple-playlist-form']>input"));
     }
     public WebElement getPlayListByName(String playListName){
         return findElement(By.xpath(String.format("//section[@id='playlists']//li//a[text()='%s']", playListName)));
@@ -56,9 +53,6 @@ public class HomePage extends BasePage {
     }
 
     public void openPlayList(String playListName){
-//        WebElement choosePlayList = wait.until(ExpectedConditions.visibilityOfElementLocated
-//                (By.xpath(String.format("//section[@id='playlists']//li//a[text()='%s']", playListName))));
-//        choosePlayList.click();
         getPlayListByName(playListName).click();
 
     }
