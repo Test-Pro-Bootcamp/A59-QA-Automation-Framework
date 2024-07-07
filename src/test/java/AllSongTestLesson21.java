@@ -3,27 +3,33 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AllSongsPage;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class AllSongTestLesson21 extends BaseTest {
 
 @Test
     public void playSongWithRightClick() {
 
+    LoginPage loginPage = new LoginPage(driver);
+    HomePage homePage = new HomePage(driver);
+    AllSongsPage allSongsPage = new AllSongsPage(driver);
+
+
         //login
-        enterEmail("aleksei.koksharov@testpro.io");
-        enterPassword("ak1234!@#$");
-        submit();
+        loginPage.provideEmail("aleksei.koksharov@testpro.io");
+        loginPage.providePassword("ak1234!@#$");
+        loginPage.clickSubmit();
 
         //Navigate to AllSongs Page
-        navigateToChooseAllSongs();
-        
+        homePage.chooseAllSongsList();
         //ContextClick on the first song
-        contextClickFirstSong();
-
+        allSongsPage.contextClickFirstSong();
         //Choose Play from context menu
-        choosePlayOption();
+        allSongsPage.choosePlayOption();
         //Verify if Song being played.
-        Assert.assertTrue(isSongPlaying());
+        Assert.assertTrue(allSongsPage.isSongPlaying());
 
 
     }
