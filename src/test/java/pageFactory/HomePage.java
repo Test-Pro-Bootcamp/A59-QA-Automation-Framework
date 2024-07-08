@@ -7,45 +7,54 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends page.BasePage {
 
-        //CONSTRUCTOR
+    //CONSTRUCTOR
 
-        public HomePage(WebDriver givenDriver) {
-            super(givenDriver);
-        }
+    public HomePage(WebDriver givenDriver) {
+        super(givenDriver);
+    }
 
-        //LOCATOR
-       By userAvatarIcon = By.cssSelector("img.avatar");
-       // By allSongsList = By.cssSelector("li a.songs");
-       // By clickAddToBtn = By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']");
-      // By allBtn = By.xpath("//button[@data-test='view-all-songs-btn']");
+    //LOCATOR
+    By userAvatarIcon = By.cssSelector("img.avatar");
+    // By allSongsList = By.cssSelector("li a.songs");
+    // By clickAddToBtn = By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']");
+    // By allBtn = By.xpath("//button[@data-test='view-all-songs-btn']");
+  //  By newNamePlaylist = By.cssSelector("[name='name']");
 
-        @FindBy ( css = "li a.songs")
-        WebElement allSongsList;
+    @FindBy(css = "li a.songs")
+    WebElement allSongsList;
 
-        @FindBy ( xpath = "//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']")
-        WebElement addToBtn;
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']")
+    WebElement addToBtn;
 
-        @FindBy (xpath = "//button[@data-test='view-all-songs-btn']" )
-        WebElement allBtn;
+    @FindBy(xpath = "//button[@data-test='view-all-songs-btn']")
+    WebElement allBtn;
 
-        //METHODS
-        public WebElement getUserAvatarIcon() {
-            return findElement(userAvatarIcon);
-        }
+    @FindBy (css = "[name='name']")
+    WebElement newNamePlaylist;
+
+    //METHODS
+    public WebElement getUserAvatarIcon() {
+        return findElement(userAvatarIcon);
+    }
 
 
-        public void chooseAllSongsList() {
-            allSongsList.click();
-            //findElement(allSongsList).click();
-        }
-            public void clickAddToBtn() {
-                addToBtn.click();
-            }
+    public void chooseAllSongsList() {
+        allSongsList.click();
+        //findElement(allSongsList).click();
+    }
 
-            public void viewAllBtn(){
-               allBtn.click();
-            }
-        }
+    public void clickAddToBtn() {
+        addToBtn.click();
+    }
+
+    public void viewAllBtn() {
+        allBtn.click();
+    }
+
+    public  void reNamePlaylist(){
+        newNamePlaylist.click();
+    }
+}
 
 
 

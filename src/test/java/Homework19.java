@@ -9,7 +9,7 @@ import page.LoginPage;
 public class Homework19 extends BaseTest {
 
     @Test
-    public void deletePlaylist()  {
+    public void deletePlaylist() {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -26,18 +26,16 @@ public class Homework19 extends BaseTest {
         allSongsPage.removePlaylist();
 
 
-
     }
 
 
+    public String deletedPlaylist() {
+        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("div.success.show")));
+        return notification.getText();
 
-        public String deletedPlaylist() {
-            WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
-                    (By.cssSelector("div.success.show")));
-            return notification.getText();
 
-
-}
+    }
 
     public void removePlaylist() {
         WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated

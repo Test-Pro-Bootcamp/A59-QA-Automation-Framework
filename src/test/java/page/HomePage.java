@@ -20,6 +20,7 @@ public class HomePage extends BasePage {
     By allSongsList = By.cssSelector("li a.songs");
     By addToBtn = By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']");
     By allBtn = By.xpath("//button[@data-test='view-all-songs-btn']");
+    By playlistFiled = By.cssSelector("[name='name']");
     //METHODS
     public WebElement getUserAvatarIcon() {
         return findElement(userAvatarIcon);
@@ -35,11 +36,20 @@ public class HomePage extends BasePage {
             findElement(addToBtn).click();
 
     }
-      public void viewAllBtn(){
-        findElement(allBtn).click();
+      public void viewAllBtn() {
+          findElement(allBtn).click();
+      }
+
+      public void reNamePlaylist(String UpdatedName){
+          findElement(playlistFiled).sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
+          actions.sendKeys(UpdatedName);
+          actions.sendKeys(Keys.ENTER);
+
+
+      }
         }
 
-    }
+
 
 
 

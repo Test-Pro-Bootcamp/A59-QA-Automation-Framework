@@ -20,18 +20,19 @@ public class LoginPage extends BasePage {
         findElement(emailField).sendKeys(email);
     }
 
-        public void providePassword(String password) {
-            findElement(passwordField).sendKeys(password);
-        }
+    public void providePassword(String password) {
+        findElement(passwordField).sendKeys(password);
+    }
 
-        public void clickSubmit() {
-            findElement(submitButton).click();
-        }
-public void login() {
+    public void clickSubmit() {
+        findElement(submitButton).click();
+    }
+
+    public void login() {
         provideEmail("christina.taylor@testpro.io");
         providePassword("jKV0uSX6z1dv");
         clickSubmit();
-}
+    }
 
 }
 

@@ -1,4 +1,5 @@
 package page;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,8 @@ public class BasePage {
     protected Actions actions;
 
 
-    By soundBarVisualizer =By.cssSelector("[data-testid = 'sound-bar-play']");
+    By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
+    By successMessage = By.cssSelector("div.success.show");
 
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
@@ -46,6 +48,9 @@ public class BasePage {
 
     public void doubleClick(By locator) {
         actions.moveToElement(findElement(locator)).perform();
+    }
+    public String successMessage(){
+        return findElement(successMessage).getText();
     }
 }
 

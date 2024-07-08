@@ -12,11 +12,11 @@ public class ActionTest extends BaseTest {
 
 
     @Test
-    public void playSongWithRightClick()  {
+    public void playSongWithRightClick() {
 
         LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage =new HomePage(driver);
-        AllSongsPage allSongsPage =new AllSongsPage(driver);
+        HomePage homePage = new HomePage(driver);
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
 
         loginPage.login();
 

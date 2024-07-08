@@ -13,35 +13,36 @@ public class AllSongsPage extends BasePage {
     }
 
     //Locators
-   // By fistSong = By.cssSelector(".all-songs tr.song-item:nth-child(1)");
-   // By playOption = By.cssSelector("li.playback");
-   // By selectFirstSong =By.xpath("//section[@id='songResultsWrapper']//tr[@class='song-item'][1]");
-   // By searchForSong = By.cssSelector("div#searchForm input[type='search']");
-  //  By removePlaylist = By.cssSelector("button[class='del btn-delete-playlist']");
+    // By fistSong = By.cssSelector(".all-songs tr.song-item:nth-child(1)");
+    // By playOption = By.cssSelector("li.playback");
+    // By selectFirstSong =By.xpath("//section[@id='songResultsWrapper']//tr[@class='song-item'][1]");
+    // By searchForSong = By.cssSelector("div#searchForm input[type='search']");
+    //  By removePlaylist = By.cssSelector("button[class='del btn-delete-playlist']");
 
-    @FindBy (css= ".all-songs tr.song-item:nth-child(1)")
+    @FindBy(css = ".all-songs tr.song-item:nth-child(1)")
     WebElement fistSong;
 
-    @FindBy (css= "li.playback")
+    @FindBy(css = "li.playback")
     WebElement playOption;
 
-    @FindBy (xpath = "//section[@id='songResultsWrapper']//tr[@class='song-item'][1]")
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//tr[@class='song-item'][1]")
     WebElement selectFirstInList;
 
-    @FindBy (css = ".all-songs tr.song-item:nth-child(1)")
+    @FindBy(css = ".all-songs tr.song-item:nth-child(1)")
     WebElement searchForSong;
 
-    @FindBy ( css = "button[class='del btn-delete-playlist']" )
+    @FindBy(css = "button[class='del btn-delete-playlist']")
     WebElement removePlaylist;
 
     //Methods
 
     public void contextClickFirstSong() {
-            fistSong.click();
+        fistSong.click();
 
 
-       // actions.contextClick(findElement(fistSong)).perform();
+        // actions.contextClick(findElement(fistSong)).perform();
     }
+
     public void choosePlayOption() {
         playOption.click();
 
@@ -57,7 +58,7 @@ public class AllSongsPage extends BasePage {
         searchForSong.sendKeys(songName);
     }
 
-    public void deletePlaylist(){
+    public void deletePlaylist() {
         removePlaylist.click();
 
     }

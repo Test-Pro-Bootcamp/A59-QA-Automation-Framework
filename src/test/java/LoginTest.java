@@ -7,15 +7,15 @@ import pageFactory.LoginPage;
 public class LoginTest extends BaseTest {
 
 
-@Test
-    public void loginEmptyEmailPassword()  {
+    @Test
+    public void loginEmptyEmailPassword() {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
         loginPage.provideEmail(" ").provideEmail("jKV0uSX6z1dv").clickSubmit();
 
-        String expectedURL= "https://qa.koel.app/";
+        String expectedURL = "https://qa.koel.app/";
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
 
         driver.quit();
@@ -27,68 +27,60 @@ public class LoginTest extends BaseTest {
 
  */
     }
-@Test
 
-    public void loginValidEmailPassword()  {
+    @Test
 
-   LoginPage loginPage = new LoginPage(driver);
-   HomePage homePage = new HomePage(driver);
-
-   // login has step in it with a method
-
-loginPage.provideEmail("christina.taylor@testpro.io").providePassword("jKV0uSX6z1dv").clickSubmit();
-
- Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
-
-
-
-
-
-
-
-
-
-
-    }
-
-@Test
-
-    public void loginInvalidEmailValidPassword()  {
+    public void loginValidEmailPassword() {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-      loginPage.provideEmail("invalidemail@testpro.io").providePassword("jKV0uSX6z1dv").clickSubmit();
+        // login has step in it with a method
 
-    String expectedURL= "https://qa.koel.app/";
+        loginPage.provideEmail("christina.taylor@testpro.io").providePassword("jKV0uSX6z1dv").clickSubmit();
+
+        Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
+
+
+    }
+
+    @Test
+
+    public void loginInvalidEmailValidPassword() {
+
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("invalidemail@testpro.io").providePassword("jKV0uSX6z1dv").clickSubmit();
+
+        String expectedURL = "https://qa.koel.app/";
 
 
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
 
     }
 
-@Test
+    @Test
 
-    public void loginEmailEmptyPassword()  {
-
-
-
-     LoginPage loginPage = new LoginPage(driver);
-     HomePage homePage =new HomePage(driver);
-
-     loginPage.provideEmail("christina.taylor@testpro.io").providePassword(" ").clickSubmit();
+    public void loginEmailEmptyPassword() {
 
 
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
-        String expectedURL= "https://qa.koel.app/";
+        loginPage.provideEmail("christina.taylor@testpro.io").providePassword(" ").clickSubmit();
+
+
+        String expectedURL = "https://qa.koel.app/";
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
 
 
-    //  enterEmail("christina.taylor@testpro.io");
+        //  enterEmail("christina.taylor@testpro.io");
 
 
     }
-    @Test( dataProvider ="NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+
+    @Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
     public void loginNegativeTest(String email, String password) throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -97,8 +89,8 @@ loginPage.provideEmail("christina.taylor@testpro.io").providePassword("jKV0uSX6z
 
         loginPage.login();
 
-        String expectedURL= "https://qa.koel.app/";
-        Assert.assertEquals(driver.getCurrentUrl(),expectedURL);
+        String expectedURL = "https://qa.koel.app/";
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
 
          /*  enterEmail(email);
         enterPassword(password);

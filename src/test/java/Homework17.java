@@ -7,7 +7,6 @@ import page.HomePage;
 import page.LoginPage;
 
 
-
 public class Homework17 extends BaseTest {
 
     @Test
@@ -15,13 +14,11 @@ public class Homework17 extends BaseTest {
     public void addSongToPlaylist() throws InterruptedException {
 
 
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
 
-LoginPage loginPage = new LoginPage(driver);
-HomePage homePage = new HomePage(driver);
-AllSongsPage allSongsPage = new AllSongsPage(driver);
-
-loginPage.login();
-
+        loginPage.login();
 
 
         String expectedSongAddMessage = "Add 1 Song into \"lazy days.\"";
@@ -38,17 +35,15 @@ loginPage.login();
         //clickAddToBtn();
 
 
-
     }
 
-    public String getAddToPlaylistMessage () {
+    public String getAddToPlaylistMessage() {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("div.success.show")));
         return notification.getText();
 
 
-
-}
+    }
 
 
     public void chosePlayList() {
@@ -79,7 +74,7 @@ loginPage.login();
     }
 
     public void searchSong(String songName) {
-        WebElement searchField =wait.until(ExpectedConditions.visibilityOfElementLocated
+        WebElement searchField = wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("div#searchForm input[type='search']")));
         searchField.sendKeys(songName);
     }
