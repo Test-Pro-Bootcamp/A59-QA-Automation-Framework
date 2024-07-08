@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
@@ -15,29 +16,31 @@ public class HomePage extends BasePage {
     }
 
     //Locator
-    private By userAvatarIcon = By.cssSelector("img.avatar");
-    private By addPlayList = By.cssSelector("i[data-testid='sidebar-create-playlist-btn']");
-    private By createPlayListBtn = By.cssSelector("li[data-testid='playlist-context-menu-create-simple']");
-    private By playListNameInput = By.cssSelector("[name='create-simple-playlist-form']>input");
-    private By allSongsList = By.cssSelector("li a.songs");
+    @FindBy(css = "img.avatar")
+    private WebElement userAvatarIcon;
+    @FindBy(css = "i[data-testid='sidebar-create-playlist-btn']")
+    private WebElement addPlayList;
+    @FindBy(css = "li[data-testid='playlist-context-menu-create-simple']")
+    private WebElement createPlayListBtn;
+    @FindBy(css = "[name='create-simple-playlist-form']>input")
+    private WebElement playListNameInput;
+    @FindBy(css = "li a.songs")
+    private WebElement allSongsList;
 
 
 
     //Methods
     public WebElement getUserAvatar(){
-
-        return findElement(userAvatarIcon);
+        return userAvatarIcon;
     }
     public WebElement getAddPlaylist(){
-
-        return findElement(addPlayList);
+        return addPlayList;
     }
     public WebElement getCreatePlayListBtn(){
-
-        return findElement(createPlayListBtn);
+        return createPlayListBtn;
     }
     public WebElement getPlayListNameInput(){
-        return findElement(playListNameInput);
+        return playListNameInput;
     }
 
     public void createPlayList(String playListName){
@@ -57,6 +60,6 @@ public class HomePage extends BasePage {
     }
 
     public void chooseAllSongsList (){
-        findElement(allSongsList).click();
+        allSongsList.click();
     }
 }

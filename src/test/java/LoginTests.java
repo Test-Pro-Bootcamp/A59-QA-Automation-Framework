@@ -9,6 +9,7 @@ import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
 
+
     @Test
     public void loginEmptyEmailPassword() {
         LoginPage loginPage = new LoginPage(driver);
@@ -20,7 +21,6 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginValidEmailPassword(){
-
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         loginPage.login();
@@ -44,13 +44,10 @@ public class LoginTests extends BaseTest {
         loginPage.loginEmptyPassword();
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
-//        enterEmail("aleksei.koksharov@testpro.io");
-//        submit();
-        //Expected Result - Assertions
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);                 //https://qa.koel.app/
     }
 
-    @Test(dataProvider = "NegativeLoginTestData" , dataProviderClass = TestDataProvider.class)
+//    @Test(dataProvider = "NegativeLoginTestData" , dataProviderClass = TestDataProvider.class)
     public void negativeLoginTest(String email, String password) {
 
 

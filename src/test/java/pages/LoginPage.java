@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
@@ -11,43 +13,42 @@ public class LoginPage extends BasePage {
     }
 
     //Locators
-    By emailField = By.cssSelector("input[type='email']");
-    By passwordField = By.cssSelector("input[type='password']");
-    By submitBtn = By.cssSelector("button[type='submit']");
+    @FindBy(css = "input[type='email']")
+    WebElement emailField;
+    @FindBy(css = "input[type='password']")
+    WebElement passwordField;
+    @FindBy(css = "button[type='submit']")
+    WebElement submitBtn;
 
 
     //Page Methods
-    public void provideEmail(String email){
-        findElement(emailField).sendKeys(email);
+    public LoginPage provideEmail(String email){
+        emailField.sendKeys(email);
+        return this;
     }
-    public void providePassword(String password){
-        findElement(passwordField).sendKeys(password);
+    public LoginPage providePassword(String password){
+        passwordField.sendKeys(password);
+        return this;
     }
-    public void clickSubmit(){
-        findElement(submitBtn).click();
+    public LoginPage clickSubmit(){
+        submitBtn.click();
+        return this;
     }
 
     public void login(){
-        provideEmail("aleksei.koksharov@testpro.io");
-        providePassword("ak1234!@#$");
-        clickSubmit();
+        provideEmail("aleksei.koksharov@testpro.io").providePassword("ak1234!@#$").clickSubmit();
     }
 
     public void loginInvalidEmail(){
-        provideEmail("alekseikoksharov@testproio");
-        providePassword("ak1234!@#$");
-        clickSubmit();
+        provideEmail("alekseikoksharov@testproio").providePassword("ak1234!@#$").clickSubmit();
     }
 
     public void loginEmptyPassword(){
-        provideEmail("aleksei.koksharov@testpro.io");
-        providePassword(" ");
-        clickSubmit();
+        provideEmail("aleksei.koksharov@testpro.io").providePassword(" ").clickSubmit();
     }
+
     public void loginEmptyEmailPassword(){
-        provideEmail(" ");
-        providePassword(" ");
-        clickSubmit();
+        provideEmail(" ").providePassword(" ").clickSubmit();
     }
 
 

@@ -18,9 +18,7 @@ public class AllSongTestLesson21 extends BaseTest {
 
 
         //login
-        loginPage.provideEmail("aleksei.koksharov@testpro.io");
-        loginPage.providePassword("ak1234!@#$");
-        loginPage.clickSubmit();
+        loginPage.provideEmail("aleksei.koksharov@testpro.io").providePassword("ak1234!@#$").clickSubmit();
 
         //Navigate to AllSongs Page
         homePage.chooseAllSongsList();
