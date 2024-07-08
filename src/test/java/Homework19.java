@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
+import page.AllSongsPage;
 import page.HomePage;
 import page.LoginPage;
 
@@ -10,8 +11,10 @@ public class Homework19 extends BaseTest {
     @Test
     public void deletePlaylist()  {
 
-        HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
+
 
         loginPage.login();
 
@@ -20,12 +23,8 @@ public class Homework19 extends BaseTest {
         //select lazy days
         clickLazyDays();
         // delete button
-        removePlaylist();
-        // ok button to conform
-        //Verify that the confirmation notification
-        // displayed has the text, "Deleted playlist {playlist name}".
+        allSongsPage.removePlaylist();
 
-        // notification message
 
 
     }

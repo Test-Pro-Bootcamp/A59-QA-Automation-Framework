@@ -2,8 +2,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
+import page.AllSongsPage;
 import page.HomePage;
 import page.LoginPage;
+
 
 
 public class Homework17 extends BaseTest {
@@ -16,22 +18,24 @@ public class Homework17 extends BaseTest {
 
 LoginPage loginPage = new LoginPage(driver);
 HomePage homePage = new HomePage(driver);
+AllSongsPage allSongsPage = new AllSongsPage(driver);
 
 loginPage.login();
 
 
 
         String expectedSongAddMessage = "Add 1 Song into \"lazy days.\"";
-        //search for song
-        searchSong("dark");
-        //click view all button
-        clickViewAllBtn();
-        //select first song from result
-        selectFirstSong();
-        //click add to button
-        clickAddToBtn();
-        //choose a playlist from
+        allSongsPage.searchSong("dark");
+        homePage.viewAllBtn();
+        allSongsPage.selectFirstSong();
+        homePage.clickAddToBtn();
         chosePlayList();
+
+        //searchSong("dark");
+        //click view all button
+        // clickViewAllBtn();
+        // selectFirstSong();
+        //clickAddToBtn();
 
 
 

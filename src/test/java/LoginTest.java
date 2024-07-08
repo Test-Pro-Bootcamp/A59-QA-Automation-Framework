@@ -13,9 +13,7 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-        loginPage.login();
-
-
+        loginPage.provideEmail(" ").provideEmail("jKV0uSX6z1dv").clickSubmit();
 
         String expectedURL= "https://qa.koel.app/";
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
@@ -33,8 +31,6 @@ public class LoginTest extends BaseTest {
 
     public void loginValidEmailPassword()  {
 
-//code from Page Objects
-//the codes are being pulled to use here.
    LoginPage loginPage = new LoginPage(driver);
    HomePage homePage = new HomePage(driver);
 
@@ -62,20 +58,12 @@ loginPage.provideEmail("christina.taylor@testpro.io").providePassword("jKV0uSX6z
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-       loginPage.login();
-
-
-    loginPage.provideEmail("christina.taylor@test.io");
-    loginPage.providePassword("jKV0uSX6z1dv");
-
+      loginPage.provideEmail("invalidemail@testpro.io").providePassword("jKV0uSX6z1dv").clickSubmit();
 
     String expectedURL= "https://qa.koel.app/";
 
 
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
-
-    // enterEmail("christina.taylor@test.io");
-    //  enterPassword("jKV0uSX6z1dv");
 
     }
 
@@ -88,8 +76,7 @@ loginPage.provideEmail("christina.taylor@testpro.io").providePassword("jKV0uSX6z
      LoginPage loginPage = new LoginPage(driver);
      HomePage homePage =new HomePage(driver);
 
-     loginPage.provideEmail("christina.taylor@testpro.io");
-     loginPage.providePassword(" ");
+     loginPage.provideEmail("christina.taylor@testpro.io").providePassword(" ").clickSubmit();
 
 
 
@@ -105,7 +92,7 @@ loginPage.provideEmail("christina.taylor@testpro.io").providePassword("jKV0uSX6z
     public void loginNegativeTest(String email, String password) throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
-        HomePage homePAge = new HomePage(driver);
+        HomePage homePage = new HomePage(driver);
 
 
         loginPage.login();

@@ -18,7 +18,8 @@ public class HomePage extends BasePage {
     //LOCATOR
     By userAvatarIcon = By.cssSelector("img.avatar");
     By allSongsList = By.cssSelector("li a.songs");
-
+    By addToBtn = By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']");
+    By allBtn = By.xpath("//button[@data-test='view-all-songs-btn']");
     //METHODS
     public WebElement getUserAvatarIcon() {
         return findElement(userAvatarIcon);
@@ -28,8 +29,17 @@ public class HomePage extends BasePage {
     public void chooseAllSongsList() {
 
         findElement(allSongsList).click();
+
     }
-}
+        public void clickAddToBtn() {
+            findElement(addToBtn).click();
+
+    }
+      public void viewAllBtn(){
+        findElement(allBtn).click();
+        }
+
+    }
 
 
 
