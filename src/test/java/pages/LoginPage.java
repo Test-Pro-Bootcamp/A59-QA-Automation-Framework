@@ -14,11 +14,11 @@ public class LoginPage extends BasePage {
 
     //Locators
     @FindBy(css = "input[type='email']")
-    WebElement emailField;
+    private WebElement emailField;
     @FindBy(css = "input[type='password']")
-    WebElement passwordField;
+    private WebElement passwordField;
     @FindBy(css = "button[type='submit']")
-    WebElement submitBtn;
+    private WebElement submitBtn;
 
 
     //Page Methods
