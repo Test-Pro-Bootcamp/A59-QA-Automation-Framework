@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
 import page.LoginPage;
+import page.PlaylistPage;
 import pageFactory.AllSongsPage;
 
 import static org.testng.Assert.assertEquals;
@@ -17,17 +18,20 @@ public class Homework21 extends BaseTest {
     @Test
     public void newPlaylistName() {
 
+        // GIVEN; User is on login with availed email and password home page is displayed
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
         AllSongsPage allSongsPage =new AllSongsPage(driver);
-
+        PlaylistPage playlistPage = new PlaylistPage(driver);
         loginPage.login();
 
-        String updatedPlaylistMsg = " \"Updated playlist \"Good Morning.\"";
-
+        //Given: User is able to change playlist name
+        String UpdatedName = "Good Morning";
         doubleClickPlaylist();
-        homePage.reNamePlaylist(UpdatedName);
-        Assert.assertEquals(homePage,updatedPlaylistMsg);
+
+        //THEN: Updated message is displayed
+        playlistPage.renamePlaylist(UpdatedName);
+
     }
 
 

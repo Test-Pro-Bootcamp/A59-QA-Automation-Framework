@@ -40,14 +40,10 @@ public class HomePage extends BasePage {
           findElement(allBtn).click();
       }
 
-      public void reNamePlaylist(String UpdatedName){
-          findElement(playlistFiled).sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
-          actions.sendKeys(UpdatedName);
-          actions.sendKeys(Keys.ENTER);
 
 
       }
-        }
+
 
 
 

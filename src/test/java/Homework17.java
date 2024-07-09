@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import page.AllSongsPage;
 import page.HomePage;
 import page.LoginPage;
+import page.PlaylistPage;
 
 
 public class Homework17 extends BaseTest {
@@ -17,6 +18,7 @@ public class Homework17 extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         AllSongsPage allSongsPage = new AllSongsPage(driver);
+        PlaylistPage playlistPage= new PlaylistPage(driver);
 
 // WHEN: User uses valid email and password click submit directed to home page
         loginPage.login();
@@ -27,7 +29,9 @@ public class Homework17 extends BaseTest {
         homePage.viewAllBtn();
         allSongsPage.selectFirstSong();
         homePage.clickAddToBtn();
-        chosePlayList();
+        playlistPage.chosePlayList();
+
+
 
 
     }
@@ -42,10 +46,11 @@ public class Homework17 extends BaseTest {
 
 
     public void chosePlayList() {
-        WebElement chosePlayList = wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.xpath("//section[@id='songResultsWrapper']//li[contains(text(),'lazy days')]")));
+        WebElement chosePlayList = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(4)")));
         chosePlayList.click();
 
+//  // Should I really be using this code to find an element i figured its not good sine
+//  the name changes (By.xpath("//section[@id='songResultsWrapper']//li[contains(text(),'lazy days')]")));
     }
 
     public void clickAddToBtn() {
