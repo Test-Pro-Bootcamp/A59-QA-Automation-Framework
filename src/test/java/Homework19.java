@@ -11,18 +11,17 @@ public class Homework19 extends BaseTest {
     @Test
     public void deletePlaylist() {
 
+// Given: User is on login page
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         AllSongsPage allSongsPage = new AllSongsPage(driver);
 
-
+// GIVEN: Valid email and password and clicks submit user is set to home page
         loginPage.login();
 
+//THEN: User is able to delete a playlist
         String deleteNotification = "Deleted playlist lazy days";
-
-        //select lazy days
         clickLazyDays();
-        // delete button
         allSongsPage.removePlaylist();
 
 
@@ -33,7 +32,6 @@ public class Homework19 extends BaseTest {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("div.success.show")));
         return notification.getText();
-
 
     }
 

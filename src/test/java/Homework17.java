@@ -13,26 +13,21 @@ public class Homework17 extends BaseTest {
 
     public void addSongToPlaylist() throws InterruptedException {
 
-
+// GIVEN: User is on the login page
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         AllSongsPage allSongsPage = new AllSongsPage(driver);
 
+// WHEN: User uses valid email and password click submit directed to home page
         loginPage.login();
 
-
+// THEN: User should be able to add song dark to playlist
         String expectedSongAddMessage = "Add 1 Song into \"lazy days.\"";
         allSongsPage.searchSong("dark");
         homePage.viewAllBtn();
         allSongsPage.selectFirstSong();
         homePage.clickAddToBtn();
         chosePlayList();
-
-        //searchSong("dark");
-        //click view all button
-        // clickViewAllBtn();
-        // selectFirstSong();
-        //clickAddToBtn();
 
 
     }

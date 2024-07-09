@@ -1,6 +1,7 @@
 package pageFactory;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,10 +16,11 @@ public class HomePage extends page.BasePage {
 
     //LOCATOR
     By userAvatarIcon = By.cssSelector("img.avatar");
+
     // By allSongsList = By.cssSelector("li a.songs");
     // By clickAddToBtn = By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']");
     // By allBtn = By.xpath("//button[@data-test='view-all-songs-btn']");
-  //  By newNamePlaylist = By.cssSelector("[name='name']");
+  //  By playlistNameField = By.cssSelector("[name='name']");
 
     @FindBy(css = "li a.songs")
     WebElement allSongsList;
@@ -29,8 +31,6 @@ public class HomePage extends page.BasePage {
     @FindBy(xpath = "//button[@data-test='view-all-songs-btn']")
     WebElement allBtn;
 
-    @FindBy (css = "[name='name']")
-    WebElement newNamePlaylist;
 
     //METHODS
     public WebElement getUserAvatarIcon() {
@@ -51,9 +51,6 @@ public class HomePage extends page.BasePage {
         allBtn.click();
     }
 
-    public  void reNamePlaylist(){
-        newNamePlaylist.click();
-    }
 }
 
 

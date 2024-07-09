@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -19,6 +20,7 @@ public class BasePage {
 
     By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
     By successMessage = By.cssSelector("div.success.show");
+    String expectedURL = "https://qa.koel.app/";
 
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
@@ -49,8 +51,11 @@ public class BasePage {
     public void doubleClick(By locator) {
         actions.moveToElement(findElement(locator)).perform();
     }
-    public String successMessage(){
+    public String successMessage() {
         return findElement(successMessage).getText();
+    }
+    public void setExpectedURL(){
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
 }
 

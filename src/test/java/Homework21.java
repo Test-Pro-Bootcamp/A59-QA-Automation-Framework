@@ -22,19 +22,27 @@ public class Homework21 extends BaseTest {
         loginPage.login();
 
         String updatedPlaylistMsg = " \"Updated playlist \"Good Morning.\"";
-
+        
         doubleClickPlaylist();
         homePage.reNamePlaylist(UpdatedName);
         Assert.assertEquals(homePage,updatedPlaylistMsg);
     }
 
-    public void reNamePlaylist() {
+    public void renamePlaylist(String newName) {
+            WebElement playlistField = wait.until(ExpectedConditions.presenceOfElementLocated(playlistNameField));
+            playlistField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
+            playlistField.sendKeys(newName);
+            playlistField.sendKeys(Keys.ENTER);
 
+            /*
+            public void reNamePlaylist() {
         WebElement playlistFiled = wait.until(ExpectedConditions.presenceOfElementLocated
                 (By.cssSelector("[name='name']")));
         playlistFiled.sendKeys(Keys.chord(Keys.CONTROL, "A",Keys.BACK_SPACE));
         playlistFiled.sendKeys(UpdatedName);
         playlistFiled.sendKeys(Keys.ENTER);
+
+ */
     }
 
 
