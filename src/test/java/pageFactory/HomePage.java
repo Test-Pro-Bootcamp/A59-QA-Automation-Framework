@@ -20,7 +20,7 @@ public class HomePage extends page.BasePage {
     // By allSongsList = By.cssSelector("li a.songs");
     // By clickAddToBtn = By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']");
     // By allBtn = By.xpath("//button[@data-test='view-all-songs-btn']");
-  //  By playlistNameField = By.cssSelector("[name='name']");
+
 
     @FindBy(css = "li a.songs")
     WebElement allSongsList;
