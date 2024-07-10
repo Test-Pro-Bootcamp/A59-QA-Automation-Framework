@@ -22,7 +22,7 @@ public class LoginTests extends BaseTest {
     // @Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
-        // navigateToPage();
+        // navigateToPage() ;
         String expectedURL = "https://qa.koel.app/";
         // Steps
         enterEmail("invalid@testpro.io");
