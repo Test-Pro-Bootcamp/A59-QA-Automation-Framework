@@ -9,6 +9,7 @@ public class Homework17 extends BaseTest {
         String expectedSongAddedMessage = "Added 1 song into \"LeonPlayList.\"";
 
         // Step 1 - navigate to koel login page
+
         // navigateToPage();
 
         // Step 2 - login
@@ -75,4 +76,3 @@ public class Homework17 extends BaseTest {
         searchField.sendKeys(songName);
     }
 }
-

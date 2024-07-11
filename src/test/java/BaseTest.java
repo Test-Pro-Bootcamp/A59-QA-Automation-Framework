@@ -5,10 +5,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
-
 import java.time.Duration;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
+    WebDriver driver = null;
+    ChromeOptions options = new ChromeOptions();
+    String url = "https://qa.koel.app/";
 
     WebDriver driver = null;
     ChromeOptions options = new ChromeOptions();
@@ -64,7 +69,6 @@ public class BaseTest {
     }
 
     protected void navigateToPage(String url) {
-
         driver.get(url);
     }
 }
