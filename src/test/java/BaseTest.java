@@ -15,8 +15,6 @@ public class BaseTest {
     ChromeOptions options = new ChromeOptions();
     String url = "https://qa.koel.app/";
 
-    WebDriver driver = null;
-    ChromeOptions options = new ChromeOptions();
     // String url = "https://qa.koel.app/";
     @DataProvider(name = "NegativeLoginTestData")
     public Object[][] getDataFromDataProviders() {
