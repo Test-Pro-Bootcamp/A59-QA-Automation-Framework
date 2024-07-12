@@ -66,6 +66,7 @@ public class BaseTest {
 
 
     public static WebDriver pickBrowser(String browser) throws MalformedURLException{
+        ChromeOptions options = new ChromeOptions();
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://172.20.10.13:4444";
         switch (browser){
@@ -77,6 +78,11 @@ public class BaseTest {
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--remote-allow-origins=*");
                 return driver = new EdgeDriver();
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                options.addArguments("--disable-notifications","--remote-allow-origins=*", "--incognito","--start-maximized");
+                return driver = new ChromeDriver(options);
+
 
                 //Grid Cases
             case "grid-edge":
