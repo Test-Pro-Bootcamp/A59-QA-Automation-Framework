@@ -28,7 +28,7 @@ public class ProfileTests extends BaseTest {
     }
 
     private String getProfileName() {
-        WebElement profileName = driver.findElement(By.cssSelector("span.name"));
+        WebElement profileName = getDriver().findElement(By.cssSelector("span.name"));
         return profileName.getText();
     }
 
@@ -45,18 +45,18 @@ public class ProfileTests extends BaseTest {
     }
 
     private void saveChages() {
-        WebElement saveButton = driver.findElement(By.className("btn-submit"));
+        WebElement saveButton = getDriver().findElement(By.className("btn-submit"));
         saveButton.click();
     }
 
     private void enterNewName(String name) {
-        WebElement newName = driver.findElement(By.id("inputProfileName"));
+        WebElement newName = getDriver().findElement(By.id("inputProfileName"));
         newName.clear();
         newName.sendKeys(name);
     }
 
     private void enterCurrentPassword(String password) {
-        WebElement currentPasswordField = driver.findElement(By.id("inputProfileCurrentPassword"));
+        WebElement currentPasswordField = getDriver().findElement(By.id("inputProfileCurrentPassword"));
         currentPasswordField.sendKeys(password);
     }
 
