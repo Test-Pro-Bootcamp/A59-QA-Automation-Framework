@@ -21,13 +21,15 @@ public class Homework21 extends BaseTest {
         // GIVEN; User is on login with availed email and password home page is displayed
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
-        AllSongsPage allSongsPage =new AllSongsPage(driver);
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
         PlaylistPage playlistPage = new PlaylistPage(driver);
         loginPage.login();
 
         //Given: User is able to change playlist name
         String UpdatedName = "Good Morning";
         doubleClickPlaylist();
+
+        //playlistPage.doubleClickPlaylist();  does not run if i put it in this way
 
         //THEN: Updated message is displayed
         playlistPage.renamePlaylist(UpdatedName);
@@ -39,10 +41,9 @@ public class Homework21 extends BaseTest {
 
         WebElement playlistFiled = wait.until(ExpectedConditions.presenceOfElementLocated
                 (By.cssSelector("[name='name']")));
-        playlistFiled.sendKeys(Keys.chord(Keys.CONTROL, "A",Keys.BACK_SPACE));
+        playlistFiled.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
         playlistFiled.sendKeys(UpdatedName);
         playlistFiled.sendKeys(Keys.ENTER);
-
 
 
     }

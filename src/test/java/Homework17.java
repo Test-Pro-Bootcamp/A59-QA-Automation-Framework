@@ -29,7 +29,7 @@ public class Homework17 extends BaseTest {
         homePage.viewAllBtn();
         allSongsPage.selectFirstSong();
         homePage.clickAddToBtn();
-        playlistPage.chosePlayList();
+        playlistPage.doubleClickPlaylist();
 
 
 
@@ -45,7 +45,7 @@ public class Homework17 extends BaseTest {
     }
 
 
-    public void chosePlayList() {
+    public void  doubleClickPlaylist() {
         WebElement chosePlayList = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(4)")));
         chosePlayList.click();
 

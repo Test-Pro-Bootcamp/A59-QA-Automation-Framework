@@ -18,13 +18,18 @@ public class PlaylistPage extends BasePage {
     //Locator
 
     //By playlistNameField = By.cssSelector("[name='name']");
-   // By chosePlayList = By.cssSelector(".playlist:nth-child(4)");
+    // By chosePlayList = By.cssSelector(".playlist:nth-child(4)");
+    //  By successMessage = By.cssSelector("div.success.show");
 
     @FindBy(css = "[name='name']")
     WebElement playlistNameField;
 
-    @FindBy (css = ".playlist:nth-child(4)")
-    WebElement chosePlayList;
+    @FindBy(css = ".playlist:nth-child(4)")
+    WebElement  doubleClickPlaylist;
+
+    @FindBy(css = "div.success.show")
+    WebElement successMessage;
+
 
     //Methods
     public void renamePlaylist() {
@@ -32,9 +37,16 @@ public class PlaylistPage extends BasePage {
 
 
     }
-     public void choosePLayList(){
-        chosePlayList.click();
 
+    public void  doubleClickPlaylist() {
+        doubleClickPlaylist.click();
 
-        }
     }
+
+    public String successMessage() {
+        return successMessage.getText();
+
+    }
+
+}
+

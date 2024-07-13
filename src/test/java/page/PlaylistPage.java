@@ -16,7 +16,9 @@ public class PlaylistPage extends BasePage {
     // Locator
 
     By playlistNameField = By.cssSelector("[name='name']");
-    By chosePlayList = By.cssSelector(".playlist:nth-child(4)");
+    By  doubleClickPlaylist = By.cssSelector(".playlist:nth-child(4)");
+    By successMessage = By.cssSelector("div.success.show");
+
     //Methods
 
     public void renamePlaylist(String newName) {
@@ -26,9 +28,15 @@ public class PlaylistPage extends BasePage {
         playlistField.sendKeys(Keys.ENTER);
 
     }
-    public void chosePlayList(){
-        findElement(chosePlayList).click();
 
-        }
+    public void  doubleClickPlaylist() {
+        findElement( doubleClickPlaylist).click();
     }
+
+    public String successMessage() {
+        return findElement(successMessage).getText();
+    }
+    ;
+
+}
 

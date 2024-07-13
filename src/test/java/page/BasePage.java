@@ -19,7 +19,6 @@ public class BasePage {
 
 
     By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
-    By successMessage = By.cssSelector("div.success.show");
     String expectedURL = "https://qa.koel.app/";
 
     public BasePage(WebDriver givenDriver) {
@@ -50,9 +49,6 @@ public class BasePage {
 
     public void doubleClick(By locator) {
         actions.moveToElement(findElement(locator)).perform();
-    }
-    public String successMessage() {
-        return findElement(successMessage).getText();
     }
     public void setExpectedURL(){
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
