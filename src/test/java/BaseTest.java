@@ -108,6 +108,8 @@ public void launchBrowser(String BaseURL) throws MalformedURLException{
 
             case "cloud" : return lambdaTest();
 
+            case "cloudHW20" : return newLambdaTest();
+
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -171,6 +173,24 @@ public void launchBrowser(String BaseURL) throws MalformedURLException{
         browserOptions.setCapability("LT:Options", ltOptions);
 
         return new RemoteWebDriver(new URL(hubUrl), browserOptions );
+
+    }
+
+    public static WebDriver newLambdaTest() throws MalformedURLException{
+        String hubUrl = "https://hub.lambdatest.com/wd/hub";
+
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName("Windows 11");
+        browserOptions.setBrowserVersion("126");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "aleksei.koksharov");
+        ltOptions.put("accessKey", "IRQc85BU8g4GgNqXBieG1Ij766XXifVB4lzE0HEswtHoKswv0e");
+        ltOptions.put("build", "TestProBuildHW20");
+        ltOptions.put("project", "CloudHW20");
+        ltOptions.put("selenium_version", "4.0.0");
+        ltOptions.put("w3c", true);
+        browserOptions.setCapability("LT:Options", ltOptions);
+        return new RemoteWebDriver(new URL(hubUrl),browserOptions);
 
     }
 
