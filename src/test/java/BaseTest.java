@@ -6,12 +6,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.testng.Assert;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.time.Duration;
 import java.util.*;
 
@@ -36,7 +40,7 @@ String password = "te$t$tudent";
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchBrowser(String baseURL) {
+    public void launchBrowser(String baseURL) throws MalformedURLException {
         //ChromeOptions options = new ChromeOptions();
       //  options.addArguments("--disable-notifications","--remote-allow-origins=*","--start-maximized");
 
@@ -77,11 +81,21 @@ String password = "te$t$tudent";
         driver.quit();
     }
 
-    public static WebDriver pickBrowser(String browser) {
+    public static WebDriver pickBrowser(String browser) throws MalformedURLException {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        String gridURL = "http://192.168.1.248:4444";
         switch (browser) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                  return driver = new FirefoxDriver();
+
+            case "grid-firefox":
+                capabilities.setCapability("browserName", "firefox");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
+
+            case "grid-chrome":
+                capabilities.setCapability("browserName", "chrome");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
 
             default:
                 WebDriverManager.chromedriver().setup();
