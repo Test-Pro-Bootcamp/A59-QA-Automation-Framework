@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -20,8 +21,11 @@ public class LoginTests extends BaseTest {
         enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");
         submit();
+        // Thread.sleep(2000);
+        WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("img[class='avatar']")));
+        // WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
 
-        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
         // Expected Result
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
