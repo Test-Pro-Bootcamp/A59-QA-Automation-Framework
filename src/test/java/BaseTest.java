@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import java.time.Duration;
@@ -17,6 +19,7 @@ public class BaseTest {
     ChromeOptions options = new ChromeOptions();
 
     WebDriverWait wait;
+    Wait<WebDriver> fluentWait;
     // String url = "https://qa.koel.app/";
 
     // String url = "https://qa.koel.app/";
@@ -45,6 +48,16 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // using fluentWait took a long time for span.name element to be interactable and clicked on in
+        // navigateToProfilePage() method called in changeProfileName() method
+        // Even with Thread.sleep() used after login() method in ProfileTests class. This is almost useless.
+        // Best to use wait along with Thread.sleep(1500) after login() in changeProfileName that's in ProfileTests class
+        // There are times that we indeed cannot get away from Thread.sleep(). This is such an example.
+        fluentWait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(200));
+
         navigateToPage(baseURL);
     }
 

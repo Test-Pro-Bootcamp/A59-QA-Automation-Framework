@@ -64,6 +64,8 @@ public class ProfileTests extends BaseTest{
 
     private void navigateToProfilePage() {
         WebElement profileName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.name")));
+        //WebElement profileName = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.name")));
+        // original line below using driver.findElement
         //WebElement profileName = driver.findElement(By.cssSelector("span.name"));
         profileName.click();
     }
