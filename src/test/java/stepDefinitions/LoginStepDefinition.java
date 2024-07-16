@@ -34,52 +34,65 @@ public void openBrowser(){
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
-
     }
-
     @And("I open Koel Login Page")
     public void iOpenKoelLoginPage() {
         driver.get("https://qa.koel.app/");
-        
     }
-
     @When("I enter email {string}")
     public void iEnterEmail(String email) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.provideEmail(email);
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']"))).clear();
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']"))).sendKeys(email);
-        
     }
-
     @And("I enter password {string}")
     public void iEnterPassword(String password) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.providePassword(password);
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']"))).clear();
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']"))).sendKeys(password);
-
-
     }
-
     @And("I click submit")
     public void iClickSubmit() {
     LoginPage loginPage = new LoginPage(driver);
     loginPage.clickSubmit();
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']"))).click();
-
-
     }
-
     @Then("I should be logged in")
     public void iShouldBeLoggedIn() {
-        Assert.assertTrue(wait.until
-                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.avatar"))).isDisplayed());
-
+    HomePage homePage = new HomePage(driver);
+    homePage.getUserAvatar();
+    Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+//        Assert.assertTrue(wait.until
+//                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.avatar"))).isDisplayed());
     }
+
+
+
     @After
     public void closeBrowser(){
         driver.quit();
     }
+//
+    @When("I enter invalid email {string}")
+    public void iEnterInvalidEmail(String invalidEmail) {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.provideEmail(invalidEmail);
+    }
+    @And("I enter password \\{string}")
+    public void iEnterPasswordString(String password) {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.providePassword(password);
+    }
+    @Then("I should be staying in Login Page")
+    public void iShouldBeStayingInLoginPage() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginInvalidEmail();
+        String expectedUrl = "https://qa.koel.app/";
+
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+    }
+
+
 }
