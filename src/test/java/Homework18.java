@@ -7,7 +7,9 @@ public class Homework18 extends BaseTest {
     @Test
     public void playSong() throws InterruptedException {
         // Step 1 - navigate to koel app page
-        navigateToPage();
+
+        //navigateToPage();
+
         Thread.sleep(1000);
 
         // Step 2 - login
@@ -30,13 +32,15 @@ public class Homework18 extends BaseTest {
     }
 
     public void playNextSong() {
-            // locate play next song button and click it.
-            WebElement playNextBtn = driver.findElement(By.xpath
-                    ("//footer[@id='mainFooter']//i[@class='next fa fa-step-forward control']"));
-            playNextBtn.click();
-            // locate play button and click it.
-            WebElement playBtn = driver.findElement(By.xpath
-                    ("//footer[@id='mainFooter']//span[@data-testid='play-btn']"));
-            playBtn.click();
-        }
+
+        // locate play next song button and click it.
+        WebElement playNextBtn = driver.findElement(By.xpath
+                ("//footer[@id='mainFooter']//i[@class='next fa fa-step-forward control']"));
+        playNextBtn.click();
+        // locate play button and click it.
+        WebElement playBtn = driver.findElement(By.xpath
+                ("//footer[@id='mainFooter']//span[@data-testid='play-btn']"));
+        playBtn.click();
+    }
+
 }

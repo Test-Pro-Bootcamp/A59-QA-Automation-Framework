@@ -9,7 +9,8 @@ public class Homework17 extends BaseTest {
         String expectedSongAddedMessage = "Added 1 song into \"LeonPlayList.\"";
 
         // Step 1 - navigate to koel login page
-        navigateToPage();
+
+        // navigateToPage();
 
         // Step 2 - login
         enterEmail("leon.poyau@testpro.io");
@@ -51,7 +52,7 @@ public class Homework17 extends BaseTest {
     public void choosePlaylist() {
         WebElement playlist = driver.findElement
                 (By.xpath("//section[@id='songResultsWrapper']//li[contains(text(),'LeonPlayList')]"));
-                playlist.click();
+        playlist.click();
     }
 
     public void clickAddToBtn() {

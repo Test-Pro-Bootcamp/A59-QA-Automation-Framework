@@ -1,52 +1,65 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
 public class LoginTests extends BaseTest {
+
 
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
 
-        navigateToPage();
-        enterEmail("leon.poyau@testpro.io");
-        enterPassword("jTRCkwNf");
+        // navigateToPage();
+        enterEmail("demo@testpro.io");
+        enterPassword("te$t$tudent");
         submit();
 
         WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
         // Expected Result
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
-    @Test
-    public void loginEmptyEmailValidPassword() throws InterruptedException {
-        navigateToPage();
-        enterPassword("jTRCkwNf");
-        submit();
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-    }
 
-    @Test
-    public void loginValidEmailEmptyPassword() throws InterruptedException {
+    // @Test
+    public void loginInvalidEmailValidPassword() throws InterruptedException {
 
-        navigateToPage();
-        enterEmail("leon.poyau@testpro.io");
+        // navigateToPage() ;
+        String expectedURL = "https://qa.koel.app/";
+        // Steps
+        enterEmail("invalid@testpro.io");
+        enterPassword("te$t$tudent");
         submit();
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL); // https://qa.koel.app/
     }
-    @Test
-    public void loginValidEmailInvalidPassword() throws InterruptedException {
-        navigateToPage();
-        enterEmail("leon.poyau@testpro.io");
-        enterPassword("jTRCkwNg");
+
+    // @Test
+    public void loginValidEmailEmptyPassword() throws InterruptedException {
+
+        // navigateToPage();
+        String expectedURL = "https://qa.koel.app/";
+        enterEmail("invalid@testpro.io");
         submit();
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+
+        Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
+        // Expected Result
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL); //https://qa.koel.app/
+    }
+
+    @Test(dataProvider="NegativeLoginTestData")
+    public void negativeLoginTest(String email, String password) throws InterruptedException {
+        String expectedURL = "https://qa.koel.app/";
+        enterEmail(email);
+        enterEmail(password);
+        submit();
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
 }
