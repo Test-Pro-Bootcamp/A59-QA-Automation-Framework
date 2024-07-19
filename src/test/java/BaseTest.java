@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+
+import java.awt.*;
 import java.time.Duration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,7 +18,7 @@ public class BaseTest {
     WebDriver driver = null;
     ChromeOptions options = new ChromeOptions();
     WebDriverWait wait;
-
+    Robot robot;
     //String url = "https://qa.koel.app/";
 
     // String url = "https://qa.koel.app/";
@@ -37,7 +39,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchBrowser(String baseURL){
+    public void launchBrowser(String baseURL) throws AWTException {
         // Pre-condition
         // Added ChromeOptions argument below to fix websocket error
         options.addArguments("--remote-allow-origins=*");
@@ -45,6 +47,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        robot = new Robot();
         navigateToPage(baseURL);
     }
 
@@ -53,11 +56,11 @@ public class BaseTest {
         driver.quit();
     }
 
-    protected void submit() throws InterruptedException {
+    protected void submit() {
         WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         //WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         submit.click();
-        Thread.sleep(1000);
+        robot.delay(850);
     }
 
     protected void enterPassword(String password) {
