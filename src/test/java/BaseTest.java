@@ -39,9 +39,9 @@ public class BaseTest {
 
 //    String url = "https://qa.koel.app/";
 //
-//    String expectedCreatedMsg = "Created playlist " + "\"TestPro Playlist.\"";
-//    String expectedDeletedMsg = "Delete playlist " + "\"TestPro Playlist.\"";
-//    String expectedAddedMsg = "Added 1 song into " + "\"TestPro Playlist.\"";
+//    String expectedCreatedMsg = "Created playlist "  + "\"TestPro Playlist.\"";
+//    String expectedDeletedMsg = "Delete playlist "   + "\"TestPro Playlist.\"";
+//    String expectedAddedMsg =   "Added 1 song into " + "\"TestPro Playlist.\"";
 //    String songName = "grav";
 //    String playlistName = "TestPro Playlist";
 //    String userName = "demo@testpro.io";

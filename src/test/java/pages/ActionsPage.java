@@ -38,8 +38,6 @@ public class ActionsPage extends BasePage{
         //count and display song names
         System.out.println("Number of Songs in the playlist: " + songList.size());
 
-
-
         for (WebElement e : songList) {
             System.out.println(e.getText());
         }
