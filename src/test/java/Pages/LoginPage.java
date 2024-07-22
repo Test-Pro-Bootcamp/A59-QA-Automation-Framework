@@ -15,13 +15,13 @@ public class LoginPage extends BasePage{
     // By submitBtn = By.cssSelector("button[type='submit']");
 
     @FindBy(css = "input[type='email']")
-    WebElement emailField;
+    static WebElement emailField;
     @FindBy(css = "input[type='password']")
     WebElement passwordField;
     @FindBy(css = "button[type='submit']")
     WebElement submitBtn;
 
-    public void provideEmail(String email){
+    public static void provideEmail(String email){
         emailField.clear();
         emailField.sendKeys(email);
 
