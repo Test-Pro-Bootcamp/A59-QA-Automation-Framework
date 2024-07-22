@@ -6,9 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
 public class PlayListPage extends BasePage {
+
+    private static final String playlistNameEmpty = "";
+    private static final String playlistNameWithOneCharacter = "J";
+    private static final String playlistName = "Sounds-Great-01";
+    private static final String playlistNameWith256Characters = "1234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678";
 
     // Constructors
     public PlayListPage(WebDriver givenDriver) {
@@ -18,64 +21,17 @@ public class PlayListPage extends BasePage {
 
     // Locators
     @FindBy(xpath = "//i[@data-testid=\"sidebar-create-playlist-btn\"][@title=\"Create a new playlist\"][@class=\"fa fa-plus-circle create\"]")
-    private WebElement getCreateNewPlayListBtn;
+    private WebElement getCreateNewPlaylistBtn;
 
     @FindBy(xpath = "//li[@data-testid=\"playlist-context-menu-create-simple\"][contains(text(), \"New Playlist\")]")
-    private WebElement getNewPlayListBtn;
+    private WebElement getNewPlaylistBtn;
 
     @FindBy(xpath = "//input [@placeholder=\"↵ to save\"][@name=\"name\"][@required=\"required\"]")
     private WebElement getTitleNameField;
 
-    @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
-    private WebElement getPlayListToDelete;
-
-//  @FindBy(xpath = "//a[contains(text(), namePlaylist)]")
-//  By getPlayListToDelete;
-
-    @FindBy(xpath = "//button[@class=\"del btn-delete-playlist\"][@title=\"Delete this playlist\"]")
-    private WebElement getPlayListToDeleteBtn;
-
-    @FindBy(xpath = "//button[@class=\"ok\"][contains(text(), OK)]")
-    private WebElement getPlayListToDeleteOkBtn;
-
-    @FindBy(xpath = "//*[@id=\"songResultsWrapper\"]//table[@class=\"items\"]")
-    private WebElement getFirstSong;
-
-    @FindBy(xpath = "//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']")
-    private WebElement getAddSongToBtn;
-
-    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
-    private WebElement getChoosePlayList;
-
-    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
-    private WebElement getChoosePlayListField;
-
-    @FindBy(xpath = "//*[contains(text(), 'Created playlist \""  + "TestPro Playlist" + ".\"')]")
+    //    @FindBy(xpath = "//*[contains(text(), 'Created playlist \""  + "TestPro Playlist" + ".\"')]")
+    @FindBy(xpath = "//*[contains(text(), 'Created playlist \"" + playlistName + ".\"')]")
     private WebElement getCreatedVerificationMsg;
-
-    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \""  + "TestPro Playlist" + ".\"')]")
-    private WebElement getDeletedVerificationMsg;
-
-    @FindBy(xpath = "//*[contains(text(), 'Added 1 song into \"" + "TestPro Playlist" + ".\"')]")
-    private WebElement getAddedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), 'Created playlist \""  + "playlistName" + ".\"')]")
-//    private WebElement getCreatedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \""  + "playlistName" + ".\"')]")
-//    private WebElement getDeletedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), 'Added 1 song into \"" + "playlistName" + ".\"')]")
-//    private WebElement getAddedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), '\"Created playlist \"\"  +  playlistName  + \".\"\"')]")
-//    private WebElement getCreatedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), '\"Deleted playlist \"\"  +  playlistName  + \".\"\"')]")
-//    private WebElement getDeletedVerificationMsg;
-
-//    @FindBy(xpath = "//*[contains(text(), '\"Added 1 song into \"\" +  playlistName  + \".\"\"')]")
-//    private WebElement getAddedVerificationMsg;
 
     @FindBy(css = "input[type='search']")
     private WebElement getSearchSongField;
@@ -83,26 +39,95 @@ public class PlayListPage extends BasePage {
     @FindBy(css = "button[data-test='view-all-songs-btn']")
     private WebElement getViewAllSongs;
 
+    @FindBy(xpath = "//*[@id=\"songResultsWrapper\"]//table[@class=\"items\"]")
+    private WebElement getFirstSong;
+
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']")
+    private WebElement getAddSongToBtn;
+
+    //    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), '" + playlistName + "')]")
+    private WebElement getPlaylist;
+
+    //    @FindBy(xpath = "//*[contains(text(), 'Added 1 song into \"" + "TestPro Playlist" + ".\"')]")
+    @FindBy(xpath = "//*[contains(text(), 'Added 1 song into \"" + playlistName + ".\"')]")
+    private WebElement getAddedVerificationMsg;
+
+    //    @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
+    @FindBy(xpath = "//a[contains(text(), '" + playlistName + "')]")
+    private WebElement getPlaylistToDelete;
+
+    // <button title="Delete this playlist" class="del btn-delete-playlist"> Playlist </button>
+    @FindBy(xpath = "//button[@class=\"del btn-delete-playlist\"][@title=\"Delete this playlist\"]")
+    private WebElement getPlaylistToDeleteBtn;
+
+    @FindBy(xpath = "//button[@class=\"ok\"][contains(text(), OK)]")
+    private WebElement getPlaylistToDeleteOkBtn;
+
+    //    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \""  + "TestPro Playlist" + ".\"')]")
+    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \"" + playlistName + ".\"')]")
+    private WebElement getDeletedVerificationMsg;
+
+
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), '" + playlistNameWith256Characters + "')]")
+    private WebElement getPlaylistWith256Characters;
+
+    @FindBy(xpath = "//*[contains(text(), 'Created playlist \"" + playlistNameWith256Characters + ".\"')]")
+    private WebElement getCreatedVerificationMsgFor256Characters;
+
+    @FindBy(xpath = "//a[contains(text(), '" + playlistNameWith256Characters + "')]")
+    private WebElement getPlaylistToDeleteWith256Characters;
+
+    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \"" + playlistNameWith256Characters + ".\"')]")
+    private WebElement getDeletedVerificationMsgFor256Characters;
+
+
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), '" + playlistNameWithOneCharacter + "')]")
+    private WebElement getPlaylistWithOneCharacter;
+
+    @FindBy(xpath = "//*[contains(text(), 'Created playlist \"" + playlistNameWithOneCharacter + ".\"')]")
+    private WebElement getCreatedVerificationMsgForOneCharacter;
+
+    @FindBy(xpath = "//a[contains(text(), '" + playlistNameWithOneCharacter + "')]")
+    private WebElement getPlaylistToDeleteWithOneCharacter;
+
+    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \"" + playlistNameWithOneCharacter + ".\"')]")
+    private WebElement getDeletedVerificationMsgForOneCharacter;
+
+
+    @FindBy(xpath = "//div[@id='validationMessage' and contains(text(), 'Please fill out this field.')]")
+    private WebElement getInvalidmessage;
+
+//  Not Used
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
+    private WebElement getPlayListField;
+
     @FindBy(css = "div.success.show")
     private WebElement getVerificationNoticeMsg;
 
+
     // Page Methods
     // Very basic methods
-    public void selectCreateNewPlayListBtn () {
 
-        waitForVisibility(getCreateNewPlayListBtn);
-        mouseOverAndClick(getCreateNewPlayListBtn);
+    public String selectTextEmailValidationMessage() {
+        return getTitleNameField.getAttribute("validationMessage");
     }
 
-    public void selectNewPlayListBtn () {
+    public void selectCreateNewPlaylistBtn () {
 
-        getNewPlayListBtn.click();
+        waitForVisibility(getCreateNewPlaylistBtn);
+        mouseOverAndClick(getCreateNewPlaylistBtn);
     }
 
-    public void selectTitleNameField(String playListName) {
+    public void selectNewPlaylistBtn () {
+
+        getNewPlaylistBtn.click();
+    }
+
+    public void selectTitleNameField(String playlistName) {
 
         getTitleNameField.clear();
-        getTitleNameField.sendKeys(playListName + "\n");
+        getTitleNameField.sendKeys(playlistName + "\n");
     }
 
     public String selectVerificationNoticeMsg() {
@@ -112,7 +137,20 @@ public class PlayListPage extends BasePage {
 
     public String selectDeletedVerifyNotificationMsg() {
 
-        return getDeletedVerificationMsg.getText();
+        System.out.println("Message Received: " + getDeletedVerificationMsg.getText());
+        return waitForVisibility(getDeletedVerificationMsg).getText();
+    }
+
+    public String selectDeletedVerifyNotificationMsgForOneCharacter() {
+
+        System.out.println("Message Received: " + getDeletedVerificationMsgForOneCharacter.getText());
+        return waitForVisibility(getDeletedVerificationMsgForOneCharacter).getText();
+    }
+
+    public String selectDeletedVerifyNotificationMsgFor256Characters() {
+
+        System.out.println("Message Received: " + getDeletedVerificationMsgFor256Characters.getText());
+        return waitForVisibility(getDeletedVerificationMsgFor256Characters).getText();
     }
 
     public String selectAddedVerifyNotificationMsg() {
@@ -125,12 +163,13 @@ public class PlayListPage extends BasePage {
         return getCreatedVerificationMsg.getText();
     }
 
-    public void selectPlayListToDelete () {
+    public void selectPlaylistToDelete(String playlistName) {
 
         driver.navigate().refresh();
-        getPlayListToDelete.click();
-        getPlayListToDeleteBtn.click();
-        waitForVisibility(getPlayListToDeleteOkBtn).click();
+        System.out.println("Output of playlistName: " + playlistName);
+        getPlaylistToDelete.click();
+        waitForClickableAndClick(getPlaylistToDeleteBtn);
+        waitForClickableAndClick(getPlaylistToDeleteOkBtn);
 
 //        findElement(getPlayListToDelete).click();
 //        findElement(getPlayListToDeleteBtn).click();
@@ -142,9 +181,27 @@ public class PlayListPage extends BasePage {
 
     }
 
-    public void selectPlayListToDeleteBtn () {
+    public void selectPlaylistWithOneCharacterToDelete(String playlistName) {
 
-        getPlayListToDeleteBtn.click();
+        driver.navigate().refresh();
+        System.out.println("Output of playlistName: " + playlistName);
+        getPlaylistToDeleteWithOneCharacter.click();
+        waitForClickableAndClick(getPlaylistToDeleteBtn);
+        waitForVisibility(getPlaylistToDeleteOkBtn).click();
+    }
+
+    public void selectPlaylistWith256CharactersToDelete(String playlistName) {
+
+        driver.navigate().refresh();
+        System.out.println("Output of playlistName: " + playlistName);
+        getPlaylistToDeleteWith256Characters.click();
+        waitForClickableAndClick(getPlaylistToDeleteBtn);
+        waitForVisibility(getPlaylistToDeleteOkBtn).click();
+    }
+
+    public void selectPlaylistToDeleteBtn () {
+
+        getPlaylistToDeleteBtn.click();
     }
 
     public void selectSearchSongField (String songName) {
@@ -167,9 +224,22 @@ public class PlayListPage extends BasePage {
         getAddSongToBtn.click();
     }
 
-    public void selectChoosePlayList () {
+    public void selectPlaylist (String playlistName) {
 
-        getChoosePlayList.click();
+        waitForClickable(getPlaylist).click();
+//        System.out.println("Output of playlistName: " + playlistName);
+    }
+
+    public void selectPlaylistWithOneCharacter (String playlistNameWithOneCharacter) {
+
+        waitForClickable(getPlaylistWithOneCharacter).click();
+       System.out.println("Output of playlistName: " + playlistNameWithOneCharacter);
+    }
+
+    public void selectPlaylistWith256Characters (String playlistNameWith256Characters) {
+
+        waitForClickable(getPlaylistWith256Characters).click();
+//        System.out.println("Output of playlistName: " + playlistNameWith256Characters);
     }
 
 }

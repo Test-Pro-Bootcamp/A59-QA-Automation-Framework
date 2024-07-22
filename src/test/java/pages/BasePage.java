@@ -20,6 +20,7 @@ public class BasePage {
     protected WebDriverWait wait;
     protected Actions actions;
 
+
     // Constructor to initialize the BasePage with a given WebDriver
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
@@ -47,6 +48,10 @@ public class BasePage {
 //    protected WebElement findElement(WebElement webElement) {
 //        return wait.until(ExpectedConditions.visibilityOfElementLocated(webElement));
 //    }
+
+    public WebElement waitForAvatarIcon(WebElement webElement) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated((By) webElement));
+    }
 
     protected WebElement findElement(WebElement webElement) {
 

@@ -29,7 +29,7 @@ public class LoginTests extends BaseTest {
 
 //      GIVEN
         String expectedUrl = "https://qa.koel.app/";
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
 
 //      WHEN
         loginPage.provideEmail("invalid@testpro.io");
@@ -45,7 +45,7 @@ public class LoginTests extends BaseTest {
 
 //      GIVEN
         String expectedUrl = "https://qa.koel.app/";
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
 
 //      WHEN
         loginPage.provideEmail("invalid@testpro.io");
@@ -60,7 +60,7 @@ public class LoginTests extends BaseTest {
 
 //      GIVEN
         String expectedUrl = "https://qa.koel.app/";
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
 
 //      WHEN
         loginPage.provideEmail(email);

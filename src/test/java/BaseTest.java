@@ -22,6 +22,8 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
 
+
+
 public class BaseTest {
 
     public static WebDriver driver = null;
@@ -49,13 +51,25 @@ public class BaseTest {
 
     protected String urlStartPoint =        "https://qa.koel.app/";
     protected String songName =             "grav";
-    protected String playlistName =         "TestPro Playlist";
     protected String userName =             "demo@testpro.io";
     protected String userPassword =         "te$t$tudent";
     protected String userEmail =            "demo@testpro.io";
+    protected String playlistName =         "Sounds-Great-01";
     protected String expectedCreatedMsg =   "Created playlist \""  + playlistName + ".\"";
-    protected String expectedDeletedMsg =   "Deleted playlist \""  + playlistName + ".\"";
     protected String expectedAddedMsg =     "Added 1 song into \"" + playlistName + ".\"";
+    protected String expectedDeletedMsg =   "Deleted playlist \""  + playlistName + ".\"";
+
+    protected String playlistNameWithZeroCharacters =   "";
+
+    protected String playlistNameWithOneCharacter =     "A";
+    protected String expectedCreatedMsgOneCharacter =   "Created playlist \""  + playlistNameWithOneCharacter + ".\"";
+    protected String expectedAddedMsgOneCharacter =     "Added 1 song into \"" + playlistNameWithOneCharacter + ".\"";
+    protected String expectedDeletedMsgOneCharacter =   "Deleted playlist \""  + playlistNameWithOneCharacter + ".\"";
+
+    protected String playlistNameWith256Characters =    "1234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678";
+    protected String expectedCreatedMsg256Character =   "Created playlist \""  + playlistNameWithOneCharacter + ".\"";
+    protected String expectedAddedMsg256Character =     "Added 1 song into \"" + playlistNameWithOneCharacter + ".\"";
+    protected String expectedDeletedMsg256Character =   "Deleted playlist \""  + playlistNameWithOneCharacter + ".\"";
 
 
     ///////////////////////////////////////////////////
@@ -91,6 +105,7 @@ public class BaseTest {
 
         threadDriver.set(pickBrowser(System.getProperty("browser")));
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        getDriver().manage().window().maximize();
         System.out.println("Browser setup by Thread "
                 + Thread.currentThread().getId()
                 + " and Driver reference is : "
@@ -102,7 +117,7 @@ public class BaseTest {
 //        getDriver().manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        fluentWait = new FluentWait<WebDriver>(driver)
+        fluentWait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(200));
         navigateToPage(baseURL);
@@ -196,15 +211,15 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
 
-        threadDriver.get().close();
-        threadDriver.remove();
+//        threadDriver.get().close();
+//        threadDriver.remove();
     }
 
-    @AfterMethod
-    public void closeBrowser() {
+//    @AfterMethod
+//    public void closeBrowser() {
 
 //      driver.quit();
-    }
+//    }
 
     public static WebDriver lambdaTest() throws MalformedURLException {
 

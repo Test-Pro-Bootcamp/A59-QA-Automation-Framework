@@ -7,6 +7,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import static java.sql.DriverManager.getDriver;
+
 public class LoginPage extends BasePage{
 
     // Constructors
@@ -42,32 +44,38 @@ public class LoginPage extends BasePage{
 //    By submitBtn = By.cssSelector("button[type='submit']");
 
     // Methods
-    public LoginPage provideEmail(String email){
+    public LoginPage provideEmail(String email) {
+
         emailField.sendKeys(email);
         return this;
     }
 
-    public LoginPage providePassword(String password){
+    public LoginPage providePassword(String password) {
+
         passwordField.sendKeys(password);
         return this;
     }
 
-    public LoginPage clickSubmit(){
+    public LoginPage clickSubmit() {
+
         submitBtn.click();
         return this;
     }
 
     public LoginPage login() {
+
         HomePage homePage = new HomePage(driver);
 
         provideEmail("demo@testpro.io");
         providePassword("te$t$tudent");
         clickSubmit();
-//        Assert.assertTrue(homePage.isDisplayedUserAvatarIcon());
+        homePage.isDisplayedUserAvatarIcon();
         driver.navigate().refresh();
         return this;
     }
+
     public WebElement getRegistrationLink() {
+
         return registrationLink;
         // This method returns the registrationLink WebElement, representing the registration link on the login page.
     }
@@ -80,6 +88,5 @@ public class LoginPage extends BasePage{
     public void selectRegistrationLink() {
 
         waitForVisibility(getRegistrationLink).click();
-
     }
 }

@@ -127,7 +127,6 @@ public class HomePage extends BasePage {
     public void mouseOverPlayBtn() {
 
         mouseOver(getPlayBtn);
-
     }
 
     public void mouseOverPlayNextBtn() {
@@ -234,13 +233,10 @@ public class HomePage extends BasePage {
         return waitForVisibility(userAvatarIcon).isDisplayed();
     }
 
-
     public boolean isPlaylistAvailable() {
 
         return getPlayListToEdit.isDisplayed();
     }
-
-
 
     public void selectPlaylist() {
 

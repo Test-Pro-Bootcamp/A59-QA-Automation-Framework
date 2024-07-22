@@ -95,11 +95,13 @@ public class ActionsTest extends BaseTest {
 //      WHEN
         actionsPage.selectPlaylistByName();
 
-        displayAllSongs();
-        actionsPage.displayAllSongs();
+
+//        actionsPage.displayAllSongs();
+        actionsPage.displayAllPlaylists();
 
 //      THEN
         Assert.assertTrue(getPlaylistDetails().contains(String.valueOf(countSongs())));
+//        System.out.println("Playlist Details: " + getPlaylistDetails());
     }
 
     public void choosePlaylistByName(String playlistName) {
@@ -126,8 +128,9 @@ public class ActionsTest extends BaseTest {
     }
 
     public String getPlaylistDetails() {
-        return driver.findElement
-                (By.cssSelector("span.meta.text-secondary span.meta")).getText();
+
+        return driver.findElement(
+                By.cssSelector("span.meta.text-secondary span.meta")).getText();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////

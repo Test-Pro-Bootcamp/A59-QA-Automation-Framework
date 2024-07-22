@@ -14,8 +14,8 @@ public class ProfileTests extends BaseTest{
         String expectedUpdatedMsg = "Profile updated.";
         String test = "";
 
-        LoginPage loginPage = new LoginPage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        ProfilePage profilePage = new ProfilePage(getDriver());
 
         loginPage.login();
 
@@ -33,9 +33,9 @@ public class ProfileTests extends BaseTest{
     public void changeCurrentTheme() {
 
 //      GIVEN
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        ProfilePage profilePage = new ProfilePage(getDriver());
 
         loginPage.login();
 

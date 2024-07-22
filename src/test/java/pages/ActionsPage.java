@@ -17,12 +17,15 @@ public class ActionsPage extends BasePage{
     }
     //Locators
 
-    @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
+    @FindBy(xpath = "//a[contains(text(), 'A')]")
 //    @FindBy(xpath = "//a[contains(text(), playlistName)]")
     private WebElement getPlaylistByName;
 
     @FindBy(css = "section#playlistWrapper td.title")
     private List<WebElement> songList;
+
+//    @FindBy(css = "section#playlistWrapper td.title")
+//    private List<WebElement> playList;
 
     @FindBy(css = "section#playlistWrapper td.title")
     private WebElement countSongs;
@@ -39,6 +42,16 @@ public class ActionsPage extends BasePage{
         System.out.println("Number of Songs in the playlist: " + songList.size());
 
         for (WebElement e : songList) {
+            System.out.println(e.getText());
+        }
+    }
+
+    public void displayAllPlaylists() {
+        List<WebElement> playlists = driver.findElements(By.className("playlist-class"));
+        //count and display playlist names
+        System.out.println("Number of playlists: " + playlists.size());
+
+        for (WebElement e : playlists) {
             System.out.println(e.getText());
         }
     }
