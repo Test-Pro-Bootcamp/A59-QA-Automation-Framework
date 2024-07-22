@@ -187,7 +187,7 @@ public class PlayListPage extends BasePage {
         System.out.println("Output of playlistName: " + playlistName);
         getPlaylistToDeleteWithOneCharacter.click();
         waitForClickableAndClick(getPlaylistToDeleteBtn);
-        waitForVisibility(getPlaylistToDeleteOkBtn).click();
+        waitForClickableAndClick(getPlaylistToDeleteOkBtn);
     }
 
     public void selectPlaylistWith256CharactersToDelete(String playlistName) {
@@ -196,7 +196,7 @@ public class PlayListPage extends BasePage {
         System.out.println("Output of playlistName: " + playlistName);
         getPlaylistToDeleteWith256Characters.click();
         waitForClickableAndClick(getPlaylistToDeleteBtn);
-        waitForVisibility(getPlaylistToDeleteOkBtn).click();
+        waitForClickableAndClick(getPlaylistToDeleteOkBtn);
     }
 
     public void selectPlaylistToDeleteBtn () {

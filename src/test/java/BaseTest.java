@@ -211,8 +211,8 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
 
-//        threadDriver.get().close();
-//        threadDriver.remove();
+        threadDriver.get().close();
+        threadDriver.remove();
     }
 
 //    @AfterMethod
