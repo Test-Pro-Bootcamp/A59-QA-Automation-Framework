@@ -1,5 +1,5 @@
 
-/*import Pages.AllSongsPage;
+import Pages.AllSongsPage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import org.testng.Assert;
@@ -24,4 +24,4 @@ public class homeWork18 extends BaseTest{
 
         allSongsPage.validateSongPlaying();
     }
-} */
+}
