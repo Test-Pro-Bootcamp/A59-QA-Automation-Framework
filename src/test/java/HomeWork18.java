@@ -2,13 +2,14 @@
 import Pages.AllSongsPage;
 import Pages.HomePage;
 import Pages.LoginPage;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 class HomeWork18 extends BaseTest{
 
 
     @Test
-    public void playSong(){
+    public void playSong(WebDriver driver){
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);

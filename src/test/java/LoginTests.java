@@ -1,59 +1,47 @@
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import Pages.HomePage;
 import Pages.LoginPage;
 
+public class LoginTests extends BaseTest {
 
+    @Test
+    public void loginValidEmailPassword() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.provideEmail("demo@testpro.io");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
+        Thread.sleep(1000);
+        // Add assertions for valid login
+    }
 
-        public class LoginTests extends BaseTest {
+    @Test
+    public void loginInvalidEmailValidPassword() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
+        Thread.sleep(1000);
+        String expectedUrl = "https://qa.koel.app/";
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
+    }
 
+    @Test
+    public void loginValidEmailEmptyPassword() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.provideEmail("demo@testpro.io");
+        loginPage.clickSubmit();
+        Thread.sleep(1000);
+        String expectedUrl = "https://qa.koel.app/";
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
+    }
 
-            @Test
-            public void loginValidEmailPassword() throws InterruptedException {
-                LoginPage loginPage = new LoginPage(getDriver());
-                HomePage homePage = new HomePage(getDriver());
-                loginPage.provideEmail("demo@testpro.io");
-                loginPage.providePassword("te$t$tudent");
-                loginPage.clickSubmit();
-                Thread.sleep(1000);
-                //Assert.assertTrue(homePage.isUserAvatarDisplayed());
-                // Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-
-            }
-
-            //@Test
-            public void loginInvalidEmailValidPassword() throws InterruptedException {
-
-                //navigateToPage();
-                String expectedUrl = "https://qa.koel.app/";
-                // Steps
-                enterEmail("invalid@testpro.io");
-                enterPassword("te$t$tudent");
-                submit();
-
-                // Expected Result
-                Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); // https://qa.koel.app/
-            }
-
-            // @Test
-            public void loginValidEmailEmptyPassword() throws InterruptedException {
-
-                //navigateToPage();
-                String expectedUrl = "https://qa.koel.app/";
-                enterEmail("invalid@testpro.io");
-                submit();
-                // Expected Result
-                Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
-            }
-
-            //@Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
-            public void negativeLoginTest(String email, String password) throws InterruptedException {
-                String expectedUrl = "https://qa.koel.app/";
-                enterEmail(email);
-                enterPassword(password);
-                submit();
-                Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
-            }
-
-        }
+    public void negativeLoginTest(String email, String password) throws InterruptedException {
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.provideEmail(email);
+        loginPage.providePassword(password);
+        loginPage.clickSubmit();
+        String expectedUrl = "https://qa.koel.app/";
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
+    }
+}
