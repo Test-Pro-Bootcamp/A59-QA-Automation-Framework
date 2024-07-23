@@ -2,10 +2,9 @@
 import Pages.AllSongsPage;
 import Pages.HomePage;
 import Pages.LoginPage;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class homeWork18 extends BaseTest{
+class HomeWork18 extends BaseTest{
 
 
     @Test

@@ -5,7 +5,7 @@
 
     <test name="New Test" preserve-order="false">
         <classes>
-            <class name="homeWork18">
+            <class name="HomeWork18">
                 <methods>
                     <include name="playSong"/>
                 </methods>
