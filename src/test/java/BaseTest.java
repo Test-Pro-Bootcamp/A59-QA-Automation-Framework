@@ -78,17 +78,20 @@ public class BaseTest {
     }
 
     public static WebDriver lambdaTest() throws MalformedURLException {
-        String hubURL = "https://hub.lambdatest.com/wd/hub";
+
+        String hubURL = "http://hub.lambdatest.com/wd/hub";
+        ChromeOptions chromeOptions = new ChromeOptions();
         ChromeOptions browserOptions = new ChromeOptions();
         browserOptions.setPlatformName("Windows 10");
-        browserOptions.setBrowserVersion("125");
-        HashMap<String, Object> ltOptions = new HashMap<>();
-        ltOptions.put("username", "your-username");
-        ltOptions.put("accessKey", "your-access-key");
+        browserOptions.setBrowserVersion("126");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "brittany.torelli");
+        ltOptions.put("accessKey", "Xa59dX4BCFPTn5Cwgt8cZzw0C8x3Kk12lG58jZXcgNhgxCian7");
         ltOptions.put("project", "Untitled");
         ltOptions.put("w3c", true);
         ltOptions.put("plugin", "java-testNG");
         browserOptions.setCapability("LT:Options", ltOptions);
+
         return new RemoteWebDriver(new URL(hubURL), browserOptions);
     }
 
@@ -107,7 +110,6 @@ public class BaseTest {
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--remote-allow-origins=*");
                 return new EdgeDriver(edgeOptions);
-
             case "Chrome":
             WebDriverManager.chromedriver().setup();
             ChromeOptions chromeOptions = new ChromeOptions();
