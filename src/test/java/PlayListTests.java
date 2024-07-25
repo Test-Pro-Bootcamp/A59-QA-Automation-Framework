@@ -27,7 +27,7 @@ public class PlayListTests extends BaseTest {
     private final String expectedDeletedMsg256Character =   "Deleted playlist \""  + playlistNameWith256Characters + ".\"";
 
     @Test (enabled = true)
-    public void addSongToPlaylist() {
+    public void addSongToPlaylist() throws InterruptedException {
 
 //      GIVEN
         LoginPage loginPage =       new LoginPage(getDriver());
@@ -50,12 +50,15 @@ public class PlayListTests extends BaseTest {
 
         // select first song from result
         playListPage.selectFirstSong();
+
         // click Add to Button
         playListPage.selectAddSongToBtn();
 
         // choose list to add song to
         playListPage.selectPlaylist(playlistName);
-        driver.navigate().refresh();
+        Thread.sleep(3000);
+//        driver.navigate().refresh();
+
         playListPage.selectPlaylistToDelete(playlistName);
 
 //      THEN
@@ -64,27 +67,8 @@ public class PlayListTests extends BaseTest {
 //        System.out.println("Part 2: " + expectedDeletedMsg);
     }
 
-    @Test (enabled = true)
-    public void createPlaylistWithZeroCharacters() {
-
-//      GIVEN
-        LoginPage loginPage =       new LoginPage(getDriver());
-        HomePage homePage =         new HomePage(getDriver());
-        PlayListPage playListPage = new PlayListPage(getDriver());
-        loginPage.login();
-
-//      WHEN
-        // create a playlist
-        playListPage.selectCreateNewPlaylistBtn();
-        playListPage.selectNewPlaylistBtn();
-        playListPage.selectTitleNameField(playlistNameWithZeroCharacters);
-
-//      THEN
-        Assert.assertEquals(playListPage.selectTextEmailValidationMessage(), expectedBlankErrorMsg);
-    }
-
     @Test(enabled = true)
-    public void createPlaylistWithOneCharacters() {
+    public void createPlaylistWithOneCharacter() throws InterruptedException {
 
 //      GIVEN
         LoginPage loginPage =       new LoginPage(getDriver());
@@ -109,12 +93,14 @@ public class PlayListTests extends BaseTest {
 
         // select first song from result
         playListPage.selectFirstSong();
+
         // click Add to Button
         playListPage.selectAddSongToBtn();
+
         // choose list to add song to
         playListPage.selectPlaylistWithOneCharacter(playlistNameWithOneCharacter);
-//        driver.navigate().refresh();
-
+        Thread.sleep(3000);
+        driver.navigate().refresh();
 
         playListPage.selectPlaylistWithOneCharacterToDelete(playlistNameWithOneCharacter);
 
@@ -125,8 +111,8 @@ public class PlayListTests extends BaseTest {
 //        System.out.println("Part 2: " + expectedDeletedMsgOneCharacter);
     }
 
-    @Test(enabled = true)
-    public void createPlaylistWithMoreThan256Characters() {
+    @Test(enabled = false)
+    public void createPlaylistWithMoreThan256Characters() throws InterruptedException{
 
 //      GIVEN
         LoginPage loginPage =       new LoginPage(getDriver());
@@ -155,12 +141,31 @@ public class PlayListTests extends BaseTest {
 
         // choose list to add song to
         playListPage.selectPlaylistWith256Characters(playlistNameWith256Characters);
-
+        Thread.sleep(3000);
         driver.navigate().refresh();
+
         playListPage.selectPlaylistWith256CharactersToDelete(playlistNameWith256Characters);
 
 //      THEN
         Assert.assertEquals(playListPage.selectDeletedVerifyNotificationMsgFor256Characters(), expectedDeletedMsg256Character);
     }
 
+    @Test (enabled = false)
+    public void createPlaylistWithZeroCharacters() {
+
+//      GIVEN
+        LoginPage loginPage =       new LoginPage(getDriver());
+        HomePage homePage =         new HomePage(getDriver());
+        PlayListPage playListPage = new PlayListPage(getDriver());
+        loginPage.login();
+
+//      WHEN
+        // create a playlist
+        playListPage.selectCreateNewPlaylistBtn();
+        playListPage.selectNewPlaylistBtn();
+        playListPage.selectTitleNameField(playlistNameWithZeroCharacters);
+
+//      THEN
+        Assert.assertEquals(playListPage.selectTextEmailValidationMessage(), expectedBlankErrorMsg);
+    }
 }

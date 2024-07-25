@@ -105,7 +105,7 @@ public class BaseTest {
 
         threadDriver.set(pickBrowser(System.getProperty("browser")));
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        getDriver().manage().window().maximize();
+//        getDriver().manage().window().maximize();
         System.out.println("Browser setup by Thread "
                 + Thread.currentThread().getId()
                 + " and Driver reference is : "
