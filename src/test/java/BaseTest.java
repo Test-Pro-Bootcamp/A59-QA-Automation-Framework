@@ -16,6 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
 import java.util.*;
 
@@ -97,6 +98,9 @@ String password = "te$t$tudent";
                 capabilities.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
 
+            case "cloud":
+                return lambdaTest();
+
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
@@ -104,6 +108,26 @@ String password = "te$t$tudent";
                return driver = new ChromeDriver(options);
         }
 
+
+    }
+
+    public static WebDriver lambdaTest() throws MalformedURLException {
+
+        String hubUrl = "https://hub.lambdatest.com/wd/hub";
+
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName("Windows 10");
+        browserOptions.setBrowserVersion("125");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "ayoub.rafiqui");
+        ltOptions.put("accessKey", "6LidJdX30K6sCilU2bVnJGObjIMdEBOY1SdXEARYgNDejUr7KF");
+        ltOptions.put("build", "TestProBuild");
+        ltOptions.put("project", "CloudExecution");
+        ltOptions.put("selenium_version", "4.0.0");
+        ltOptions.put("w3c", true);
+        browserOptions.setCapability("LT:Options", ltOptions);
+
+        return new RemoteWebDriver(new URL(hubUrl), browserOptions);
 
     }
 }
