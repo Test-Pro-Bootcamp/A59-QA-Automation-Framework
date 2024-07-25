@@ -91,7 +91,7 @@ public class PlayListPage extends BasePage {
     @FindBy(xpath = "//button[@class=\"ok\"][contains(text(), Ok)]")
     private WebElement getPlaylistToDeleteOkBtn2;
 
-    //    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \""  + "TestPro Playlist" + ".\"')]")
+//    @FindBy(xpath = "//*[contains(text(), 'Deleted playlist \""  + "TestPro Playlist" + ".\"')]")
     @FindBy(xpath = "/html/body/div[2]/div[.='Deleted playlist \"" + playlistName + ".\"']")
     private WebElement getDeletedVerificationMsg;
 
