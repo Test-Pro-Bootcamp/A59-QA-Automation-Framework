@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <!-- <suite name="TestNG"> -->
-<suite name="TestNG" parallel="methods" thread-count="2">
+<suite name="TestNG" parallel="methods" thread-count="1">
     <parameter name="BaseURL" value="https://qa.koel.app/"/>
     <test name="Example Test" preserve-order="false">
         <classes>

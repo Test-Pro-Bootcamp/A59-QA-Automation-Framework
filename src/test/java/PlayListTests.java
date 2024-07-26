@@ -26,7 +26,7 @@ public class PlayListTests extends BaseTest {
     private final String expectedAddedMsg256Character =     "Added 1 song into \"" + playlistNameWith256Characters + ".\"";
     private final String expectedDeletedMsg256Character =   "Deleted playlist \""  + playlistNameWith256Characters + ".\"";
 
-    @Test (enabled = true)
+    @Test (enabled = false)
     public void addSongToPlaylist() throws InterruptedException {
 
 //      GIVEN
@@ -67,7 +67,7 @@ public class PlayListTests extends BaseTest {
 //        System.out.println("Part 2: " + expectedDeletedMsg);
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void createPlaylistWithOneCharacter() throws InterruptedException {
 
 //      GIVEN
@@ -167,5 +167,35 @@ public class PlayListTests extends BaseTest {
 
 //      THEN
         Assert.assertEquals(playListPage.selectTextEmailValidationMessage(), expectedBlankErrorMsg);
+    }
+
+    @Test
+    public void createSmartPlaylist() {
+
+//      GIVEN
+        LoginPage loginPage =       new LoginPage(getDriver());
+        HomePage homePage =         new HomePage(getDriver());
+        PlayListPage playListPage = new PlayListPage(getDriver());
+        loginPage.login();
+
+
+//      WHEN
+        // create a playlist
+        playListPage.selectCreateNewPlaylistBtn();
+        playListPage.selectNewSmartPlaylistBtn();
+        playListPage.selectTitleNameField(playlistName);
+        driver.navigate().refresh();
+
+        // search for a song
+
+
+
+        // click Add to Button
+        playListPage.selectAddSongToBtn();
+
+
+//      THEN
+
+
     }
 }

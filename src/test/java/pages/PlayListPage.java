@@ -28,10 +28,16 @@ public class PlayListPage extends BasePage {
     @FindBy(xpath = "//li[@data-testid=\"playlist-context-menu-create-simple\"][contains(text(), \"New Playlist\")]")
     private WebElement getNewPlaylistBtn;
 
+    @FindBy(xpath = "//li[@data-testid=\"playlist-context-menu-create-simple\"][contains(text(), \"New Smart Playlist\")]")
+    private WebElement getNewSmartPlaylistBtn;
+
 //    @FindBy(xpath = "//input[@placeholder=\"↵ to save\"][@name=\"name\"][@required=\"required\"]")
 //    @FindBy(xpath = "//input[@name=\"name\"][@required=\"required\"]")
     @FindBy(xpath = "//section[@id='playlists']//input[@name='name']")
     private WebElement getTitleNameField;
+
+    @FindBy(xpath = "/html//div[@id='mainWrapper']//div[@class='smart-playlist-form']//form//input[@name='name']")
+    private WebElement getTitleNameFieldForSmartPlaylist;
 
     //    @FindBy(xpath = "//*[contains(text(), 'Created playlist \""  + "TestPro Playlist" + ".\"')]")
 //    @FindBy(xpath = "//*[contains(text(), 'Created playlist \"" + playlistName + ".\"')]")
@@ -53,6 +59,12 @@ public class PlayListPage extends BasePage {
 
     @FindBy(xpath = "/html//div[@class='alertify']/div/div")
     private WebElement getAlertBoxMsg;
+
+    @FindBy(xpath = "/html//div[@id='mainWrapper']//div[@class='smart-playlist-form']/div/form")
+    private WebElement getCreateNewSmartPlaylistForm;
+
+    @FindBy(xpath = "//div[@id='mainWrapper']//div[@class='smart-playlist-form']/div/form//div[@class='rule-group']/div[@class='row']/select[@name='model[]']/option[1]")
+    private WebElement getObjectFieldAttribueForSmartPlaylist;
 
     //    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), playlistName)]")
 //    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[@class=\"playlist\"][contains(text(), '" + playlistName + "')]")
@@ -156,6 +168,11 @@ public class PlayListPage extends BasePage {
     public void selectNewPlaylistBtn () {
 
         getNewPlaylistBtn.click();
+    }
+
+    public void selectNewSmartPlaylistBtn () {
+
+        getNewSmartPlaylistBtn.click();
     }
 
     public void selectTitleNameField(String playlistName) {
