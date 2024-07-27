@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -20,6 +21,7 @@ public class BaseTest {
 
     WebDriverWait wait;
     Wait<WebDriver> fluentWait;
+    Actions actions;
     // String url = "https://qa.koel.app/";
 
     // String url = "https://qa.koel.app/";
@@ -48,6 +50,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        actions = new Actions(driver);
 
         // using fluentWait took a long time for span.name element to be interactable and clicked on in
         // navigateToProfilePage() method called in changeProfileName() method
@@ -66,7 +69,7 @@ public class BaseTest {
         driver.quit();
     }
 
-    protected void submit() throws InterruptedException {
+    protected void submit() {
         //WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         WebElement submit = wait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
