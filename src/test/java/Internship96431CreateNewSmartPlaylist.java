@@ -91,7 +91,7 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
         return notification.getText();
     }
 
-    @Test(priority = 2, dependsOnMethods = "createNewSmartPlaylistWithOneRule" )
+    @Test(priority = 2)
     public void createNewSmartPlaylistWithMultipleRule()  {
         String expectedCreatedPlaylistMessage = "Created playlist \"New smart playlist.\"";
 
@@ -245,7 +245,7 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
     }
 
 
-    @Test(priority = 3, dependsOnMethods = "createNewSmartPlaylistWithMultipleRule")
+    @Test(priority = 3)
     public void ifRuleDoesNotExist() {
 
         String expectedCreatedPlaylistMsg = "Created playlist \"Smart playlist.\"";
