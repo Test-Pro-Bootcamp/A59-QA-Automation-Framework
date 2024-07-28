@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import page.HomePage;
 import page.LoginPage;
 
-public class AddSongsToSmartPlaylistTest extends BaseTest {
+public class Internship96512AddSongsToSmartPlaylistTest extends BaseTest {
     String newSmartPlaylistName = "My new smart playlist";
 
     @Test(priority = 1)

@@ -10,10 +10,10 @@ import page.LoginPage;
 
 import static org.testng.Assert.assertTrue;
 
-public class CreateNewSmartPlaylist extends BaseTest {
+public class Internship96431CreateNewSmartPlaylist extends BaseTest {
     String newSmartPlaylistName = "Kristina's smart playlist";
 
-    @Test
+    @Test(priority = 1)
     public void createNewSmartPlaylistWithOneRule() {
         String expectedCreatedSmartPlaylistMessage = "Created playlist \"Kristina's smart playlist.\"";
         LoginPage loginPage = new LoginPage(getDriver());
@@ -91,7 +91,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
         return notification.getText();
     }
 
-    @Test
+    @Test(priority = 2, dependsOnMethods = "createNewSmartPlaylistWithOneRule" )
     public void createNewSmartPlaylistWithMultipleRule()  {
         String expectedCreatedPlaylistMessage = "Created playlist \"New smart playlist.\"";
 
@@ -245,7 +245,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
     }
 
 
-    @Test
+    @Test(priority = 3, dependsOnMethods = "createNewSmartPlaylistWithMultipleRule")
     public void ifRuleDoesNotExist() {
 
         String expectedCreatedPlaylistMsg = "Created playlist \"Smart playlist.\"";
@@ -331,7 +331,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
         return noSongsMatchMsg.getText();
     }
 
-@Test
+@Test(priority = 4)
     public void smartPlaylistNameShouldHaveSameRuleAsRegular() {
 
         LoginPage loginPage = new LoginPage(getDriver());
@@ -339,7 +339,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
         loginPage.login();
         clickPlaylistsBtn();
         createSmartPlaylists();
-        String longPlaylistName = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'l]abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|{{;:'mnabcdefghijklmnopqrstuvwxyz)}}";
+        String longPlaylistName = "ggggabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         inputSmartPlaylistName(longPlaylistName);
         clickSaveButton();
         validatePlaylistName(longPlaylistName);
@@ -357,7 +357,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
 
     public void inputSmartPlaylistName(String longPlaylistName) {
         WebElement newPlaylistName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"mainWrapper\"]/div/div/div/form/div/div[1]/input")));
-        newPlaylistName.sendKeys("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'");
+        newPlaylistName.sendKeys("ggggabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
         newPlaylistName.sendKeys(Keys.ENTER);
     }
     public void clickSaveButton() {
@@ -367,7 +367,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
     public void validatePlaylistName(String playlistName) {
         WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Created playlist')]")));
         assertTrue(successMessage.getText().contains(playlistName), "Playlist creation message does not match the expected playlist name");
-        assertTrue(playlistName.length() >= 1 && playlistName.length() <= 256, "Playlist name length is out of the allowed range");
+        assertTrue(!playlistName.isEmpty() && playlistName.length() <= 256, "Playlist name length is out of the allowed range");
 
 
     }
