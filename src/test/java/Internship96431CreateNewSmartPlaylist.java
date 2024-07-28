@@ -367,7 +367,7 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
     public void validatePlaylistName(String playlistName) {
         WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Created playlist')]")));
         assertTrue(successMessage.getText().contains(playlistName), "Playlist creation message does not match the expected playlist name");
-        assertTrue(!playlistName.isEmpty() && playlistName.length() <= 256, "Playlist name length is out of the allowed range");
+        assertTrue(playlistName.length() >= 1  && playlistName.length() <= 256, "Playlist name length is out of the allowed range");
 
 
     }
