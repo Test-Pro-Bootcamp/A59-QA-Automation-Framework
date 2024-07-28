@@ -33,17 +33,14 @@ public class CreateNewSmartPlaylist extends BaseTest {
         clickSaveBtn();
         Assert.assertEquals(getCreatedSmartPlaylistMessage(), expectedCreatedSmartPlaylistMessage);
     }
-
     public void clickPlaylists() {
         WebElement clickPlaylist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//section[@id='playlists']//i[@class='fa fa-plus-circle create']")));
         clickPlaylist.click();
     }
-
     public void clickNewSmartPlaylist() {
         WebElement clickNewPlaylistBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"playlists\"]/nav/ul/li[2]")));
         clickNewPlaylistBtn.click();
     }
-
     public void inputNewSmartPlaylistName() {
         WebElement newPlaylistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"mainWrapper\"]/div/div/div/form/div/div[1]/input")));
         newPlaylistName.sendKeys("Kristina's smart playlist");
