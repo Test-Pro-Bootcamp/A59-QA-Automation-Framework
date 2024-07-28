@@ -92,12 +92,10 @@ public class CreateNewSmartPlaylist extends BaseTest {
     }
 
     @Test
-    public void createNewSmartPlaylistWithMultipleRule() throws InterruptedException {
+    public void createNewSmartPlaylistWithMultipleRule()  {
         String expectedCreatedPlaylistMessage = "Created playlist \"New smart playlist.\"";
 
         LoginPage loginPage = new LoginPage(getDriver());
-        HomePage homePage = new HomePage(getDriver());
-        Actions actions = new Actions(driver);
 
         loginPage.login();
         clickPlaylist();
@@ -254,8 +252,6 @@ public class CreateNewSmartPlaylist extends BaseTest {
         String actualNoSongsMessage = "No songs match the playlist's criteria.";
 
         LoginPage loginPage = new LoginPage(getDriver());
-        HomePage homePage = new HomePage(getDriver());
-        Actions actions = new Actions(driver);
         loginPage.login();
         clickSmartPlaylist();
         createSmartPlaylist();
@@ -369,19 +365,12 @@ public class CreateNewSmartPlaylist extends BaseTest {
         enterSaveBtn.click();
     }
     public void validatePlaylistName(String playlistName) {
-        // Verify the playlist creation message or any indication of success
         WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Created playlist')]")));
         assertTrue(successMessage.getText().contains(playlistName), "Playlist creation message does not match the expected playlist name");
-
-        // Check the length of the playlist name to ensure it is within the 1-256 character range
         assertTrue(playlistName.length() >= 1 && playlistName.length() <= 256, "Playlist name length is out of the allowed range");
 
-        // Optionally: Verify if the playlist name adheres to any special character rules by inspecting the created playlist in the UI
+
     }
-
-
-
-
 }
 
 
