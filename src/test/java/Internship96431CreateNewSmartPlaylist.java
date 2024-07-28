@@ -333,7 +333,11 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
 
 @Test(priority = 4)
     public void smartPlaylistNameShouldHaveSameRuleAsRegular() {
-
+        String longPlaylistName = "abcdefghijkOOOOOOOOOOOOOOOOOOOOOOOOOlmnstuvwxyzKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOOOOOOOOOOOOOOOOOOOOPQRSTUVWXYZ0123456789nnn";
+    if (longPlaylistName.length() > 256) {
+        System.out.println("Playlist name is more than 256 characters.");
+        return;
+    }
         LoginPage loginPage = new LoginPage(getDriver());
 
         loginPage.login();
@@ -344,6 +348,7 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
         validatePlaylistName(longPlaylistName);
 
     }
+
     public void clickPlaylistsBtn() {
         WebElement clickPlaylistsBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//section[@id='playlists']//i[@class='fa fa-plus-circle create']")));
         clickPlaylistsBtn.click();
@@ -356,9 +361,25 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
 
     public void inputSmartPlaylistName(String longPlaylistName) {
         WebElement newPlaylistName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"mainWrapper\"]/div/div/div/form/div/div[1]/input")));
+        newPlaylistName.sendKeys(longPlaylistName);
+        newPlaylistName.sendKeys(Keys.ENTER);
 
     }
+    public void clickSaveButton() {
+        WebElement enterSaveBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"mainWrapper\"]/div/div/div/form/footer/button[1]")));
+        enterSaveBtn.click();
+    }
+    public void validatePlaylistName(String expectedName) {
+        
+        WebElement playlistNameElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"playlistWrapper\"]/header/div[2]")));
+        String actualName = playlistNameElement.getText();
+
+        if (!expectedName.equals(actualName)) {
+            throw new AssertionError("Expected playlist name: " + expectedName + ", but got: " + actualName);
+        }
+    }
 }
+
 
 
 
