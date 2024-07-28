@@ -339,7 +339,6 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
         loginPage.login();
         clickPlaylistsBtn();
         createSmartPlaylists();
-        String longPlaylistName = "ggggabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         inputSmartPlaylistName(longPlaylistName);
         clickSaveButton();
         validatePlaylistName(longPlaylistName);
@@ -357,18 +356,6 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
 
     public void inputSmartPlaylistName(String longPlaylistName) {
         WebElement newPlaylistName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"mainWrapper\"]/div/div/div/form/div/div[1]/input")));
-        newPlaylistName.sendKeys("ggggabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:',.<>?/~`abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
-        newPlaylistName.sendKeys(Keys.ENTER);
-    }
-    public void clickSaveButton() {
-        WebElement enterSaveBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"mainWrapper\"]/div/div/div/form/footer/button[1]")));
-        enterSaveBtn.click();
-    }
-    public void validatePlaylistName(String playlistName) {
-        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Created playlist')]")));
-        assertTrue(successMessage.getText().contains(playlistName), "Playlist creation message does not match the expected playlist name");
-        assertTrue(playlistName.length() >= 1  && playlistName.length() <= 256, "Playlist name length is out of the allowed range");
-
 
     }
 }
