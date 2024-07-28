@@ -10,7 +10,7 @@ import page.LoginPage;
 
 import static org.testng.Assert.assertTrue;
 
-public class CreateNewSmartPlaylist extends BaseTest {
+public class Internship96431CreateNewSmartPlaylist extends BaseTest {
     String newSmartPlaylistName = "Kristina's smart playlist";
 
     @Test(priority = 1)
