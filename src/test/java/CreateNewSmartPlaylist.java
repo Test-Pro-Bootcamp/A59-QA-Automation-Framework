@@ -13,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 public class CreateNewSmartPlaylist extends BaseTest {
     String newSmartPlaylistName = "Kristina's smart playlist";
 
-    @Test
+    @Test(priority = 1)
     public void createNewSmartPlaylistWithOneRule() {
         String expectedCreatedSmartPlaylistMessage = "Created playlist \"Kristina's smart playlist.\"";
         LoginPage loginPage = new LoginPage(getDriver());
@@ -91,7 +91,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
         return notification.getText();
     }
 
-    @Test
+    @Test(priority = 2)
     public void createNewSmartPlaylistWithMultipleRule()  {
         String expectedCreatedPlaylistMessage = "Created playlist \"New smart playlist.\"";
 
@@ -245,7 +245,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
     }
 
 
-    @Test
+    @Test(priority = 3)
     public void ifRuleDoesNotExist() {
 
         String expectedCreatedPlaylistMsg = "Created playlist \"Smart playlist.\"";
@@ -331,7 +331,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
         return noSongsMatchMsg.getText();
     }
 
-@Test
+@Test(priority = 4)
     public void smartPlaylistNameShouldHaveSameRuleAsRegular() {
 
         LoginPage loginPage = new LoginPage(getDriver());
@@ -339,7 +339,7 @@ public class CreateNewSmartPlaylist extends BaseTest {
         loginPage.login();
         clickPlaylistsBtn();
         createSmartPlaylists();
-        String longPlaylistName = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'l]abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|{{;:'mnabcdefghijklmnopqrstuvwxyz)}}";
+        String longPlaylistName = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'";
         inputSmartPlaylistName(longPlaylistName);
         clickSaveButton();
         validatePlaylistName(longPlaylistName);
