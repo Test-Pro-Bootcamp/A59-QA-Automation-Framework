@@ -33,14 +33,17 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
         clickSaveBtn();
         Assert.assertEquals(getCreatedSmartPlaylistMessage(), expectedCreatedSmartPlaylistMessage);
     }
+
     public void clickPlaylists() {
         WebElement clickPlaylist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//section[@id='playlists']//i[@class='fa fa-plus-circle create']")));
         clickPlaylist.click();
     }
+
     public void clickNewSmartPlaylist() {
         WebElement clickNewPlaylistBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"playlists\"]/nav/ul/li[2]")));
         clickNewPlaylistBtn.click();
     }
+
     public void inputNewSmartPlaylistName() {
         WebElement newPlaylistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"mainWrapper\"]/div/div/div/form/div/div[1]/input")));
         newPlaylistName.sendKeys("Kristina's smart playlist");
@@ -336,7 +339,6 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
         loginPage.login();
         clickPlaylistsBtn();
         createSmartPlaylists();
-        String longPlaylistName = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'";
         inputSmartPlaylistName(longPlaylistName);
         clickSaveButton();
         validatePlaylistName(longPlaylistName);
@@ -354,18 +356,6 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
 
     public void inputSmartPlaylistName(String longPlaylistName) {
         WebElement newPlaylistName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"mainWrapper\"]/div/div/div/form/div/div[1]/input")));
-        newPlaylistName.sendKeys("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&()=[]{},.<>?/|;:'");
-        newPlaylistName.sendKeys(Keys.ENTER);
-    }
-    public void clickSaveButton() {
-        WebElement enterSaveBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"mainWrapper\"]/div/div/div/form/footer/button[1]")));
-        enterSaveBtn.click();
-    }
-    public void validatePlaylistName(String playlistName) {
-        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Created playlist')]")));
-        assertTrue(successMessage.getText().contains(playlistName), "Playlist creation message does not match the expected playlist name");
-        assertTrue(playlistName.length() >= 1 && playlistName.length() <= 256, "Playlist name length is out of the allowed range");
-
 
     }
 }
