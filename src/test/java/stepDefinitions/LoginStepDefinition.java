@@ -62,7 +62,6 @@ public void openBrowser(){
     @Then("I should be logged in")
     public void iShouldBeLoggedIn() {
     HomePage homePage = new HomePage(driver);
-    homePage.getUserAvatar();
     Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
 //        Assert.assertTrue(wait.until
 //                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.avatar"))).isDisplayed());
