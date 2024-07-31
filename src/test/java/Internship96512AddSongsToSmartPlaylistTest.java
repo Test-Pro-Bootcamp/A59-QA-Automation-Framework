@@ -91,7 +91,7 @@ public class Internship96512AddSongsToSmartPlaylistTest extends BaseTest {
 
     @Test(priority = 2, dependsOnMethods = "createNewSmartPlaylist")
     public void editSmartPlaylist() {
-        String expectedUpdatedSmartPlaylistMessage = "Updated playlist \"My new smart playlist.\"";
+        String expectedUpdatedSmartPlaylistMessage = "Updated playlist \"Kristina's smart playlist.\"";
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         Actions actions = new Actions(driver);
@@ -196,7 +196,7 @@ public class Internship96512AddSongsToSmartPlaylistTest extends BaseTest {
 
     @Test(priority = 3, dependsOnMethods = "editSmartPlaylist")
     public void deleteSmartPlaylist() {
-        String expectedDeletedSmartPlaylistMessage = "Deleted playlist \"My new smart playlist.\"";
+        String expectedDeletedSmartPlaylistMessage = "Deleted playlist \"Kristina's smart playlist.\"";
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         Actions actions = new Actions(driver);

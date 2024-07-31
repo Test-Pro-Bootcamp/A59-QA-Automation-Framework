@@ -370,7 +370,7 @@ public class Internship96431CreateNewSmartPlaylist extends BaseTest {
         enterSaveBtn.click();
     }
     public void validatePlaylistName(String expectedName) {
-        
+
         WebElement playlistNameElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"playlistWrapper\"]/header/div[2]")));
         String actualName = playlistNameElement.getText();
 
