@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+
+import java.awt.*;
 import java.time.Duration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -22,6 +24,7 @@ public class BaseTest {
     WebDriverWait wait;
     Wait<WebDriver> fluentWait;
     Actions actions;
+    Robot robot;
     // String url = "https://qa.koel.app/";
 
     // String url = "https://qa.koel.app/";
@@ -69,12 +72,13 @@ public class BaseTest {
         driver.quit();
     }
 
-    protected void submit() {
+    protected void submit()  {
         //WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         WebElement submit = wait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
         //Thread.sleep(1000);
+
     }
 
     protected void enterPassword(String password) {
