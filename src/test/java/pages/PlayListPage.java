@@ -10,6 +10,7 @@ public class PlayListPage extends BasePage {
     public PlayListPage(WebDriver givenDriver) {
         super(givenDriver);
     }
+
     By deleteBtn = By.xpath("//button[contains(@class, 'del btn-delete-playlist')]");
 
     public WebElement getDeletePlayListBtn(){
