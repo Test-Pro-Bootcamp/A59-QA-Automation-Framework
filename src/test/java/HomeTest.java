@@ -28,6 +28,31 @@ public class HomeTest extends BaseTest {
         Assert.assertTrue(isSongPlaying());
     }
 
+    // Helper Methods
+    @Test
+    public void countSongsInPlaylist() {
+        // Step 1 - Login into Koel App.
+        // -- Note - Navigate to Koel app login page already done with BaseTest @BeforeMethod
+        enterEmail("leon.poyau@testpro.io");
+        enterPassword("jTRCkwNf");
+        submit();
+
+        // Step 2 - Find specific playlist element and click on it to select it. choose a playlist by name
+        choosePlaylistByName("TestPro Playlist");
+
+        // Display all songs
+
+        // Verify number of songs in the playlist equals to what is displayed in the info section
+        // Step 3 - Count the number of songs in the play list
+        
+    }
+
+    public void choosePlaylistByName(String playlistName) {
+//        WebElement playlist = wait.until(
+//                ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']//li[4]")));
+                wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.xpath("//section[@id='playlists']//li[contains(text(),'"+playlistName+"')]"))).click();
+    }
 
     public boolean isSongPlaying() {
         WebElement soundBar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[data-testid='sound-bar-play']")));
