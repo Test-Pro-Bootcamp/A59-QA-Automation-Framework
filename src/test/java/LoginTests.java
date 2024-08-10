@@ -17,8 +17,8 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void validLogin() {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.login();
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
@@ -26,30 +26,30 @@ public class LoginTests extends BaseTest {
 
    @Test
     public void loginValidEmailInvalidPasswordTest() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.loginValidEmailInvalidPassword();
         String url = "https://qa.koel.app/";
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
 
     }
 
     @Test
     public void loginInvalidEmailValidPasswordTest() {
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.loginInvalidEmailValidPassword();
         String url = "https://qa.koel.app/";
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
     }
 
     @Test
     public void loginEmptyEmailPassword() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
 
 
         loginPage.provideEmail("");
         loginPage.providePassword("");
      loginPage.clickSubmit();
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
     }
 }

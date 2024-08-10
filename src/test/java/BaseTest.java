@@ -21,6 +21,13 @@ import java.time.Duration;
 import java.util.*;
 
 public class BaseTest {
+
+    private static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
+
+
+    public static WebDriver getDriver() {
+        return threadDriver.get();
+    }
     public static WebDriver driver = null;
     public WebDriverWait wait;
     public Actions actions = null;
@@ -47,12 +54,12 @@ String password = "te$t$tudent";
 
         //  driver = new ChromeDriver(options);
        // driver = new FirefoxDriver();
-        driver = pickBrowser(System.getProperty("browser"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-         actions = new Actions(driver);
+        threadDriver.set(pickBrowser(System.getProperty("browser")));
+        threadDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+         wait = new WebDriverWait(threadDriver.get(), Duration.ofSeconds(10));
+         actions = new Actions(threadDriver.get());
         url = baseURL;
-        driver.get(url);
+        threadDriver.get().get(url);
 
     }
 
@@ -79,7 +86,9 @@ String password = "te$t$tudent";
 
     @AfterMethod
     public void closeBrowser() {
-        driver.quit();
+
+        threadDriver.get().close();
+        threadDriver.remove();
     }
 
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
