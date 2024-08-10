@@ -21,7 +21,7 @@ import java.time.Duration;
 import java.util.*;
 
 public class BaseTest {
-
+//create threadlocal
     private static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 
 
