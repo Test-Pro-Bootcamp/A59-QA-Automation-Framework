@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -32,11 +33,17 @@ public class BaseTest {
     public static Wait<WebDriver> fluentWait;
     public static Actions actions = null;
     public static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
+    public static final ThreadLocal<WebElement>dynamicDriver = new ThreadLocal<>();
 
     // This method returns the WebDriver instance stored in the ThreadLocal variable.
     public static WebDriver getDriver() {
 
         return threadDriver.get();
+    }
+
+    public static WebElement getDynamicDriver() {
+
+        return dynamicDriver.get();
     }
 
 //    String url = "https://qa.koel.app/";
@@ -104,7 +111,7 @@ public class BaseTest {
 //        driver = new FirefoxDriver();
 
         threadDriver.set(pickBrowser(System.getProperty("browser")));
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); // was 10
 //        getDriver().manage().window().maximize();
         System.out.println("Browser setup by Thread "
                 + Thread.currentThread().getId()
@@ -115,7 +122,7 @@ public class BaseTest {
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 //        getDriver().manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5)); // was 10
 
         fluentWait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(Duration.ofSeconds(5))
@@ -211,8 +218,8 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
 
-        threadDriver.get().close();
-        threadDriver.remove();
+//        threadDriver.get().close();
+//        threadDriver.remove();
     }
 
 //    @AfterMethod

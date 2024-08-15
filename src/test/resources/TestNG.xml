@@ -18,7 +18,7 @@
                     <include name="renamePlayList"/>
                 </methods>
            </class> -->
-            <class name="PlayListTests">
+            <class name="LoginTests">
 
             </class>
 

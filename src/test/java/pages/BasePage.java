@@ -25,7 +25,7 @@ public class BasePage {
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
         actions = new Actions(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));  // was 10
         PageFactory.initElements(driver, this);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 5), this);
         // The constructor initializes the driver, wait, actions, and page elements using the given WebDriver.

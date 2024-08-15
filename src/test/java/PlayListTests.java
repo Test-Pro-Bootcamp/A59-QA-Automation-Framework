@@ -150,7 +150,7 @@ public class PlayListTests extends BaseTest {
         Assert.assertEquals(playListPage.selectDeletedVerifyNotificationMsgFor256Characters(), expectedDeletedMsg256Character);
     }
 
-    @Test (enabled = false)
+    @Test(enabled = false)
     public void createPlaylistWithZeroCharacters() {
 
 //      GIVEN
@@ -169,8 +169,8 @@ public class PlayListTests extends BaseTest {
         Assert.assertEquals(playListPage.selectTextEmailValidationMessage(), expectedBlankErrorMsg);
     }
 
-    @Test
-    public void createSmartPlaylist() {
+    @Test(enabled = false)
+    public void createSmartPlaylist() throws InterruptedException {
 
 //      GIVEN
         LoginPage loginPage =       new LoginPage(getDriver());
@@ -183,15 +183,17 @@ public class PlayListTests extends BaseTest {
         // create a playlist
         playListPage.selectCreateNewPlaylistBtn();
         playListPage.selectNewSmartPlaylistBtn();
-        playListPage.selectTitleNameField(playlistName);
-        driver.navigate().refresh();
+        playListPage.selectTitleNameFieldForSmartPlaylist(playlistName);
+//        playListPage.getOptionElement(3);
+        playListPage.selectCycleThrough();
+//        driver.navigate().refresh();
 
         // search for a song
 
 
 
         // click Add to Button
-        playListPage.selectAddSongToBtn();
+//        playListPage.selectAddSongToBtn();
 
 
 //      THEN

@@ -35,7 +35,6 @@ public class ProfilePage extends BasePage {
     @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
     private WebElement getInputProfileCurrentPasswordField;
 
-
     @FindBy(xpath="//div[@class=\"theme selected\"]")
     private WebElement getCurrentTheme;
 

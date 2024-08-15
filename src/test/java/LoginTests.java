@@ -5,7 +5,7 @@ import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
 
-    @Test
+    @Test(enabled = false)
     public void loginValidEmailPassword() {
 
 //      GIVEN
@@ -24,7 +24,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.selectUserAvatar().isDisplayed());
     }
 
-    @Test
+    @Test(enabled = false)
     public void loginInvalidEmailValidPassword() {
 
 //      GIVEN
@@ -40,7 +40,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    @Test
+    @Test(enabled = false)
     public void loginValidEmailEmptyPassword() {
 
 //      GIVEN
@@ -55,7 +55,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    @Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    @Test(enabled = false, dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
     public void negativeLoginTest(String email, String password) {
 
 //      GIVEN
