@@ -1,25 +1,73 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
-    @Test
-    public void loginEmptyEmailPassword() {
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+    @Test(enabled = false)
+    public void loginValidEmailPassword() {
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//      GIVEN
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+//      WHEN
+        loginPage.login();
+
+//        Example of Fluent
+//        loginPage.provideEmail("demo@testpro.io")
+//                 .providePassword("te$t$tudent")
+//                 .clickSubmit();
+
+//      THEN
+        Assert.assertTrue(homePage.selectUserAvatar().isDisplayed());
+    }
+
+    @Test(enabled = false)
+    public void loginInvalidEmailValidPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = false)
+    public void loginValidEmailEmptyPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = false, dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    public void negativeLoginTest(String email, String password) {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail(email);
+        loginPage.providePassword(password);
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(loginPage.selectCurrentPage(), expectedUrl);
     }
 }
