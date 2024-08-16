@@ -1,3 +1,4 @@
+import io.cucumber.java.nl.Stel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -5,7 +6,7 @@ import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void loginValidEmailPassword() {
 
 //      GIVEN
@@ -24,7 +25,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.selectUserAvatar().isDisplayed());
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void loginInvalidEmailValidPassword() {
 
 //      GIVEN
@@ -40,7 +41,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void loginValidEmailEmptyPassword() {
 
 //      GIVEN

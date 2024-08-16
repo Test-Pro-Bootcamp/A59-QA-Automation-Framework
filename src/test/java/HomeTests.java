@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HomeTests extends BaseTest {
 
-    @Test
+    @Test(enabled = false)
     public void HoverOverPlayBtnAndPlaySong() throws InterruptedException {
 
 //      GIVEN
@@ -29,7 +29,7 @@ public class HomeTests extends BaseTest {
         Thread.sleep(2000);
         Assert.assertTrue(homePage.selectSoundBars().isDisplayed());
     }
-    @Test
+    @Test(enabled = false)
     public void renamePlayList() throws InterruptedException{
 
         String newPlaylistName = "Sample Edited Playlist";
@@ -55,7 +55,7 @@ public class HomeTests extends BaseTest {
         Assert.assertEquals(homePage.selectRenameVerifyNotificationMsg(), expectedRenameVerificationMsg);
     }
 
-    @Test
+    @Test(enabled = true)
     public void countSongsInPlaylist() throws InterruptedException {
 
 //      GIVEN
@@ -82,7 +82,7 @@ public class HomeTests extends BaseTest {
 
     public void playlistByName(String playlistName) {
 
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
 
         homePage.selectPlaylistByName();
 

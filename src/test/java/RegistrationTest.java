@@ -18,10 +18,12 @@ public class RegistrationTest extends BaseTest {
 
 //      WHEN
         loginPage.selectRegistrationLink();
+        loginPage.provideEmail("demo@testpro.io");
+        loginPage.clickSubmit();
 
 //      THEN
         Assert.assertEquals(loginPage.selectCurrentPage(), urlRegistration);
-
+        Assert.assertTrue(registrationPage.selectRegistrationVerificationMsg());
 //     driver.quit();
     }
 }

@@ -17,7 +17,8 @@ public class ActionsPage extends BasePage{
     }
     //Locators
 
-    @FindBy(xpath = "//a[contains(text(), 'A')]")
+//    @FindBy(xpath = "//a[contains(text(), 'A')]")
+    @FindBy(xpath = "//a[contains(text(), 'TestPro Playlist')]")
 //    @FindBy(xpath = "//a[contains(text(), playlistName)]")
     private WebElement getPlaylistByName;
 

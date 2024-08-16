@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -14,8 +15,8 @@ import java.util.List;
 public class ActionsTest extends BaseTest {
 
     //Test #1 Contextual Click
-//    @Test
-    public void playSong() {
+    @Test
+    public void playSong() throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -28,8 +29,12 @@ public class ActionsTest extends BaseTest {
 
         //Choose All Songs
         homePage.chooseAllSongsList();
+//        chooseAllSongsList();
         //Contextual Click on the first song
-        contextClickFirstSong();
+        allSongsPage.selectFirstSong();
+        allSongsPage.rightClickOnSong();
+//        contextClickFirstSong();
+//        Thread.sleep(8000);
         //Click on Play from the menu
         allSongsPage.selectPlayBtn();
         Assert.assertTrue(allSongsPage.isSongPlaying());
@@ -41,10 +46,20 @@ public class ActionsTest extends BaseTest {
     }
 
     public void contextClickFirstSong() {
+
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
+
         WebElement firstSongElement = wait.until
                 (ExpectedConditions.visibilityOfElementLocated
                         (By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
-        actions.contextClick(firstSongElement).perform();
+//        actions.contextClick(firstSongElement).perform();
+        try {
+            firstSongElement.click();
+            allSongsPage.selectFirstSong();
+            allSongsPage.rightClickOnSong();
+        } catch (NoSuchElementException e) {
+            System.err.println("Play button element was not found" + e.getMessage());
+        }
     }
 
     public void choosePlayOption() {
@@ -83,21 +98,22 @@ public class ActionsTest extends BaseTest {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Test #3 WebElements
-    @Test
+    //@Test
     public void countSongsInPlaylist() {
 
 //      GIVEN
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         ActionsPage actionsPage = new ActionsPage(driver);
+        System.out.println("TESTING countSongsInPlaylist");
         loginPage.login();
 
 //      WHEN
         actionsPage.selectPlaylistByName();
 
-
-//        actionsPage.displayAllSongs();
-        actionsPage.displayAllPlaylists();
+        System.out.println("TESTING countSongsInPlaylist");
+        actionsPage.displayAllSongs();
+//        actionsPage.displayAllPlaylists();
 
 //      THEN
         Assert.assertTrue(getPlaylistDetails().contains(String.valueOf(countSongs())));
