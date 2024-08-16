@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
+import pages.RegistrationPage;
 import java.time.Duration;
 
 public class RegistrationTest extends BaseTest {
