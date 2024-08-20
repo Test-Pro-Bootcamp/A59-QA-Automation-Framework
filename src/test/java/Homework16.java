@@ -16,10 +16,11 @@ public class Homework16 extends BaseTest {
         String url = "https://qa.koel.app/";
         driver.get(url);
 
+
         //Step 2
         WebElement registrationLink = driver.findElement(By.cssSelector("a[href='registration']"));
         registrationLink.click();
-        
+
 
         
         //Step 3

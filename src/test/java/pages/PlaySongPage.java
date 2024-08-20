@@ -17,7 +17,7 @@ public class PlaySongPage extends BasePage {
     private final By isDisplayedSoundBar = By.cssSelector("img[alt='Sound bars']");
 
     public WebElement getclickPlayBtn(){
-       return findElement(clickPlayBtn);
+        return findElement(clickPlayBtn);
     }
     public void playBtn(){
         getclickPlayBtn().click();
@@ -29,6 +29,7 @@ public class PlaySongPage extends BasePage {
     public void allSongs(){
         getclickAllSongs().click();
     }
+
     public WebElement getIsDisplayedSoundBar(){
         return findElement(isDisplayedSoundBar);
     }
