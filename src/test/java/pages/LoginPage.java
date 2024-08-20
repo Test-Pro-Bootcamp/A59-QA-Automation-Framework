@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,9 +29,8 @@ public class LoginPage extends BasePage {
         passwordField.sendKeys(password);
         return this;
     }
-    public LoginPage clickSubmit(){
+    public void clickSubmit(){
         submitBtn.click();
-        return this;
     }
 
     public void login(){
