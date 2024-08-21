@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pages.LoginPage;
+import pages.PlayListPage;
 
 import java.net.URI;
 import java.net.MalformedURLException;
@@ -61,22 +62,21 @@ public class BaseTest {
     protected String userName =             "demo@testpro.io";
     protected String userPassword =         "te$t$tudent";
     protected String userEmail =            "demo@testpro.io";
-    protected String playlistName =         "Sounds-Great-01";
-    protected String expectedCreatedMsg =   "Created playlist \""  + playlistName + ".\"";
-    protected String expectedAddedMsg =     "Added 1 song into \"" + playlistName + ".\"";
-    protected String expectedDeletedMsg =   "Deleted playlist \""  + playlistName + ".\"";
+    protected String expectedCreatedMsg =   "Created playlist \""  + PlayListPage.playlistName + ".\"";
+    protected String expectedAddedMsg =     "Added 1 song into \"" + PlayListPage.playlistName + ".\"";
+    protected String expectedDeletedMsg =   "Deleted playlist \""  + PlayListPage.playlistName + ".\"";
 
     protected String playlistNameWithZeroCharacters =   "";
 
-    protected String playlistNameWithOneCharacter =     "A";
-    protected String expectedCreatedMsgOneCharacter =   "Created playlist \""  + playlistNameWithOneCharacter + ".\"";
-    protected String expectedAddedMsgOneCharacter =     "Added 1 song into \"" + playlistNameWithOneCharacter + ".\"";
-    protected String expectedDeletedMsgOneCharacter =   "Deleted playlist \""  + playlistNameWithOneCharacter + ".\"";
+    protected String playlistNameWithOneCharacter =     PlayListPage.playlistNameWithOneCharacter;
+    protected String expectedCreatedMsgOneCharacter =   "Created playlist \""  + PlayListPage.playlistNameWithOneCharacter + ".\"";
+    protected String expectedAddedMsgOneCharacter =     "Added 1 song into \"" + PlayListPage.playlistNameWithOneCharacter + ".\"";
+    protected String expectedDeletedMsgOneCharacter =   "Deleted playlist \""  + PlayListPage.playlistNameWithOneCharacter + ".\"";
 
-    protected String playlistNameWith256Characters =    "1234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678";
-    protected String expectedCreatedMsg256Character =   "Created playlist \""  + playlistNameWithOneCharacter + ".\"";
-    protected String expectedAddedMsg256Character =     "Added 1 song into \"" + playlistNameWithOneCharacter + ".\"";
-    protected String expectedDeletedMsg256Character =   "Deleted playlist \""  + playlistNameWithOneCharacter + ".\"";
+    protected String playlistNameWith256Characters =    PlayListPage.playlistNameWith256Characters;
+    protected String expectedCreatedMsg256Character =   "Created playlist \""  + PlayListPage.playlistNameWith256Characters + ".\"";
+    protected String expectedAddedMsg256Character =     "Added 1 song into \"" + PlayListPage.playlistNameWith256Characters + ".\"";
+    protected String expectedDeletedMsg256Character =   "Deleted playlist \""  + PlayListPage.playlistNameWith256Characters + ".\"";
 
 
     ///////////////////////////////////////////////////
@@ -218,8 +218,8 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
 
-//        threadDriver.get().close();
-//        threadDriver.remove();
+        threadDriver.get().close();
+        threadDriver.remove();
     }
 
 //    @AfterMethod

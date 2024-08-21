@@ -7,11 +7,11 @@ import pages.BasePage;
 
 public class PlayListTests extends BaseTest {
 
-    private final String playlistName =                     "Sounds-Great-01";
-    private final String playlistNameWithOneCharacter =     "J";
-    private final String playlistNameWith256Characters =    "1234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678";
-    private final String playlistNameWithZeroCharacters =   "";
-    private final String songName =                         "grav";
+    private final String playlistName =                     PlayListPage.playlistName;
+    private final String playlistNameWithOneCharacter =     PlayListPage.playlistNameWithOneCharacter;
+    private final String playlistNameWith256Characters =    PlayListPage.playlistNameWith256Characters;
+    private final String playlistNameWithZeroCharacters =   PlayListPage.playlistNameEmpty;
+    private final String songName =                         PlayListPage.songName;
     private final String expectedBlankErrorMsg =            "Please fill out this field.";
 
     private final String expectedCreatedMsg =               "Created playlist \""  + playlistName + ".\"";
@@ -26,7 +26,7 @@ public class PlayListTests extends BaseTest {
     private final String expectedAddedMsg256Character =     "Added 1 song into \"" + playlistNameWith256Characters + ".\"";
     private final String expectedDeletedMsg256Character =   "Deleted playlist \""  + playlistNameWith256Characters + ".\"";
 
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void addSongToPlaylist() throws InterruptedException {
 
 //      GIVEN
@@ -63,8 +63,8 @@ public class PlayListTests extends BaseTest {
 
 //      THEN
         Assert.assertEquals(playListPage.selectDeletedVerifyNotificationMsg(), expectedDeletedMsg);
-//        System.out.println("Part 1: " + playListPage.selectDeletedVerifyNotificationMsg());
-//        System.out.println("Part 2: " + expectedDeletedMsg);
+        System.out.println("Part 1: " + playListPage.selectDeletedVerifyNotificationMsg());
+        System.out.println("Part 2: " + expectedDeletedMsg);
     }
 
     @Test(enabled = false)

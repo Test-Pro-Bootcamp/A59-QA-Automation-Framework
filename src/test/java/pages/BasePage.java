@@ -20,7 +20,6 @@ public class BasePage {
     protected WebDriverWait wait;
     protected Actions actions;
 
-
     // Constructor to initialize the BasePage with a given WebDriver
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;

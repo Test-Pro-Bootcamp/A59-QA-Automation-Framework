@@ -79,6 +79,15 @@ public class HomePage extends BasePage {
     @FindBy(css = "[data-testid='play-btn']")
     private WebElement getPlaySongBtn;
 
+    @FindBy(xpath = "//a[@href='#!/home']")
+    private WebElement getHomePage;
+
+    @FindBy(xpath = "//a[@href='#!/favorites']")
+    private WebElement getFavoritesPage;
+
+    @FindBy(xpath = "//a[@href='#!/recently-played']")
+    private WebElement getRecentlyPlayedPage;
+
 
     //Methods
 
@@ -201,6 +210,21 @@ public class HomePage extends BasePage {
     public void selectPlaylistAndClick() {
 
         getPlayList.click();
+    }
+
+    public void selectHomePage() {
+
+        waitForVisibility(getHomePage).click();
+    }
+
+    public void selectFavoriesPage() {
+
+        waitForVisibility(getFavoritesPage).click();
+    }
+
+    public void selectRecentlyPlayedPage() {
+
+        waitForVisibility(getRecentlyPlayedPage).click();
     }
 
     public void selectPlaylistAndMoveMouseTo() {

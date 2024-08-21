@@ -21,17 +21,18 @@ import java.util.List;
 
 public class PlayListPage extends BasePage {
 
-    private static final String playlistNameEmpty = "";
-    private static final String playlistNameWithOneCharacter = "J";
-    private static final String playlistName = "Sounds-Great-01";
-    private static final String playlistNameWith256Characters = "1234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678";
+    public static final String playlistNameEmpty = "";
+    public static final String playlistNameWithOneCharacter = "J";
+    public static final String playlistName = "Sounds-Great-01";
+    public static final String playlistNameWith256Characters = "1234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678";
+    public static final String songName = "grav";
+
 
     // Constructors
     public PlayListPage(WebDriver givenDriver) {
         super(givenDriver);
         PageFactory.initElements(driver, this);
     }
-
 
     // Locators
 //    @FindBy(xpath = "//i[@data-testid=\"sidebar-create-playlist-btn\"][@title=\"Create a new playlist\"][@class=\"fa fa-plus-circle create\"]")

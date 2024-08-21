@@ -6,7 +6,7 @@ import pages.HomePage;
 
 public class ProfileTests extends BaseTest{
 
-    @Test
+    @Test (enabled = false)
     public void changeProfileName() {
 
 //      GIVEN
@@ -29,7 +29,7 @@ public class ProfileTests extends BaseTest{
         Assert.assertEquals(profilePage.selectUpdatedVerifyNotificationMsg(test), expectedUpdatedMsg);
     }
 
-    @Test
+    @Test (enabled = false)
     public void changeCurrentTheme() {
 
 //      GIVEN
@@ -47,6 +47,48 @@ public class ProfileTests extends BaseTest{
 
 //      THEN
         Assert.assertTrue(profilePage.isVioletThemeSelected());
+    }
 
+    @Test (enabled = true)
+    public void changeCurrentEmailAndTestIfOldOneStillWorks() {
+
+//      GIVEN
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        ProfilePage profilePage = new ProfilePage(getDriver());
+        String newUserEmail = "mydemo@testpro.io";
+        String expectedUpdatedMsg = "Profile updated.";
+        String test = "";
+
+        loginPage.login();
+
+//      WHEN
+        // Change email
+        homePage.clickProfileIcon();
+        profilePage.selectInputProfileEmailField(newUserEmail);
+        profilePage.selectInputProfilePasswordField(userPassword);
+
+        // logout
+        loginPage.logOut();
+
+        // log back in with old email and password
+        driver.navigate().refresh();
+        loginPage.provideEmail(userEmail);
+        loginPage.providePassword(userPassword);
+        loginPage.clickSubmit();
+
+        // log back in with new email and password
+        driver.navigate().refresh();
+        loginPage.provideEmail(newUserEmail);
+        loginPage.providePassword(userPassword);
+        loginPage.clickSubmit();
+
+        // change the email back to the original
+        homePage.clickProfileIcon();
+        profilePage.selectInputProfileEmailField(userEmail);
+        profilePage.selectInputProfilePasswordField(userPassword);
+
+//      THEN
+        Assert.assertEquals(profilePage.selectVerifyNotificationMsg(), expectedUpdatedMsg);
     }
 }

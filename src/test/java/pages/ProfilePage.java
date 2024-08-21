@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,6 +31,9 @@ public class ProfilePage extends BasePage {
     @FindBy(css = "input[type='text'][name='name']")
     private WebElement getInputProfileNameField;
 
+    @FindBy(css = "input[type='email'][id='inputProfileEmail']")
+    private WebElement getInputEmailField;
+
     @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
     private WebElement getInputProfileCurrentPasswordField;
 
@@ -40,7 +42,6 @@ public class ProfilePage extends BasePage {
 
     @FindBy(xpath="//div[@data-testid=\"theme-card-violet\"][@class=\"theme\"]")
     private WebElement getVioletTheme;
-
 
     @FindBy(xpath="//div[@data-testid=\"theme-card-violet\"][@class=\"theme selected\"]")
     private WebElement getIsVioletThemeSelected;
@@ -57,15 +58,24 @@ public class ProfilePage extends BasePage {
     }
 
     public void selectInputProfileNameField(String newName) {
+
         getInputProfileNameField.clear();
         getInputProfileNameField.sendKeys(newName + "\n");
     }
 
     public void selectInputProfilePasswordField(String userPassword) {
+
         getInputProfileCurrentPasswordField.clear();
         getInputProfileCurrentPasswordField.sendKeys(userPassword + "\n");
-
     }
+
+    public void selectInputProfileEmailField(String userEmail) {
+
+        getInputEmailField.clear();
+        getInputEmailField.sendKeys(userEmail + "\n");
+    }
+
+
     public String selectVerifyNotificationMsg() {
 
         return getUpdatedVerificationMsg.getText();

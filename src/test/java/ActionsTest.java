@@ -15,7 +15,7 @@ import java.util.List;
 public class ActionsTest extends BaseTest {
 
     //Test #1 Contextual Click
-    @Test
+//    @Test
     public void playSong() throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -57,7 +57,9 @@ public class ActionsTest extends BaseTest {
             firstSongElement.click();
             allSongsPage.selectFirstSong();
             allSongsPage.rightClickOnSong();
+
         } catch (NoSuchElementException e) {
+
             System.err.println("Play button element was not found" + e.getMessage());
         }
     }
@@ -98,26 +100,54 @@ public class ActionsTest extends BaseTest {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Test #3 WebElements
-    //@Test
+    @Test
     public void countSongsInPlaylist() {
 
 //      GIVEN
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         ActionsPage actionsPage = new ActionsPage(driver);
-        System.out.println("TESTING countSongsInPlaylist");
+
         loginPage.login();
 
 //      WHEN
         actionsPage.selectPlaylistByName();
 
-        System.out.println("TESTING countSongsInPlaylist");
-        actionsPage.displayAllSongs();
+//        actionsPage.displayAllSongs();
 //        actionsPage.displayAllPlaylists();
+        actionsPage.selectStandardHyperLinks();
+//        actionsPage.selectAlbumHyperLinks();
+//        actionsPage.uniqueWebElements();
+//        actionsPage.selectCheckPageAccessibility();
+
+
+//        displayAllSongs();
+
+//        displayAllPlaylists();
 
 //      THEN
         Assert.assertTrue(getPlaylistDetails().contains(String.valueOf(countSongs())));
 //        System.out.println("Playlist Details: " + getPlaylistDetails());
+    }
+
+
+    @Test
+    public void navigateThroughAllPages() {
+
+//      GIVEN
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        ActionsPage actionsPage = new ActionsPage(driver);
+        String expectedUrl = "https://qa.koel.app/#!/playlist/98995";
+
+        loginPage.login();
+
+//      WHEN
+        actionsPage.selectStandardHyperLinks();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
+
     }
 
     public void choosePlaylistByName(String playlistName) {
@@ -147,6 +177,17 @@ public class ActionsTest extends BaseTest {
 
         return driver.findElement(
                 By.cssSelector("span.meta.text-secondary span.meta")).getText();
+    }
+
+
+    public void displayAllPlaylists() {
+        List<WebElement> playlists = driver.findElements(By.className("playlist-class"));
+        //count and display playlist names
+        System.out.println("Number of playlists: " + playlists.size());
+
+        for (WebElement e : playlists) {
+            System.out.println(e.getText());
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////

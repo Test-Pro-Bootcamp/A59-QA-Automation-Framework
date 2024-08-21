@@ -19,13 +19,16 @@ public class LoginPage extends BasePage{
 
     // Locator for Login Page Web Elements
     @FindBy(css = "input[type='email']")
-        private WebElement emailField;
+    private WebElement emailField;
 
     @FindBy(css = "input[type='password']")
-        private WebElement passwordField;
+    private WebElement passwordField;
 
     @FindBy(css = "button[type='submit']")
-        private WebElement submitBtn;
+    private WebElement submitBtnForLogin;
+
+    @FindBy(xpath = "//input[@type='submit' and @id='button' and @value='Submit']")
+    private WebElement submitBtnForRegistration;
 
     @FindBy(xpath = "//a[@href='registration']")
     private WebElement registrationLink;
@@ -36,6 +39,12 @@ public class LoginPage extends BasePage{
 
     @FindBy(linkText = "Registration / Forgot password")
     private WebElement getRegistrationLink;
+
+    @FindBy(css = "input:invalid")
+    private WebElement getInvalidMsg;
+
+    @FindBy(css = "a[data-testid='btn-logout']")
+    private WebElement submitBtnForLogout;
 
 
     // This annotation is used to locate the logout element on the login page using CSS selector.
@@ -58,7 +67,12 @@ public class LoginPage extends BasePage{
 
     public LoginPage clickSubmit() {
 
-        submitBtn.click();
+        try {
+            submitBtnForLogin.click();
+        } catch (NoSuchElementException e) {
+
+            submitBtnForRegistration.click();
+        }
         return this;
     }
 
@@ -74,6 +88,11 @@ public class LoginPage extends BasePage{
         return this;
     }
 
+    public void logOut() {
+
+        submitBtnForLogout.click();
+    }
+
     public WebElement getRegistrationLink() {
 
         return registrationLink;
@@ -82,11 +101,17 @@ public class LoginPage extends BasePage{
 
     public String selectCurrentPage() {
 
+        // Get current URL
         return StringUtils.substringBefore(driver.getCurrentUrl(), "?");
     }
 
     public void selectRegistrationLink() {
 
         waitForVisibility(getRegistrationLink).click();
+    }
+
+    public boolean isDisplayedValidationMsg() {
+
+        return waitForVisibility(getInvalidMsg).isDisplayed();
     }
 }

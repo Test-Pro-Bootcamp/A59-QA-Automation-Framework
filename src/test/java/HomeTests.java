@@ -29,6 +29,7 @@ public class HomeTests extends BaseTest {
         Thread.sleep(2000);
         Assert.assertTrue(homePage.selectSoundBars().isDisplayed());
     }
+
     @Test(enabled = false)
     public void renamePlayList() throws InterruptedException{
 
