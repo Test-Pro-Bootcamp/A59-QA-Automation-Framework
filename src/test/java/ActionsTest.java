@@ -84,7 +84,7 @@ public class ActionsTest extends BaseTest {
     public void hoverOverPlayButton() {
         //bg steps
         enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
+        enterPassword("te$t$tudent1");
         submit();
         //hover and verify play
         Assert.assertTrue(hoverPlay().isDisplayed());

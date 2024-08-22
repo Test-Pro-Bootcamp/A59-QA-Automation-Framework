@@ -60,7 +60,7 @@ public class BaseTest {
     protected String urlStartPoint =        "https://qa.koel.app/";
     protected String songName =             "grav";
     protected String userName =             "demo@testpro.io";
-    protected String userPassword =         "te$t$tudent";
+    protected String userPassword =         "te$t$tudent1";
     protected String userEmail =            "demo@testpro.io";
     protected String expectedCreatedMsg =   "Created playlist \""  + PlayListPage.playlistName + ".\"";
     protected String expectedAddedMsg =     "Added 1 song into \"" + PlayListPage.playlistName + ".\"";

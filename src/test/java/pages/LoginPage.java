@@ -46,6 +46,9 @@ public class LoginPage extends BasePage{
     @FindBy(css = "a[data-testid='btn-logout']")
     private WebElement submitBtnForLogout;
 
+    @FindBy(xpath= "//img[@src='./images/logo.svg?8a2f5cec8d12d85f91ae82ef106ecb28']")
+    private WebElement getLoginAvatar;
+
 
     // This annotation is used to locate the logout element on the login page using CSS selector.
 //    By emailField = By.cssSelector("input[type='email']");
@@ -81,7 +84,7 @@ public class LoginPage extends BasePage{
         HomePage homePage = new HomePage(driver);
 
         provideEmail("demo@testpro.io");
-        providePassword("te$t$tudent");
+        providePassword("te$t$tudent1");
         clickSubmit();
         homePage.isDisplayedUserAvatarIcon();
         driver.navigate().refresh();
@@ -91,6 +94,13 @@ public class LoginPage extends BasePage{
     public void logOut() {
 
         submitBtnForLogout.click();
+    }
+
+    public LoginPage logoutUser() {
+
+        submitBtnForLogout.click();
+        driver.navigate().refresh();
+        return this;
     }
 
     public WebElement getRegistrationLink() {
@@ -113,5 +123,10 @@ public class LoginPage extends BasePage{
     public boolean isDisplayedValidationMsg() {
 
         return waitForVisibility(getInvalidMsg).isDisplayed();
+    }
+
+    public boolean isDisplayedLoginAvatar() {
+
+        return waitForVisibility(getLoginAvatar).isDisplayed();
     }
 }

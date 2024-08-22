@@ -88,10 +88,14 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@href='#!/recently-played']")
     private WebElement getRecentlyPlayedPage;
 
+    @FindBy(xpath="//i[contains(@class, 'fa-sign-out')]")
+    private WebElement getLogoutBtn;
+
 
     //Methods
 
     public HomePage clickProfileIcon() {
+
         click(profileIcon);
         return this;
     }
@@ -217,7 +221,7 @@ public class HomePage extends BasePage {
         waitForVisibility(getHomePage).click();
     }
 
-    public void selectFavoriesPage() {
+    public void selectFavoritesPage() {
 
         waitForVisibility(getFavoritesPage).click();
     }
@@ -260,6 +264,11 @@ public class HomePage extends BasePage {
     public boolean isPlaylistAvailable() {
 
         return getPlayListToEdit.isDisplayed();
+    }
+
+    public boolean isLogoutBtnAvailable() {
+
+        return getLogoutBtn.isDisplayed();
     }
 
     public void selectPlaylist() {

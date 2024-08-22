@@ -57,7 +57,6 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-
     @Test(enabled = false)
     public void loginInvalidEmailEmptyPassword() {
 
@@ -210,7 +209,6 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(loginPage.isDisplayedValidationMsg());
     }
 
-
     @Test(enabled = false, dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
     public void negativeLoginTest(String email, String password) {
 
@@ -255,11 +253,41 @@ public class LoginTests extends BaseTest {
 //      WHEN
         loginPage.login();
         homePage.selectHomePage();
-        homePage.selectFavoriesPage();
-        loginPage.logOut();
+        homePage.selectFavoritesPage();
+        loginPage.logoutUser();
         loginPage.login();
 
 //      THEN
         Assert.assertEquals(loginPage.selectCurrentPage(), expectedURL);
+    }
+
+    @Test(enabled = true)
+    public void logoutBtnPresence() {
+        // Test to see if the logout button exists
+
+//      GIVEN
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+
+//      WHEN
+        loginPage.login();
+
+//      THEN
+        Assert.assertTrue(homePage.isLogoutBtnAvailable());
+    }
+
+    @Test(enabled = true)
+    public void loginUserThenLogoutUser() {
+        // Test to see if user can logout after logging in
+
+//      GIVEN
+            LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+            loginPage.login();
+            loginPage.logOut();
+
+//      THEN
+            Assert.assertTrue(loginPage.isDisplayedLoginAvatar());
     }
 }

@@ -4,6 +4,8 @@ import pages.LoginPage;
 import pages.ProfilePage;
 import pages.HomePage;
 
+import static org.bouncycastle.cms.RecipientId.password;
+
 public class ProfileTests extends BaseTest{
 
     @Test (enabled = false)
@@ -23,7 +25,7 @@ public class ProfileTests extends BaseTest{
         profilePage.selectProfileNameBtn();
         uniqueName = profilePage.generateUniqueName();
         profilePage.selectInputProfileNameField(uniqueName);
-        profilePage.selectInputProfilePasswordField(userPassword);
+        profilePage.selectInputProfileCurrentPasswordField(userPassword);
 
 //      THEN
         Assert.assertEquals(profilePage.selectUpdatedVerifyNotificationMsg(test), expectedUpdatedMsg);
@@ -66,7 +68,7 @@ public class ProfileTests extends BaseTest{
         // Change email
         homePage.clickProfileIcon();
         profilePage.selectInputProfileEmailField(newUserEmail);
-        profilePage.selectInputProfilePasswordField(userPassword);
+        profilePage.selectInputProfileCurrentPasswordField(userPassword);
 
         // logout
         loginPage.logOut();
@@ -86,9 +88,62 @@ public class ProfileTests extends BaseTest{
         // change the email back to the original
         homePage.clickProfileIcon();
         profilePage.selectInputProfileEmailField(userEmail);
-        profilePage.selectInputProfilePasswordField(userPassword);
+        profilePage.selectInputProfileCurrentPasswordField(userPassword);
 
 //      THEN
         Assert.assertEquals(profilePage.selectVerifyNotificationMsg(), expectedUpdatedMsg);
+    }
+
+    @Test (enabled = true)
+    public void changeCurrentEmailAndPasswordAndLogoutTest()  {
+
+//      GIVEN
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        ProfilePage profilePage = new ProfilePage(getDriver());
+        String newUserEmail = "mydemo@testpro.io";
+        String newUserPassword = "te$t$tudent2";
+        String expectedUpdatedMsg = "Profile updated.";
+        String test = "";
+
+        loginPage.login();
+
+//      WHEN
+        // Change current email and password
+        homePage.clickProfileIcon();
+        profilePage.selectInputProfileEmailField(newUserEmail);
+        profilePage.selectInputProfileNewPasswordField(newUserPassword);
+        profilePage.selectInputProfileCurrentPasswordField(userPassword);
+
+//        Thread.sleep(3000);
+//        // logout
+//        loginPage.logOut();
+//        Thread.sleep(9000);
+//
+//        loginPage.provideEmail(newUserEmail);
+//        loginPage.providePassword(newUserPassword);
+//        loginPage.clickSubmit();
+//
+//        // try to log back in with old email and password
+//        driver.navigate().refresh();
+//        loginPage.provideEmail(userEmail);
+//        loginPage.providePassword(userPassword);
+//        loginPage.clickSubmit();
+//
+//        // log back in with new email and password
+//        driver.navigate().refresh();
+//        loginPage.provideEmail(newUserEmail);
+//        loginPage.providePassword(newUserPassword);
+//        loginPage.clickSubmit();
+
+        // change the email back to the original
+        homePage.clickProfileIcon();
+        profilePage.selectInputProfileEmailField(userEmail);
+        profilePage.selectInputProfileNewPasswordField(userPassword);
+        profilePage.selectInputProfileCurrentPasswordField(newUserPassword);
+        loginPage.logOut();
+
+//      THEN
+        Assert.assertTrue(loginPage.isDisplayedLoginAvatar());
     }
 }

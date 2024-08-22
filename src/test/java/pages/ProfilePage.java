@@ -37,6 +37,9 @@ public class ProfilePage extends BasePage {
     @FindBy(css="input[type='password'][name='current_password'][id='inputProfileCurrentPassword']")
     private WebElement getInputProfileCurrentPasswordField;
 
+    @FindBy(css="input[type='password'][name='new_password'][id='inputProfileNewPassword']")
+    private WebElement getInputProfileNewPasswordField;
+
     @FindBy(xpath="//div[@class=\"theme selected\"]")
     private WebElement getCurrentTheme;
 
@@ -63,10 +66,16 @@ public class ProfilePage extends BasePage {
         getInputProfileNameField.sendKeys(newName + "\n");
     }
 
-    public void selectInputProfilePasswordField(String userPassword) {
+    public void selectInputProfileCurrentPasswordField(String userPassword) {
 
         getInputProfileCurrentPasswordField.clear();
         getInputProfileCurrentPasswordField.sendKeys(userPassword + "\n");
+    }
+
+    public void selectInputProfileNewPasswordField(String userPassword) {
+
+        getInputProfileNewPasswordField.clear();
+        getInputProfileNewPasswordField.sendKeys(userPassword + "\n");
     }
 
     public void selectInputProfileEmailField(String userEmail) {
@@ -74,7 +83,6 @@ public class ProfilePage extends BasePage {
         getInputEmailField.clear();
         getInputEmailField.sendKeys(userEmail + "\n");
     }
-
 
     public String selectVerifyNotificationMsg() {
 
