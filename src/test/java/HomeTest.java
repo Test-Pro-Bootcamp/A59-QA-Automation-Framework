@@ -14,9 +14,9 @@ public class HomeTest extends BaseTest {
     public void hoverOverPlayButtonAndPlaySong() {
         // Step 1 - Login into Koel App.
         // -- Note - Navigate to Koel app login page already done with BaseTest @BeforeMethod
-        enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
-        submit();
+        enterEmail("leon.poyau@testpro.io");
+        enterPassword("jTRCkwNf");
+        submit(); // 2-second delay after clicking submit. This is done using Robot class in BaseTest @BeforeMethod
         // Thread.sleep(2000);
 
         // Step 2 - Hover over play button. Is button visible?
@@ -37,7 +37,7 @@ public class HomeTest extends BaseTest {
         // -- Note - Navigate to Koel app login page already done with BaseTest @BeforeMethod
         enterEmail("leon.poyau@testpro.io");
         enterPassword("jTRCkwNf");
-        submit();
+        submit(); // 2-second delay after clicking submit. This is done using Robot class in BaseTest @BeforeMethod
 
         // Step 2 - Find specific playlist element and click on it to select it. choose a playlist by name
         choosePlaylistByName("TestPro Playlist");
@@ -59,14 +59,14 @@ public class HomeTest extends BaseTest {
         // -- note - Navigate to Koel app login page already done with BaseTest @BeforeMethod
         enterEmail("leon.poyau@testpro.io");
         enterPassword("jTRCkwNf");
-        submit();
+        submit(); // 2-second delay after clicking submit. This is done using Robot class in BaseTest @BeforeMethod
 
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         // Step 2 - Double-click on playlist to be renamed
         doubleClickPlaylist();
 
         // Step 3 - Enter new Name to Rename Playlist
-        Thread.sleep(2000);
+        // Thread.sleep(2000);
         enterNewName();
 
         // Validate and Verify playlist is renamed via assertion

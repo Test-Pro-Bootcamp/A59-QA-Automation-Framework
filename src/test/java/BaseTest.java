@@ -24,6 +24,7 @@ public class BaseTest {
     WebDriverWait wait;
     Wait<WebDriver> fluentWait;
     Actions actions;
+    Robot robot;
 
     // String url = "https://qa.koel.app/";
 
@@ -45,7 +46,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchBrowser(String baseURL){
+    public void launchBrowser(String baseURL) throws AWTException {
         // Pre-condition
         // Added ChromeOptions argument below to fix websocket error
         options.addArguments("--remote-allow-origins=*");
@@ -54,6 +55,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
+        robot = new Robot();
 
         // using fluentWait took a long time for span.name element to be interactable and clicked on in
         // navigateToProfilePage() method called in changeProfileName() method
@@ -78,6 +80,7 @@ public class BaseTest {
                 (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
         //Thread.sleep(1000);
+        robot.delay(2000);
     }
 
     protected void enterPassword(String password) {
