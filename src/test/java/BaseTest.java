@@ -24,7 +24,7 @@ public class BaseTest {
     WebDriverWait wait;
     Wait<WebDriver> fluentWait;
     Actions actions;
-    Robot robot;
+
     // String url = "https://qa.koel.app/";
 
     // String url = "https://qa.koel.app/";
@@ -78,7 +78,6 @@ public class BaseTest {
                 (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
         //Thread.sleep(1000);
-
     }
 
     protected void enterPassword(String password) {

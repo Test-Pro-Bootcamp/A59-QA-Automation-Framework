@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -8,7 +9,7 @@ import java.awt.*;
 import java.util.List;
 
 public class HomeTest extends BaseTest {
-
+    String newPlaylistName = "Sample Edited Playlist";
     @Test
     public void hoverOverPlayButtonAndPlaySong() {
         // Step 1 - Login into Koel App.
@@ -51,7 +52,47 @@ public class HomeTest extends BaseTest {
 
     }
 
+    @Test
+    public void renamePlaylist() throws InterruptedException {
+        String updatedPlaylistMsg = "Updated playlist \"Sample Edited Playlist.\"";
+        // Step 1 - Login
+        // -- note - Navigate to Koel app login page already done with BaseTest @BeforeMethod
+        enterEmail("leon.poyau@testpro.io");
+        enterPassword("jTRCkwNf");
+        submit();
+
+        Thread.sleep(2000);
+        // Step 2 - Double-click on playlist to be renamed
+        doubleClickPlaylist();
+
+        // Step 3 - Enter new Name to Rename Playlist
+        Thread.sleep(2000);
+        enterNewName();
+
+        // Validate and Verify playlist is renamed via assertion
+        // Assert.assertNotEquals(getPlaylistName(),"TestPro Playlist");
+        Assert.assertEquals(getPlaylistRenameSuccessMsg(),updatedPlaylistMsg);
+    }
+
+    public String getPlaylistRenameSuccessMsg() {
+        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("div.success.show")));
+        return notification.getText();
+    }
+
     // Helper Methods
+    public void enterNewName() {
+        WebElement playlistInputField = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector("[name='name']")));
+        // Used Keys.chord(Keys.CONTROL, "A") instead below
+        // because playlistInputField.Clear() will not work on this text field
+        // Below uses a sequence of keystrokes, Control-A then Back_space
+        playlistInputField.sendKeys(Keys.chord(Keys.CONTROL,"A"),Keys.BACK_SPACE);
+        playlistInputField.sendKeys(newPlaylistName);
+        playlistInputField.sendKeys(Keys.ENTER);
+
+    }
+
     public String getPlaylistInfo() {
         return driver.findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
     }
@@ -94,5 +135,23 @@ public class HomeTest extends BaseTest {
     public void clickOnVisiblePlayButton(WebElement btn) {
         // WebElement playBtn = hoverPlay();
         btn.click();
+    }
+
+    public void doubleClickPlaylist() {
+        WebElement playlist = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector(".playlist:nth-child(4)")));
+        actions.doubleClick(playlist).perform();
+    }
+
+    public String getPlaylistName() {
+        WebElement playlistBtn = wait.until(ExpectedConditions.visibilityOfElementLocated
+                (By.cssSelector(".playlist:nth-child(4)")));
+        return playlistBtn.getText();
+    }
+
+    private void changePlaylistName(WebElement name) {
+        name.clear();
+        name.sendKeys("New TestPro Playlist");
+        name.click();
     }
 }
