@@ -261,7 +261,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(loginPage.selectCurrentPage(), expectedURL);
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 1)
     public void logoutBtnPresence() {
         // Test to see if the logout button exists
 
@@ -276,7 +276,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.isLogoutBtnAvailable());
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 2)
     public void loginUserThenLogoutUser() {
         // Test to see if user can logout after logging in
 

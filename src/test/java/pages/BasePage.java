@@ -34,6 +34,7 @@ public class BasePage {
     @FindBy(css = "[data-testid = 'sound-bar-play']")
     private WebElement soundBarVisualizer;
 
+
     // Method to wait for an element to be visible on the page
     //    public WebElement waitForVisibility(By by) {
     //        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));

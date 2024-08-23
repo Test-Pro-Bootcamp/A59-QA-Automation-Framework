@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.LoginPage;
 import pages.ProfilePage;
 import pages.HomePage;
@@ -94,12 +95,13 @@ public class ProfileTests extends BaseTest{
         Assert.assertEquals(profilePage.selectVerifyNotificationMsg(), expectedUpdatedMsg);
     }
 
-    @Test (enabled = true)
-    public void changeCurrentEmailAndPasswordAndLogoutTest()  {
+    @Test (enabled = true, priority = 5)
+    public void changeCurrentEmailAndPasswordAndLogoutTest() throws InterruptedException {
 
 //      GIVEN
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
+        BasePage basePage = new BasePage(getDriver());
         ProfilePage profilePage = new ProfilePage(getDriver());
         String newUserEmail = "james.mar-new@testpro.io";
         String newUserPassword = "te$t$tudent2";
@@ -107,6 +109,7 @@ public class ProfileTests extends BaseTest{
         String test = "";
 
         loginPage.login();
+        Thread.sleep(3000);
 
 //      WHEN
         // Change current email and password
@@ -114,34 +117,44 @@ public class ProfileTests extends BaseTest{
         profilePage.selectInputProfileEmailField(newUserEmail);
         profilePage.selectInputProfileNewPasswordField(newUserPassword);
         profilePage.selectInputProfileCurrentPasswordField(userPassword);
+        homePage.isNotDisplayedSuccessMsg();
+        Thread.sleep(3000);
 
-//        Thread.sleep(3000);
-//        // logout
 //        loginPage.logOut();
-//        Thread.sleep(9000);
+//        Thread.sleep(3000);
+//        loginPage.isDisplayedLoginAvatar();
 //
 //        loginPage.provideEmail(newUserEmail);
 //        loginPage.providePassword(newUserPassword);
 //        loginPage.clickSubmit();
 //
-//        // try to log back in with old email and password
+        // try to log back in with old email and password
 //        driver.navigate().refresh();
 //        loginPage.provideEmail(userEmail);
 //        loginPage.providePassword(userPassword);
 //        loginPage.clickSubmit();
-//
-//        // log back in with new email and password
+//        homePage.isNotDisplayedSuccessMsg();
+//        Thread.sleep(2000);
+        // log back in with new email and password
 //        driver.navigate().refresh();
 //        loginPage.provideEmail(newUserEmail);
 //        loginPage.providePassword(newUserPassword);
 //        loginPage.clickSubmit();
-
+//        homePage.isNotDisplayedSuccessMsg();
+//        Thread.sleep(2000);
         // change the email back to the original
         homePage.clickProfileIcon();
         profilePage.selectInputProfileEmailField(userEmail);
         profilePage.selectInputProfileNewPasswordField(userPassword);
         profilePage.selectInputProfileCurrentPasswordField(newUserPassword);
+        homePage.isNotDisplayedSuccessMsg();
+//        Thread.sleep(5000);
+        driver.navigate().refresh();
+
+        // logout
         loginPage.logOut();
+//        Thread.sleep(3000);
+//        driver.navigate().refresh();
 
 //      THEN
         Assert.assertTrue(loginPage.isDisplayedLoginAvatar());

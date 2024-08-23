@@ -43,7 +43,8 @@ public class LoginPage extends BasePage{
     @FindBy(css = "input:invalid")
     private WebElement getInvalidMsg;
 
-    @FindBy(css = "a[data-testid='btn-logout']")
+//    @FindBy(css = "a[data-testid='btn-logout']")
+    @FindBy(css = "i.fa.fa-sign-out")
     private WebElement submitBtnForLogout;
 
     @FindBy(xpath= "//img[@src='./images/logo.svg?8a2f5cec8d12d85f91ae82ef106ecb28']")
@@ -71,41 +72,41 @@ public class LoginPage extends BasePage{
     public LoginPage clickSubmit() {
 
         try {
-            submitBtnForLogin.click();
+            waitForVisibility(submitBtnForLogin).click();
         } catch (NoSuchElementException e) {
 
-            submitBtnForRegistration.click();
+            waitForVisibility(submitBtnForRegistration).click();
         }
         return this;
     }
 
     public LoginPage login() {
 
-        HomePage homePage = new HomePage(driver);
+//        HomePage homePage = new HomePage(driver);
 
         provideEmail("james.mar@testpro.io");
         providePassword("te$t$tudent1");
         clickSubmit();
-        homePage.isDisplayedUserAvatarIcon();
-        driver.navigate().refresh();
+//        homePage.isDisplayedUserAvatarIcon();
+//        driver.navigate().refresh();
         return this;
     }
 
     public void logOut() {
 
-        submitBtnForLogout.click();
+        waitForVisibility(submitBtnForLogout).click();
     }
 
     public LoginPage logoutUser() {
 
-        submitBtnForLogout.click();
+        waitForVisibility(submitBtnForLogout).click();
         driver.navigate().refresh();
         return this;
     }
 
     public WebElement getRegistrationLink() {
 
-        return registrationLink;
+        return waitForVisibility(registrationLink);
         // This method returns the registrationLink WebElement, representing the registration link on the login page.
     }
 

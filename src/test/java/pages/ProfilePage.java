@@ -62,35 +62,35 @@ public class ProfilePage extends BasePage {
 
     public void selectInputProfileNameField(String newName) {
 
-        getInputProfileNameField.clear();
-        getInputProfileNameField.sendKeys(newName + "\n");
+        waitForVisibility(getInputProfileNameField).clear();
+        waitForVisibility(getInputProfileNameField).sendKeys(newName + "\n");
     }
 
     public void selectInputProfileCurrentPasswordField(String userPassword) {
 
-        getInputProfileCurrentPasswordField.clear();
-        getInputProfileCurrentPasswordField.sendKeys(userPassword + "\n");
+        waitForVisibility(getInputProfileCurrentPasswordField).clear();
+        waitForVisibility(getInputProfileCurrentPasswordField).sendKeys(userPassword + "\n");
     }
 
     public void selectInputProfileNewPasswordField(String userPassword) {
 
-        getInputProfileNewPasswordField.clear();
-        getInputProfileNewPasswordField.sendKeys(userPassword + "\n");
+        waitForVisibility(getInputProfileNewPasswordField).clear();
+        waitForVisibility(getInputProfileNewPasswordField).sendKeys(userPassword + "\n");
     }
 
     public void selectInputProfileEmailField(String userEmail) {
 
-        getInputEmailField.clear();
-        getInputEmailField.sendKeys(userEmail + "\n");
+        waitForVisibility(getInputEmailField).clear();
+        waitForVisibility(getInputEmailField).sendKeys(userEmail + "\n");
     }
 
     public String selectVerifyNotificationMsg() {
 
-        return getUpdatedVerificationMsg.getText();
+        return waitForVisibility(getUpdatedVerificationMsg).getText();
     }
     public void selectProfileSaveBtn() {
 
-        getProfileSaveBtn.click();
+        waitForVisibility(getProfileSaveBtn).click();
     }
 
     public WebElement selectProfileSaveInfo() {
@@ -100,7 +100,7 @@ public class ProfilePage extends BasePage {
 
     public String selectUpdatedVerifyNotificationMsg(String test) {
 
-        test = getUpdatedVerificationMsg.getText();
+        test = waitForVisibility(getUpdatedVerificationMsg).getText();
         return test;
 //        return getUpdatedVerificationMsg.isDisplayed();
     }
@@ -112,13 +112,13 @@ public class ProfilePage extends BasePage {
 
     public ProfilePage selectVioletTheme() {
 
-        getVioletTheme.click();
+        waitForVisibility(getVioletTheme).click();
         return this;
     }
 
     public String selectCurrentTheme() {
 
-        return getCurrentTheme.getAttribute("data-testid");
+        return waitForVisibility(getCurrentTheme).getAttribute("data-testid");
     }
 
 }

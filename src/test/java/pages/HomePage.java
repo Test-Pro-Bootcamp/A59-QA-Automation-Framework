@@ -91,13 +91,16 @@ public class HomePage extends BasePage {
     @FindBy(xpath="//i[contains(@class, 'fa-sign-out')]")
     private WebElement getLogoutBtn;
 
+    @FindBy(css = "div.success.show")
+    private WebElement getSuccessMsg;
+
 
     //Methods
 
-    public HomePage clickProfileIcon() {
+    public void clickProfileIcon() {
 
-        click(profileIcon);
-        return this;
+        waitForVisibility(profileIcon).click();
+//        return this;
     }
 
     public String selectPlaylistDetails() {
@@ -261,9 +264,14 @@ public class HomePage extends BasePage {
         return waitForAvatarIcon(userAvatarIcon).isDisplayed();
     }
 
+    public boolean isNotDisplayedSuccessMsg() {
+
+        return waitForElementToBeNotVisible(getSuccessMsg);
+    }
+
     public boolean isPlaylistAvailable() {
 
-        return getPlayListToEdit.isDisplayed();
+        return waitForVisibility(getPlayListToEdit).isDisplayed();
     }
 
     public boolean isLogoutBtnAvailable() {

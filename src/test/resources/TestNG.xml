@@ -7,24 +7,19 @@
     <test name="Example Test" preserve-order="false">
         <classes>
 
-            <!-- James Mar | Sprint-09 - 02 | INTERNSHIP-97379 -->
+            <!--  James Mar | Sprint-09 - 02 | INTERNSHIP-97379  -->
 
-            <!-- 'Log student out' button should be present on the homepage, next to 'Profile' button   -->
+            <!-- 'Log student out' button should be present on the homepage, next to 'Profile' button  -->
             <class name ="LoginTests"> <methods><include name = "logoutBtnPresence"/></methods></class>
 
-            <!--  User should be able to log out after successful login  -->
+            <!--  User should be able to log out after successful login -->
             <class name ="LoginTests"> <methods><include name = "loginUserThenLogoutUser"/></methods></class>
 
-            <!--  User should be navigated to the Login page after logging out  -->
+            <!--  User should be navigated to the Login page after logging out -->
             <class name ="LoginTests"> <methods><include name = "loginUserThenLogoutUser"/></methods></class>
 
             <!--  User should be able to log out after updating email and password  -->
             <class name ="ProfileTests"> <methods><include name = "changeCurrentEmailAndPasswordAndLogoutTest"/></methods></class>
-
-
-
-
-
 
             <!--
             <class name="PlayListTests">
