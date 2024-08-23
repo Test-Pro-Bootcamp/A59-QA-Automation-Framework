@@ -1,12 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG">
-
+<!-- <suite name="TestNG"> -->
+<suite name="TestNG" parallel="methods" thread-count="1">
+    <parameter name="BaseURL" value="https://qa.koel.app/"/>
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="LoginTests"/>
-            <class name="BaseTest"/>
+
+            <!--  James Mar | Sprint-09 - 02 | INTERNSHIP-97379  -->
+
+            <!-- 'Log student out' button should be present on the homepage, next to 'Profile' button  -->
+            <class name ="LoginTests"> <methods><include name = "logoutBtnPresence"/></methods></class>
+
+            <!--  User should be able to log out after successful login -->
+            <class name ="LoginTests"> <methods><include name = "loginUserThenLogoutUser"/></methods></class>
+
+            <!--  User should be navigated to the Login page after logging out -->
+            <class name ="LoginTests"> <methods><include name = "loginUserThenLogoutUser"/></methods></class>
+
+            <!--  User should be able to log out after updating email and password  -->
+            <class name ="ProfileTests"> <methods><include name = "changeCurrentEmailAndPasswordAndLogoutTest"/></methods></class>
+
+            <!--
+            <class name="PlayListTests">
+                <methods>
+                    <include name="deletePlayList"/>
+                </methods>
+            </class> -->
+            <!--
+            <class name="HomeTest">
+                <methods>
+                    <include name="renamePlayList"/>
+                </methods>
+           </class> -->
+            <!--
+            <class name="ProfileTests">
+
+            </class>
+            -->
+            <!-- <class name="CucumberRunner"> -->
+
+            <!--     <methods>
+                    <include name="countSongsInPlaylist()"/>
+                </methods>  -->
+
         </classes>
     </test>
 </suite>

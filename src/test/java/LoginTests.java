@@ -1,25 +1,293 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import io.cucumber.java.nl.Stel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
-    @Test
-    public void loginEmptyEmailPassword() {
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+    @Test(enabled = false)
+    public void loginValidEmailPassword() {
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//      GIVEN
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+//      WHEN
+        loginPage.login();
+
+//        Example of Fluent
+//        loginPage.provideEmail("james.mar@testpro.io")
+//                 .providePassword("te$t$tudent1")
+//                 .clickSubmit();
+
+//      THEN
+        Assert.assertTrue(homePage.selectUserAvatar().isDisplayed());
+    }
+
+    @Test(enabled = true)
+    public void loginInvalidEmailValidPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = true)
+    public void loginValidEmailInvalidPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("james.mar@testpro.io");
+        loginPage.providePassword("InvalidPa$$wd");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = false)
+    public void loginInvalidEmailEmptyPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = true)
+    public void loginInvalidEmailFormatNoAtSymbolValidPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalidtestpro.io");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = true)
+    public void loginInvalidEmailFormatNoAtSymbolEmptyPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalidtestpro.io");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = true)
+    public void loginInvalidEmailFormatNoPeriodSymbolValidPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalid@testproio");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = true)
+    public void loginInvalidEmailFormatNoDomainSymbolValidPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalid@testpro");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = false)
+    public void loginInvalidEmailFormatNoPeriodEmptyPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalid@testproio");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = false)
+    public void loginInvalidEmailFormatNoAtNoPeriodEmptyPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("invalidtestproio");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = false)
+    public void loginEmptyEmailEmptyPassword() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
+    }
+
+    @Test(enabled = false)
+    public void loginValidEmailInvalidPasswordShowMsg() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail("james.mar@testpro.io");
+        loginPage.providePassword("InvalidPa$$wd");
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertTrue(loginPage.isDisplayedValidationMsg());
+    }
+
+    @Test(enabled = false)
+    public void loginEmptyEmailEmptyPasswordShowMsg() {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertTrue(loginPage.isDisplayedValidationMsg());
+    }
+
+    @Test(enabled = false, dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    public void negativeLoginTest(String email, String password) {
+
+//      GIVEN
+        String expectedUrl = "https://qa.koel.app/";
+        LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+        loginPage.provideEmail(email);
+        loginPage.providePassword(password);
+        loginPage.clickSubmit();
+
+//      THEN
+        Assert.assertEquals(loginPage.selectCurrentPage(), expectedUrl);
+    }
+
+    @Test(enabled = true)
+    public void loginAndGoToHomePage() {
+
+//      GIVEN
+        String expectedURL = "https://qa.koel.app/#!/home";
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+
+//      WHEN
+        loginPage.login();
+        homePage.selectHomePage();
+
+//      THEN
+        Assert.assertEquals(loginPage.selectCurrentPage(), expectedURL);
+    }
+
+    @Test(enabled = true)
+    public void loginGoToHomePageGoToFavoritesPageThenLogOutAndLogBackInToLastPageVisited() {
+        // Test to see if the last page visited is the same page you go to after login
+
+//      GIVEN
+        String expectedURL = "https://qa.koel.app/#!/favorites";
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+
+//      WHEN
+        loginPage.login();
+        homePage.selectHomePage();
+        homePage.selectFavoritesPage();
+        loginPage.logoutUser();
+        loginPage.login();
+
+//      THEN
+        Assert.assertEquals(loginPage.selectCurrentPage(), expectedURL);
+    }
+
+    @Test(enabled = true, priority = 1)
+    public void logoutBtnPresence() {
+        // Test to see if the logout button exists
+
+//      GIVEN
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+
+//      WHEN
+        loginPage.login();
+
+//      THEN
+        Assert.assertTrue(homePage.isLogoutBtnAvailable());
+    }
+
+    @Test(enabled = true, priority = 2)
+    public void loginUserThenLogoutUser() {
+        // Test to see if user can logout after logging in
+
+//      GIVEN
+            LoginPage loginPage = new LoginPage(getDriver());
+
+//      WHEN
+            loginPage.login();
+            loginPage.logOut();
+
+//      THEN
+            Assert.assertTrue(loginPage.isDisplayedLoginAvatar());
     }
 }
