@@ -58,7 +58,7 @@ public class ProfileTests extends BaseTest{
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         ProfilePage profilePage = new ProfilePage(getDriver());
-        String newUserEmail = "mydemo@testpro.io";
+        String newUserEmail = "james.mar-new@testpro.io";
         String expectedUpdatedMsg = "Profile updated.";
         String test = "";
 
@@ -101,7 +101,7 @@ public class ProfileTests extends BaseTest{
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         ProfilePage profilePage = new ProfilePage(getDriver());
-        String newUserEmail = "mydemo@testpro.io";
+        String newUserEmail = "james.mar-new@testpro.io";
         String newUserPassword = "te$t$tudent2";
         String expectedUpdatedMsg = "Profile updated.";
         String test = "";

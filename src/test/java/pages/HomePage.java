@@ -258,7 +258,7 @@ public class HomePage extends BasePage {
 
     public boolean isDisplayedUserAvatarIcon() {
         // Utilizes the waitForElementToBeNotVisible method to check if the user avatar icon is visible
-        return waitForVisibility(userAvatarIcon).isDisplayed();
+        return waitForAvatarIcon(userAvatarIcon).isDisplayed();
     }
 
     public boolean isPlaylistAvailable() {

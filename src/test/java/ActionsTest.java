@@ -22,8 +22,8 @@ public class ActionsTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         AllSongsPage allSongsPage = new AllSongsPage(driver);
 
-        //loginPage.provideEmail("demo@class.com");
-        //loginPage.providePassword("te$t$tudent");
+        //loginPage.provideEmail("james.mar@testpro.io");
+        //loginPage.providePassword("te$t$tudent1");
         //loginPage.clickSubmit();
         loginPage.login();
 
@@ -83,7 +83,7 @@ public class ActionsTest extends BaseTest {
     //@Test
     public void hoverOverPlayButton() {
         //bg steps
-        enterEmail("demo@testpro.io");
+        enterEmail("james.mar@testpro.io");
         enterPassword("te$t$tudent1");
         submit();
         //hover and verify play

@@ -17,8 +17,8 @@ public class LoginTests extends BaseTest {
         loginPage.login();
 
 //        Example of Fluent
-//        loginPage.provideEmail("demo@testpro.io")
-//                 .providePassword("te$t$tudent")
+//        loginPage.provideEmail("james.mar@testpro.io")
+//                 .providePassword("te$t$tudent1")
 //                 .clickSubmit();
 
 //      THEN
@@ -49,7 +49,7 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(getDriver());
 
 //      WHEN
-        loginPage.provideEmail("demo@testpro.io");
+        loginPage.provideEmail("james.mar@testpro.io");
         loginPage.providePassword("InvalidPa$$wd");
         loginPage.clickSubmit();
 
@@ -187,7 +187,7 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(getDriver());
 
 //      WHEN
-        loginPage.provideEmail("demo@testpro.io");
+        loginPage.provideEmail("james.mar@testpro.io");
         loginPage.providePassword("InvalidPa$$wd");
         loginPage.clickSubmit();
 

@@ -5,9 +5,9 @@ public class TestDataProvider extends BaseTest {
     @DataProvider(name="NegativeLoginTestData")
     public static Object[][]getDataFromDataProviders() {
         return new Object[][] {
-                {"invalid@testpro.io", "te$t$tudent"},
-                {"demo@testpro.io", ""},
-                {"demo@testproio", "te$t$tudent"},
+                {"invalid@testpro.io", "te$t$tudent1"},
+                {"james.mar@testpro.io", ""},
+                {"james.mar@testproio", "te$t$tudent1"},
                 {"",""}
         };
     }

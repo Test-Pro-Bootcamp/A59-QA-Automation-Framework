@@ -54,14 +54,14 @@ public class BaseTest {
 //    String expectedAddedMsg =   "Added 1 song into " + "\"TestPro Playlist.\"";
 //    String songName = "grav";
 //    String playlistName = "TestPro Playlist";
-//    String userName = "demo@testpro.io";
-//    String userPassword = "te$t$tudent";
+//    String userName = "james.mar@testpro.io";
+//    String userPassword = "te$t$tudent1";
 
     protected String urlStartPoint =        "https://qa.koel.app/";
     protected String songName =             "grav";
-    protected String userName =             "demo@testpro.io";
+    protected String userName =             "james.mar@testpro.io";
+    protected String userEmail =            "james.mar@testpro.io";
     protected String userPassword =         "te$t$tudent1";
-    protected String userEmail =            "demo@testpro.io";
     protected String expectedCreatedMsg =   "Created playlist \""  + PlayListPage.playlistName + ".\"";
     protected String expectedAddedMsg =     "Added 1 song into \"" + PlayListPage.playlistName + ".\"";
     protected String expectedDeletedMsg =   "Deleted playlist \""  + PlayListPage.playlistName + ".\"";
