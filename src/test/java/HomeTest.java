@@ -30,7 +30,6 @@ public class HomeTest extends BaseTest {
         Assert.assertTrue(isSongPlaying());
     }
 
-    // Helper Methods
     @Test
     public void countSongsInPlaylist() {
         // Step 1 - Login into Koel App.
@@ -74,6 +73,7 @@ public class HomeTest extends BaseTest {
         Assert.assertEquals(getPlaylistRenameSuccessMsg(),updatedPlaylistMsg);
     }
 
+    // Helper Methods
     public String getPlaylistRenameSuccessMsg() {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector("div.success.show")));
