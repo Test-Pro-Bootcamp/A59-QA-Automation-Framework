@@ -7,19 +7,33 @@
     <test name="Example Test" preserve-order="false">
         <classes>
 
-            <!--  James Mar | Sprint-09 - 02 | INTERNSHIP-97379  -->
+            <!--  James Mar | Sprint-09 - 01 | INTERNSHIP-97359  -->
 
-            <!-- 'Log student out' button should be present on the homepage, next to 'Profile' button  -->
-            <class name ="LoginTests"> <methods><include name = "logoutBtnPresence"/></methods></class>
+            <!--  User should be navigated to the Homepage after successful login  -->
+            <class name="LoginTests"> <methods> <include name="loginAndGoToHomePage"/> </methods> </class>
 
-            <!--  User should be able to log out after successful login -->
-            <class name ="LoginTests"> <methods><include name = "loginUserThenLogoutUser"/></methods></class>
+            <!--  User should be able to navigate to any page in Koel (Current Queue, All Songs, Albums, Artists, Favorites, Recently Played, user's created playlist) after successful login. -->
+            <class name="ActionsTest"> <methods> <include name="navigateThroughAllPages"/> </methods> </class>
 
-            <!--  User should be navigated to the Login page after logging out -->
-            <class name ="LoginTests"> <methods><include name = "loginUserThenLogoutUser"/></methods></class>
+            <!--  User should be taken to a last visited page (Current Queue, All Songs, Albums, Artists, Favorites, Recently Played, user's created playlist) after logging out and logging in again;  -->
+            <class name="LoginTests"> <methods> <include name="loginGoToHomePageGoToFavoritesPageThenLogOutAndLogBackInToLastPageVisited"/> </methods> </class>
 
-            <!--  User should be able to log out after updating email and password  -->
-            <class name ="ProfileTests"> <methods><include name = "changeCurrentEmailAndPasswordAndLogoutTest"/></methods></class>
+            <!--  User should be able to log in with the updated email and the old email should not work  -->
+            <class name="ProfileTests"> <methods> <include name="changeCurrentEmailAndTestIfOldOneStillWorks"/> </methods> </class>
+
+            <!--  User should be able to login with the updated password and the old password should not work 'Password is incorrect' message should be displayed  -->
+            <class name="LoginTests"> <methods> <include name="loginValidEmailInvalidPassword"/> </methods> </class>
+
+            <!--  User should not be able to login with invalid format email (without @ symbol, dot or domain) and valid password. 'email format is incorrect' message should be displayed  -->
+            <class name="LoginTests"> <methods> <include name="loginInvalidEmailFormatNoAtSymbolValidPassword"/> </methods> </class>
+            <class name="LoginTests"> <methods> <include name="loginInvalidEmailFormatNoPeriodSymbolValidPassword"/> </methods> </class>
+            <class name="LoginTests"> <methods> <include name="loginInvalidEmailFormatNoDomainSymbolValidPassword"/> </methods> </class>
+
+            <!--  User should not be able to login with valid registered email and invalid password. 'Password is incorrect' message should be displayed  -->
+            <class name="LoginTests"> <methods> <include name="loginValidEmailInvalidPassword"/> </methods> </class>
+
+            <!--  User should not be able to login with empty 'Email Address' and 'Password fields'  -->
+            <class name="LoginTests"> <methods> <include name="loginEmptyEmailEmptyPassword"/> </methods> </class>
 
             <!--
             <class name="PlayListTests">

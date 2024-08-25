@@ -70,7 +70,8 @@ public class HomePage extends BasePage {
     @FindBy(css = "span.meta.text-secondary span.meta")
     private WebElement getPlaylistDetails;
 
-    @FindBy(css = "a.view-profile")
+//    @FindBy(css = "a.view-profile")
+    @FindBy(xpath = "//a[contains(@href, '#!/profile')]")
     private WebElement profileIcon;
 
     @FindBy(css = "[data-testid='play-next-btn']")
@@ -98,7 +99,7 @@ public class HomePage extends BasePage {
     //Methods
 
     public void clickProfileIcon() {
-
+        driver.navigate().refresh();
         waitForVisibility(profileIcon).click();
 //        return this;
     }

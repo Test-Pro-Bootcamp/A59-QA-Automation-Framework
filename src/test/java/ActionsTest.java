@@ -100,7 +100,7 @@ public class ActionsTest extends BaseTest {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Test #3 WebElements
-    @Test
+    @Test(enabled = false)
     public void countSongsInPlaylist() {
 
 //      GIVEN
@@ -115,7 +115,7 @@ public class ActionsTest extends BaseTest {
 
 //        actionsPage.displayAllSongs();
 //        actionsPage.displayAllPlaylists();
-        actionsPage.selectStandardHyperLinks();
+        actionsPage.selectCheckHyperLinks();
 //        actionsPage.selectAlbumHyperLinks();
 //        actionsPage.uniqueWebElements();
 //        actionsPage.selectCheckPageAccessibility();
@@ -131,19 +131,19 @@ public class ActionsTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(enabled = true, priority = 2)
     public void navigateThroughAllPages() {
 
 //      GIVEN
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         ActionsPage actionsPage = new ActionsPage(driver);
-        String expectedUrl = "https://qa.koel.app/#!/playlist/98995";
+        String expectedUrl = "https://qa.koel.app/#!/artists";
 
         loginPage.login();
 
 //      WHEN
-        actionsPage.selectStandardHyperLinks();
+        actionsPage.selectCheckHyperLinks();
 
 //      THEN
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);

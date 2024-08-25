@@ -41,7 +41,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 6)
     public void loginValidEmailInvalidPassword() {
 
 //      GIVEN
@@ -72,7 +72,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 7)
     public void loginInvalidEmailFormatNoAtSymbolValidPassword() {
 
 //      GIVEN
@@ -103,7 +103,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 8)
     public void loginInvalidEmailFormatNoPeriodSymbolValidPassword() {
 
 //      GIVEN
@@ -119,7 +119,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 9)
     public void loginInvalidEmailFormatNoDomainSymbolValidPassword() {
 
 //      GIVEN
@@ -165,7 +165,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl); //https://qa.koel.app/
     }
 
-    @Test(enabled = false)
+    @Test(enabled = false, priority = 10)
     public void loginEmptyEmailEmptyPassword() {
 
 //      GIVEN
@@ -225,7 +225,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(loginPage.selectCurrentPage(), expectedUrl);
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 1)
     public void loginAndGoToHomePage() {
 
 //      GIVEN
@@ -241,7 +241,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(loginPage.selectCurrentPage(), expectedURL);
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 3)
     public void loginGoToHomePageGoToFavoritesPageThenLogOutAndLogBackInToLastPageVisited() {
         // Test to see if the last page visited is the same page you go to after login
 
@@ -261,7 +261,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(loginPage.selectCurrentPage(), expectedURL);
     }
 
-    @Test(enabled = true, priority = 1)
+    @Test(enabled = true, priority = 10)
     public void logoutBtnPresence() {
         // Test to see if the logout button exists
 
@@ -276,7 +276,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.isLogoutBtnAvailable());
     }
 
-    @Test(enabled = true, priority = 2)
+    @Test(enabled = true, priority = 20)
     public void loginUserThenLogoutUser() {
         // Test to see if user can logout after logging in
 

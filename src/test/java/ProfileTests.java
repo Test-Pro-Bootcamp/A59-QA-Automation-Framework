@@ -52,8 +52,8 @@ public class ProfileTests extends BaseTest{
         Assert.assertTrue(profilePage.isVioletThemeSelected());
     }
 
-    @Test (enabled = true)
-    public void changeCurrentEmailAndTestIfOldOneStillWorks() {
+    @Test (enabled = true, priority = 5)
+    public void changeCurrentEmailAndTestIfOldOneStillWorks() throws InterruptedException {
 
 //      GIVEN
         LoginPage loginPage = new LoginPage(getDriver());
@@ -64,7 +64,7 @@ public class ProfileTests extends BaseTest{
         String test = "";
 
         loginPage.login();
-
+        Thread.sleep(2000);
 //      WHEN
         // Change email
         homePage.clickProfileIcon();
@@ -73,7 +73,7 @@ public class ProfileTests extends BaseTest{
 
         // logout
         loginPage.logOut();
-
+        Thread.sleep(2000);
         // log back in with old email and password
         driver.navigate().refresh();
         loginPage.provideEmail(userEmail);
@@ -82,11 +82,14 @@ public class ProfileTests extends BaseTest{
 
         // log back in with new email and password
         driver.navigate().refresh();
+        Thread.sleep(2000);
         loginPage.provideEmail(newUserEmail);
         loginPage.providePassword(userPassword);
         loginPage.clickSubmit();
 
         // change the email back to the original
+//        driver.navigate().refresh();
+        Thread.sleep(2000);
         homePage.clickProfileIcon();
         profilePage.selectInputProfileEmailField(userEmail);
         profilePage.selectInputProfileCurrentPasswordField(userPassword);

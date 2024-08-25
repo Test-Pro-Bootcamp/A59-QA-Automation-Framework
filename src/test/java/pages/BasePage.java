@@ -71,9 +71,13 @@ public class BasePage {
     }
 
     // Method to wait until all elements are visible on the page
-    public List<WebElement> waitUntilAllElementsLocatedByAreVisible(WebElement webElement) {
+//    public List<WebElement> waitUntilAllElementsLocatedByAreVisible(WebElement webElement) {
+//
+//        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy((By) webElement));
+//    }
+    public List<WebElement> waitUntilAllElementsLocatedByAreVisible(List<WebElement> elements) {
 
-        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy((By) webElement));
+        return wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
     // Method to wait until all required elements are invisible
