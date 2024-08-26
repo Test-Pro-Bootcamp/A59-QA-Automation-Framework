@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,23 +12,15 @@ import java.time.Duration;
 
 public class Homework17 extends BaseTest {
 
-    private WebDriver driver;
-
     @Test
     public void addSongToPlaylist() throws InterruptedException {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
-
         String expectedSongAddedMessage = "Added 1 song into \"TestPro Playlist.\"";
         // navigate to page
         navigateToPage();
 
         //login
-        enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
+        enterEmail("apurva.singh@testpro.io");
+        enterPassword("Acidrain1");
         submit();
 
 
@@ -50,14 +43,14 @@ public class Homework17 extends BaseTest {
         //actual vs expected
         Assert.assertEquals(getAddToPlaylistMessage(), expectedSongAddedMessage);
 
-        //String url = "https://qa.koel.app/";
-        // driver.get(url); /*
+        String url = "https://qa.koel.app/";
+         driver.get(url);
 
 
     }
-// Helper methods
+//Helper methods
 
-    public String getAddToPlaylistMessage() {
+      public String getAddToPlaylistMessage() {
         WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
         return notification.getText();
     }
