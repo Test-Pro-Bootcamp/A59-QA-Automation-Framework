@@ -21,14 +21,14 @@ public class KoelAppLoginTest extends BaseTest {
     public void toAllSongs(){
         loginPage.login();
         homePage.chooseAllSongsList();
-        Assert.assertTrue(allSongsPage.getToAllSongsPage().isDisplayed());
+        Assert.assertTrue(allSongsPage.getToAllSongsCount().isDisplayed());
     }
     //After logging out and logging in should be taken to a last visited page(AllSongs)
     @Test
     public void backToAllSongs(){
         loginPage.login();
-        allSongsPage.getToAllSongsPage();
-        Assert.assertTrue(allSongsPage.getToAllSongsPage().isDisplayed());
+        allSongsPage.getToAllSongsCount();
+        Assert.assertTrue(allSongsPage.getToAllSongsCount().isDisplayed());
     }
     @Test
     public void getNewEmailPassword(){

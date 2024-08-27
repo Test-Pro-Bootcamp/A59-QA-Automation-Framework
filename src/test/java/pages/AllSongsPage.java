@@ -14,7 +14,7 @@ public class AllSongsPage extends BasePage {
     //Locator
     By firstSong = By.cssSelector(".all-songs tr.song-item:nth-child(1)");
     By playOption = By.cssSelector("li.playback");
-    By toAllSongsPage = By.xpath("//section[@id='songsWrapper']//span[text()='66 songs • 04:32:57']");
+    By toAllSongsCount = By.xpath("//section[@id='songsWrapper']//span[text()='66 songs • 04:32:57']");
 
     //Methods
     public void contextClickFirstSong(){
@@ -23,8 +23,8 @@ public class AllSongsPage extends BasePage {
     public void choosePlayOption(){
         findElement(playOption).click();
     }
-    public WebElement getToAllSongsPage(){
-        return findElement(toAllSongsPage);
+    public WebElement getToAllSongsCount(){
+        return findElement(toAllSongsCount);
     }
 
 }

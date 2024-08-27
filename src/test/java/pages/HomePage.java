@@ -26,6 +26,12 @@ public class HomePage extends BasePage {
     private WebElement playListNameInput;
     @FindBy(css = "li a.songs")
     private WebElement allSongsList;
+    @FindBy(css = "a[class='queue active']")
+    private WebElement clickCurrentQueueSongs;
+    @FindBy(css = "a[class='artists']")
+    private WebElement chooseAlbumsList;
+    @FindBy(css = "section[current-view='Artists']")
+    private WebElement chooseArtistsList;
 
 
 
@@ -41,6 +47,23 @@ public class HomePage extends BasePage {
     }
     public WebElement getPlayListNameInput(){
         return playListNameInput;
+    }
+    public WebElement getClickCurrentQueueSongs(){
+        return clickCurrentQueueSongs;}
+    public void currentQueueSongs(){
+        getClickCurrentQueueSongs().click();
+    }
+    public WebElement getChooseAlbumsList(){
+        return chooseAlbumsList;
+    }
+    public void albumsList(){
+        getChooseAlbumsList().click();
+    }
+    public WebElement getChooseArtistsList(){
+        return chooseArtistsList;
+    }
+    public void artistsList(){
+        getChooseArtistsList().click();
     }
 
     public void createPlayList(String playListName){
