@@ -18,6 +18,8 @@
 <!--            <class name="Homework21"/>-->
 <!--            <class name="AllSongTestLesson21"/>-->
             <class name="KoelAppLoginTest"/>
+            <class name="CurrentQueueTest"/>
+
 
 
         </classes>
