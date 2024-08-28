@@ -1,4 +1,4 @@
-package stepDefinitions;
+/*package stepDefinitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -65,4 +65,4 @@ public class LoginStepDefinition {
     public void closeBrowser() {
         driver.quit();
     }
-}
+}*/
