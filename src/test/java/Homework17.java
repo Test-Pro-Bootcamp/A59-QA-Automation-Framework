@@ -1,27 +1,21 @@
-<<<<<<< Updated upstream
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
+import static org.testng.Assert.assertEquals;
 
 
 public class Homework17 extends BaseTest {
 
     @Test
     public void addSongToPlaylist() throws InterruptedException {
-        String expectedSongAddedMessage = "Added 1 song into \"TestPro Playlist.\"";
+        String expectedSongAddedMessage = "Added 1 song into \"first playlist.\"";
         // navigate to page
         navigateToPage();
 
         //login
         enterEmail("apurva.singh@testpro.io");
-        enterPassword("Acidrain1");
+        enterPassword("te$tpro$tudent1");
         submit();
 
 
@@ -42,35 +36,32 @@ public class Homework17 extends BaseTest {
         choosePlaylist();
         Thread.sleep(1000);
         //actual vs expected
-        Assert.assertEquals(getAddToPlaylistMessage(), expectedSongAddedMessage);
+        assertEquals(getAddToPlaylistMessage(), expectedSongAddedMessage);
 
         String url = "https://qa.koel.app/";
-         driver.get(url);
+        driver.get(url);
 
 
     }
 //Helper methods
 
-      public String getAddToPlaylistMessage() {
-        WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
+    public String getAddToPlaylistMessage() {
+        WebElement notification = driver.findElement(By.xpath("//div[@class='success show']"));
         return notification.getText();
     }
 
     public void choosePlaylist() {
-        WebElement playlist = driver.findElement
-                (By.xpath("//selection[@id='songResultsWrapper']//li[contains(text().'Testpro Playlist')]"));
+        WebElement playlist = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//li[@class='playlist'][normalize-space()='first playlist']"));
         playlist.click();
     }
 
     public void clickAddToBtn() {
-        WebElement addToBtn = driver.findElement
-                (By.xpath("//selection[@d= 'songResultsWrapper']//button[@data-test='add-to-btn']"));
+        WebElement addToBtn = driver.findElement(By.xpath("//button[@data-test='add-to-btn']"));
         addToBtn.click();
     }
 
     public void selectFirstSong() {
-        WebElement firstSong = driver.findElement
-                (By.xpath("//selection[@id='songResultsWrapper']tr[@class='song-item'][1]"));
+        WebElement firstSong = driver.findElement(By.xpath("//*[@id=\"songResultsWrapper\"]/div/div/div[1]/table/tr[2]"));
         firstSong.click();
     }
 
@@ -80,12 +71,7 @@ public class Homework17 extends BaseTest {
     }
 
     public void searchSong(String songName) {
-        WebElement searchField = driver.findElement(By.cssSelector("div#searchForm input[type='search]"));
+        WebElement searchField = driver.findElement(By.xpath("//input[@placeholder='Press F to search']"));
         searchField.sendKeys(songName);
     }
-
-
-=======
-public class Homework17 {
->>>>>>> Stashed changes
 }
