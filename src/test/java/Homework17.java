@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -20,7 +21,7 @@ public class Homework17 extends BaseTest {
 
 
         //search for song
-        searchSong("dark");
+        searchSong("BornKing");
         Thread.sleep(1000);
 
         // click to view all button
