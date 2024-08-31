@@ -7,27 +7,32 @@
     <test name="Example Test" preserve-order="false">
         <classes>
 
-            <!--  James Mar | Sprint-09 - 02 | INTERNSHIP-97379  -->
+            <!--  James Mar | Sprint-09 - 03 | INTERNSHIP-97399  -->
 
-            <!-- 'Log student out' button should be present on the homepage, next to 'Profile' button -->
-            <class name="LoginTests"> <methods> <include name="logoutBtnPresence"/> </methods> </class>
+            <!-- Album name and cover should be displayed for a playing song -->
+            <class name="AllSongsTest"> <methods> <include name="playSongAndCheckForAlbumNameAndCover"/> </methods> </class>
 
-            <!-- User should be able to log out after successful login -->
-            <class name="LoginTests"> <methods> <include name="loginUserThenLogoutUser"/> </methods> </class>
+            <!-- Lyrics should be displayed for a playing song -->
+            <class name="AllSongsTest"> <methods> <include name="playSongAndCheckForLyrics"/> </methods> </class>
 
-            <!-- User should be navigated to the Login page after logging out -->
-            <class name="LoginTests"> <methods> <include name="loginUserThenLogoutUser"/> </methods> </class>
+            <!-- Artist name should be displayed for a playing song -->
+            <class name="AllSongsTest"> <methods> <include name="playSongAndCheckForArtistIsDisplayed"/> </methods> </class>
 
-            <!-- User should be able to log out after updating email and password  -->
-            <class name="ProfileTests"> <methods> <include name="changeCurrentEmailAndPasswordAndLogoutTest"/> </methods> </class>
+            <!-- Info panel should appear after clicking on 'INFO' button on the music player -->
+            <class name="AllSongsTest"> <methods> <include name="playSongAndCheckForInfoPanelIsDisplayed"/> </methods> </class>
 
+            <!-- Info panel should hide after clicking on 'INFO'  button on the music player -->
+            <class name="AllSongsTest"> <methods> <include name="playSongAndClickOnInfoBtnToHideInfoPanel"/> </methods> </class>
 
-        <!--
-        <class name="PlayListTests">
-            <methods>
-                <include name="deletePlayList"/>
-            </methods>
-        </class> -->
+            <!-- User should be able to shuffle order of playing songs on the info panel by album and artist -->
+            <class name="AllSongsTest"> <methods> <include name="playSongAndShuffleOrderOfPlayingSongsByArtistAndAlbum"/> </methods> </class>
+
+            <!--
+            <class name="PlayListTests">
+                <methods>
+                    <include name="deletePlayList"/>
+                </methods>
+            </class> -->
             <!--
             <class name="HomeTest">
                 <methods>

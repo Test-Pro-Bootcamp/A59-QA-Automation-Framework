@@ -273,11 +273,6 @@ public class PlayListPage extends BasePage {
         String xpath;
 
         getRuleBtnElement();
-        getRuleBtnElement();
-        getRuleBtnElement();
-        getRuleBtnElement();
-        getRuleBtnElement();
-        getRuleBtnElement();
 
         try {
             // Convert a WebElement to a list

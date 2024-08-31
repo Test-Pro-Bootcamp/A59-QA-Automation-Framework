@@ -94,6 +94,7 @@ public class BasePage {
 
     public void selectRightClick(WebElement webElement) {
 
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
         actions.contextClick(webElement).perform();
     }
 
@@ -224,4 +225,6 @@ public class BasePage {
         // Return whether the web element is not visible
         return isWebElementNotVisible;
     }
+
+
 }

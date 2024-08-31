@@ -295,6 +295,88 @@ public class ActionsPage extends BasePage {
         }
     }
 
+    public void writeStringOutToFile(String inputStream) {
+
+        try {
+
+            String filePath = "C:\\temp\\koel-output.txt";
+            FileWriter myWriter = new FileWriter(filePath, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(myWriter);
+            myWriter.write("Contents of String:  " + inputStream);
+
+//            myWriter.write("\n" + "\n");
+            bufferedWriter.close();
+            System.out.println("Successfully wrote to the file.");
+
+        } catch (IOException e) {
+
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+    }
+
+    public void writeElementOutToFile(WebElement inputStream) {
+
+        try {
+//            List<WebElement> examineTheseElements = uniqueWebElements(getStandardHyperlinks);
+//            List<WebElement> examineTheseElements = uniqueWebElements(inputStream);
+
+            String filePath = "C:\\temp\\koel-output.txt";
+            FileWriter myWriter = new FileWriter(filePath, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(myWriter);
+            myWriter.write("Contents of Element:  " + inputStream);
+//            myWriter.write("Input: " + inputStream + "\n" + "\n");
+
+            //Gets the Target word
+//                String href = e.getText();
+
+//                String targetURL = ("Target:  " + href + " ");
+//                myWriter.write(targetURL);
+
+
+
+//            // Example input string
+//            String expectedURL = inputStream.getAttribute("href");
+//
+//            // Define the delimiter
+//            String delimiter = "/#!/";
+//
+//            // Extract the last word
+//            String lastWord = extractLastWord(expectedURL, delimiter);
+//            myWriter.write("Input:  " + expectedURL + " ");
+//
+//            //a[contains(@href, '#!/playlist/98078')]
+//            String findByThis = "//a[contains(@href,'#!/" + lastWord + "')]";
+//
+//            myWriter.write("@FindBy: " + findByThis + "\n");
+
+//                myWriter.write("Target URL:  " + inputString + "\n");
+
+//                myWriter.write(e.getAttribute("href") + "    ");
+//                myWriter.write(e.getText() + "\n");
+
+//                LoginPage loginPage = new LoginPage(driver);
+//                String actualURL = loginPage.selectCurrentPage();
+
+//                driver.findElement(By.xpath(findByThis)).click();
+//                String actualURL = StringUtils.substringBefore(driver.getCurrentUrl(), "?");
+
+//                Assert.assertEquals(expectedURL, actualURL)
+
+
+//            myWriter.write("\n" + "\n");
+            bufferedWriter.close();
+            System.out.println("Successfully wrote to the file.");
+
+        } catch (IOException e) {
+
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+    }
+
     public void writeOutToFile(WebElement inputStream) {
 
         try {
@@ -511,6 +593,40 @@ public class ActionsPage extends BasePage {
 
             myWriter.write("\n" + "\n");
             myWriter.write("Length of the shortest Element in ActualURL is: " + shortestStringActualURL);
+
+            myWriter.write("\n" + "\n");
+
+            bufferedWriter.close();
+            System.out.println("Successfully wrote to the file.");
+
+        } catch (IOException e) {
+
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public void writeOutToFileIfPlaylist(WebElement inputStream) {
+
+        try {
+
+            String filePath = "C:\\temp\\koel-output.txt";
+            FileWriter myWriter = new FileWriter(filePath, false);
+            BufferedWriter bufferedWriter = new BufferedWriter(myWriter);
+
+            String id =        inputStream.getAttribute("id");
+            String className = inputStream.getAttribute("class");
+            String title =     inputStream.findElement(By.className("title")).getText();
+            String artist =    inputStream.findElement(By.cssSelector("a.artist")).getText();
+            String album =     inputStream.findElement(By.cssSelector("a.album")).getText();
+
+            myWriter.write("Info about song playing from list: " + "\n" + "\n");
+
+            myWriter.write("ID is:    " + id + "\n");
+            myWriter.write("Class is: " + className + "\n");
+            myWriter.write("Title is: " + title + "\n");
+            myWriter.write("Artist:   " + artist + "\n");
+            myWriter.write("Album is: " + album + "\n");
 
             myWriter.write("\n" + "\n");
 

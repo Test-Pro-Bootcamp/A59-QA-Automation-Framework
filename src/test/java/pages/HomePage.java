@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -25,6 +26,9 @@ public class HomePage extends BasePage {
     private WebElement userAvatarIcon;
 
     @FindBy(css = "li a.songs")
+    private WebElement findAllSongsList;
+
+    @FindBy(xpath = "//*[@id=\"sidebar\"]/section[1]/ul/li[3]/a")
     private WebElement allSongsList;
 
     @FindBy(css = "img[alt='Sound bars']")
@@ -95,6 +99,8 @@ public class HomePage extends BasePage {
     @FindBy(css = "div.success.show")
     private WebElement getSuccessMsg;
 
+    @FindBy(xpath = "//button[@title='About Koel' and @data-testid='about-btn']")
+    private WebElement getAboutBtn;
 
     //Methods
 
@@ -159,14 +165,27 @@ public class HomePage extends BasePage {
 
     public void chooseAllSongsList() {
 
-        allSongsList.click();
+        try {
+            // Wait for the element to be clickable
+            WebElement visibleElement = wait.until(ExpectedConditions.visibilityOf(findAllSongsList));
+            WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(visibleElement));
+
+            click(clickableElement);
+        } catch (NoSuchElementException e) {
+
+            WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(allSongsList));
+            click(clickableElement);
+
+        } catch (TimeoutException e) {
+
+            System.out.println("Element was not clickable within the timeout.");
+        }
     }
 
     public String selectRenamePlaylistSuccessMsg() {
 
         return getRenameVerificationMsg.getText();
     }
-
 
     public void selectPlayBtnToSingleClick() {
 
