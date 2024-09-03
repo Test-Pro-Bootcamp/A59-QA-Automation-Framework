@@ -14,11 +14,16 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
     implementation 'com.github.hemanthsridhar:testng-ext-dataprovider:14.3.0'
+    implementation 'io.cucumber:cucumber-testng:7.9.0'
+    implementation 'io.cucumber:cucumber-core:7.9.0'
+    implementation 'io.cucumber:cucumber-java:7.9.0'
+    implementation 'io.cucumber:gherkin:25.0.2'
 }
 
 test {
     useTestNG() {
-        suites "src/test/resources/${suite}.xml"
+        suites "src/test/resources/Cucumber.xml"
+       // suites "src/test/resources/TestNG.xml"
         systemProperty "browser", System.getProperty("browser")
        // suites "src/test/resources/NewConfig.xml"
     }
