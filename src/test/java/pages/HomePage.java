@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.awt.*;
+
 public class HomePage extends BasePage {
     // Constructor for HomePage
-    public HomePage(WebDriver givenDriver) {
+    public HomePage(WebDriver givenDriver) throws AWTException {
         super(givenDriver);
     }
 

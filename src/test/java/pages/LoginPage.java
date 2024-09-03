@@ -3,9 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import javax.print.DocFlavor;
-
 public class LoginPage extends BasePage {
+
     // Constructor for LoginPage
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
@@ -14,7 +13,7 @@ public class LoginPage extends BasePage {
     // Locators for LoginPage
     By emailField = By.cssSelector("input[type='email']");
     By passwordField = By.cssSelector("input[type='password']");
-    By submitBtn = By.cssSelector("input[type='submit']");
+    By submitBtn = By.cssSelector("button[type='submit']");
 
     // Page Methods for LoginPage
     public void provideEmail(String email) {
@@ -34,4 +33,4 @@ public class LoginPage extends BasePage {
         providePassword("jTRCkwNf");
         submitClick();
     }
-} // Ends LoginPage
+} // Ends LoginPage class

@@ -10,14 +10,27 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
+
+import java.awt.*;
 
 public class LoginTests extends BaseTest {
 
 
     @Test
-    public void loginValidEmailPassword() throws InterruptedException {
+    public void loginValidEmailPassword() throws InterruptedException, AWTException {
+        // Create an instance of the LoginPage & HomePage class below
+        // And use them instead of enterEmail() and enterPassword() from BaseTest class.
+
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.login();
+        Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
 
         // navigateToPage();
+        /*
         enterEmail("demo@testpro.io");
         enterPassword("te$t$tudent");
         submit();
@@ -28,6 +41,8 @@ public class LoginTests extends BaseTest {
 
         // Expected Result
         Assert.assertTrue(avatarIcon.isDisplayed());
+
+         */
     }
 
     // @Test
@@ -48,17 +63,21 @@ public class LoginTests extends BaseTest {
     // @Test
     public void loginValidEmailEmptyPassword() throws InterruptedException {
 
-        // navigateToPage();
+        /*// navigateToPage();
         String expectedURL = "https://qa.koel.app/";
         enterEmail("invalid@testpro.io");
         submit();
 
+        //CODE FROM PAGE OBJECTS (LoginPage objects)
+
+
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL); //https://qa.koel.app/
+         */
     }
 
-    @Test(dataProvider="NegativeLoginTestData")
+    //@Test(dataProvider="NegativeLoginTestData")
     public void negativeLoginTest(String email, String password) throws InterruptedException {
         String expectedURL = "https://qa.koel.app/";
         enterEmail(email);

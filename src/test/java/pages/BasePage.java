@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
+
 
 public class BasePage {
     WebDriver driver;  // first thing to do in Selenium
@@ -16,7 +16,8 @@ public class BasePage {
     WebDriverWait wait; // used to wait for web elements to become available/visible
     Actions actions;    // Contextual mouse/keyboard actions. Right-click, double-click, KeyUp,etc
 
-    public BasePage(WebDriver givenDriver) {    // Parametized Constructor used to initialize BasePage objects
+    // Constructor for the BasePage class
+    public BasePage(WebDriver givenDriver)  {    // Parametized Constructor used to initialize BasePage objects
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);

@@ -18,13 +18,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
-    WebDriver driver = null;
-    ChromeOptions options = new ChromeOptions();
-
-    WebDriverWait wait;
-    Wait<WebDriver> fluentWait;
-    Actions actions;
-    Robot robot;
+    // we are making these members below a public scope (by adding the public keyword)
+    public WebDriver driver = null;
+    public ChromeOptions options = new ChromeOptions();
+    public WebDriverWait wait;
+    public Wait<WebDriver> fluentWait;
+    public Actions actions;
+    public Robot robot;
 
     // String url = "https://qa.koel.app/";
 
