@@ -9,16 +9,16 @@
 <!--            <class name="LoginTests"/>-->
 <!--            <class name="BaseTest"/>-->
 <!--            <class name="ProfileTests"/>-->
-<!--            <class name="Homework16"/>-->
-<!--            <class name="Homework17"/>-->
+<!--            <class name="CurrentQueueTest"/>-->
 <!--            <class name="PlaySong"/>-->
-<!--            <class name="Homework19"/>-->
 <!--            <class name="DeletePlayList"/>-->
 <!--                <class name="HomeTestLesson21"/>-->
-<!--            <class name="Homework21"/>-->
+            <class name="RenamePlayList"/>
 <!--            <class name="AllSongTestLesson21"/>-->
-            <class name="KoelAppLoginTest"/>
-            <class name="CurrentQueueTest"/>
+<!--            <class name="KoelAppLoginTest"/>-->
+<!--            <class name="CurrentQueueTest"/>-->
+<!--            <class name="AddSongToPlayListTest"/>-->
+
 
 
 
