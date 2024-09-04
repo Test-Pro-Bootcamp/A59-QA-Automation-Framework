@@ -5,7 +5,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
@@ -32,8 +31,26 @@ public class HomePage extends BasePage {
     private WebElement chooseAlbumsList;
     @FindBy(css = "section[current-view='Artists']")
     private WebElement chooseArtistsList;
-
-
+    @FindBy(css = "div#searchForm input[type='search']")
+    private WebElement searchSong;
+    @FindBy(xpath = "//button[@data-test='view-all-songs-btn']")
+    private WebElement viewAllBtn;
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//tr[@class='song-item'][1]")
+    private WebElement firstSong;
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']")
+    private WebElement addToBtn;
+    @FindBy(xpath = "//section[@id='songResultsWrapper']//li[contains(text(),'Test Playlist 78')]")
+    private WebElement addToPlayList;
+    @FindBy(css = "div.success.show")
+    private WebElement addToPlayListMessage;
+    @FindBy(xpath = "//a[contains(text(),'\"+playlistName+\"')]")
+    private WebElement myPlayList;
+    @FindBy(css = ".playlist:nth-child(5)")
+    private WebElement userPlayList;
+    @FindBy(css = "[name='name']")
+    private WebElement newNamePlayList;
+    @FindBy(css = "div.success.show")
+    private WebElement successPlayListMessagePopup;
 
     //Methods
     public WebElement getUserAvatar(){
@@ -60,10 +77,40 @@ public class HomePage extends BasePage {
         getChooseAlbumsList().click();
     }
     public WebElement getChooseArtistsList(){
-        return chooseArtistsList;
-    }
+        return chooseArtistsList;}
     public void artistsList(){
-        getChooseArtistsList().click();
+        getChooseArtistsList().click();}
+    public WebElement getSearchSong(){
+        return searchSong;}
+    public WebElement getViewAllBtn(){
+        return viewAllBtn;}
+    public void clickViewAllBtn(){ getViewAllBtn().click();}
+    public WebElement getFirstSong(){ return firstSong; }
+    public void selectFirstSong(){getFirstSong().click();}
+    public WebElement getAddToBtn(){ return addToBtn; }
+    public void clickAddToBtn(){ getAddToBtn().click(); }
+    public WebElement getAddToPlayList(){ return addToPlayList; }
+    public void choosePlayList(){ getAddToPlayList().click(); }
+    public WebElement getAddToPlayListMessage(){ return addToPlayListMessage; }
+    public WebElement getMyPlayList(){ return myPlayList; }
+    public void chooseMyPlayList(String currentPlayList){ getMyPlayList().click();}
+    public WebElement getUserPlayList(){ return userPlayList; }
+    public WebElement getNewNamePlayList(){ return newNamePlayList; }
+    public WebElement getSuccessPlayListMessagePopup(String updPlayListMsg){ return successPlayListMessagePopup; }
+
+
+    public void enterNewNamePlayList(String newPlayList){
+        actions.doubleClick(getUserPlayList()).perform();
+        getNewNamePlayList().sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
+        getNewNamePlayList().sendKeys(newPlayList);
+        getNewNamePlayList().sendKeys(Keys.ENTER);
+    }
+
+
+    public void enterSearchSong(String songName){
+        actions.moveToElement(getSearchSong()).perform();
+        getSearchSong().click();
+        getSearchSong().sendKeys(songName);
     }
 
     public void createPlayList(String playListName){
@@ -72,9 +119,8 @@ public class HomePage extends BasePage {
         getCreatePlayListBtn().click();
         getPlayListNameInput().click();
         getPlayListNameInput().sendKeys(playListName);
-        getPlayListNameInput().sendKeys(Keys.ENTER);
+        getPlayListNameInput().sendKeys(Keys.ENTER);}
 
-    }
     public WebElement getPlayListByName(String playListName){
         return findElement(By.xpath(String.format("//section[@id='playlists']//li//a[text()='%s']", playListName)));
     }

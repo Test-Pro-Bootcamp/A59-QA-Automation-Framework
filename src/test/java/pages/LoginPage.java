@@ -11,6 +11,7 @@ public class LoginPage extends BasePage {
         super(givenDriver);
     }
 
+
     //Locators
     @FindBy(css = "input[type='email']")
     private WebElement emailField;
@@ -18,6 +19,8 @@ public class LoginPage extends BasePage {
     private WebElement passwordField;
     @FindBy(css = "button[type='submit']")
     private WebElement submitBtn;
+    @FindBy(css = "a[href='registration']")
+    private WebElement registrationLink;
 
 
     //Page Methods
@@ -32,7 +35,9 @@ public class LoginPage extends BasePage {
     public void clickSubmit(){
         submitBtn.click();
     }
-
+    public void clickRegistrationLink(){
+        registrationLink.click();
+    }
     public void login(){
         provideEmail("aleksei.koksharov@testpro.io").providePassword("ak1234!@#$").clickSubmit();
     }
@@ -40,14 +45,13 @@ public class LoginPage extends BasePage {
     public void loginInvalidEmail(){
         provideEmail("alekseikoksharov@testproio").providePassword("ak1234!@#$").clickSubmit();
     }
-
     public void loginEmptyPassword(){
         provideEmail("aleksei.koksharov@testpro.io").providePassword(" ").clickSubmit();
     }
-
     public void loginEmptyEmailPassword(){
         provideEmail(" ").providePassword(" ").clickSubmit();
     }
+
 
 
 }

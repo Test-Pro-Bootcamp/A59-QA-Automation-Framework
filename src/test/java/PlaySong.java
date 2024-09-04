@@ -10,11 +10,6 @@ public class PlaySong extends BaseTest {
 
     public void playSong() {
 
-
-        //navigateToPage();
-//        enterEmail("aleksei.koksharov@testpro.io");
-//        enterPassword("ak1234!@#$");
-//        submit();
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         PlaySongPage playSongPage = new PlaySongPage(getDriver());
