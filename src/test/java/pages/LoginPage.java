@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.DataProvider;
 
 public class LoginPage extends BasePage {
 
@@ -33,4 +34,5 @@ public class LoginPage extends BasePage {
         providePassword("N6wWY2Rx");
         submitClick();
     }
+
 } // Ends LoginPage class

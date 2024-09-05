@@ -17,37 +17,36 @@ import java.awt.*;
 
 public class LoginTests extends BaseTest {
 
-
     @Test
     public void loginValidEmailPassword()  {
         // Create an instance of the LoginPage & HomePage class below
         // And use them instead of enterEmail() and enterPassword() from BaseTest class.
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+         LoginPage loginPage = new LoginPage(driver);
+         HomePage homePage = new HomePage(driver);
 
+        // Step 1 - Login into Koel app
         loginPage.login();
+        // Verify that user logged successfully via assertion. Is the User Avatar Icon displayed on home page
         Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
-
-        // navigateToPage();
-        /*
-        enterEmail("demo@testpro.io");
-        enterPassword("N6wWY2Rx");
-        submit();
-        // Thread.sleep(2000);
-        WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("img[class='avatar']")));
-        // WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
-
-        // Expected Result
-        Assert.assertTrue(avatarIcon.isDisplayed());
-
-         */
     }
+
+    @Test(dataProvider="NegativeLoginTestData")
+    public void negativeLoginTest(String email, String password) throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        String expectedURL = "https://qa.koel.app/";
+
+        // Step -1 // Attempt to log into Koel app using negative data. Unhappy path.
+        loginPage.provideEmail(email);
+        loginPage.providePassword(password);
+        loginPage.submitClick();
+        // Verify that login attempts have failed via assertion. Login page should still be available
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+    }
+
 
     // @Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
-
         // navigateToPage() ;
         String expectedURL = "https://qa.koel.app/";
         // Steps
@@ -74,12 +73,4 @@ public class LoginTests extends BaseTest {
          */
     }
 
-    //@Test(dataProvider="NegativeLoginTestData")
-    public void negativeLoginTest(String email, String password) throws InterruptedException {
-        String expectedURL = "https://qa.koel.app/";
-        enterEmail(email);
-        enterEmail(password);
-        submit();
-        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
-    }
 }
