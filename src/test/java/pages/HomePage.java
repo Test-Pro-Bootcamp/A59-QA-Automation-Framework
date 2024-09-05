@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class HomePage extends BasePage {
     // Constructor for HomePage
-    public HomePage(WebDriver givenDriver) throws AWTException {
+    public HomePage(WebDriver givenDriver) {
         super(givenDriver);
     }
 
