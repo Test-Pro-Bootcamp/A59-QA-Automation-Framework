@@ -21,8 +21,8 @@ public class ProfileTests extends BaseTest{
     }
 
     private void login() throws InterruptedException {
-        enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
+        enterEmail("leon.poyau+2@testpro.io");
+        enterPassword("N6wWY2Rx");
         submit();
     }
 
@@ -37,7 +37,7 @@ public class ProfileTests extends BaseTest{
     }
 
     private void changeName(String name) throws InterruptedException {
-        enterCurrentPassword("te$t$tudent");
+        enterCurrentPassword("N6wWY2Rx");
         enterNewName(name);
         saveChanges();
         Thread.sleep(1000);

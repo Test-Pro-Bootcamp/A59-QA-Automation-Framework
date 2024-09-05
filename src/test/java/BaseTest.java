@@ -33,10 +33,10 @@ public class BaseTest {
     public Object[][] getDataFromDataProviders() {
         return new Object[][] {
                 {"invalid@testpro.io","invalidPassword"},
-                {"demo@testpro.io","invalidPassword"},
-                {"invalid@testpro.io","te$t$tudent"},
-                {"demo@testpro.io",""},
-                {"","te$t$tudent"},
+                {"leon.poyau+2@testpro.io","invalidPassword"},
+                {"invalid@testpro.io","N6wWY2Rx"},
+                {"leon.poyau+2@testpro.io",""},
+                {"","N6wWY2Rx"},
         };
     }
     @BeforeSuite

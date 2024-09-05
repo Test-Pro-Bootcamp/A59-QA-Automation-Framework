@@ -19,7 +19,7 @@ public class LoginTests extends BaseTest {
 
 
     @Test
-    public void loginValidEmailPassword() throws InterruptedException, AWTException {
+    public void loginValidEmailPassword()  {
         // Create an instance of the LoginPage & HomePage class below
         // And use them instead of enterEmail() and enterPassword() from BaseTest class.
 
@@ -32,7 +32,7 @@ public class LoginTests extends BaseTest {
         // navigateToPage();
         /*
         enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
+        enterPassword("N6wWY2Rx");
         submit();
         // Thread.sleep(2000);
         WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -52,7 +52,7 @@ public class LoginTests extends BaseTest {
         String expectedURL = "https://qa.koel.app/";
         // Steps
         enterEmail("invalid@testpro.io");
-        enterPassword("te$t$tudent");
+        enterPassword("N6wWY2Rx");
         submit();
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
@@ -65,11 +65,8 @@ public class LoginTests extends BaseTest {
 
         /*// navigateToPage();
         String expectedURL = "https://qa.koel.app/";
-        enterEmail("invalid@testpro.io");
+        enterEmail("leon.poyau+2@testpro.io");
         submit();
-
-        //CODE FROM PAGE OBJECTS (LoginPage objects)
-
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
