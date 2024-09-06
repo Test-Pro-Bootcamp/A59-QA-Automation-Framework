@@ -27,7 +27,7 @@ public class LoginTests extends BaseTest {
 
         // Step 1 - Login into Koel app
         loginPage.login();
-        // Verify that user logged successfully via assertion. Is the User Avatar Icon displayed on home page
+        // Validate and Verify that user logged successfully via assertion. Is the User Avatar Icon displayed on home page
         Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
     }
 
@@ -55,7 +55,7 @@ public class LoginTests extends BaseTest {
         submit();
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
-        // Expected Result
+        // Expected Resultc
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL); // https://qa.koel.app/
     }
 
