@@ -54,4 +54,3 @@ public class Homework21 extends BaseTest {
         return notification.getText();
     }
 }
-
