@@ -60,7 +60,7 @@ public class LoginTests extends BaseTest {
     }
 
     // @Test
-    public void loginValidEmailEmptyPassword() throws InterruptedException {
+    //public void loginValidEmailEmptyPassword() throws InterruptedException {
 
         /*// navigateToPage();
         String expectedURL = "https://qa.koel.app/";
@@ -70,7 +70,7 @@ public class LoginTests extends BaseTest {
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL); //https://qa.koel.app/
-         */
-    }
 
+    }
+    */
 }
