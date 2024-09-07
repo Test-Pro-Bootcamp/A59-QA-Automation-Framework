@@ -6,60 +6,71 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
+
+import java.awt.*;
 
 public class LoginTests extends BaseTest {
 
-
     @Test
-    public void loginValidEmailPassword() throws InterruptedException {
+    public void loginValidEmailPassword()  {
+        // Create an instance of the LoginPage & HomePage class below
+        // And use them instead of enterEmail() and enterPassword() from BaseTest class.
 
-        // navigateToPage();
-        enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
-        submit();
+         LoginPage loginPage = new LoginPage(driver);
+         HomePage homePage = new HomePage(driver);
 
-        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
-        // Expected Result
-        Assert.assertTrue(avatarIcon.isDisplayed());
+        // Step 1 - Login into Koel app
+        loginPage.login();
+        // Validate and Verify that user logged successfully via assertion. Is the User Avatar Icon displayed on home page
+        Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
     }
+
+    @Test(dataProvider="NegativeLoginTestData")
+    public void negativeLoginTest(String email, String password) throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        String expectedURL = "https://qa.koel.app/";
+
+        // Step -1 // Attempt to log into Koel app using negative data. Unhappy path.
+        loginPage.provideEmail(email);
+        loginPage.providePassword(password);
+        loginPage.submitClick();
+        // Verify that login attempts have failed via assertion. Login page should still be available
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+    }
+
 
     // @Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
-
         // navigateToPage() ;
         String expectedURL = "https://qa.koel.app/";
         // Steps
         enterEmail("invalid@testpro.io");
-        enterPassword("te$t$tudent");
+        enterPassword("N6wWY2Rx");
         submit();
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
-        // Expected Result
+        // Expected Resultc
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL); // https://qa.koel.app/
     }
 
     // @Test
-    public void loginValidEmailEmptyPassword() throws InterruptedException {
+    //public void loginValidEmailEmptyPassword() throws InterruptedException {
 
-        // navigateToPage();
+        /*// navigateToPage();
         String expectedURL = "https://qa.koel.app/";
-        enterEmail("invalid@testpro.io");
+        enterEmail("leon.poyau+2@testpro.io");
         submit();
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL); //https://qa.koel.app/
-    }
 
-    @Test(dataProvider="NegativeLoginTestData")
-    public void negativeLoginTest(String email, String password) throws InterruptedException {
-        String expectedURL = "https://qa.koel.app/";
-        enterEmail(email);
-        enterEmail(password);
-        submit();
-        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
     }
+    */
 }

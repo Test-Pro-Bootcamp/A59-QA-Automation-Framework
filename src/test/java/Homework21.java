@@ -45,7 +45,7 @@ public class Homework21 extends BaseTest {
     public void doubleClickPlaylist() {
         WebElement playlist = wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.cssSelector(".playlist:nth-child(4)")));
-        action.doubleClick(playlist).perform();
+        actions.doubleClick(playlist).perform();
     }
 
     public String getRenamePlaylistSuccessMsg() {

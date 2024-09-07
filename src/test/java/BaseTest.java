@@ -6,6 +6,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
@@ -16,22 +19,23 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
-    WebDriver driver = null;
-    ChromeOptions options = new ChromeOptions();
-    WebDriverWait wait;
-    Robot robot;
-    Actions action;
-    //String url = "https://qa.koel.app/";
+    // we are making these members below a public scope (by adding the public keyword)
+    public WebDriver driver = null;
+    public ChromeOptions options = new ChromeOptions();
+    public WebDriverWait wait;
+    public Wait<WebDriver> fluentWait;
+    public Actions actions;
+    public Robot robot;
 
     // String url = "https://qa.koel.app/";
     @DataProvider(name = "NegativeLoginTestData")
     public Object[][] getDataFromDataProviders() {
         return new Object[][] {
                 {"invalid@testpro.io","invalidPassword"},
-                {"demo@testpro.io","invalidPassword"},
-                {"invalid@testpro.io","te$t$tudent"},
-                {"demo@testpro.io",""},
-                {"","te$t$tudent"},
+                {"leon.poyau+2@testpro.io","invalidPassword"},
+                {"invalid@testpro.io","N6wWY2Rx"},
+                {"leon.poyau+2@testpro.io",""},
+                {"","N6wWY2Rx"},
         };
     }
     @BeforeSuite
@@ -49,8 +53,17 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        action = new Actions(driver);
+        actions = new Actions(driver);
         robot = new Robot();
+
+        // using fluentWait took a long time for span.name element to be interactable and clicked on in
+        // navigateToProfilePage() method called in changeProfileName() method
+        // Even with Thread.sleep() used after login() method in ProfileTests class. This is almost useless.
+        // Best to use wait along with Thread.sleep(1500) after login() in changeProfileName that's in ProfileTests class
+        // There are times that we indeed cannot get away from Thread.sleep(). This is such an example.
+        fluentWait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(200));
         navigateToPage(baseURL);
     }
 
@@ -59,23 +72,27 @@ public class BaseTest {
         driver.quit();
     }
 
-    protected void submit() {
-        WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
+    protected void submit()  {
         //WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
+        WebElement submit = wait.until
+                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
-        robot.delay(850);
+        //Thread.sleep(1000);
+        robot.delay(2000);
     }
 
     protected void enterPassword(String password) {
-        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
         //WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        WebElement passwordField = wait.until
+                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
         passwordField.clear();
         passwordField.sendKeys(password);
     }
 
     protected void enterEmail(String email) {
-        WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
         //WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        WebElement emailField = wait.until
+                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
         emailField.clear();
         emailField.sendKeys(email);
     }

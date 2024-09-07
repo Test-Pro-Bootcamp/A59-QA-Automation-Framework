@@ -48,15 +48,15 @@ public class Homework20 extends BaseTest {
     public void createPlayList(String playListName) {
         WebElement createNewPlayListBtn = wait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']//i[@data-testid='sidebar-create-playlist-btn']")));
-                createNewPlayListBtn.click();
+        createNewPlayListBtn.click();
         WebElement createNewPlayListMenu = wait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//nav[@class='menu playlist-menu']//li[1]")));
-                createNewPlayListMenu.click();
+        createNewPlayListMenu.click();
         WebElement inputPlNameTxtBox = wait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']//form[@class='create']/input")));
-                inputPlNameTxtBox.sendKeys(playListName);
-                inputPlNameTxtBox.sendKeys(Keys.ENTER);
-                robot.delay(2000); // The div.success.show message lasts too long so this delay is needed to avoid sync issues.
+        inputPlNameTxtBox.sendKeys(playListName);
+        inputPlNameTxtBox.sendKeys(Keys.ENTER);
+        robot.delay(2000); // The div.success.show message lasts too long so this delay is needed to avoid sync issues.
     }
 
     private String getDelPlayListMessage() {
