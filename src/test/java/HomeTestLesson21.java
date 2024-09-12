@@ -9,28 +9,19 @@ import java.util.List;
 
 public class HomeTestLesson21 extends BaseTest {
 
-    String newPlayListName = "Sample Edited Playlist";
-
+    String playListName = "Sample Edited Playlist";
+    String playListForTest = "testplaylist 22";
     @Test
     public void HoverOverPlayButtonAndPlaySong() {
-
-        //login
-        enterEmail("aleksei.koksharov@testpro.io");
-        enterPassword("ak1234!@#$");
-        submit();
-        Assert.assertTrue(hoverPlay().isDisplayed());
-
+        loginPage.login();
+        Assert.assertTrue(homePage.getHoverPlay().isDisplayed());
     }
 
     @Test
     public void countSongsInPlayList(){
-        enterEmail("aleksei.koksharov@testpro.io");
-        enterPassword("ak1234!@#$");
-        submit();
-
+        loginPage.login();
         //Choose Playlist by Name
-        choosePlayListByName("testplaylist 22");
-
+        homePage.clickChoosePlayListByName(playListForTest);
         //DisplayAllSongs
         displayAllSongs();
         //Number of songs equal to number of songs displayed in the into section.
@@ -38,43 +29,35 @@ public class HomeTestLesson21 extends BaseTest {
     }
 
     @Test
-    public void renamePlaylist() throws InterruptedException {
+    public void renamePlaylist(){
         String updatedPlayListMsg = "Updated playlist \"Sample Edited Playlist.\"";
         //login
-        enterEmail("aleksei.koksharov@testpro.io");
-        enterPassword("ak1234!@#$");
-        submit();
-        Thread.sleep(2000);
-
-        //double click on Playlist Name
-        doubleClickPlayList();
-        Thread.sleep(2000);
+        loginPage.login();
         //Enter New Name
-        enterNewName();
-        Thread.sleep(2000);
-        Assert.assertEquals(getRenamePlaylistSuccessMsg(), updatedPlayListMsg);
+        homePage.enterNewNamePlayList(playListName);
+        Assert.assertTrue(homePage.getRenamePlayListSuccessMsg(updatedPlayListMsg).isDisplayed());
 
     }
 
-    public String getRenamePlaylistSuccessMsg(){
-        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.cssSelector("div.success.show")));
-        return notification.getText();
-    }
+//    public String getRenamePlaylistSuccessMsg(){
+//        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated
+//                (By.cssSelector("div.success.show")));
+//        return notification.getText();
+//    }
+//
+//    public void enterNewName(){
+//        WebElement playListInputField = wait.until(ExpectedConditions.visibilityOfElementLocated
+//                (By.cssSelector("[name='name']")));
+//        playListInputField.sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
+//        playListInputField.sendKeys(newPlayListName);
+//        playListInputField.sendKeys(Keys.ENTER);
+//
+//    }
 
-    public void enterNewName(){
-        WebElement playListInputField = wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.cssSelector("[name='name']")));
-        playListInputField.sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
-        playListInputField.sendKeys(newPlayListName);
-        playListInputField.sendKeys(Keys.ENTER);
-
-    }
-
-public void doubleClickPlayList(){
-        WebElement playList = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
-        actions.doubleClick(playList).perform();
-}
+//public void doubleClickPlayList(){
+//        WebElement playList = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(6)")));
+//        actions.doubleClick(playList).perform();
+//}
 
 
     //Helper Methods
@@ -96,13 +79,13 @@ public void doubleClickPlayList(){
         }
     }
 
-    public void choosePlayListByName(String playlistName) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'"+playlistName+"')]"))).click();
-    }
+//    public void choosePlayListByName(String playlistName) {
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'"+playlistName+"')]"))).click();
+//    }
 
-    public WebElement hoverPlay(){
-        WebElement playBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
-        actions.moveToElement(playBtn).perform();
-        return wait.until(ExpectedConditions.visibilityOf(playBtn));
-    }
+//    public WebElement hoverPlay(){
+//        WebElement playBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+//        actions.moveToElement(playBtn).perform();
+//        return wait.until(ExpectedConditions.visibilityOf(playBtn));
+//    }
 }

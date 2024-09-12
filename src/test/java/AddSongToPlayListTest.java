@@ -10,15 +10,9 @@ import pages.LoginPage;
 //Homework 17
 public class AddSongToPlayListTest extends BaseTest {
 
-    LoginPage loginPage = new LoginPage(getDriver());
-    HomePage homePage = new HomePage(getDriver());
-
-
     @Test
     public void addSongToPlaylist() throws InterruptedException {
         String songName = "dark";
-
-        loginPage.login();
         homePage.enterSearchSong(songName);
         homePage.clickViewAllBtn();
         homePage.selectFirstSong();

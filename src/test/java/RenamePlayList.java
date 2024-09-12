@@ -10,10 +10,6 @@ import pages.LoginPage;
 //Homework 21
 public class RenamePlayList extends BaseTest {
 
-    LoginPage loginPage = new LoginPage(getDriver());
-    HomePage homePage = new HomePage(getDriver());
-
-
     @Test
 public void renamePlayListHw() {
 
@@ -23,7 +19,7 @@ public void renamePlayListHw() {
 
         loginPage.login();
         homePage.chooseMyPlayList(currentPlayList);
-        homePage.enterNewNamePlayList(newPlayList);
+        homePage.enterNamePlayList(newPlayList);
         Assert.assertTrue(homePage.getSuccessPlayListMessagePopup(updPlayListMsg).isDisplayed());
     }
 

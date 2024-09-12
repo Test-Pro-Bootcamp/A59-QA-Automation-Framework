@@ -1,5 +1,6 @@
 package pages;
 
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -51,6 +52,16 @@ public class HomePage extends BasePage {
     private WebElement newNamePlayList;
     @FindBy(css = "div.success.show")
     private WebElement successPlayListMessagePopup;
+    @FindBy(css = "[data-testid='play-btn']")
+    private WebElement hoverPlay;
+    @FindBy(css = "a[href='#!/playlist/99154']")
+    private WebElement choosePlayListByName;
+    @FindBy(css = ".playlist:nth-child(6)")
+    private WebElement playList;
+    @FindBy(css = "[name='name']")
+    private WebElement playListInputField;
+    @FindBy(css = "div.success.show")
+    private WebElement renamePlayListSuccessMsg;
 
     //Methods
     public WebElement getUserAvatar(){
@@ -97,9 +108,23 @@ public class HomePage extends BasePage {
     public WebElement getUserPlayList(){ return userPlayList; }
     public WebElement getNewNamePlayList(){ return newNamePlayList; }
     public WebElement getSuccessPlayListMessagePopup(String updPlayListMsg){ return successPlayListMessagePopup; }
+    public WebElement getHoverPlay(){ return hoverPlay; }
+    public WebElement getChoosePlayListByName(){ return choosePlayListByName; }
+    public void clickChoosePlayListByName(String playListForTest){ getChoosePlayListByName().click();}
+    public WebElement getPlayList(){ return playList; }
+    public WebElement getPlayListInputField(){ return playListInputField; }
+    public WebElement getRenamePlayListSuccessMsg(String updatedPlayListMsg){ return renamePlayListSuccessMsg; }
+
+    public void enterNewNamePlayList(String playListName){
+        actions.doubleClick(getPlayList()).perform();
+        getPlayListInputField().sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
+        getPlayListInputField().sendKeys(playListName);
+        getPlayListInputField().sendKeys(Keys.ENTER);
+
+    }
 
 
-    public void enterNewNamePlayList(String newPlayList){
+    public void enterNamePlayList(String newPlayList){
         actions.doubleClick(getUserPlayList()).perform();
         getNewNamePlayList().sendKeys(Keys.chord(Keys.CONTROL,"A",Keys.BACK_SPACE));
         getNewNamePlayList().sendKeys(newPlayList);

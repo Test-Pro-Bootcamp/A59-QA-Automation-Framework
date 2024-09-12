@@ -4,10 +4,6 @@ import pages.*;
 
 public class KoelAppLoginTest extends BaseTest {
 
-    LoginPage loginPage = new LoginPage(getDriver());
-    HomePage homePage = new HomePage(getDriver());
-    AllSongsPage allSongsPage = new AllSongsPage(getDriver());
-    ProfilePage profilePage = new ProfilePage(getDriver());
 
     //After registration in the Koel App, Login and navigate to Home Page
     @Test

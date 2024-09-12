@@ -8,8 +8,6 @@ import pages.RegistrationPage;
 
 public class RegistrationTest extends BaseTest {
 
-    LoginPage loginPage = new LoginPage(getDriver());
-    RegistrationPage registrationPage = new RegistrationPage(getDriver());
 
     @Test
     public void registrationNavigation() {

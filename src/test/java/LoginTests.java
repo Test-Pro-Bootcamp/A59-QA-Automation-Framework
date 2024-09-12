@@ -11,7 +11,7 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginEmptyEmailPassword() {
-        LoginPage loginPage = new LoginPage(getDriver());
+
         loginPage.loginEmptyEmailPassword();
         String expectedUrl = "https://qa.koel.app/";
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
@@ -29,8 +29,6 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginValidEmailPassword(){
-        LoginPage loginPage = new LoginPage(getDriver());
-        HomePage homePage = new HomePage(getDriver());
         loginPage.login();
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
@@ -41,7 +39,6 @@ public class LoginTests extends BaseTest {
     //Negative Test
     @Test
     public void loginWithInvalidEmailValidPassword() {
-        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.loginInvalidEmail();
         String expectedUrl = "https://qa.koel.app/";
 
@@ -51,7 +48,6 @@ public class LoginTests extends BaseTest {
     //Negative Test - empty password field
     @Test
     public void loginValidEmailEmptyPassword()  {
-        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.loginEmptyPassword();
         //navigateToPage();
         String expectedUrl = "https://qa.koel.app/";
