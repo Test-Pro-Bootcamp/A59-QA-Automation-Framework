@@ -6,13 +6,7 @@ import pages.*;
 public class CurrentQueueTest extends BaseTest{
 
     //After Login
-    LoginPage loginPage = new LoginPage(getDriver());
-    HomePage homePage = new HomePage(getDriver());
-    PlaySongPage playSongPage = new PlaySongPage(getDriver());
-    CurrentQueuePage currentQueuePage = new CurrentQueuePage(getDriver());
-    AllSongsPage allSongsPage = new AllSongsPage(getDriver());
-    AlbumsPage albumsPage = new AlbumsPage(getDriver());
-    ArtistsPage artistsPage = new ArtistsPage(getDriver());
+
 
     // Current Queue page display currently played songs
 @Test

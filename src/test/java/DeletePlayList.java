@@ -14,9 +14,6 @@ public class DeletePlayList extends BaseTest {
     public void deletePlayList() {
 // Without 'Thread.sleep(s)'
 
-        LoginPage loginPage = new LoginPage(getDriver());
-        HomePage homePage = new HomePage(getDriver());
-        PlayListPage playListPage = new PlayListPage(getDriver());
         String playListName = "Playlist 78";
         loginPage.login();
         homePage.createPlayList(playListName);

@@ -12,8 +12,8 @@
 <!--            <class name="CurrentQueueTest"/>-->
 <!--            <class name="PlaySong"/>-->
 <!--            <class name="DeletePlayList"/>-->
-<!--                <class name="HomeTestLesson21"/>-->
-            <class name="RenamePlayList"/>
+                <class name="HomeTestLesson21"/>
+<!--            <class name="RenamePlayList"/>-->
 <!--            <class name="AllSongTestLesson21"/>-->
 <!--            <class name="KoelAppLoginTest"/>-->
 <!--            <class name="CurrentQueueTest"/>-->

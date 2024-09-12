@@ -11,12 +11,6 @@ public class AllSongTestLesson21 extends BaseTest {
 
 @Test
     public void playSongWithRightClick() {
-
-    LoginPage loginPage = new LoginPage(getDriver());
-    HomePage homePage = new HomePage(getDriver());
-    AllSongsPage allSongsPage = new AllSongsPage(getDriver());
-
-
         //login
         //Navigate to AllSongs Page
         homePage.chooseAllSongsList();

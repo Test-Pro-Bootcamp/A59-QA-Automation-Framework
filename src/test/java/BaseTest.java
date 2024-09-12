@@ -16,12 +16,14 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.*;
+import pages.*;
 
 import java.net.URI;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
+
 
 public class BaseTest {
 
@@ -31,6 +33,17 @@ public class BaseTest {
     public Actions actions = null;
     public ChromeOptions options = new ChromeOptions();
     public static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
+    BasePage basePage = new BasePage(getDriver());
+    LoginPage loginPage = new LoginPage(getDriver());
+    HomePage homePage = new HomePage(getDriver());
+    AlbumsPage albumsPage = new AlbumsPage(getDriver());
+    AllSongsPage allSongsPage = new AllSongsPage(getDriver());
+    ArtistsPage artistsPage = new ArtistsPage(getDriver());
+    CurrentQueuePage currentQueuePage = new CurrentQueuePage(getDriver());
+    PlayListPage playListPage = new PlayListPage(getDriver());
+    PlaySongPage playSongPage = new PlaySongPage(getDriver());
+    ProfilePage profilePage = new ProfilePage(getDriver());
+    RegistrationPage registrationPage = new RegistrationPage(getDriver());
 
     public static WebDriver getDriver(){
         return threadDriver.get();
@@ -72,6 +85,8 @@ public void launchBrowser(String BaseURL) throws MalformedURLException{
             .withTimeout(Duration.ofSeconds(5))
             .pollingEvery(Duration.ofMillis(200));
         navigateToPage(BaseURL);
+
+
 }
 
 

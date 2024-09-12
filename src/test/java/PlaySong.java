@@ -10,9 +10,6 @@ public class PlaySong extends BaseTest {
 
     public void playSong() {
 
-        LoginPage loginPage = new LoginPage(getDriver());
-        HomePage homePage = new HomePage(getDriver());
-        PlaySongPage playSongPage = new PlaySongPage(getDriver());
         loginPage.login();
         playSongPage.playBtn();
         playSongPage.allSongs();

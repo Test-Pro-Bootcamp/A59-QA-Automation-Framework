@@ -11,9 +11,7 @@ import java.util.UUID;
 
 public class ProfileTests extends BaseTest {
 
-    LoginPage loginPage = new LoginPage(getDriver());
-    HomePage homePage = new HomePage(getDriver());
-    ProfilePage profilePage = new ProfilePage(getDriver());
+
     @Test
     public void changeProfileName() {
         //navigateToPage();
