@@ -11,40 +11,38 @@ public class ProfilePage extends BasePage{
         super(givenDriver);
     }
     String password = "ak1234!@#$";
-    String newPassword = "Ilya!461";
-    String newEmail = "11111hek@gmail.com";
 
 By navigateToProfilePage = By.cssSelector("span.name");
-By profileName = By.cssSelector("span.name");
 By saveBtn = By.className("btn-submit");
 By newName = By.id("inputProfileName");
 By currentPassword = By.id("inputProfileCurrentPassword");
 By profileEmail = By.cssSelector("input[id='inputProfileEmail']");
 By profilePassword = By.cssSelector("input[id='inputProfileNewPassword']");
+By errorMsg = By.cssSelector("div.error.show");
 
-    public WebElement getNavigateToProfilePage(){
-        return findElement(navigateToProfilePage);
+    public void getNavigateToProfilePage(){
+        findElement(navigateToProfilePage);
     }
-    public WebElement getProfileName(){
-        return findElement(profileName);
-    }
+
+    public WebElement getErrorMsg(){ return findElement(errorMsg); }
     public WebElement getSaveBtn(){
         return findElement(saveBtn);
     }
     public WebElement getNewName(){
         return findElement(newName);
     }
-    public WebElement getCurrentPassword(String password){
+    public WebElement getCurrentPassword(){
         return findElement(currentPassword);
     }
 
     public void updateProfileName(String uniqueName){
-        actions.moveToElement(getNavigateToProfilePage()).perform();
+        actions.moveToElement(getCurrentPassword()).perform();
+        getCurrentPassword().click();
+        getCurrentPassword().clear();
+        getCurrentPassword().sendKeys(password);
         getNewName().click();
         getNewName().clear();
         getNewName().sendKeys(uniqueName);
-        getCurrentPassword(password).click();
-        getCurrentPassword(password).sendKeys(password);
         getSaveBtn().click();
     }
     public WebElement getProfileEmail(){
@@ -53,18 +51,37 @@ By profilePassword = By.cssSelector("input[id='inputProfileNewPassword']");
     public WebElement getProfilePassword(){
         return findElement(profilePassword);
     }
-    public void updateEmailPassword(String newEmail,String newPassword){
-        actions.moveToElement(getNavigateToProfilePage()).perform();
-        getCurrentPassword(password).click();
-        getCurrentPassword(password).sendKeys(password);
+
+    public void updateEmail(String newEmail){
+        actions.moveToElement(getCurrentPassword()).perform();
+        getCurrentPassword().click();
+        getCurrentPassword().clear();
+        getCurrentPassword().sendKeys(password);
         getProfileEmail().click();
         getProfileEmail().clear();
         getProfileEmail().sendKeys(newEmail);
+        getSaveBtn().click();
+    }
+    public void updatePassword(String newPassword){
+        actions.moveToElement(getCurrentPassword()).perform();
+        getCurrentPassword().click();
+        getCurrentPassword().clear();
+        getCurrentPassword().sendKeys(password);
         getProfilePassword().click();
         getProfilePassword().clear();
         getProfilePassword().sendKeys(newPassword);
         getSaveBtn().click();
     }
 
+    public void notValidPassword(String invalidPassword){
+        actions.moveToElement(getCurrentPassword()).perform();
+        getCurrentPassword().click();
+        getCurrentPassword().clear();
+        getCurrentPassword().sendKeys(password);
+        getProfilePassword().click();
+        getProfilePassword().clear();
+        getProfilePassword().sendKeys(invalidPassword);
+        getSaveBtn().click();
+    }
 
 }

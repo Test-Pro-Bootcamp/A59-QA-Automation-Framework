@@ -6,13 +6,13 @@
     <test name="Example Test" preserve-order="false">
         <classes>
 
-<!--            <class name="LoginTests"/>-->
+            <class name="LoginTests"/>
 <!--            <class name="BaseTest"/>-->
 <!--            <class name="ProfileTests"/>-->
 <!--            <class name="CurrentQueueTest"/>-->
 <!--            <class name="PlaySong"/>-->
 <!--            <class name="DeletePlayList"/>-->
-                <class name="HomeTestLesson21"/>
+<!--                <class name="HomeTestLesson21"/>-->
 <!--            <class name="RenamePlayList"/>-->
 <!--            <class name="AllSongTestLesson21"/>-->
 <!--            <class name="KoelAppLoginTest"/>-->

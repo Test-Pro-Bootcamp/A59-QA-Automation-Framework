@@ -13,5 +13,18 @@ public class TestDataProvider extends BaseTest {
 
         };
     }
+    @DataProvider(name = "incorrectCredentials")
+    public static Object[][] provideIncorrectCredentials(){
+        return new Object[][] {
+                {" "}, //empty password
+                {"Ak12!"}, //less than 10 characters
+                {"Ak123456!@#$%^"}, //more than 15 characters
+                {"AKSD123!@#$"}, //with uppercase letters
+                {"ahjdj12!@!"}, //with lowercase letters
+                {"hsdkafHSAIFD"}, //just letters
+                {"1234567890123"}, //just numbers
+                {"Ak12341234"}, //without special characters
+        };
+    }
 
 }
