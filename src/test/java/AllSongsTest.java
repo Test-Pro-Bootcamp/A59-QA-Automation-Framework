@@ -23,8 +23,8 @@ public class AllSongsTest extends BaseTest {
         choosePlayOption();
 
         // Validate & verify song is playing via assertion
-        WebElement soundBar = wait.until
-                (ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid='sound-bar-play']/img")));
+        // WebElement soundBar = wait.until
+        //       (ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-testid='sound-bar-play']/img")));
         Assert.assertTrue(isSongPlaying());
 
     }

@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SongsPage extends BasePage {
     // Constructor for SongsPage
@@ -20,9 +21,24 @@ public class SongsPage extends BasePage {
     By ThirdSong = By.cssSelector("tr.song-item:nth-child(3)");
     By fourthSong = By.cssSelector("tr.song-item:nth-child(4)");
     By fithSong = By.cssSelector("tr.song-item:nth-child(5)");
+    By contextMenuPlayback = By.cssSelector("li.playback");
+    By soundBarVisualizer = By.cssSelector("div[data-testid='sound-bar-play'] img");
 
     // Page Methods
     public void navigateToAllSongsPage() {
         findElement(allSongsHome).click();
+    }
+
+    public void rightClickFirstSong() {
+        actions.contextClick(findElement(firstSong)).perform();
+    }
+
+    public void choosePlayOption() {
+        // wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li.playback"))).click();
+        findElement(contextMenuPlayback).click();
+    }
+
+    public boolean isSongPlaying() {
+        return findElement(soundBarVisualizer).isDisplayed();
     }
 }
