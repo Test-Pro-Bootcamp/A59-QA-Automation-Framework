@@ -11,7 +11,7 @@ public class SongsPage extends BasePage {
     }
 
     // Locators for SongsPage Class
-    By allSongsHome = By.cssSelector("#sidebar a.songs");
+    // By allSongsHome = By.cssSelector("#sidebar a.songs");
     By shuffleAllSongsBtn = By.cssSelector("button.btn-shuffle-all");
     By lyricsBtn = By.cssSelector("button#extraTabLyrics");
     By artistBtn = By.cssSelector("button#extraTabArtist");
@@ -25,9 +25,9 @@ public class SongsPage extends BasePage {
     By soundBarVisualizer = By.cssSelector("div[data-testid='sound-bar-play'] img");
 
     // Page Methods
-    public void navigateToAllSongsPage() {
-        findElement(allSongsHome).click();
-    }
+//    public void navigateToAllSongsPage() {
+//        findElement(allSongsHome).click();
+//    }
 
     public void rightClickFirstSong() {
         actions.contextClick(findElement(firstSong)).perform();
