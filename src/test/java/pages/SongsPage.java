@@ -22,9 +22,10 @@ public class SongsPage extends BasePage {
     By fourthSong = By.cssSelector("tr.song-item:nth-child(4)");
     By fithSong = By.cssSelector("tr.song-item:nth-child(5)");
     By contextMenuPlayback = By.cssSelector("li.playback");
-    By soundBarVisualizer = By.cssSelector("div[data-testid='sound-bar-play'] img");
+    //By soundBarVisualizer = By.cssSelector("div[data-testid='sound-bar-play'] img");
 
     // Page Methods
+    // Moved to BasePage since it's applicable to multiple pages (i.e Home Page, Songs Page, Album Page, etc)
 //    public void navigateToAllSongsPage() {
 //        findElement(allSongsHome).click();
 //    }
@@ -38,7 +39,8 @@ public class SongsPage extends BasePage {
         findElement(contextMenuPlayback).click();
     }
 
-    public boolean isSongPlaying() {
-        return findElement(soundBarVisualizer).isDisplayed();
-    }
+    // Moved to BasePage since it's applicable to multiple pages (i.e Home Page, Songs Page, Album Page, etc)
+//    public boolean isSongPlaying() {
+//        return findElement(soundBarVisualizer).isDisplayed();
+//    }
 }

@@ -35,5 +35,10 @@ public class BasePage {
         findElement(allSongsHome).click();
     }
 
+    public boolean isSongPlaying() {
+        By soundBarVisualizer = By.cssSelector("div[data-testid='sound-bar-play'] img");
+        return findElement(soundBarVisualizer).isDisplayed();
+    }
+
 
 }
