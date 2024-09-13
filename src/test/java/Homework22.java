@@ -3,6 +3,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ProfilePage;
+import pages.SongsPage;
 
 public class Homework22 extends BaseTest {
     @Test
@@ -56,5 +57,27 @@ public class Homework22 extends BaseTest {
         String profileName = profilePage.getProfileName();
         // Validate/verify that profile name was changed via assertion
         Assert.assertEquals(profileName, uniqueName);
+    }
+
+    @Test
+    public void playSongWithRightClickUsingPage() {
+        // Instantiate needed objects from the required Pages
+        LoginPage loginPage = new LoginPage(driver);
+        SongsPage songsPage = new SongsPage(driver);
+
+        // Step 1 - Login into Koel application
+        loginPage.login();
+
+        // Step 2 - Navigate to All Songs Page
+        songsPage.navigateToAllSongsPage();
+
+        // Step 3 - Right/Context click on the first song
+        songsPage.rightClickFirstSong();
+
+        // Step 4 - Choose play option from the context menu
+        songsPage.choosePlayOption();
+
+        // Validate/verify that song is actually playing via assertion
+        Assert.assertTrue(songsPage.isSongPlaying());
     }
 }

@@ -30,5 +30,15 @@ public class BasePage {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    public void navigateToAllSongsPage() {
+        By allSongsHome = By.cssSelector("#sidebar a.songs");
+        findElement(allSongsHome).click();
+    }
+
+    public boolean isSongPlaying() {
+        By soundBarVisualizer = By.cssSelector("div[data-testid='sound-bar-play'] img");
+        return findElement(soundBarVisualizer).isDisplayed();
+    }
+
 
 }
