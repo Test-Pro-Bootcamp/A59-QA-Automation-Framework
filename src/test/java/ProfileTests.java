@@ -11,6 +11,7 @@ import java.util.UUID;
 
 public class ProfileTests extends BaseTest {
 
+    String password = "ak1234!@#$";
 
     @Test
     public void changeProfileName() {

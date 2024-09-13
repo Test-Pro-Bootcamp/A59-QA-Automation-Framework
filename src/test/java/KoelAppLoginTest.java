@@ -1,6 +1,5 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.*;
 
 public class KoelAppLoginTest extends BaseTest {
 
@@ -26,17 +25,25 @@ public class KoelAppLoginTest extends BaseTest {
         allSongsPage.getToAllSongsCount();
         Assert.assertTrue(allSongsPage.getToAllSongsCount().isDisplayed());
     }
+    //Update Email
     @Test
-    public void getNewEmailPassword(){
-        String newPassword = "Ilya!461";
+    public void getNewEmail(){
         String newEmail = "11111hek@gmail.com";
-        String password = "ak1234!@#$";
         loginPage.login();
         profilePage.getNavigateToProfilePage();
-        profilePage.updateEmailPassword(newEmail,newPassword);
-        profilePage.getCurrentPassword(password);
+        profilePage.updateEmail(newEmail);
         Assert.assertTrue(profilePage.getProfileEmail().isDisplayed());
     }
+    //Update Password
+    @Test
+    public void getNewPassword(){
+        String newPassword = "Ilya!461";
+        loginPage.login();
+        profilePage.getNavigateToProfilePage();
+        profilePage.updatePassword(newPassword);
+        Assert.assertTrue(profilePage.getProfilePassword().isDisplayed());
+    }
+    //Negative result Login
     @Test(dataProvider = "NegativeLoginTestData" , dataProviderClass = TestDataProvider.class)
     public void negativeLoginTest(String email, String password) {
         String expectedUrl = "https://qa.koel.app/";
