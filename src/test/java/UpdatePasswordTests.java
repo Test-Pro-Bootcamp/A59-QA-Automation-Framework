@@ -4,10 +4,10 @@ import pages.LoginPage;
 
 public class UpdatePasswordTests extends BaseTest{
 
+    //After register in Koel app, Login, navigate to Profile page, update password
     @Test
     public void successUpdatePassword(){
 
-        //After register in Koel app, Login, navigate to Profile page, update password
             String newPassword = "Ilya!461";
             loginPage.login();
             profilePage.getNavigateToProfilePage();
@@ -20,6 +20,20 @@ public class UpdatePasswordTests extends BaseTest{
         loginPage.login();
         profilePage.notValidPassword(invalidPassword);
         Assert.assertTrue(profilePage.getErrorMsg().isDisplayed());
+    }
+    //Verify Login with updated password
+    @Test
+    public void loginWithUpdPassword(){
+        String newPassword = "Ilya!461";
+        loginPage.newLogin(newPassword);
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
+    //Verify can not Login with old Password
+    @Test
+    public void oldPassword(){
+        loginPage.login();
+        String expectedUrl = "https://qa.koel.app/";
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
     }
 
 }

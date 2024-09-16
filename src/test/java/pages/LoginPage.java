@@ -32,6 +32,10 @@ public class LoginPage extends BasePage {
         passwordField.sendKeys(password);
         return this;
     }
+    public LoginPage provideNewPassword(String newPassword){
+        passwordField.sendKeys(newPassword);
+        return this;
+    }
     public void clickSubmit(){
         submitBtn.click();
     }
@@ -41,6 +45,8 @@ public class LoginPage extends BasePage {
     public void login(){
         provideEmail("aleksei.koksharov@testpro.io").providePassword("ak1234!@#$").clickSubmit();
     }
+
+    public void newLogin(){ provideEmail("aleksei.koksharov@testpro.io").provideNewPassword("Ilya!461"); }
 
     public void loginInvalidEmail(){
         provideEmail("alekseikoksharov@testproio").providePassword("ak1234!@#$").clickSubmit();
