@@ -33,17 +33,6 @@ public class BaseTest {
     public Actions actions = null;
     public ChromeOptions options = new ChromeOptions();
     public static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
-    BasePage basePage = new BasePage(getDriver());
-    LoginPage loginPage = new LoginPage(getDriver());
-    HomePage homePage = new HomePage(getDriver());
-    AlbumsPage albumsPage = new AlbumsPage(getDriver());
-    AllSongsPage allSongsPage = new AllSongsPage(getDriver());
-    ArtistsPage artistsPage = new ArtistsPage(getDriver());
-    CurrentQueuePage currentQueuePage = new CurrentQueuePage(getDriver());
-    PlayListPage playListPage = new PlayListPage(getDriver());
-    PlaySongPage playSongPage = new PlaySongPage(getDriver());
-    ProfilePage profilePage = new ProfilePage(getDriver());
-    RegistrationPage registrationPage = new RegistrationPage(getDriver());
 
     public static WebDriver getDriver(){
         return threadDriver.get();
@@ -86,7 +75,17 @@ public void launchBrowser(String BaseURL) throws MalformedURLException{
             .pollingEvery(Duration.ofMillis(200));
         navigateToPage(BaseURL);
 
-
+        basePage = new BasePage(getDriver());
+        loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
+        albumsPage = new AlbumsPage(getDriver());
+        allSongsPage = new AllSongsPage(getDriver());
+        artistsPage = new ArtistsPage(getDriver());
+        currentQueuePage = new CurrentQueuePage(getDriver());
+        playListPage = new PlayListPage(getDriver());
+        playSongPage = new PlaySongPage(getDriver());
+        profilePage = new ProfilePage(getDriver());
+        registrationPage = new RegistrationPage(getDriver());
 }
 
 
