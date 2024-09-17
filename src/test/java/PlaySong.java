@@ -9,33 +9,10 @@ public class PlaySong extends BaseTest {
     @Test
 
     public void playSong() {
-
         loginPage.login();
         playSongPage.playBtn();
         playSongPage.allSongs();
         Assert.assertTrue(playSongPage.getIsDisplayedSoundBar().isDisplayed());
-
-
-//    private boolean isDisplayedSoundBar() {
-//        WebElement soundBar = wait.until(ExpectedConditions.visibilityOfElementLocated
-//                (By.cssSelector("img[alt='Sound bars']")));
-//        return soundBar.isDisplayed();
-//    }
-//
-//    private void enterAllSongs() {
-//        WebElement allSongs = wait.until(ExpectedConditions.visibilityOfElementLocated
-//                (By.cssSelector("a[href='#!/songs']")));
-//        allSongs.click();
-//    }
-//
-//
-//    public void clickPlayBtn() {
-//            WebElement playBtn = wait.until(ExpectedConditions.visibilityOfElementLocated
-//                    (By.cssSelector("span.play")));
-//            Actions actions = new Actions(getDriver());
-//            actions.click(playBtn).perform();
-//
-//        }
 
     }
 

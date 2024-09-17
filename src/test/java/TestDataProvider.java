@@ -26,5 +26,14 @@ public class TestDataProvider extends BaseTest {
                 {"Ak12341234"}, //without special characters
         };
     }
+    @DataProvider(name = "emailRegistrationCredentials")
+    public static Object[][] provideEmailRegistrationCredentials(){
+        return new Object[][] {
+                {" "}, //empty email
+                {"aleksei.koksharovtestpro.io"}, //without '@' symbol
+                {"alekseikoksharov@testproio"}, //without '.' symbol
+                {"aleksei.koksharov"}, //without '@testpro.io' domain
+        };
+    }
 
 }
