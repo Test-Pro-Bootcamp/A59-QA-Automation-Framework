@@ -1,13 +1,14 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LoginPage;
+import pages.ProfilePage;
 
 public class UpdatePasswordTests extends BaseTest{
 
     //After register in Koel app, Login, navigate to Profile page, update password
     @Test
     public void successUpdatePassword(){
-
             String newPassword = "Ilya!461";
             loginPage.login();
             profilePage.getNavigateToProfilePage();

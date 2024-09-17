@@ -33,10 +33,20 @@ public class BaseTest {
     public Actions actions = null;
     public ChromeOptions options = new ChromeOptions();
     public static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
+    BasePage basePage;
+    LoginPage loginPage;
+    HomePage homePage;
+    AlbumsPage albumsPage;
+    AllSongsPage allSongsPage;
+    ArtistsPage artistsPage;
+    CurrentQueuePage currentQueuePage;
+    PlayListPage playListPage;
+    PlaySongPage playSongPage;
+    ProfilePage profilePage;
+    RegistrationPage registrationPage;
 
     public static WebDriver getDriver(){
-        return threadDriver.get();
-    }
+        return threadDriver.get();}
 
     //String url = "https://qa.koel.app/";
 
@@ -75,18 +85,19 @@ public void launchBrowser(String BaseURL) throws MalformedURLException{
             .pollingEvery(Duration.ofMillis(200));
         navigateToPage(BaseURL);
 
-        basePage = new BasePage(getDriver());
-        loginPage = new LoginPage(getDriver());
-        homePage = new HomePage(getDriver());
-        albumsPage = new AlbumsPage(getDriver());
-        allSongsPage = new AllSongsPage(getDriver());
-        artistsPage = new ArtistsPage(getDriver());
-        currentQueuePage = new CurrentQueuePage(getDriver());
-        playListPage = new PlayListPage(getDriver());
-        playSongPage = new PlaySongPage(getDriver());
-        profilePage = new ProfilePage(getDriver());
-        registrationPage = new RegistrationPage(getDriver());
+    basePage = new BasePage(getDriver());
+    loginPage = new LoginPage(getDriver());
+    homePage = new HomePage(getDriver());
+    albumsPage = new AlbumsPage(getDriver());
+    allSongsPage = new AllSongsPage(getDriver());
+    artistsPage = new ArtistsPage(getDriver());
+    currentQueuePage = new CurrentQueuePage(getDriver());
+    playListPage = new PlayListPage(getDriver());
+    playSongPage = new PlaySongPage(getDriver());
+    profilePage = new ProfilePage(getDriver());
+    registrationPage = new RegistrationPage(getDriver());
 }
+
 
 
 
@@ -152,20 +163,21 @@ public void launchBrowser(String BaseURL) throws MalformedURLException{
     }
     protected void enterPassword(String password) {
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
-        //WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
         passwordField.sendKeys(password);
     }
     protected void enterEmail(String email) {
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
-        //WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         emailField.clear();
         emailField.sendKeys(email);
     }
     protected void submit() {
-        //WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
+    }
+    protected void registrationSubmit(){
+        WebElement registrationSubmit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='submit']")));
+        registrationSubmit.click();
     }
 
     public static WebDriver lambdaTest() throws MalformedURLException {

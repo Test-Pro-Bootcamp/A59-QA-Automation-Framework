@@ -46,7 +46,7 @@ public class LoginPage extends BasePage {
         provideEmail("aleksei.koksharov@testpro.io").providePassword("ak1234!@#$").clickSubmit();
     }
 
-    public void newLogin(){ provideEmail("aleksei.koksharov@testpro.io").provideNewPassword("Ilya!461"); }
+    public void newLogin(String newPassword){ provideEmail("aleksei.koksharov@testpro.io").provideNewPassword("Ilya!461"); }
 
     public void loginInvalidEmail(){
         provideEmail("alekseikoksharov@testproio").providePassword("ak1234!@#$").clickSubmit();

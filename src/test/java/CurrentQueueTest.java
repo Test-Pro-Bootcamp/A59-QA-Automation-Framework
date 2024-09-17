@@ -11,6 +11,9 @@ public class CurrentQueueTest extends BaseTest{
     // Current Queue page display currently played songs
 @Test
     public void currentQueuePlaySong(){
+    LoginPage loginPage = new LoginPage(getDriver());
+    HomePage homePage = new HomePage(getDriver());
+    CurrentQueuePage currentQueuePage = new CurrentQueuePage(getDriver());
         loginPage.login();
         homePage.currentQueueSongs();
         Assert.assertTrue(currentQueuePage.getIsDisplayedCurrentQueueList().isDisplayed());
@@ -19,6 +22,9 @@ public class CurrentQueueTest extends BaseTest{
 
 @Test
     public void countOfSongsAndDuration(){
+    LoginPage loginPage = new LoginPage(getDriver());
+    HomePage homePage = new HomePage(getDriver());
+    AllSongsPage allSongsPage = new AllSongsPage(getDriver());
     loginPage.login();
     homePage.currentQueueSongs();
     Assert.assertTrue(allSongsPage.getToAllSongsCount().isDisplayed());
@@ -27,6 +33,10 @@ public class CurrentQueueTest extends BaseTest{
 
 @Test
     public void songsAlbumPlayingCurrentQueue(){
+    LoginPage loginPage = new LoginPage(getDriver());
+    HomePage homePage = new HomePage(getDriver());
+    AlbumsPage albumsPage = new AlbumsPage(getDriver());
+    CurrentQueuePage currentQueuePage = new CurrentQueuePage(getDriver());
     loginPage.login();
     homePage.albumsList();
     albumsPage.playFirstSong();
@@ -36,6 +46,10 @@ public class CurrentQueueTest extends BaseTest{
 
 @Test
     public void songsArtistsPlayingCurrentQueue(){
+    LoginPage loginPage = new LoginPage(getDriver());
+    HomePage homePage = new HomePage(getDriver());
+    ArtistsPage artistsPage = new ArtistsPage(getDriver());
+    CurrentQueuePage currentQueuePage = new CurrentQueuePage(getDriver());
     loginPage.login();
     homePage.artistsList();
     artistsPage.firstSongPlaying();

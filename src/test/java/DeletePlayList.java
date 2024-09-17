@@ -7,13 +7,9 @@ import pages.PlayListPage;
 //Homework 19
 public class DeletePlayList extends BaseTest {
 
-
-
     @Test
 
     public void deletePlayList() {
-// Without 'Thread.sleep(s)'
-
         String playListName = "Playlist 78";
         loginPage.login();
         homePage.createPlayList(playListName);

@@ -15,12 +15,9 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
 
     }
-
     @DataProvider
     public Object[][] features(){
         return testNGCucumberRunner.provideScenarios();
-
-
     }
     @AfterClass
     public void tearDownClass(){
