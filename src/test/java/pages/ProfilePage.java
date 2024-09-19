@@ -19,6 +19,7 @@ By currentPassword = By.id("inputProfileCurrentPassword");
 By profileEmail = By.cssSelector("input[id='inputProfileEmail']");
 By profilePassword = By.cssSelector("input[id='inputProfileNewPassword']");
 By errorMsg = By.cssSelector("div.error.show");
+By successMsg = By.cssSelector("div.success show");
 
     public void getNavigateToProfilePage(){
         findElement(navigateToProfilePage);
@@ -34,6 +35,7 @@ By errorMsg = By.cssSelector("div.error.show");
     public WebElement getCurrentPassword(){
         return findElement(currentPassword);
     }
+    public WebElement getSuccessMsg(){ return findElement(successMsg); }
 
     public void updateProfileName(String uniqueName){
         actions.moveToElement(getCurrentPassword()).perform();

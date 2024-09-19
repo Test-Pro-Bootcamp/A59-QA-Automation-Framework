@@ -31,7 +31,7 @@ public class TestDataProvider extends BaseTest {
         return new Object[][] {
                 {" "}, //empty email
                 {"aleksei.koksharovtestpro.io"}, //without '@' symbol
-                {"alekseikoksharov@testproio"}, //without '.' symbol
+                {"alekseikoksharov@testproio"}, //without '.' dot
                 {"aleksei.koksharov"}, //without '@testpro.io' domain
         };
     }
