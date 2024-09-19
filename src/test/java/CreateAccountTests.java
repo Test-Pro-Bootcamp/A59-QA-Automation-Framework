@@ -23,7 +23,7 @@ public class CreateAccountTests extends BaseTest{
 //Login after password updated
     @Test
     public void loginWithNewPassword(){
-        loginPage.newLogin(newPassword);
+        loginPage.newLoginPassword();
     }
 
 

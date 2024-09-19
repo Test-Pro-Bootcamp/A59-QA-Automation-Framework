@@ -36,6 +36,10 @@ public class LoginPage extends BasePage {
         passwordField.sendKeys(newPassword);
         return this;
     }
+    public LoginPage provideNewEmail(String newEmail){
+        emailField.sendKeys(newEmail);
+        return this;
+    }
     public void clickSubmit(){
         submitBtn.click();
     }
@@ -46,8 +50,12 @@ public class LoginPage extends BasePage {
         provideEmail("aleksei.koksharov@testpro.io").providePassword("ak1234!@#$").clickSubmit();
     }
 
-    public void newLogin(String newPassword){ provideEmail("aleksei.koksharov@testpro.io").provideNewPassword("Ilya!461"); }
+    public void newLoginPassword(){
+        provideEmail("aleksei.koksharov@testpro.io").provideNewPassword("Ilya!461").clickSubmit(); }
 
+    public void newLoginEmail(){
+        provideNewEmail("Ilya!461").providePassword("ak1234!@#$").clickSubmit();
+    }
     public void loginInvalidEmail(){
         provideEmail("alekseikoksharov@testproio").providePassword("ak1234!@#$").clickSubmit();
     }

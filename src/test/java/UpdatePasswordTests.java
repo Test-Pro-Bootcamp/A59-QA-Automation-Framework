@@ -26,7 +26,7 @@ public class UpdatePasswordTests extends BaseTest{
     @Test
     public void loginWithUpdPassword(){
         String newPassword = "Ilya!461";
-        loginPage.newLogin(newPassword);
+        loginPage.newLoginPassword();
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
     //Verify can not Login with old Password
