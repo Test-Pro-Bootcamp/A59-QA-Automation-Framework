@@ -82,7 +82,7 @@ public class Homework22 extends BaseTest {
     }
 
     @Test
-    public void renamePlayLisUsingPage() throws InterruptedException {
+    public void renamePlayListUsingPage() throws InterruptedException {
         String newPlaylistName = "Sample Edited Playlist";
         String updatedPlaylistMsg = "Updated playlist \"Sample Edited Playlist.\"";
 
