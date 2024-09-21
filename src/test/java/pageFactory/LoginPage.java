@@ -27,18 +27,26 @@ public class LoginPage extends BasePage{
     WebElement submitBtn;
 
     // Page Methods for LoginPage under loginPage package/folder
-    public void provideEmail(String email) {
+    // To make it a fluent interface method we add a return type of LoginPage
+//    public void provideEmail(String email) {
+//        emailField.sendKeys(email);
+//        //findElement(emailField).sendKeys(email);
+//    }
+    public LoginPage provideEmail(String email) {
         emailField.sendKeys(email);
+        return this;
         //findElement(emailField).sendKeys(email);
     }
 
-    public void providePassword(String password) {
+    public LoginPage providePassword(String password) {
         passwordField.sendKeys(password);
+        return this;
         //findElement(passwordField).sendKeys(password);
     }
 
-    public void submitClick() {
+    public LoginPage submitClick() {
         submitBtn.click();
+        return this;
         //findElement(submitBtn).click();
     }
 

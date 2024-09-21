@@ -11,7 +11,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.LoginPage;
+//import pages.LoginPage;
+import pageFactory.LoginPage;
 
 import java.awt.*;
 
@@ -26,7 +27,16 @@ public class LoginTests extends BaseTest {
          HomePage homePage = new HomePage(driver);
 
         // Step 1 - Login into Koel app
-        loginPage.login();
+//        loginPage.login();
+        loginPage.provideEmail("leon.poyau+2@testpro.io");
+        loginPage.providePassword("N6wWY2Rx");
+        loginPage.submitClick();
+        //Using Fluent Interface way/style(lambda style) instead of the above 3 lines as shown below
+        // Note - We had to import pageFactory.LoginPage since this class has the method that returns
+        // an object of type LoginPage to allow use of Fluent Interface.
+        // the regular POM pages.LoginPage import had to also be commented out. Otherwise it won't work.
+        loginPage.provideEmail("leon.poyau+2@testpro.io").providePassword("N6wWY2Rx").submitClick();
+
         // Validate and Verify that user logged successfully via assertion. Is the User Avatar Icon displayed on home page
         Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
     }

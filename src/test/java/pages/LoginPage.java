@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
         findElement(passwordField).sendKeys(password);
     }
 
-    public void submitClick() {
+    public void submitClick()  {
         findElement(submitBtn).click();
     }
 

@@ -21,7 +21,7 @@ public class Homework22 extends BaseTest {
     }
 
     @Test(dataProvider="NegativeLoginTestData")
-    public void negativeLoginTestUsingPages(String email, String password) throws InterruptedException {
+    public void negativeLoginTestUsingPages(String email, String password) {
         LoginPage loginPage = new LoginPage(driver);
         String expectedURL = "https://qa.koel.app/";
 
@@ -79,5 +79,34 @@ public class Homework22 extends BaseTest {
 
         // Validate/verify that song is actually playing via assertion
         Assert.assertTrue(songsPage.isSongPlaying());
+    }
+
+    @Test
+    public void renamePlayLisUsingPage() throws InterruptedException {
+        String newPlaylistName = "Sample Edited Playlist";
+        String updatedPlaylistMsg = "Updated playlist \"Sample Edited Playlist.\"";
+
+        // Create needed and appropriate page Objects
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        // Step 1 - Login into Koel Application
+        // Navigating to Koel login page is already done by @BeforeMethod in BaseTest class
+
+        loginPage.provideEmail("leon.poyau+2@testpro.io");
+        loginPage.providePassword("N6wWY2Rx");
+        loginPage.submitClick();
+        Thread.sleep(700); // needed because playlist elements aren't loaded until after at least 700ms or more
+                                 // or use submit() from BaseTest class which has a 2s delay after it runs
+                                 // This avoids the Timeout Exception that is otherwise thrown at Step 2 below.
+
+
+        // Step 2 - Double-click on PlayList link to be renamed
+        homePage.doubleClickPlayList();
+
+        // Step 3 - Enter new name to rename the playlist
+        homePage.enterNewName(newPlaylistName);
+
+        // Validate/verify that playlist was renamed via assertion
+        Assert.assertEquals(homePage.getRenamePlaylistSuccessMsg(), updatedPlaylistMsg);
     }
 }
