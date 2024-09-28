@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -20,8 +23,8 @@ import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
     // we are making these members below a public scope (by adding the public keyword)
-    public WebDriver driver = null;
-    public ChromeOptions options = new ChromeOptions();
+    public static WebDriver driver = null;
+    // public ChromeOptions options;
     public WebDriverWait wait;
     public Wait<WebDriver> fluentWait;
     public Actions actions;
@@ -48,8 +51,12 @@ public class BaseTest {
     public void launchBrowser(String baseURL) throws AWTException {
         // Pre-condition
         // Added ChromeOptions argument below to fix websocket error
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
+        // options = new ChromeOptions();
+        // options.addArguments("--remote-allow-origins=*");
+        // driver = new ChromeDriver(options);
+          // driver = new FirefoxDriver();
+        // Replaced above lines with line below to dynamically assign a browser value for driver using pickBrowser() method
+        driver = pickBrowser(System.getProperty("browser"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -71,6 +78,32 @@ public class BaseTest {
     public void closeBrowser(){
         driver.quit();
     }
+
+    protected void navigateToPage(String url) {
+        driver.get(url);
+    }
+
+    public static WebDriver pickBrowser(String browser) {
+        switch(browser) {
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                return driver = new FirefoxDriver();
+            case "microsoftEdge":
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("remote-allow-origins=*");
+                return driver = new EdgeDriver(edgeOptions);
+            default:
+                // WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("remote-allow-origins=*");
+                return driver = new ChromeDriver(options);
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
+    // OLD METHODS
+    /////////////////////////////////////////////////////////////////////////////
 
     protected void submit()  {
         //WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
@@ -97,7 +130,5 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
 
-    protected void navigateToPage(String url) {
-        driver.get(url);
-    }
+
 }

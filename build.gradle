@@ -22,5 +22,6 @@ test {
         //suites "src/test/resources/Regression.xml"
         // suites "src/test/resources/Homework.xml"
         //suites "src/test/resources/PlaySongs.xml"
+        systemProperty "browser", System.getProperty("browser")
     }
 }
