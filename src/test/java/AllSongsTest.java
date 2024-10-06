@@ -9,8 +9,8 @@ public class AllSongsTest extends BaseTest {
     @Test
     public void playSongWithRightClick() {
         // Step 1 - Login
-        enterEmail("demo@testpro.io");
-        enterPassword("te$t$tudent");
+        enterEmail("leon.poyau+2@testpro.io");
+        enterPassword("N6wWY2Rx");
         submit();
 
         // Step 2 - Navigate to All Songs page
