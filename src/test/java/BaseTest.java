@@ -86,7 +86,7 @@ public class BaseTest {
     protected void navigateToPage(String url) {
         driver.get(url);
     }
-
+    // Browser Factory method allowing us to create an instance of any browser on Selenium Grid and run our tests remotely
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.50.193:4444";
@@ -103,7 +103,8 @@ public class BaseTest {
                 caps.setCapability("browserName","firefox");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
             case "grid-edge": // gradle clean test -Dbrowser=grid-edge
-                caps.setCapability("browerName","MicrosoftEdge");
+                caps.setCapability("browserName","MicrosoftEdge");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
             case "grid-chrome": // gradle clean test -Dbrowser=chrome
                 caps.setCapability("browserName","chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
