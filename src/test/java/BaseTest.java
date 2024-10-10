@@ -33,6 +33,11 @@ public class BaseTest {
     public Wait<WebDriver> fluentWait;
     public Actions actions;
     public Robot robot;
+    public static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();  // needed for parallelism execution
+
+    public static WebDriver getDriver() {
+        return threadDriver.get();
+    }
 
     // String url = "https://qa.koel.app/";
     @DataProvider(name = "NegativeLoginTestData")
@@ -49,7 +54,7 @@ public class BaseTest {
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
-
+    /*
     @BeforeMethod
     @Parameters({"BaseURL"})
     public void launchBrowser(String baseURL) throws AWTException, MalformedURLException {
@@ -77,14 +82,57 @@ public class BaseTest {
                 .pollingEvery(Duration.ofMillis(200));
         navigateToPage(baseURL);
     }
+    */
 
+    @BeforeMethod
+    @Parameters({"BaseURL"})
+    public void launchBrowser(String baseURL) throws AWTException, MalformedURLException {
+
+        threadDriver.set(pickBrowser(System.getProperty("browser")));
+        //driver = pickBrowser(System.getProperty("browser"));
+
+        // Replace all occurrence of driver with getDriver() method as done below
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        getDriver().manage().window().maximize();
+        //driver.manage().window().maximize();
+
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        // wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        actions = new Actions(getDriver());
+        // actions = new Actions(driver);
+        robot = new Robot();
+
+        // using fluentWait took a long time for span.name element to be interactable and clicked on in
+        // navigateToProfilePage() method called in changeProfileName() method
+        // Even with Thread.sleep() used after login() method in ProfileTests class. This is almost useless.
+        // Best to use wait along with Thread.sleep(1500) after login() in changeProfileName that's in ProfileTests class
+        // There are times that we indeed cannot get away from Thread.sleep(). This is such an example.
+
+        fluentWait = new FluentWait<WebDriver>(getDriver())
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(200));
+        navigateToPage(baseURL);
+    }
+    /*
     @AfterMethod
     public void closeBrowser(){
         driver.quit();
     }
+    */
+
+    // Once a thread/processor has been used it will get closed and removed from the list afterwards
+    @AfterMethod
+    public void tearDown() {
+        threadDriver.get().close();
+        threadDriver.remove();
+    }
 
     protected void navigateToPage(String url) {
-        driver.get(url);
+        //driver.get(url);
+        getDriver().get(url);
     }
     // Browser Factory method allowing us to create an instance of any browser on Selenium Grid and run our tests remotely
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {

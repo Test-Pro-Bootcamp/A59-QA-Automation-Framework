@@ -23,8 +23,10 @@ public class LoginTests extends BaseTest {
         // Create an instance of the LoginPage & HomePage class below
         // And use them instead of enterEmail() and enterPassword() from BaseTest class.
 
-         LoginPage loginPage = new LoginPage(driver);
-         HomePage homePage = new HomePage(driver);
+         //LoginPage loginPage = new LoginPage(driver);
+         LoginPage loginPage = new LoginPage(getDriver());
+         //HomePage homePage = new HomePage(driver);
+         HomePage homePage = new HomePage(getDriver());
 
         // Step 1 - Login into Koel app
 //        loginPage.login();
@@ -41,7 +43,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
     }
 
-    @Test(dataProvider="NegativeLoginTestData")
+    //@Test(dataProvider="NegativeLoginTestData")
     public void negativeLoginTest(String email, String password) throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         String expectedURL = "https://qa.koel.app/";
@@ -55,7 +57,7 @@ public class LoginTests extends BaseTest {
     }
 
 
-    // @Test
+    @Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
         // navigateToPage() ;
         String expectedURL = "https://qa.koel.app/";
@@ -66,21 +68,20 @@ public class LoginTests extends BaseTest {
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), expectedURL); // https://qa.koel.app/
+        //Assert.assertEquals(driver.getCurrentUrl(), expectedURL); // https://qa.koel.app/
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedURL); // https://qa.koel.app/
     }
 
-    // @Test
-    //public void loginValidEmailEmptyPassword() throws InterruptedException {
-
-        /*// navigateToPage();
+    @Test
+    public void loginValidEmailEmptyPassword() throws InterruptedException {
+        // navigateToPage();
         String expectedURL = "https://qa.koel.app/";
         enterEmail("leon.poyau+2@testpro.io");
         submit();
 
         Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), expectedURL); //https://qa.koel.app/
-
+        //Assert.assertEquals(driver.getCurrentUrl(), expectedURL); //https://qa.koel.app/
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedURL); //https://qa.koel.app/
     }
-    */
 }
