@@ -20,10 +20,12 @@ import org.testng.annotations.*;
 import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import java.util.HashMap;
 
 public class BaseTest {
     // we are making these members below a public scope (by adding the public keyword)
@@ -156,6 +158,8 @@ public class BaseTest {
             case "grid-chrome": // gradle clean test -Dbrowser=chrome
                 caps.setCapability("browserName","chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
+            case "cloud":
+                return lambdaTest();
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
@@ -191,6 +195,27 @@ public class BaseTest {
                 (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
         emailField.clear();
         emailField.sendKeys(email);
+    }
+
+    // This method is used for Cloud Execution of Tests. We had to set up an account on lambdatest.com
+    public static WebDriver lambdaTest() throws MalformedURLException {
+        String hubURL = "https://hub.lambdatest.com/wd/hub";
+        /* DesiredCapabilities capabilities = new DesiredCapabilities();
+          capabilities.setCapability();
+        *  */
+        // Capabilities alread set below for use with ChromeOptions
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName("Windows 10");
+        browserOptions.setBrowserVersion("129");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "leopoyau");
+        ltOptions.put("accessKey", "hWqu3HHAjbYeAMEuwedz3mnqQQ0lmtfGJz82jUoKtGnSdaKozv");
+        ltOptions.put("build", "TestProLenPBuild");
+        ltOptions.put("project", "CloudExecution-L25");
+        ltOptions.put("w3c", true);
+        ltOptions.put("plugin", "java-testNG");
+        browserOptions.setCapability("LT:Options", ltOptions);
+        return new RemoteWebDriver(new URL(hubURL), browserOptions);
     }
 
 
