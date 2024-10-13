@@ -203,7 +203,7 @@ public class BaseTest {
         /* DesiredCapabilities capabilities = new DesiredCapabilities();
           capabilities.setCapability();
         *  */
-        // Capabilities alread set below for use with ChromeOptions
+        // Capabilities already set below for use with ChromeOptions
         ChromeOptions browserOptions = new ChromeOptions();
         browserOptions.setPlatformName("Windows 10");
         browserOptions.setBrowserVersion("129");
@@ -215,8 +215,7 @@ public class BaseTest {
         ltOptions.put("w3c", true);
         ltOptions.put("plugin", "java-testNG");
         browserOptions.setCapability("LT:Options", ltOptions);
-        return new RemoteWebDriver(new URL(hubURL), browserOptions);
+        //return new RemoteWebDriver(new URL(hubURL), browserOptions);
+        return new RemoteWebDriver(URI.create(hubURL).toURL(), browserOptions);
     }
-
-
 }
