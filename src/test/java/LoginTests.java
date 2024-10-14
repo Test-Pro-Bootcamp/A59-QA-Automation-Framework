@@ -43,7 +43,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
     }
 
-    @Test(dataProvider="NegativeLoginTestData")
+    //@Test(dataProvider="NegativeLoginTestData")
     public void negativeLoginTest(String email, String password) throws InterruptedException {
         LoginPage loginPage = new LoginPage(getDriver());
         //LoginPage loginPage = new LoginPage(driver);
@@ -59,7 +59,7 @@ public class LoginTests extends BaseTest {
     }
 
 
-    //@Test
+    @Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
         // navigateToPage() ;
         String expectedURL = "https://qa.koel.app/";
@@ -74,7 +74,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedURL); // https://qa.koel.app/
     }
 
-    //@Test
+    @Test
     public void loginValidEmailInvalidPassword() throws InterruptedException {
         // navigateToPage() ;
         String expectedURL = "https://qa.koel.app/";
@@ -90,7 +90,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedURL); // https://qa.koel.app/
     }
 
-    //@Test
+    @Test
     public void loginValidEmailEmptyPassword() throws InterruptedException {
         // navigateToPage();
         LoginPage loginPage = new LoginPage(getDriver());
@@ -105,7 +105,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedURL); //https://qa.koel.app/
     }
 
-    //@Test
+    @Test
     public void loginEmptyEmailValidPassword() throws InterruptedException {
         // navigateToPage();
         String expectedURL = "https://qa.koel.app/";

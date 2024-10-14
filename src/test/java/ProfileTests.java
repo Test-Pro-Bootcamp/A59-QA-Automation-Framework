@@ -14,8 +14,10 @@ public class ProfileTests extends BaseTest{
         // Create an instance of the LoginPage & HomePage class below
         // And use them instead of enterEmail() and enterPassword() from BaseTest class.
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        //LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(getDriver());
+        //HomePage homePage = new HomePage(driver);
 
         // Step 1 - Login into Koel app
         loginPage.login();
@@ -23,7 +25,8 @@ public class ProfileTests extends BaseTest{
         Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
 
         // Step 2 - Navigate User & profile name page
-        ProfilePage profilePage = new ProfilePage(driver);
+        ProfilePage profilePage = new ProfilePage(getDriver());
+        //ProfilePage profilePage = new ProfilePage(driver);
         profilePage.navigateToProfilePage();
 
         // Step 3 - Change profile name to new name

@@ -7,7 +7,7 @@
         <classes>
            <class name="LoginTests"/>
             <class name="BaseTest"/>
-<!--            <class name="ProfileTests"/>-->
+            <class name="ProfileTests"/>
 <!--            <class name="AllSongsTest"/>-->
 <!--            <class name="HomeTest"/>-->
             <!--             <class name="Homework16"/> -->

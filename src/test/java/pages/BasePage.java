@@ -25,7 +25,7 @@ public class BasePage {
 
     // Next thing is Locators - First thing we do on a page is to locate Elements
     // We create a method to find Elements instead of using driver.findElement method or wait.until(ExpectedConditions)
-    // We can simply use this method in all the pages (login, home, User profile, All Songs, etc) to find elements.
+    // We can simply use this method in all the pages (login, home, User profile, All Songs, etc.) to find elements.
     public WebElement findElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
