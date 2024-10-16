@@ -1,0 +1,12 @@
+Public Class Homework 17 {
+
+@Test
+Public void addSongToPlaylist()
+
+String url = https://qa.koel.app/
+driver.get(url)
+
+WebElement = ViewAllButton
+
+//Assertions = Expected vs. Actual
+Asset.asserttrue (Notificationmessageappears)
