@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,8 +13,13 @@ public class LoginTests extends BaseTest {
         enterEmail("apurva.singh@testpro.io");
         enterPassword("te$tpro$tudent1");
         submit();
-
-        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
+        //Thread.sleep(2000);
+        // instead of thread.sleep the better practice is to use the below line.
+       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
+       // WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
+        // and better option in one line is to club the above line with wait.until line is =
+        WebElement avatarIcon = wait.until
+                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
         // Expected Result
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
