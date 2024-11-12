@@ -53,7 +53,6 @@ public class BaseTest {
        WebElement submit = wait .until
                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
-        Thread.sleep(1000);
     }
 
     protected void enterPassword(String password) {
