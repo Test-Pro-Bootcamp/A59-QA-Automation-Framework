@@ -8,7 +8,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginValidEmailPassword() throws InterruptedException {
 
-        navigateToPage();
+
         enterEmail("apurva.singh@testpro.io");
         enterPassword("te$tpro$tudent1");
         submit();
@@ -21,7 +21,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
-        navigateToPage();
+
 
         // Steps
         enterEmail("invalid@testpro.io");
@@ -36,7 +36,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginValidEmailEmptyPassword() throws InterruptedException {
 
-        navigateToPage();
+
         enterEmail("invalid@testpro.io");
         submit();
 

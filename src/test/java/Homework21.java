@@ -2,13 +2,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class Homework21 extends BaseTest {
-    private WebDriverWait wait;
-    private Actions actions;
+    WebDriverWait wait;
+    Actions actions;
 
 
     @Test
@@ -16,16 +20,16 @@ public class Homework21 extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         actions = new Actions(driver);
 
-        navigateToPage();
         //login
         enterEmail("apurva.singh@testpro.io");
         enterPassword("te$tpro$tudent1");
         submit();
         // create a new playlist
         createPlaylistAction();
-
+        Thread.sleep(5000);
         //rename a new playlist
         renamePlaylistAction();
+        Thread.sleep(5000);
         //Assert
         Assert.assertTrue(getSuccessPopUp().isDisplayed());
         // Quitting the WebDriver session
@@ -33,14 +37,14 @@ public class Homework21 extends BaseTest {
 
     }
 
+
     public void renamePlaylistAction() {
         // Wait for the playlist element to be present and active
-        WebElement renamePlaylist = wait.until
-                (ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"playlists\"]/ul/li[6]")));
+        WebElement renamePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"playlists\"]/ul/li[6]")));
         System.out.println("Found active playlist");
 
         // Double-click the playlist to make the input field appear
-        actions.moveToElement(renamePlaylist).doubleclick().perform();
+        actions.moveToElement(renamePlaylist).doubleClick().perform();
         System.out.println("double clicked the playlist");
 
 
@@ -50,12 +54,10 @@ public class Homework21 extends BaseTest {
 
         // Clear the input field using Ctrl+A then Backspace
 
-        actions.moveToElement(inputField).click().sendKeys
-                (Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.BACK_SPACE).perform();
+        actions.moveToElement(inputField).click().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.BACK_SPACE).perform();
         System.out.println("Cleared input field");
 
-        actions.moveToElement(inputField).click().sendKeys
-                (Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.BACK_SPACE).perform();
+        actions.moveToElement(inputField).click().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.BACK_SPACE).perform();
         System.out.println("Cleared input field");
 
         //// Input the new name and press Enter
@@ -67,15 +69,18 @@ public class Homework21 extends BaseTest {
 
 
     public void createPlaylistAction() {
-        WebElement addPlaylist = wait.until(ExpectedConditions.elementToBeClickable
-                (By.xpath("//*[@id='playlists']/h1/i")));
+        WebElement addPlaylist = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='playlists']/h1/i")));
         addPlaylist.click();
         actions.moveToElement(addPlaylist).click().perform();
         System.out.println("Clicked add playlist icon");
+           // click new playlist icon
+        WebElement newPlaylistIcon = wait.until((ExpectedConditions.visibilityOfElementLocated
+                (By.xpath("//*[@id=\"playlists\"]/nav/ul/li[1]"))));
+        actions.moveToElement(newPlaylistIcon).click().perform();
+        System.out.println("Clicked new playlist");
 
         //add name to new playlist
-        WebElement addPlaylistName = wait.until(ExpectedConditions.elementToBeClickable
-                (By.xpath("//*[@id='playlists']/form/input")));
+        WebElement addPlaylistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='playlists']/form/input")));
         actions.moveToElement(addPlaylistName).click().sendKeys("My new list").sendKeys(Keys.RETURN).perform();
         System.out.println("Entered new playlist name and confirmed");
     }

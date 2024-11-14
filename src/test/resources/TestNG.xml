@@ -2,11 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="TestNG">
-
+    <!-- STEP1-Navigate to "https://qa.koel.app/".. -->
+    <parameter name="BaseUrl" value="https://qa.koel.app"/>
     <test name="Example Test" preserve-order="false">
         <classes>
             <class name="LoginTests"/>
             <class name="BaseTest"/>
+            <class name="Homework21"/>
         </classes>
     </test>
 </suite>
