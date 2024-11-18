@@ -26,10 +26,10 @@ public class Homework21 extends BaseTest {
         submit();
         // create a new playlist
         createPlaylistAction();
-        Thread.sleep(5000);
+       // Thread.sleep(5000);
         //rename a new playlist
         renamePlaylistAction();
-        Thread.sleep(5000);
+      //  Thread.sleep(5000);
         //Assert
         Assert.assertTrue(getSuccessPopUp().isDisplayed());
         // Quitting the WebDriver session

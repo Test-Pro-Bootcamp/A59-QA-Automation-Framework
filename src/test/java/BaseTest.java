@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -54,9 +55,10 @@ public class BaseTest {
     }
 
     protected void submit() throws InterruptedException {
-        WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
+        //Thread.sleep(1000);
+        WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
-        Thread.sleep(1000);
+
     }
 
     protected void enterPassword(String password) {
