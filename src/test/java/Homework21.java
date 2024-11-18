@@ -26,10 +26,10 @@ public class Homework21 extends BaseTest {
         submit();
         // create a new playlist
         createPlaylistAction();
-       // Thread.sleep(5000);
+        // Thread.sleep(5000);
         //rename a new playlist
         renamePlaylistAction();
-      //  Thread.sleep(5000);
+        //  Thread.sleep(5000);
         //Assert
         Assert.assertTrue(getSuccessPopUp().isDisplayed());
         // Quitting the WebDriver session
@@ -73,7 +73,7 @@ public class Homework21 extends BaseTest {
         addPlaylist.click();
         actions.moveToElement(addPlaylist).click().perform();
         System.out.println("Clicked add playlist icon");
-           // click new playlist icon
+        // click new playlist icon
         WebElement newPlaylistIcon = wait.until((ExpectedConditions.visibilityOfElementLocated
                 (By.xpath("//*[@id=\"playlists\"]/nav/ul/li[1]"))));
         actions.moveToElement(newPlaylistIcon).click().perform();
@@ -100,7 +100,3 @@ public class Homework21 extends BaseTest {
         }
     }
 }
-
-
-
-

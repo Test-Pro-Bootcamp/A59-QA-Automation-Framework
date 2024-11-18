@@ -46,11 +46,11 @@ public class BaseTest {
         fluentwait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(200));
 
-        actions= new Actions(driver);
+        actions = new Actions(driver);
     }
 
     @AfterMethod
-    public void closeBrowser(){
+    public void closeBrowser() {
         driver.quit();
     }
 
