@@ -51,9 +51,7 @@ public class Homework21 extends BaseTest {
         // Wait for the input field to be present
         WebElement inputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='inline-playlist-name-input']")));
         System.out.println("Input field found");
-
         // Clear the input field using Ctrl+A then Backspace
-
         actions.moveToElement(inputField).click().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.BACK_SPACE).perform();
         System.out.println("Cleared input field");
 

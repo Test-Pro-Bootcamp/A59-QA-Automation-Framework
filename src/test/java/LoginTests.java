@@ -31,7 +31,6 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginValidEmailEmptyPassword() throws InterruptedException {
 
-
         enterEmail("invalid@testpro.io");
         submit();
 

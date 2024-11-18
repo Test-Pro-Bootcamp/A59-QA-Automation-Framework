@@ -72,7 +72,6 @@ public class BaseTest {
         emailField.clear();
         emailField.sendKeys(email);
     }
-
     protected void navigateToPage(String url) {
         driver.get(url);
     }
