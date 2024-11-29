@@ -1,25 +1,58 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import pageFactory.LoginPageFromFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
+import page.HomePage;
 
 public class LoginTests extends BaseTest {
+
+
     @Test
     public void loginEmptyEmailPassword() {
+        LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        loginPageFromFactory.login();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+    @Test
+    public void loginValidEmailPassword() {
+        LoginPageFromFactory loginPageFromFactory = new LoginPageFromFactory(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        loginPageFromFactory.provideEmail("kristina.sarkisyan@testpro.io").providePassword("o8URUDnW").clickSubmit();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    @Test
+    public void loginWithInvalidEmailValidPassword() {
+        String expectedURL = "https://qa.koel.app/";
+        enterEmail("invalid@koel.io");
+        enterPassword("te$t$tudent");
+        submit();
+        //Expected Results - Assertions
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+    }
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+    //Negative Test Case 2
+    @Test
+    public void loginWithNoPassword() {
+        //navigateToPage();
+        String expectedURL = "https://qa.koel.app/";
+        enterEmail("invalid@koel.io");
+        submit();
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+
+    }
+
+    @Test(dataProvider = "NegativeLoginTestData", dataProviderClass = TestDataProvider.class)
+    public void negativeLoginTest(String email, String password) {
+        String expectedUrl = "https://qa.koel.app/";
+        enterEmail(email);
+        enterPassword(password);
+        submit();
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+
     }
 }
+
+
+
