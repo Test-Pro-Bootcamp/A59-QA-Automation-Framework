@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
+<!--<suite name="TestNG" parallel="methods" thread-count="2">-->
 <suite name="TestNG">
-
+    <parameter name="BaseURL" value="https://qa.koel.app/"/>
     <test name="Example Test" preserve-order="false">
         <classes>
+
             <class name="LoginTests"/>
-            <class name="BaseTest"/>
+<!--            <class name="BaseTest"/>-->
+<!--            <class name="ProfileTests"/>-->
+<!--            <class name="CurrentQueueTest"/>-->
+<!--            <class name="PlaySong"/>-->
+<!--            <class name="DeletePlayList"/>-->
+<!--                <class name="HomeTestLesson21"/>-->
+<!--            <class name="RenamePlayList"/>-->
+<!--            <class name="AllSongTestLesson21"/>-->
+<!--            <class name="KoelAppLoginTest"/>-->
+<!--            <class name="CurrentQueueTest"/>-->
+<!--            <class name="AddSongToPlayListTest"/>-->
+
+
+
+
         </classes>
     </test>
 </suite>

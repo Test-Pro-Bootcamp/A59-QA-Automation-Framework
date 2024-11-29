@@ -1,25 +1,51 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
+
     @Test
     public void loginEmptyEmailPassword() {
+        loginPage.loginEmptyEmailPassword();
+        String expectedUrl = "https://qa.koel.app/";
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
     }
+
+    @Test
+    public void loginValidEmailPassword(){
+        loginPage.login();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
+
+    //Negative Test
+    @Test
+    public void loginWithInvalidEmailValidPassword() {
+        loginPage.loginInvalidEmail();
+        String expectedUrl = "https://qa.koel.app/";
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);
+    }
+
+    //Negative Test - empty password field
+    @Test
+    public void loginValidEmailEmptyPassword()  {
+        loginPage.loginEmptyPassword();
+        String expectedUrl = "https://qa.koel.app/";
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl);                 //https://qa.koel.app/
+    }
+
+    @Test(dataProvider = "NegativeLoginTestData" , dataProviderClass = TestDataProvider.class)
+    public void negativeLoginTest(String email, String password) {
+    String expectedUrl = "https://qa.koel.app/";
+    enterEmail(email);
+    enterPassword(password);
+    submit();
+    Assert.assertEquals(getDriver().getCurrentUrl(),expectedUrl);
+}
+
+
 }
