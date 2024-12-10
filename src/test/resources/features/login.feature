@@ -6,7 +6,7 @@ Feature: login feature
     When I enter login email "apurva.singh@testpro.io"
     And  login password"te$tpro$tudent1"
     And I Submit
-    Then I am logged in
+    Then I am logged in.
 
     Scenario Outline: Negative login scenario
       Given I open login page

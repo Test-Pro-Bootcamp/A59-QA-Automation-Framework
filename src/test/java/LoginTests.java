@@ -12,9 +12,9 @@ public class LoginTests extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
 
         //login
-        loginPage.provideEmail("apurva.singh@testpro.io");
-        loginPage.providePassword("te$tpro$tudent1");
-        loginPage.clickSubmit();
+        LoginPage.provideEmail("apurva.singh@testpro.io");
+        LoginPage.providePassword("te$tpro$tudent1");
+        LoginPage.clickSubmit();
 
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
@@ -25,9 +25,9 @@ public class LoginTests extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
 
         // Steps
-        loginPage.provideEmail("invalid@testpro.io");
-        loginPage.providePassword("te$tpro$tudent1");
-        loginPage.clickSubmit();
+        LoginPage.provideEmail("invalid@testpro.io");
+        LoginPage.providePassword("te$tpro$tudent1");
+        LoginPage.clickSubmit();
         // Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
         Assert.assertEquals(getDriver().getCurrentUrl(), url); // https://qa.koel.app/
@@ -39,8 +39,8 @@ public class LoginTests extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
 
         // Steps
-        loginPage.provideEmail("invalid@testpro.io");
-        loginPage.clickSubmit();
+        LoginPage.provideEmail("invalid@testpro.io");
+        LoginPage.clickSubmit();
 
         // Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
@@ -54,9 +54,9 @@ public class LoginTests extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
 
         //login
-        loginPage.provideEmail("apurva.singh@testpro.io");
-        loginPage.providePassword("te$tpro$tudent1");
-        loginPage.clickSubmit();
+        LoginPage.provideEmail("apurva.singh@testpro.io");
+        LoginPage.providePassword("te$tpro$tudent1");
+        LoginPage.clickSubmit();
 
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
 

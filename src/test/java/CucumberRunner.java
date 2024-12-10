@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
 //AbstractTestNGCucumberTests  is a class of cucumber that we are extending here in cucumber runner
 //@CucumberOptions annotation is used here to know where the feature files are located.
 
-@CucumberOptions(features = {"src/test/resource/feature/login.feature"})   //
+@CucumberOptions(features = {"src/test/resources/features/login.feature"})   //
 
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 
