@@ -14,9 +14,10 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
 }
-
+//${suite}
 test {
     useTestNG() {
-        suites "src/test/resources/TestNG.xml"
+        suites "src/test/resources/"+project.properties["suite"]
+        systemProperty "browser" , System.getProperty("browser");
     }
 }
