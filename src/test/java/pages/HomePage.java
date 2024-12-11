@@ -34,7 +34,7 @@ public class HomePage extends BasePage {
     }
     public void selectSong() {
         WebElement song =  wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.xpath("//tr[@class='song-item']")));
+                (By.xpath("//*[@id=\"songsWrapper\"]/div/div/div[1]/table/tr[1]/td[2]")));
         song.click();
     }
   public boolean isDisplayedPlayingSong() {
