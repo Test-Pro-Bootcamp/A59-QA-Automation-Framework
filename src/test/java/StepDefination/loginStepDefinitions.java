@@ -67,7 +67,7 @@ public class loginStepDefinitions {
         /*wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector
                 ("[type='submit']"))).click(); */
         LoginPage loginPage = new LoginPage(driver);
-        LoginPage.login();
+        LoginPage.clickSubmit();
         
     }
 
@@ -79,7 +79,7 @@ public class loginStepDefinitions {
 
     @Then("I should not get log in")
     public void iShouldNotGetLogIn() {
-        String expectedUrl = "https://qa.koel.app";
+        String expectedUrl = "https://qa.koel.app/";
         Assert.assertEquals(driver.getCurrentUrl(),expectedUrl);
     }
 
