@@ -13,9 +13,13 @@ public class LoginTests extends BaseTest {
     public void loginValidEmailPassword() throws InterruptedException {
 
 
-        enterEmail("apurva.singh@testpro.io");
-        enterPassword("te$tpro$tudent1");
-        submit();
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        //login
+        loginPage.provideEmail("apurva.singh@testpro.io");
+        loginPage.providePassword("te$tpro$tudent1");
+        loginPage.clickSubmit();
 
         WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
         // Expected Result
@@ -26,11 +30,13 @@ public class LoginTests extends BaseTest {
     public void loginInvalidEmailValidPassword() throws InterruptedException {
 
         // Steps
-        enterEmail();
-        enterPassword("te$tpro$tudent1");
-        submit();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.provideEmail("invalid@testpro.io");
+        loginPage.providePassword("te$tpro$tudent1");
+        loginPage.clickSubmit();
        // Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result
+        String expectedUrl = "https://qa.koel.app/";
         Assert.assertEquals(driver.getCurrentUrl(), url); // https://qa.koel.app/
     }
 
@@ -38,8 +44,9 @@ public class LoginTests extends BaseTest {
     public void loginValidEmailEmptyPassword() throws InterruptedException {
 
 
-        enterEmail("invalid@testpro.io");
-        submit();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.provideEmail("demo@testpro.io");
+        loginPage.clickSubmit();
 
        // Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
         // Expected Result

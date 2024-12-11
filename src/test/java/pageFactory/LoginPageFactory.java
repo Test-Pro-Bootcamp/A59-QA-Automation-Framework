@@ -20,9 +20,8 @@ public class LoginPageFactory extends BasePage {
 
     //helper method
 
-    public LoginPageFactory clickSubmitBtn(){
+    public void clickSubmitBtn(){
         submitBtn.click();
-        return this;
     }
     public LoginPageFactory provideEmail(String email){
         emailField.sendKeys(email);
