@@ -15,6 +15,7 @@ Feature: login feature
       And I Submit
       Then I should not get log in
 
+
       Examples:
       |email                        |password       |
       |invalid @testpro.io          |te$tpro$tudent1|
